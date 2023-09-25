@@ -99,7 +99,7 @@ public static class SoulstreakPlayers
                 statsDictionary["BlockCooldownMultiplyPerKill"] += soulstreakStatsModifiers.BlockCooldownMultiplyPerKill;
             }
         }
-        if (foundSoulstreakStatsModifier)
+        if (!foundSoulstreakStatsModifier)
         {
             statsDictionary["DamageMultiplyPerKill"] = 1;
             statsDictionary["MovementSpeedMultiplyPerKill"] = 1;
