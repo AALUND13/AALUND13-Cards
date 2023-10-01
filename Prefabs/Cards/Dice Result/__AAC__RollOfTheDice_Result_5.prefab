@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7472125458548062465}
   - component: {fileID: 3497125704716380374}
   - component: {fileID: 3554075196355529557}
-  - component: {fileID: 114864945995944148}
   m_Layer: 0
   m_Name: __AAC__RollOfTheDice_Result_5
   m_TagString: Untagged
@@ -79,7 +78,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: ATK Speed
   rarity: 1
-  cardArt: {fileID: 4736373875259151807, guid: 317db61dae0d50d4d9c20027a44e690f, type: 3}
+  cardArt: {fileID: 6196985514562014761, guid: b1d83ddb4226ae24cbb11f32f5cad92b, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -291,20 +290,3 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114864945995944148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5647749677671276803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d1344ab0921854b93b33b96bdfce98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardInfo: {fileID: 0}
-  CharacterStatModifiers: {fileID: 0}
-  ApplyCardStats: {fileID: 0}
-  Gun: {fileID: 0}
-  Block: {fileID: 0}

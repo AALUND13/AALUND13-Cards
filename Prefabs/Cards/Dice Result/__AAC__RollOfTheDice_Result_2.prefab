@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8044317475465193338}
   - component: {fileID: 6637178897426768408}
   - component: {fileID: 5603118596645900888}
-  - component: {fileID: 114360318905622700}
   m_Layer: 0
   m_Name: __AAC__RollOfTheDice_Result_2
   m_TagString: Untagged
@@ -75,7 +74,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Ammo
   rarity: 1
-  cardArt: {fileID: 2090329177632608706, guid: f6f48798fabce1046ae11dd2ccea749e, type: 3}
+  cardArt: {fileID: 7857144345563810568, guid: 858b2cb2dc216de43b6b233d73c86c54, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -287,20 +286,3 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114360318905622700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414326956795446328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d1344ab0921854b93b33b96bdfce98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardInfo: {fileID: 0}
-  CharacterStatModifiers: {fileID: 0}
-  ApplyCardStats: {fileID: 0}
-  Gun: {fileID: 0}
-  Block: {fileID: 0}

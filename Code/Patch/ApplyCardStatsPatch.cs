@@ -17,7 +17,7 @@ class ApplyCardStatsPatch
         AAStatsModifiers customAbility = __instance.gameObject.GetComponent<AAStatsModifiers>();
         if (customAbility != null)
         {
-            customAbility.OnAddCard(player, gun, gunAmmo, characterData, healthHandler, gravity, block, characterStatModifiers);
+            customAbility.OnAddCard(player, gun, gunAmmo, characterData, healthHandler, gravity, block, characterStatModifiers, __instance.GetComponent<CardInfo>());
         }
     }
 }

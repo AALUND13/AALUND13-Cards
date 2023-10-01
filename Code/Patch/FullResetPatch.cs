@@ -2,10 +2,12 @@
 using System;
 
 [HarmonyPatch(typeof(Player), "FullReset")]
-class Player_Patch_FullReset
+class FullResetPatch
 {
+
     static void Postfix(Player __instance)
     {
+        UnityEngine.Debug.Log(__instance.ToString() + "Stats reset");
         foreach (CardInfo currentCard in __instance.data.currentCards)
         {
             if (currentCard.GetComponent<AAStatsModifiers>() is AAStatsModifiers customCard)
@@ -19,7 +21,7 @@ class Player_Patch_FullReset
                     Block block = __instance.GetComponent<Block>();
                     GunAmmo gunAmmo = gun.GetComponentInChildren<GunAmmo>();
                     CharacterStatModifiers characterStatModifiers = __instance.GetComponent<CharacterStatModifiers>();
-                    customCard.OnRemoveCard(__instance, gun, gunAmmo, characterData, healthHandler, gravity, block, characterStatModifiers);
+                    customCard.OnRemoveCard(__instance, gun, gunAmmo, characterData, healthHandler, gravity, block, characterStatModifiers, currentCard);
                 }
                 catch (NotImplementedException)
                 { }
@@ -29,6 +31,5 @@ class Player_Patch_FullReset
                 }
             }
         }
-        __instance.data.currentCards.Clear();
     }
 }

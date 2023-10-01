@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6016957121236560348}
   - component: {fileID: 6020539611807145521}
   - component: {fileID: 114475928919843094}
-  - component: {fileID: 114799850850277376}
   m_Layer: 0
   m_Name: __AAC__RollOfTheDice
   m_TagString: Untagged
@@ -55,7 +54,7 @@ MonoBehaviour:
   cardDestription: Roll a dice between 1 to 6. Higher number is better stats
   cardStats: []
   rarity: 1
-  cardArt: {fileID: 6867466967297808782, guid: d8c46460521b9f24aae891d392119d4d, type: 3}
+  cardArt: {fileID: 6681465998797541292, guid: c83a8431358e0064ba4f180738b7e255, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -279,25 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a0a7a2f590cca44837bd6e1113cd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardInfo: {fileID: 0}
-  CharacterStatModifiers: {fileID: 0}
-  ApplyCardStats: {fileID: 0}
-  Gun: {fileID: 0}
-  Block: {fileID: 0}
---- !u!114 &114799850850277376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5916401321103276682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d1344ab0921854b93b33b96bdfce98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardInfo: {fileID: 0}
-  CharacterStatModifiers: {fileID: 0}
-  ApplyCardStats: {fileID: 0}
-  Gun: {fileID: 0}
-  Block: {fileID: 0}
+  isClass: 0
+  showCardClassName: 0
+  className: 

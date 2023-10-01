@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5400269038328575420}
   - component: {fileID: 6879450492582717443}
   - component: {fileID: 7642679639027116232}
-  - component: {fileID: 114355279144172184}
   m_Layer: 0
   m_Name: __AAC__RollOfTheDice_Result_6
   m_TagString: Untagged
@@ -78,12 +77,8 @@ MonoBehaviour:
     amount: -40%
     simepleAmount: 0
     stat: ATK Speed
-  - positive: 1
-    amount: +1
-    simepleAmount: 0
-    stat: Respawn
   rarity: 1
-  cardArt: {fileID: 6621811506838695654, guid: c426b3bc36be8564ab35a9d6744ee404, type: 3}
+  cardArt: {fileID: 2666486194344410161, guid: b272e7a61a163d04c805ad54083418ca, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -121,7 +116,7 @@ MonoBehaviour:
   lifeSteal: 0
   refreshOnDamage: 0
   automaticReload: 1
-  respawns: 1
+  respawns: 0
   remainingRespawns: 0
   tasteOfBloodSpeed: 1
   rageSpeed: 1
@@ -295,20 +290,3 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114355279144172184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3064542637086822442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d1344ab0921854b93b33b96bdfce98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardInfo: {fileID: 0}
-  CharacterStatModifiers: {fileID: 0}
-  ApplyCardStats: {fileID: 0}
-  Gun: {fileID: 0}
-  Block: {fileID: 0}

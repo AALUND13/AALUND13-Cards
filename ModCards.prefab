@@ -45,7 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cards:
   - {fileID: 5916401321103276682, guid: 93bfb642bc66e154b939a73bf5168d05, type: 3}
-  - {fileID: 6174218720280866045, guid: bca1ca8a0ed582b46b883c53c43e4177, type: 3}
   HiddenCards:
   - {fileID: 7451438178602277890, guid: 1c63b366f085e014c93f5ca5df2c3add, type: 3}
   - {fileID: 4414326956795446328, guid: 0b40e9c12127216438620752973e2cca, type: 3}
