@@ -57,7 +57,7 @@ MonoBehaviour:
   - positive: 1
     amount: +10%
     simepleAmount: 0
-    stat: Damage speed per kill
+    stat: Damage per kill
   - positive: 1
     amount: +10%
     simepleAmount: 0
