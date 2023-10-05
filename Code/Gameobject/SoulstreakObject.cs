@@ -31,12 +31,21 @@ public class SoulstreakObject : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        resetSoulstreakStats();
+        foreach (CardInfo card in soulstreakPlayer.data.currentCards)
+        {
+            if (card.GetComponent<SoulstreakStats>() != null)
+            {
+                soulstreakStats.ATkSpeedMultiplyPerKill = Mathf.Max(soulstreakStats.ATkSpeedMultiplyPerKill + card.GetComponent<SoulstreakStats>().ATkSpeedMultiplyPerKill, 0.5f);
+                soulstreakStats.BlockCooldownMultiplyPerKill = Mathf.Max(soulstreakStats.BlockCooldownMultiplyPerKill + card.GetComponent<SoulstreakStats>().BlockCooldownMultiplyPerKill, 0.5f);
+                soulstreakStats.DamageMultiplyPerKill = Mathf.Max(soulstreakStats.DamageMultiplyPerKill + card.GetComponent<SoulstreakStats>().DamageMultiplyPerKill, 0.5f);
+                soulstreakStats.MovementSpeedMultiplyPerKill = Mathf.Max(soulstreakStats.MovementSpeedMultiplyPerKill + card.GetComponent<SoulstreakStats>().MovementSpeedMultiplyPerKill, 0.5f);
+                soulstreakStats.MaxMultiplyPerKill = Mathf.Max(soulstreakStats.MaxMultiplyPerKill + card.GetComponent<SoulstreakStats>().MaxMultiplyPerKill, 0.5f);
+                soulstreakStats.HealthMultiplyPerKill = Mathf.Max(soulstreakStats.HealthMultiplyPerKill + card.GetComponent<SoulstreakStats>().HealthMultiplyPerKill, 0.5f);
+            }
+        }
         setDeadPlay();
         text.text = "Soul : " + kills;
-        if (!soulstreakPlayer.data.currentCards.Any(Card => Card.cardName == "Soulstreak"))
-        {
-            Object.Destroy(gameObject);
-        }
     }
 
     private void OnDisable()
@@ -57,6 +66,16 @@ public class SoulstreakObject : MonoBehaviour
             }
             playerHasDied = false;
         }
+    }
+
+    public void resetSoulstreakStats()
+    {
+        soulstreakStats.ATkSpeedMultiplyPerKill = 1;
+        soulstreakStats.BlockCooldownMultiplyPerKill = 1;
+        soulstreakStats.DamageMultiplyPerKill = 1;
+        soulstreakStats.MovementSpeedMultiplyPerKill = 1;
+        soulstreakStats.MaxMultiplyPerKill = 1;
+        soulstreakStats.HealthMultiplyPerKill = 1;
     }
 
     public void setToBaseStats()

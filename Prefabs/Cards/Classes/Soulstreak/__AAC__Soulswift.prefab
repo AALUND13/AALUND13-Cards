@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 453156162258451145}
   - component: {fileID: 453156162258451146}
   - component: {fileID: 453156162258451147}
-  - component: {fileID: 453156162258451156}
   m_Layer: 0
   m_Name: __AAC__Soulswift
   m_TagString: Untagged
@@ -56,7 +55,7 @@ MonoBehaviour:
     speed.
   cardStats:
   - positive: 1
-    amount: -10%
+    amount: +10%
     simepleAmount: 0
     stat: Attack speed per kill
   rarity: 0
@@ -82,7 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 2526870024453112574, guid: 1d21df805af11314a8ef82768364d513,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
@@ -290,18 +290,3 @@ MonoBehaviour:
   BlockCooldownMultiplyPerKill: 0
   HealthMultiplyPerKill: 0
   MaxMultiplyPerKill: 0
---- !u!114 &453156162258451156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453156162258451158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db27def9725d094bb0f78fc689cd44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isClass: 1
-  showCardClassName: 1
-  className: Soul streak

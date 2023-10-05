@@ -121,24 +121,6 @@ public class AAStatsModifiers : MonoBehaviour
         
     }
 
-    // Declare OnRemoveCard as a virtual method
-    /// <summary>
-    /// This method call when this card have be remove from the player
-    /// </summary>
-    /// <param name="player"></param>
-    /// <param name="gun"></param>
-    /// <param name="gunAmmo"></param>
-    /// <param name="data"></param>
-    /// <param name="health"></param>
-    /// <param name="gravity"></param>
-    /// <param name="block"></param>
-    /// <param name="characterStats"></param>
-    /// <param name="cardInfo"></param>
-    public virtual void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats, CardInfo cardInfo)
-    {
-
-    }
-
     private class SetLocalPos : MonoBehaviour
     {
         private readonly Vector3 localpos = new Vector3(-50f, -50f, 0f);

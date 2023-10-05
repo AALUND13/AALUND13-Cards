@@ -20,7 +20,7 @@ public class AALUND13_Cards : BaseUnityPlugin
     internal const string modInitials = "AAC";
     internal const string ModId = "com.aalund13.rounds.AALUND13_Cards";
     internal const string ModName = "AALUND13 Cards";
-    internal const string Version = "0.1.1"; // What version are we on (major.minor.patch)?
+    internal const string Version = "0.2.0"; // What version are we on (major.minor.patch)?
 
     internal static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_asset", typeof(AALUND13_Cards).Assembly);
 
@@ -37,7 +37,7 @@ public class AALUND13_Cards : BaseUnityPlugin
         ClassesRegistry.Register(CardResgester.ModCards["Eternal Resilience"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
         ClassesRegistry.Register(CardResgester.ModCards["Soul Surge"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
         ClassesRegistry.Register(CardResgester.ModCards["Soulbound Sprint"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
-        ClassesRegistry.Register(CardResgester.ModCards["Soulstealer's Embrace"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
+        ClassesRegistry.Register(CardResgester.ModCards["Soulstealer Embrace"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
         ClassesRegistry.Register(CardResgester.ModCards["Soulswift"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
     }
     void Start()

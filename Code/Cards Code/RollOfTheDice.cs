@@ -13,6 +13,7 @@ public class RollOfTheDice : AAStatsModifiers
 {
     public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats, CardInfo card)
     {
+        
         StartCoroutine(giveRandomCard(player));
     }
 
