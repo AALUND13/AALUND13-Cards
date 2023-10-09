@@ -44,7 +44,6 @@ public class AALUND13_Cards : BaseUnityPlugin
     {
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPickStart, (_) => PickingStart());
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPickEnd, (_) => PickingEnd());
-
         //UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPointStart, (_) => SoulstreakPlayers.omRoundStart());
         //UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPointEnd, (_) => SoulstreakPlayers.omRoundEnd());
         //UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookGameEnd, (_) => SoulstreakPlayers.omGameEnd());

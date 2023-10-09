@@ -23,4 +23,14 @@ public class CardResgester : MonoBehaviour
             ModCards.Add(Card.GetComponent<CardInfo>().cardName, Card);
         }
     }
+
+    internal static List<GameObject> GetCardsFormString(List<string> cardsOfString)
+    {
+        List<GameObject> ModCardsObject = new List<GameObject>();
+        foreach (string Card in cardsOfString)
+        {
+            ModCardsObject.Add(ModCards[Card]);
+        }
+        return ModCardsObject;
+    }
 }

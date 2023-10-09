@@ -3,7 +3,7 @@
 [HarmonyPatch(typeof(ApplyCardStats), "ApplyStats")]
 class ApplyCardStatsPatch
 {
-    static void Prefix(ApplyCardStats __instance, Player ___playerToUpgrade)
+    static void Postfix(ApplyCardStats __instance, Player ___playerToUpgrade)
     {
         var player = ___playerToUpgrade.GetComponent<Player>();
         var gun = ___playerToUpgrade.GetComponent<Holding>().holdable.GetComponent<Gun>();
@@ -14,7 +14,7 @@ class ApplyCardStatsPatch
         var gunAmmo = gun.GetComponentInChildren<GunAmmo>();
         var characterStatModifiers = player.GetComponent<CharacterStatModifiers>();
 
-        AAStatsModifiers customAbility = __instance.gameObject.GetComponent<AAStatsModifiers>();
+        AACustomCard customAbility = __instance.gameObject.GetComponent<AACustomCard>();
         if (customAbility != null)
         {
             customAbility.OnAddCard(player, gun, gunAmmo, characterData, healthHandler, gravity, block, characterStatModifiers, __instance.GetComponent<CardInfo>());

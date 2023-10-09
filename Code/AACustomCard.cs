@@ -1,14 +1,16 @@
 ﻿using System.Linq;
 using TMPro;
+using UnboundLib.Cards;
 using UnityEngine;
 
-public class AAStatsModifiers : MonoBehaviour
+public class AACustomCard : MonoBehaviour
 {
     private CardInfo CardInfo;
     private CharacterStatModifiers CharacterStatModifiers;
     private ApplyCardStats ApplyCardStats;
     private Gun Gun;
     private Block Block;
+
     public bool isClass = false;
     public bool showCardClassName = false;
     public string className = null;
