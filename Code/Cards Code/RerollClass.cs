@@ -6,29 +6,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnboundLib;
 using UnityEngine;
+using ModdingUtils.Extensions;
+using UnboundLib.Utils;
 
 public class RerollClass : AACustomCard
 {
+    public override void OnSetup(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
+    {
+        cardInfo.GetAdditionalData().canBeReassigned = false;
+    }
+
     public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats, CardInfo card)
     {
         if (PhotonNetwork.OfflineMode || PhotonNetwork.IsMasterClient)
         {
-            StartCoroutine(OnAddIEnumerator(player, gun, gunAmmo, data, health, gravity, block, characterStats, card));
-
-            //List<ClassObject> otherClassObject = ClassesRegistry.GetClassObjects(CardType.Entry).FindAll(classObj => classObj != classObjects);
-            //foreach (ClassObject classObj in otherClassObject)
-            //{
-            //    UnityEngine.Debug.Log(classObj.card.cardName);
-            //}
-
-
-
-            //ModdingUtils.Utils.CardBarUtils.instance.ShowAtEndOfPhase(player, randomCard);
+            Unbound.Instance.StartCoroutine(OnAddIEnumerator(player, gun, gunAmmo, data, health, gravity, block, characterStats, card));
         }
     }
 
     public IEnumerator OnAddIEnumerator(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats, CardInfo card)
     {
+        UnityEngine.Debug.Log("Starting");
         ClassObject currentClassObject = ClassesRegistry.GetClassObjects(CardType.Entry).Find(classObj => player.data.currentCards.Find(c => c.cardName == classObj.card.cardName));
         List<ClassObject> allClassObjects = ClassesRegistry.GetClassObjects(~CardType.Entry).FindAll(classObj => player.data.currentCards.Find(c => c.cardName == classObj.card.cardName));
 
@@ -47,10 +45,10 @@ public class RerollClass : AACustomCard
             List<CardInfo> replacementCards = player.data.currentCards.FindAll(cardInfo => ClassesRegistry.GetClassInfos(~CardType.Entry).Contains(cardInfo));
 
             // Log the names of the replacement cards
-            foreach (CardInfo replacementCard in replacementCards)
-            {
-                UnityEngine.Debug.Log("Replacement Card: " + replacementCard.cardName);
-            }
+            //foreach (CardInfo replacementCard in replacementCards)
+            //{
+            //    UnityEngine.Debug.Log("Replacement Card: " + replacementCard.cardName);
+            //}
         }
 
         yield break;
