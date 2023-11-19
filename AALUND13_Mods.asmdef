@@ -5,7 +5,9 @@
         "ModdingUtils",
         "CardChoiceSpawnUniqueCardPatch",
         "ClassesManagerReborn",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "TabInfo",
+        "ModsPlus"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

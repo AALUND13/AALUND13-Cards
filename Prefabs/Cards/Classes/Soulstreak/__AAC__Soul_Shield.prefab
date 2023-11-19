@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3520076373159676339
+--- !u!1 &2387666261174291440
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,29 +8,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2343523456119629265}
-  - component: {fileID: 4280856671994956962}
-  - component: {fileID: 8641953238891349085}
-  - component: {fileID: 8552728955395538235}
-  - component: {fileID: 489700247330721957}
-  - component: {fileID: 6448677603909839394}
-  - component: {fileID: 7163192290710063875}
-  - component: {fileID: 9141736684434172460}
-  - component: {fileID: 114836710715753812}
+  - component: {fileID: 8844895574662454}
+  - component: {fileID: 1068786388197914799}
+  - component: {fileID: 5352579387981709002}
+  - component: {fileID: 4212329876578364949}
+  - component: {fileID: 8755052810975907761}
+  - component: {fileID: 2880740354404939706}
+  - component: {fileID: 1340209889411700910}
+  - component: {fileID: 6505227155383993588}
+  - component: {fileID: 7687077742194656617}
   m_Layer: 0
-  m_Name: __AAC__RerollClass
+  m_Name: __AAC__Soul_Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2343523456119629265
+--- !u!4 &8844895574662454
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -33.575146, y: 5.097765, z: -0.87890625}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -38,39 +38,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &4280856671994956962
+--- !u!114 &1068786388197914799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4b032fe9cba4be49be5bb256561788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Reroll Class
-  cardDestription: Dont like your class, Pick this card to reroll your class.
-  cardStats: []
+  cardName: Soul Shield
+  cardDestription: Tap into your soul's power to conjure an 80% Max Health shield,
+    with a regenerative force of 3% Max Health. When depleted, patiently await its
+    return, reactivating at 30% strength.
+  cardStats:
+  - positive: 1
+    amount: 80%
+    simepleAmount: 0
+    stat: Soul Shield
+  - positive: 1
+    amount: 3%
+    simepleAmount: 0
+    stat: 'Soul Shield Regen '
   rarity: 1
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 4445684221163458179, guid: ee63fe61a01099a4baef34856af1a738, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 1
+  allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 7
---- !u!114 &8641953238891349085
+  colorTheme: 4
+--- !u!114 &5352579387981709002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a7455d82e3521142be110549e6130ef, type: 3}
@@ -99,13 +109,13 @@ MonoBehaviour:
   rageSpeed: 1
   attackSpeedMultiplier: 1
   slowPart: {fileID: 0}
---- !u!114 &8552728955395538235
+--- !u!114 &4212329876578364949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f92295fe49b73614591f58e9ea25e35f, type: 3}
@@ -198,13 +208,13 @@ MonoBehaviour:
   defaultCooldown: 1
   attackID: -1
   attackSpeedMultiplier: 1
---- !u!114 &489700247330721957
+--- !u!114 &8755052810975907761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 786953031, guid: fbb25f4d567ecbd439bfbdcfed7eb232, type: 3}
@@ -232,26 +242,26 @@ MonoBehaviour:
   blockedAtPos: {x: 0, y: 0, z: 0}
   delayOtherActions: 0
   statusBlockPart: {fileID: 0}
---- !u!114 &6448677603909839394
+--- !u!114 &2880740354404939706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d09e61d8798559c41879e0963ec23e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootToPick: 0
---- !u!114 &7163192290710063875
+--- !u!114 &1340209889411700910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1283557461, guid: cc8a520cdc1a71048ac77742d0ea6366, type: 3}
@@ -267,13 +277,13 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &9141736684434172460
+--- !u!114 &6505227155383993588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4000ef163da20594b8816c9cf87c8401, type: 3}
@@ -281,24 +291,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageMultiplyPerKill: 0
   MovementSpeedMultiplyPerKill: 0
-  ATkSpeedMultiplyPerKill: 0
+  ATKSpeedMultiplyPerKill: 0
   BlockCooldownMultiplyPerKill: 0
   HealthMultiplyPerKill: 0
   MaxMultiplyPerKill: 0
   HealPercentagePerKill: 0
+  soulShieldPercentage: 0.8
+  soulShieldPercentageRegen: 0.03
   randomCardsToChoseFrom: []
---- !u!114 &114836710715753812
+--- !u!114 &7687077742194656617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520076373159676339}
+  m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1eb635ed8ba5a42aac1f0f3abba3e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isClass: 0
-  showCardClassName: 0
-  className: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
+  isClass: 1
+  showCardClassName: 1
+  className: Soul streak

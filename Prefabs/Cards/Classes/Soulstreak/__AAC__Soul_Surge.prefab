@@ -52,7 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Soul Surge
-  cardDestription: Each time you kill your enemies, You heal 50% your heallth
+  cardDestription: Harvest vitality with each fallen adversary, healing 50% of your
+    health. Most effective in group encounters, but heed the toll, as it incurs a
+    -20% Health reduction.
   cardStats:
   - positive: 1
     amount: heal 50%
@@ -289,11 +291,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageMultiplyPerKill: 0
   MovementSpeedMultiplyPerKill: 0
-  ATkSpeedMultiplyPerKill: 0
+  ATKSpeedMultiplyPerKill: 0
   BlockCooldownMultiplyPerKill: 0
   HealthMultiplyPerKill: 0
   MaxMultiplyPerKill: 0
   HealPercentagePerKill: 0.5
+  soulShieldPercentage: 0
+  soulShieldPercentageRegen: 0
   randomCardsToChoseFrom: []
 --- !u!114 &2652218937214440233
 MonoBehaviour:
@@ -307,6 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
   isClass: 1
   showCardClassName: 1
   className: Soul streak

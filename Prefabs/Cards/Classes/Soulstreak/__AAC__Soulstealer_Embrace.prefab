@@ -52,7 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Soulstealer Embrace
-  cardDestription: Each time you kill your enemies, You gain some of damage and health.
+  cardDestription: "Harvest power with every foe vanquished, gaining +10% Damage and
+    +10% Health per kill. Be cautious, for the relentless pursuit of power demands
+    a sacrifice, imposing a -10% Health penalty.\r"
   cardStats:
   - positive: 1
     amount: +10%
@@ -63,7 +65,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: health per kill
   - positive: 0
-    amount: -8%
+    amount: -10%
     simepleAmount: 0
     stat: health
   rarity: 1
@@ -92,7 +94,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.92
+  health: 0.9
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -293,11 +295,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageMultiplyPerKill: 0.1
   MovementSpeedMultiplyPerKill: 0
-  ATkSpeedMultiplyPerKill: 0
+  ATKSpeedMultiplyPerKill: 0
   BlockCooldownMultiplyPerKill: 0
   HealthMultiplyPerKill: 0.1
   MaxMultiplyPerKill: 0.1
   HealPercentagePerKill: 0
+  soulShieldPercentage: 0
+  soulShieldPercentageRegen: 0
   randomCardsToChoseFrom: []
 --- !u!114 &8979089997947480580
 MonoBehaviour:
@@ -311,6 +315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
   isClass: 1
   showCardClassName: 1
   className: Soul streak

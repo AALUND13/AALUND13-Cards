@@ -52,7 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Soulstreak
-  cardDestription: Enhances its power as you accumulate more kills.
+  cardDestription: "Channel the essence of vanquished souls to unlock the formidable
+    Soulstreak class. Harness the energy of your conquered victims to elevate your
+    power.\r"
   cardStats:
   - positive: 1
     amount: +15%
@@ -292,21 +294,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4000ef163da20594b8816c9cf87c8401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulstreakStats:
-    DamageMultiplyPerKill: 0.15
-    MovementSpeedMultiplyPerKill: 0
-    ATkSpeedMultiplyPerKill: 0
-    BlockCooldownMultiplyPerKill: 0
-    HealthMultiplyPerKill: 0
-    MaxMultiplyPerKill: 0
-    HealPercentagePerKill: 0
   DamageMultiplyPerKill: 0.15
   MovementSpeedMultiplyPerKill: 0
-  ATkSpeedMultiplyPerKill: 0
+  ATKSpeedMultiplyPerKill: 0
   BlockCooldownMultiplyPerKill: 0
   HealthMultiplyPerKill: 0
   MaxMultiplyPerKill: 0
   HealPercentagePerKill: 0
+  soulShieldPercentage: 0
+  soulShieldPercentageRegen: 0
   randomCardsToChoseFrom: []
 --- !u!114 &5571222369147775111
 MonoBehaviour:
@@ -320,6 +316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
   isClass: 1
   showCardClassName: 0
   className: Soul streak

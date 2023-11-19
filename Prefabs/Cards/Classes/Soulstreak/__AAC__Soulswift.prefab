@@ -52,15 +52,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Soulswift
-  cardDestription: Each time you kill your enemies, you gain a little less attack
-    speed.
+  cardDestription: Unleash swift retribution on foes, gaining +10% Attack Speed per
+    kill. However, each conquest tempers your fervor, diminishing your overall speed
+    by -5%.
   cardStats:
   - positive: 1
     amount: +10%
     simepleAmount: 0
     stat: Attack speed per kill
   - positive: 0
-    amount: -5%
+    amount: -3%
     simepleAmount: 0
     stat: Attack speed
   rarity: 0
@@ -152,7 +153,7 @@ MonoBehaviour:
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
   knockback: 1
-  attackSpeed: 1.05
+  attackSpeed: 1.03
   projectileSpeed: 1
   projectielSimulatonSpeed: 1
   gravity: 1
@@ -291,11 +292,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageMultiplyPerKill: 0
   MovementSpeedMultiplyPerKill: 0
-  ATkSpeedMultiplyPerKill: -0.1
+  ATKSpeedMultiplyPerKill: -0.1
   BlockCooldownMultiplyPerKill: 0
   HealthMultiplyPerKill: 0
   MaxMultiplyPerKill: 0
   HealPercentagePerKill: 0
+  soulShieldPercentage: 0
+  soulShieldPercentageRegen: 0
   randomCardsToChoseFrom: []
 --- !u!114 &7451837504726393780
 MonoBehaviour:
@@ -309,6 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
   isClass: 1
   showCardClassName: 1
   className: Soul streak
