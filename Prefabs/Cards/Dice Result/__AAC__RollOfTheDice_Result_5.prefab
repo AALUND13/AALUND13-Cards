@@ -74,7 +74,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Ammo
   - positive: 1
-    amount: -20%
+    amount: +20%
     simepleAmount: 0
     stat: ATK Speed
   rarity: 1

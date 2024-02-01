@@ -1,15 +1,22 @@
-﻿using BepInEx;
+﻿using AALUND13Card;
+using AALUND13Card.Armors;
+using AALUND13Card.MonoBehaviours;
+using BepInEx;
+using ClassesManagerReborn;
 using HarmonyLib;
-using UnityEngine;
+using JARL;
+using JARL.ArmorFramework;
+using JARL.ArmorFramework.Utlis;
 using System.Collections;
 using System.Collections.Generic;
-using ClassesManagerReborn;
 using System.Reflection;
+using UnityEngine;
 
 [BepInDependency("com.willis.rounds.unbound")]
 [BepInDependency("pykess.rounds.plugins.moddingutils")]
 [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch")]
 [BepInDependency("root.classes.manager.reborn")]
+[BepInDependency("com.aalund13.rounds.jarl")]
 [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInPlugin(ModId, ModName, Version)]
 [BepInProcess("Rounds.exe")]
@@ -17,31 +24,49 @@ using System.Reflection;
 public class AALUND13_Cards : BaseUnityPlugin
 {
     internal const string modInitials = "AAC";
-    internal const string ModId = "com.aalund13.rounds.AALUND13_Cards";
+    internal const string ModId = "com.aalund13.rounds.aalund13_cards";
     internal const string ModName = "AALUND13 Cards";
-    internal const string Version = "0.2.0"; // What version are we on (major.minor.patch)?
+    internal const string Version = "1.0.0"; // What version are we on (major.minor.patch)?
     internal static List<BaseUnityPlugin> plugins;
 
-    internal static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_asset", typeof(AALUND13_Cards).Assembly);
+    public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_asset", typeof(AALUND13_Cards).Assembly);
 
     public static CardCategory SoulstreakClassCards;
 
+    public static AALUND13_Cards Instance { get; private set; }
+
     void Awake()
     {
+        Instance = this;
+
+        ConfigHandler.RegesterMenu(Config);
+
         assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
-        RerollClassManager.instance = new GameObject("RerollClassManager").AddComponent<RerollClassManager>();
+        AALUND13Card.Utils.LogInfo("---AALUND13 Cards---");
+        foreach (KeyValuePair<string, GameObject> card in CardResgester.ModCards)
+        {
+            AALUND13Card.Utils.LogInfo($"{card.Value.GetComponent<CardInfo>().cardName}");
+        }
+
+        ClassesRegistry.Register(CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), CardType.Entry);
+
+        //ClassesRegistry.Register(CardResgester.ModCards["Soulswift"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
+        //ClassesRegistry.Register(CardResgester.ModCards["Spiritual Defense"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
+        //ClassesRegistry.Register(CardResgester.ModCards["Soulbound Sprint"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
+        //ClassesRegistry.Register(CardResgester.ModCards["Soul Surge"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
+
+        ClassesRegistry.Register(CardResgester.ModCards["Eternal Resilience"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
+        ClassesRegistry.Register(CardResgester.ModCards["Soulstealer Embrace"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
+
+        ClassesRegistry.Register(CardResgester.ModCards["Soul Barrier"].GetComponent<CardInfo>(), CardType.SubClass, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
+        ClassesRegistry.Register(CardResgester.ModCards["Soul Barrier Enhancement"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soul Barrier"].GetComponent<CardInfo>(), 2);
+
+        ClassesRegistry.Register(CardResgester.ModCards["Soul Drain"].GetComponent<CardInfo>(), CardType.SubClass, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
+        ClassesRegistry.Register(CardResgester.ModCards["Soul Drain Enhancement"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soul Drain"].GetComponent<CardInfo>(), 2);
 
         var harmony = new Harmony(ModId);
         harmony.PatchAll();
-        ClassesRegistry.Register(CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), CardType.Entry);
-        ClassesRegistry.Register(CardResgester.ModCards["Spiritual Defense"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
-        ClassesRegistry.Register(CardResgester.ModCards["Eternal Resilience"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
-        ClassesRegistry.Register(CardResgester.ModCards["Soul Surge"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
-        ClassesRegistry.Register(CardResgester.ModCards["Soulbound Sprint"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
-        ClassesRegistry.Register(CardResgester.ModCards["Soulstealer Embrace"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
-        ClassesRegistry.Register(CardResgester.ModCards["Soulswift"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>(), 2);
-        ClassesRegistry.Register(CardResgester.ModCards["Soul Shield"].GetComponent<CardInfo>(), CardType.Card, CardResgester.ModCards["Soulstreak"].GetComponent<CardInfo>());
     }
     void Start()
     {
@@ -49,54 +74,74 @@ public class AALUND13_Cards : BaseUnityPlugin
 
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPickStart, (_) => PickingStart());
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPickEnd, (_) => PickingEnd());
+
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPointStart, (_) => PointStart());
+        UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPointEnd, (_) => PointEnd());
+
+        ArmorFramework.RegisterArmorType(new SoulArmor());
+
         if (plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
-        {         
+        {
             TabinfoInterface.Setup();
         }
     }
 
-    IEnumerator PointStart()
+    public IEnumerator PointStart()
     {
         for (int i = 0; i < PlayerManager.instance.players.Count; i++)
         {
             Player player = PlayerManager.instance.players[i];
-            SoulstreakObject soulstreakObject = player.GetComponentInChildren<SoulstreakObject>();
-            if (soulstreakObject != null)
+            SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();
+            if (soulstreakMono != null)
             {
-                soulstreakObject.RegenSoulShield();
+                soulstreakMono.canResetKills = true;
             }
         }
-
         yield break;
     }
 
-    IEnumerator PickingEnd()
+    public IEnumerator PointEnd()
     {
         for (int i = 0; i < PlayerManager.instance.players.Count; i++)
         {
             Player player = PlayerManager.instance.players[i];
-            SoulstreakObject soulstreakObject = player.GetComponentInChildren<SoulstreakObject>();
-            if (soulstreakObject != null)
+            SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();
+            if (soulstreakMono != null)
             {
-                soulstreakObject.SetStats();
+                soulstreakMono.canResetKills = false;
+            }
+        }
+        yield break;
+    }
+
+    public IEnumerator PickingEnd()
+    {
+        for (int i = 0; i < PlayerManager.instance.players.Count; i++)
+        {
+            Player player = PlayerManager.instance.players[i];
+            SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();
+            if (soulstreakMono != null)
+            {
+                soulstreakMono.baseCharacterData.Copy(player.data);
+                soulstreakMono.SetStats();
+                player.GetComponent<ArmorHandler>().GetArmorByType("Soul").maxArmorValue = 0;
             }
         }
 
         //yield return RerollClassManager.instance.RerollPlayer();
-           
+
         yield break;
     }
 
-    IEnumerator PickingStart()
+    public IEnumerator PickingStart()
     {
         for (int i = 0; i < PlayerManager.instance.players.Count; i++)
         {
             Player player = PlayerManager.instance.players[i];
-            SoulstreakObject soulstreakObject = player.GetComponentInChildren<SoulstreakObject>();
-            if (soulstreakObject != null)
+            SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();
+            if (soulstreakMono != null)
             {
-                soulstreakObject.SetToBaseStats();
+                soulstreakMono.ResetToBase();
             }
         }
         yield break;

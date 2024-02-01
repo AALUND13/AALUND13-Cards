@@ -7,7 +7,8 @@
         "ClassesManagerReborn",
         "Unity.TextMeshPro",
         "TabInfo",
-        "ModsPlus"
+        "ModsPlus",
+        "JARL"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
@@ -19,7 +20,8 @@
         "BepInEx.dll",
         "Assembly-CSharp.dll",
         "PhotonRealtime.dll",
-        "PhotonUnityNetworking.dll"
+        "PhotonUnityNetworking.dll",
+        "SonigonAudioEngine.Runtime.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": []

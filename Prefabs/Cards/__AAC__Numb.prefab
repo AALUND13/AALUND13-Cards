@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8163522322292975021
+--- !u!1 &1473282574127126098
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,28 +8,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8163522322292975020}
-  - component: {fileID: 8163522322292975028}
-  - component: {fileID: 8163522322292975029}
-  - component: {fileID: 8163522322292975030}
-  - component: {fileID: 8163522322292975031}
-  - component: {fileID: 8163522322292975016}
-  - component: {fileID: 8163522322292975017}
-  - component: {fileID: 3337968873461526657}
+  - component: {fileID: 1473282574127126106}
+  - component: {fileID: 1473282574127126101}
+  - component: {fileID: 1473282574127126100}
+  - component: {fileID: 1473282574127126103}
+  - component: {fileID: 1473282574127126102}
+  - component: {fileID: 1473282574127126097}
+  - component: {fileID: 1473282574127126096}
+  - component: {fileID: 2323025743252617504}
   m_Layer: 0
-  m_Name: __AAC__Eternal_Resilience
+  m_Name: __AAC__Numb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8163522322292975020
+--- !u!4 &1473282574127126106
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -33.575146, y: 5.097765, z: -0.87890625}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,32 +37,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &8163522322292975028
+--- !u!114 &1473282574127126101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4b032fe9cba4be49be5bb256561788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Eternal Resilience
-  cardDestription: This card allows you to become more resistant per soul gathered.
+  cardName: Numb
+  cardDestription: Your damage is delayed for 4 seconds.
   cardStats:
   - positive: 1
-    amount: +15%
+    amount: +4 seconds
     simepleAmount: 0
-    stat: Health Per Kill
+    stat: Of Delay Damage
   - positive: 0
-    amount: -20%
+    amount: -50%
     simepleAmount: 0
     stat: Health
-  rarity: 0
-  cardArt: {fileID: 4445684221163458179, guid: ee63fe61a01099a4baef34856af1a738, type: 3}
+  rarity: 1
+  cardArt: {fileID: 0}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -71,13 +71,13 @@ MonoBehaviour:
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 4
---- !u!114 &8163522322292975029
+--- !u!114 &1473282574127126100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a7455d82e3521142be110549e6130ef, type: 3}
@@ -87,7 +87,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.8
+  health: 0.5
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -106,13 +106,13 @@ MonoBehaviour:
   rageSpeed: 1
   attackSpeedMultiplier: 1
   slowPart: {fileID: 0}
---- !u!114 &8163522322292975030
+--- !u!114 &1473282574127126103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f92295fe49b73614591f58e9ea25e35f, type: 3}
@@ -205,13 +205,13 @@ MonoBehaviour:
   defaultCooldown: 1
   attackID: -1
   attackSpeedMultiplier: 1
---- !u!114 &8163522322292975031
+--- !u!114 &1473282574127126102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 786953031, guid: fbb25f4d567ecbd439bfbdcfed7eb232, type: 3}
@@ -239,26 +239,26 @@ MonoBehaviour:
   blockedAtPos: {x: 0, y: 0, z: 0}
   delayOtherActions: 0
   statusBlockPart: {fileID: 0}
---- !u!114 &8163522322292975016
+--- !u!114 &1473282574127126097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d09e61d8798559c41879e0963ec23e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootToPick: 0
---- !u!114 &8163522322292975017
+--- !u!114 &1473282574127126096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1283557461, guid: cc8a520cdc1a71048ac77742d0ea6366, type: 3}
@@ -274,16 +274,16 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3337968873461526657
+--- !u!114 &2323025743252617504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163522322292975021}
+  m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9944cd148db1f0d49ad3edf6b349a36d, type: 3}
+  m_Script: {fileID: 11500000, guid: f1c15ed57b41ee5438accbfa639cc78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -292,13 +292,4 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   automatedlyCreateClass: 1
-  HealthMultiplyPerKill: 0.15
-  HealPercentagePerKill: 0
-  soulArmorPercentage: 0
-  soulArmorPercentageRegenRate: 0
-  DamageMultiplyPerKill: 0
-  ATKSpeedMultiplyPerKill: 0
-  MovementSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
-  abilityType: 0
-  SoulDrainMultiply: 0
+  secondToDealDamage: 4

@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 8755052810975907761}
   - component: {fileID: 2880740354404939706}
   - component: {fileID: 1340209889411700910}
-  - component: {fileID: 6505227155383993588}
-  - component: {fileID: 7687077742194656617}
+  - component: {fileID: 7685056856848292161}
   m_Layer: 0
-  m_Name: __AAC__Soul_Shield
+  m_Name: __AAC__Soul_Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,20 +50,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Soul Shield
-  cardDestription: Tap into your soul's power to conjure an 80% Max Health shield,
-    with a regenerative force of 3% Max Health. When depleted, patiently await its
-    return, reactivating at 30% strength.
+  cardName: Soul Barrier
+  cardDestription: Create a soul barrier when you block, your soul barrier grows in
+    health with more souls.
   cardStats:
   - positive: 1
-    amount: 80%
+    amount: +50% * (souls + 1)
     simepleAmount: 0
-    stat: Soul Shield
-  - positive: 1
-    amount: 3%
+    stat: Soul Armor
+  - positive: 0
+    amount: 10 Seconds
     simepleAmount: 0
-    stat: 'Soul Shield Regen '
-  rarity: 1
+    stat: Ability Cooldown
+  - positive: 0
+    amount: +50%
+    simepleAmount: 0
+    stat: Block CD
+  rarity: 2
   cardArt: {fileID: 4445684221163458179, guid: ee63fe61a01099a4baef34856af1a738, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
@@ -231,7 +233,7 @@ MonoBehaviour:
   blockedPart: {fileID: 0}
   cooldown: 0
   counter: 1000
-  cdMultiplier: 1
+  cdMultiplier: 1.5
   cdAdd: 0
   forceToAdd: 0
   forceToAddUp: 0
@@ -277,7 +279,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6505227155383993588
+--- !u!114 &7685056856848292161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,29 +288,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4000ef163da20594b8816c9cf87c8401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageMultiplyPerKill: 0
-  MovementSpeedMultiplyPerKill: 0
-  ATKSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
-  HealthMultiplyPerKill: 0
-  MaxMultiplyPerKill: 0
-  HealPercentagePerKill: 0
-  soulShieldPercentage: 0.8
-  soulShieldPercentageRegen: 0.03
-  randomCardsToChoseFrom: []
---- !u!114 &7687077742194656617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387666261174291440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 9944cd148db1f0d49ad3edf6b349a36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -316,6 +296,15 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  isClass: 1
-  showCardClassName: 1
-  className: Soul streak
+  automatedlyCreateClass: 1
+  HealthMultiplyPerKill: 0
+  MaxHealthMultiplyPerKill: 0
+  HealPercentagePerKill: 0
+  soulArmorPercentage: 0.5
+  soulArmorPercentageRegenRate: 0
+  DamageMultiplyPerKill: 0
+  ATKSpeedMultiplyPerKill: 0
+  MovementSpeedMultiplyPerKill: 0
+  BlockCooldownMultiplyPerKill: 0
+  abilityType: 1
+  SoulDrainMultiply: 0

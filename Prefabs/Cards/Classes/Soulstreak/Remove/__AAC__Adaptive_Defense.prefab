@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 1020363940463929490}
   - component: {fileID: 1020363940463929491}
   - component: {fileID: 1020363940463929516}
-  - component: {fileID: 1020363940463929517}
-  - component: {fileID: 303839211763799142}
+  - component: {fileID: 1477997876083917716}
   m_Layer: 0
   m_Name: __AAC__Adaptive_Defense
   m_TagString: Untagged
@@ -277,7 +276,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1020363940463929517
+--- !u!114 &1477997876083917716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,29 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020363940463929512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4000ef163da20594b8816c9cf87c8401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageMultiplyPerKill: 0
-  MovementSpeedMultiplyPerKill: 0
-  ATKSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: -0.08
-  HealthMultiplyPerKill: 0
-  MaxMultiplyPerKill: 0
-  HealPercentagePerKill: 0
-  soulShieldPercentage: 0
-  soulShieldPercentageRegen: 0
-  randomCardsToChoseFrom: []
---- !u!114 &303839211763799142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020363940463929512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 048587ee18720ae418d9c46f49d8a6ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 9944cd148db1f0d49ad3edf6b349a36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -316,6 +293,23 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  isClass: 1
-  showCardClassName: 1
-  className: Soul streak
+  automatedlyCreateClass: 1
+  soulStreakStats:
+    HealthMultiplyPerKill: 0
+    MaxHealthMultiplyPerKill: 0
+    HealPercentagePerKill: 0
+    soulArmorPercentage: 0
+    soulArmorPercentageRegen: 0
+    DamageMultiplyPerKill: 0
+    ATKSpeedMultiplyPerKill: 0
+    MovementSpeedMultiplyPerKill: 0
+    BlockCooldownMultiplyPerKill: -0.08
+  HealthMultiplyPerKill: 0
+  MaxHealthMultiplyPerKill: 0
+  HealPercentagePerKill: 0
+  soulArmorPercentage: 0
+  soulArmorPercentageRegen: 0
+  DamageMultiplyPerKill: 0
+  ATKSpeedMultiplyPerKill: 0
+  MovementSpeedMultiplyPerKill: 0
+  BlockCooldownMultiplyPerKill: -0.08
