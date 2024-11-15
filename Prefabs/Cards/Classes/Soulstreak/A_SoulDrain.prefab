@@ -11324,6 +11324,8 @@ GameObject:
   - component: {fileID: 4924083876466970784}
   - component: {fileID: 4924335045461174353}
   - component: {fileID: 5342612660985379769}
+  - component: {fileID: 114023138268451816}
+  - component: {fileID: 114694354077352740}
   m_Layer: 0
   m_Name: A_SoulDrain
   m_TagString: Untagged
@@ -11528,3 +11530,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132b5d01c30d91b4794e43befea66723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114023138268451816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028120881987239697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafaf4e9b63575e45a27e3cc3925dabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerStartOnStart: 1
+  triggerStartOnEnable: 1
+  triggerEndOnDestroy: 1
+  triggerEndOnDisable: 1
+  useLocalTransformForInstanceID: 1
+  soundStart: {fileID: 11400000, guid: 0ddce2dd914061e46a58026d9270b544, type: 2}
+  soundStartLoop: {fileID: 11400000, guid: 0ddce2dd914061e46a58026d9270b544, type: 2}
+  soundEnd: {fileID: 11400000, guid: 0ddce2dd914061e46a58026d9270b544, type: 2}
+--- !u!114 &114694354077352740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028120881987239697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdb0ac013f5c304fa4980ba37f3e2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0

@@ -1,0 +1,15 @@
+{
+    "name": "AALUND13_Cards",
+    "version_number": "1.1.0",
+    "website_url": "https://github.com/AALUND13/AALUND13-Cards",
+    "description": "Explore a collection of unique cards crafted by 'AALUND13'. If you encounter any issues, please report them on the GitHub page.",
+    "dependencies": [
+        "Root-Classes_Manager_Reborn-1.5.4",
+        "Pykess-ModdingUtils-0.4.6",
+        "Pykess-CardChoiceSpawnUniqueCardPatch-0.1.9",
+        "willis81808-UnboundLib-3.2.10",
+        "willuwontu-AttackLevelPatch-0.0.0",
+        "willis81808-ModsPlus-1.6.2",
+        "AALUND13-JARL-1.2.6"
+    ]
+}
