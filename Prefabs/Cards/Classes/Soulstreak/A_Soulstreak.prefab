@@ -120,25 +120,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787fa2d8db8976743a8dd96220e224f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulstreakStats:
+  SoulstreakStats:
     HealthMultiplyPerKill: 1
     HealPercentagePerKill: 0
-    soulArmorPercentage: 0
-    soulArmorPercentageRegenRate: 0
+    SoulArmorPercentage: 0
+    SoulArmorPercentageRegenRate: 0
     DamageMultiplyPerKill: 1
     ATKSpeedMultiplyPerKill: 1
     MovementSpeedMultiplyPerKill: 1
     BlockCooldownMultiplyPerKill: 1
-    abilityType: 0
+    AbilityType: 0
     SoulDrainMultiply: 0
-  abilityCooldown: 0
-  killsStreak: 0
-  player: {fileID: 0}
-  abilityActive: 0
-  canResetKills: 1
-  soulsCounter: {fileID: 926731656163534219, guid: d60ddf4836ea3da40b586357232d5acd,
+  AbilityCooldown: 0
+  KillsStreak: 0
+  Player: {fileID: 0}
+  AbilityActive: 0
+  CanResetKills: 1
+  SoulsCounter: {fileID: 926731656163534219, guid: d60ddf4836ea3da40b586357232d5acd,
     type: 3}
-  soulsCounterGUI: {fileID: 5329367224122460592, guid: d3d8cf38f63637b4aba7c6ebf01469db,
+  SoulsCounterGUI: {fileID: 5329367224122460592, guid: d3d8cf38f63637b4aba7c6ebf01469db,
     type: 3}
 --- !u!114 &114041571225323046
 MonoBehaviour:
