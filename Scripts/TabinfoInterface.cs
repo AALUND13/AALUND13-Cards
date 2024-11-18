@@ -32,8 +32,8 @@ namespace AALUND13Card {
                 (p) => $"{p.data.GetAdditionalData().SoulStreakStats.BlockCooldownMultiplyPerKill * 100:0}%");
 
             // Souls
-            TabInfoManager.RegisterStat(cat, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().Killstreak != 0,
-                (p) => $"{p.data.GetAdditionalData().Killstreak}");
+            TabInfoManager.RegisterStat(cat, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().Souls != 0,
+                (p) => $"{p.data.GetAdditionalData().Souls}");
         }
     }
 }

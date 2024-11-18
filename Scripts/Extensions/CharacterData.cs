@@ -11,7 +11,7 @@ namespace AALUND13Card.Extensions {
         public bool dealDamage = true;
 
         public SoulStreakStats SoulStreakStats = new SoulStreakStats();
-        public uint Killstreak = 0;
+        public uint Souls = 0;
     }
 
     public static class CharacterDataExtensions {

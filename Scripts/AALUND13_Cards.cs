@@ -1,10 +1,12 @@
 ﻿using AALUND13Card;
 using AALUND13Card.Armors;
+using AALUND13Card.Extensions;
 using AALUND13Card.MonoBehaviours;
 using BepInEx;
 using ClassesManagerReborn;
 using HarmonyLib;
 using JARL.Armor;
+using JARL.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -65,14 +67,29 @@ public class AALUND13_Cards : BaseUnityPlugin {
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPointStart, (_) => PointStart());
         UnboundLib.GameModes.GameModeManager.AddHook(UnboundLib.GameModes.GameModeHooks.HookPointEnd, (_) => PointEnd());
 
+        DeathHandler.OnPlayerDeath += OnPlayerDeath;
+
         ArmorFramework.RegisterArmorType(new SoulArmor());
         if(plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
             TabinfoInterface.Setup();
         }
     }
 
+    void OnPlayerDeath(Player player, Dictionary<Player, DamageInfo> playerDamageInfos) {
+        foreach(var playerDamageInfo in playerDamageInfos) {
+            if(playerDamageInfo.Value.TimeSinceLastDamage <= 5 && playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>() != null && !playerDamageInfo.Key.data.dead) {
+                playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
 
-    public IEnumerator PointStart() {
+                if(player.GetComponentInChildren<SoulstreakMono>() != null) {
+                    playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().Souls * 0.5f));
+                }
+            }
+        }
+
+        player.GetComponentInChildren<SoulstreakMono>()?.ResetSouls();
+    }
+
+    IEnumerator PointStart() {
         for(int i = 0; i < PlayerManager.instance.players.Count; i++) {
             Player player = PlayerManager.instance.players[i];
 
@@ -84,7 +101,7 @@ public class AALUND13_Cards : BaseUnityPlugin {
         yield break;
     }
 
-    public IEnumerator PointEnd() {
+    IEnumerator PointEnd() {
         for(int i = 0; i < PlayerManager.instance.players.Count; i++) {
             Player player = PlayerManager.instance.players[i];
             SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();
@@ -95,7 +112,7 @@ public class AALUND13_Cards : BaseUnityPlugin {
         yield break;
     }
 
-    public IEnumerator PickingEnd() {
+    IEnumerator PickingEnd() {
         for(int i = 0; i < PlayerManager.instance.players.Count; i++) {
             Player player = PlayerManager.instance.players[i];
             SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();
@@ -108,7 +125,7 @@ public class AALUND13_Cards : BaseUnityPlugin {
         yield break;
     }
 
-    public IEnumerator PickingStart() {
+    IEnumerator PickingStart() {
         for(int i = 0; i < PlayerManager.instance.players.Count; i++) {
             Player player = PlayerManager.instance.players[i];
             SoulstreakMono soulstreakMono = player.GetComponentInChildren<SoulstreakMono>();

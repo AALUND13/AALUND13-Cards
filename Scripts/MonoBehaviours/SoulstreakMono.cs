@@ -53,8 +53,8 @@ namespace AALUND13Card.MonoBehaviours {
         private SoulStreakStats SoulstreakStats => Player.data.GetAdditionalData().SoulStreakStats;
         private string SoulsString => $"{(KillStreak > 1 ? "Souls" : "Soul")}: {KillStreak}";
         private uint KillStreak {
-            get => Player.data.GetAdditionalData().Killstreak;
-            set => Player.data.GetAdditionalData().Killstreak = value;
+            get => Player.data.GetAdditionalData().Souls;
+            set => Player.data.GetAdditionalData().Souls = value;
         }
 
         public bool CanResetKills = true;
@@ -164,7 +164,7 @@ namespace AALUND13Card.MonoBehaviours {
             Player.data.healthHandler.Heal(Player.data.maxHealth * SoulstreakStats.HealPercentagePerKill);
         }
 
-        public void ResetKill() {
+        public void ResetSouls() {
             if(CanResetKills) {
                 Utils.LogInfo($"Resetting kill streak of player with ID {Player.playerID}");
                 SetToBaseStats();
@@ -175,7 +175,7 @@ namespace AALUND13Card.MonoBehaviours {
             }
         }
 
-        public void AddKill(uint kills = 1) {
+        public void AddSouls(uint kills = 1) {
             if(CanResetKills) {
                 Utils.LogInfo($"Adding {kills} kills for player with ID {Player.playerID}");
                 SetToBaseStats();

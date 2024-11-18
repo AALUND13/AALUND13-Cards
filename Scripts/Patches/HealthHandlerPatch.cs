@@ -1,11 +1,10 @@
 ﻿using AALUND13Card.Extensions;
-using AALUND13Card.Handler;
 using HarmonyLib;
 using System.Linq;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Patchs {
+namespace AALUND13Card.Patches {
     [HarmonyPatch(typeof(HealthHandler))]
     public class HealthHandlerPatch {
         [HarmonyPatch("DoDamage")]
@@ -13,8 +12,6 @@ namespace AALUND13Card.Patchs {
         [HarmonyBefore("com.aalund13.rounds.jarl")]
         public static void DoDamage(HealthHandler __instance, ref Vector2 damage, Vector2 position, Color blinkColor, GameObject damagingWeapon, Player damagingPlayer, bool healthRemoval, bool lethal, bool ignoreBlock) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
-            data.gameObject.GetOrAddComponent<DeathHandler>().PlayerTakeDamage(damagingPlayer);
-
             if(data.GetAdditionalData().secondToDealDamage > 0 && !data.GetAdditionalData().dealDamage) {
                 data.GetAdditionalData().DamageDealSecond.Add(new DamageDealSecond(Time.time + data.GetAdditionalData().secondToDealDamage,
                     damage, position, blinkColor, damagingWeapon, damagingPlayer, healthRemoval, lethal, ignoreBlock));
@@ -29,7 +26,6 @@ namespace AALUND13Card.Patchs {
         [HarmonyPrefix]
         public static void RPCA_Die(Player ___player, Vector2 deathDirection) {
             if(___player.data.dead) return;
-            ___player.gameObject.GetOrAddComponent<DeathHandler>().PlayerDied();
             ___player.data.GetAdditionalData().DamageDealSecond.Clear();
         }
 
@@ -37,7 +33,6 @@ namespace AALUND13Card.Patchs {
         [HarmonyPrefix]
         public static void RPCA_Die_Phoenix(HealthHandler __instance, Player ___player, Vector2 deathDirection) {
             if((___player.data.dead || __instance.isRespawning)) return;
-            ___player.gameObject.GetOrAddComponent<DeathHandler>().PlayerDied();
             ___player.data.GetAdditionalData().DamageDealSecond.Clear();
         }
 

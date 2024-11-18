@@ -3,7 +3,7 @@ using AALUND13Card.MonoBehaviours;
 using HarmonyLib;
 using System.Collections.Generic;
 
-namespace AALUND13Card.Patchs {
+namespace AALUND13Card.Patches {
     [HarmonyPatch(typeof(CharacterStatModifiers))]
     public class CharacterStatModifiersPatch {
         [HarmonyPatch("ResetStats")]
@@ -15,6 +15,7 @@ namespace AALUND13Card.Patchs {
             data.GetAdditionalData().dealDamage = true;
 
             data.GetAdditionalData().SoulStreakStats = new SoulStreakStats();
+            data.GetAdditionalData().Souls = 0;
         }
     }
 }
