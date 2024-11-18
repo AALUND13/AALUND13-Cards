@@ -284,6 +284,8 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   AutomatedlyCreateClass: 1
+  OverrideClassName: 
+  CanBeReassigned: 0
   randomCardsToChoseFrom:
   - {fileID: 7451438178602277890, guid: 1c63b366f085e014c93f5ca5df2c3add, type: 3}
   - {fileID: 4414326956795446328, guid: 0b40e9c12127216438620752973e2cca, type: 3}
