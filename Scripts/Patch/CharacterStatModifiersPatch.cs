@@ -1,7 +1,6 @@
 ﻿using AALUND13Card.Extensions;
 using HarmonyLib;
 using System.Collections.Generic;
-using static AALUND13Card.Classes;
 
 namespace AALUND13Card.Patchs {
     [HarmonyPatch(typeof(CharacterStatModifiers))]

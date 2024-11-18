@@ -5,7 +5,6 @@ using JARL.Armor.Bases;
 using System;
 using TMPro;
 using UnityEngine;
-using static AALUND13Card.Classes;
 
 namespace AALUND13Card.MonoBehaviours {
     public enum AbilityType {

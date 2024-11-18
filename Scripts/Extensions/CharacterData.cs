@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static AALUND13Card.Classes;
 
 namespace AALUND13Card.Extensions {
     public class AALUND13CardCharacterDataAdditionalData {

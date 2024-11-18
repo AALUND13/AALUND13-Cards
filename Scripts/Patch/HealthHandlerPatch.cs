@@ -4,7 +4,6 @@ using HarmonyLib;
 using System.Linq;
 using UnboundLib;
 using UnityEngine;
-using static AALUND13Card.Classes;
 
 namespace AALUND13Card.Patchs {
     [HarmonyPatch(typeof(HealthHandler))]
