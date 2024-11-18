@@ -1,22 +1,17 @@
-﻿using SoundImplementation;
+﻿using AALUND13Card.Extensions;
+using SoundImplementation;
 using UnityEngine;
-using UnityEngine.Audio;
 
 namespace AALUND13Card.MonoBehaviours {
     public class SoulstreakDrain : MonoBehaviour {
-        private SoulstreakMono soulstreak;
         private SoulStreakStats soulstreakStats;
-
         private DealDamageToPlayer dealDamageToPlayer;
 
         private Player player;
 
         public void Start() {
-            soulstreak = transform.parent.GetComponentInChildren<SoulstreakMono>();
-            if(soulstreak != null) {
-                soulstreakStats = soulstreak.SoulstreakStats;
-                player = soulstreak.Player;
-            }
+            player = GetComponentInParent<Player>();
+            soulstreakStats = player.data.GetAdditionalData().SoulStreakStats;
 
             dealDamageToPlayer = GetComponent<DealDamageToPlayer>();
             dealDamageToPlayer.soundDamage.variables.audioMixerGroup = SoundVolumeManager.Instance.audioMixer.FindMatchingGroups("SFX")[0];

@@ -1,18 +1,17 @@
-﻿using System;
+﻿using AALUND13Card.MonoBehaviours;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace AALUND13Card.Extensions {
     public class AALUND13CardCharacterDataAdditionalData {
-        public float secondToDealDamage;
-        public List<DamageDealSecond> DamageDealSecond;
-        public bool dealDamage;
+        // TODO: Rewrite the delay damage system.
+        public float secondToDealDamage = 0;
+        public List<DamageDealSecond> DamageDealSecond = new List<DamageDealSecond>();
+        public bool dealDamage = true;
 
-        public AALUND13CardCharacterDataAdditionalData() {
-            secondToDealDamage = 0;
-            DamageDealSecond = new List<DamageDealSecond>();
-            dealDamage = true;
-        }
+        public SoulStreakStats SoulStreakStats = new SoulStreakStats();
+        public uint Killstreak = 0;
     }
 
     public static class CharacterDataExtensions {

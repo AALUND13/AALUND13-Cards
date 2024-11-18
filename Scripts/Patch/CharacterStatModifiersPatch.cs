@@ -1,4 +1,5 @@
 ﻿using AALUND13Card.Extensions;
+using AALUND13Card.MonoBehaviours;
 using HarmonyLib;
 using System.Collections.Generic;
 
@@ -12,6 +13,8 @@ namespace AALUND13Card.Patchs {
             data.GetAdditionalData().secondToDealDamage = 0;
             data.GetAdditionalData().DamageDealSecond = new List<DamageDealSecond>();
             data.GetAdditionalData().dealDamage = true;
+
+            data.GetAdditionalData().SoulStreakStats = new SoulStreakStats();
         }
     }
 }

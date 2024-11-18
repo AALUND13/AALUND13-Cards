@@ -1,4 +1,5 @@
-﻿using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Card.Extensions;
+using AALUND13Card.MonoBehaviours;
 using UnboundLib;
 using UnityEngine;
 
@@ -26,7 +27,6 @@ namespace AALUND13Card.CustomCards {
 
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
             AALUND13_Cards.Instance.ExecuteAfterFrames(2, () => {
-                SoulstreakMono soulstreakObject = player.gameObject.GetComponentInChildren<SoulstreakMono>();
                 SoulStreakStats soulStreakStats = new SoulStreakStats();
 
                 soulStreakStats.HealthMultiplyPerKill = HealthMultiplyPerKill;
@@ -44,7 +44,7 @@ namespace AALUND13Card.CustomCards {
 
                 soulStreakStats.SoulDrainMultiply = SoulDrainMultiply;
 
-                soulstreakObject.SoulstreakStats.AddStats(soulStreakStats);
+                data.GetAdditionalData().SoulStreakStats.AddStats(soulStreakStats);
             });
         }
     }

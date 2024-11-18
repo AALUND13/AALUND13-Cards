@@ -1,4 +1,5 @@
-﻿using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Card.Extensions;
+using AALUND13Card.MonoBehaviours;
 using Photon.Pun;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace AALUND13Card.Handler {
         }
     }
 
+    // TODO: Switch to `JARL` death handler.
     public class DeathHandler : MonoBehaviour {
         public List<LastDamagingPlayer> damagingPlayerList = new List<LastDamagingPlayer>();
 
@@ -68,7 +70,7 @@ namespace AALUND13Card.Handler {
 
 
                     if(GetComponentInChildren<SoulstreakMono>() != null) {
-                        damagingPlayer.GetComponentInChildren<SoulstreakMono>().AddKill((int)(GetComponentInChildren<SoulstreakMono>().KillsStreak * 0.5f));
+                        damagingPlayer.GetComponentInChildren<SoulstreakMono>().AddKill((uint)(GetComponent<CharacterData>().GetAdditionalData().Killstreak * 0.5f));
                         GetComponentInChildren<SoulstreakMono>().ResetKill();
                     }
                 }

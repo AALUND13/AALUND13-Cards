@@ -1,4 +1,5 @@
 ﻿using AALUND13Card.Armors;
+using AALUND13Card.Extensions;
 using HarmonyLib;
 using JARL.Armor;
 using JARL.Armor.Bases;
@@ -7,9 +8,9 @@ using TMPro;
 using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours {
+    [Flags]
     public enum AbilityType {
-        none,
-        armor
+        armor = 1,
     }
 
     [Serializable]
@@ -29,7 +30,7 @@ namespace AALUND13Card.MonoBehaviours {
         [Header("Other")]
         public float MovementSpeedMultiplyPerKill = 1;
         public float BlockCooldownMultiplyPerKill = 1;
-        public AbilityType AbilityType = AbilityType.none;
+        public AbilityType AbilityType;
 
         public float SoulDrainMultiply = 0;
 
@@ -44,32 +45,30 @@ namespace AALUND13Card.MonoBehaviours {
             SoulArmorPercentageRegenRate += soulStreakStats.SoulArmorPercentageRegenRate;
             SoulDrainMultiply += soulStreakStats.SoulDrainMultiply;
 
-            if(soulStreakStats.AbilityType != AbilityType.none) {
-                AbilityType = soulStreakStats.AbilityType;
-            }
+            AbilityType = soulStreakStats.AbilityType;
         }
     }
 
     public class SoulstreakMono : MonoBehaviour {
-        public SoulStreakStats SoulstreakStats = new SoulStreakStats();
-        public float AbilityCooldown = 0;
-        public int KillsStreak = 0;
-
-        public Player Player = null;
-
-        private bool AlreadySetBaseStats = true;
-
-        public bool AbilityActive = false;
+        private SoulStreakStats SoulstreakStats => Player.data.GetAdditionalData().SoulStreakStats;
+        private string SoulsString => $"{(KillStreak > 1 ? "Souls" : "Soul")}: {KillStreak}";
+        private uint KillStreak {
+            get => Player.data.GetAdditionalData().Killstreak;
+            set => Player.data.GetAdditionalData().Killstreak = value;
+        }
 
         public bool CanResetKills = true;
 
-        public PlayerStats BaseCharacterData;
+        public bool AbilityActive = false;
+        public float AbilityCooldown = 0;
 
+        public Player Player = null;
+        
+        private bool AlreadySetBaseStats = true;
+        public PlayerStats BaseCharacterData;
 
         public GameObject SoulsCounter = null;
         public GameObject SoulsCounterGUI = null;
-
-        public string SoulsString => $"{(KillsStreak > 1 ? "Souls" : "Soul")}: {KillsStreak}";
 
         // Start is called before the first frame update
         private void Start() {
@@ -115,7 +114,7 @@ namespace AALUND13Card.MonoBehaviours {
         public void BlockAbility() {
             if(SoulstreakStats.AbilityType == AbilityType.armor && !AbilityActive && AbilityCooldown == 0) {
                 ArmorBase soulArmor = GetComponentInParent<ArmorHandler>().GetArmorByType(typeof(SoulArmor));
-                soulArmor.MaxArmorValue = Player.data.maxHealth * SoulstreakStats.SoulArmorPercentage * (KillsStreak + 1);
+                soulArmor.MaxArmorValue = Player.data.maxHealth * SoulstreakStats.SoulArmorPercentage * (KillStreak + 1);
                 soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * SoulstreakStats.SoulArmorPercentageRegenRate;
                 soulArmor.CurrentArmorValue = soulArmor.MaxArmorValue;
                 AbilityActive = true;
@@ -136,28 +135,28 @@ namespace AALUND13Card.MonoBehaviours {
         }
 
         public void SetToBaseStats() {
-            if(KillsStreak > 0 && !AlreadySetBaseStats) {
+            if(KillStreak > 0 && !AlreadySetBaseStats) {
                 AlreadySetBaseStats = true;
-                Player.data.weaponHandler.gun.damage *= 1f / (1 + (SoulstreakStats.DamageMultiplyPerKill - 1) * KillsStreak);
-                Player.data.weaponHandler.gun.attackSpeed *= 1f / (1 + (SoulstreakStats.ATKSpeedMultiplyPerKill - 1) * KillsStreak);
-                Player.data.stats.movementSpeed *= 1f / (1 + (SoulstreakStats.MovementSpeedMultiplyPerKill - 1) * KillsStreak);
-                Player.data.block.cooldown *= 1f / (1 + (SoulstreakStats.BlockCooldownMultiplyPerKill - 1) * KillsStreak);
-                Player.data.maxHealth *= 1f / (1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillsStreak);
-                Player.data.health *= 1f / (1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillsStreak);
+                Player.data.weaponHandler.gun.damage *= 1f / (1 + (SoulstreakStats.DamageMultiplyPerKill - 1) * KillStreak);
+                Player.data.weaponHandler.gun.attackSpeed *= 1f / (1 + (SoulstreakStats.ATKSpeedMultiplyPerKill - 1) * KillStreak);
+                Player.data.stats.movementSpeed *= 1f / (1 + (SoulstreakStats.MovementSpeedMultiplyPerKill - 1) * KillStreak);
+                Player.data.block.cooldown *= 1f / (1 + (SoulstreakStats.BlockCooldownMultiplyPerKill - 1) * KillStreak);
+                Player.data.maxHealth *= 1f / (1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillStreak);
+                Player.data.health *= 1f / (1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillStreak);
 
                 AccessTools.Method(typeof(CharacterStatModifiers), "ConfigureMassAndSize").Invoke(Player.data.stats, null);
             }
         }
 
         public void SetStats() {
-            if(KillsStreak > 0 && AlreadySetBaseStats) {
+            if(KillStreak > 0 && AlreadySetBaseStats) {
                 AlreadySetBaseStats = false;
-                Player.data.weaponHandler.gun.damage *= 1 + (SoulstreakStats.DamageMultiplyPerKill - 1) * KillsStreak;
-                Player.data.weaponHandler.gun.attackSpeed *= 1 + (SoulstreakStats.ATKSpeedMultiplyPerKill - 1) * KillsStreak;
-                Player.data.stats.movementSpeed *= 1 + (SoulstreakStats.MovementSpeedMultiplyPerKill - 1) * KillsStreak;
-                Player.data.block.cooldown *= 1 + (SoulstreakStats.BlockCooldownMultiplyPerKill - 1) * KillsStreak;
-                Player.data.maxHealth *= 1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillsStreak;
-                Player.data.health *= 1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillsStreak;
+                Player.data.weaponHandler.gun.damage *= 1 + (SoulstreakStats.DamageMultiplyPerKill - 1) * KillStreak;
+                Player.data.weaponHandler.gun.attackSpeed *= 1 + (SoulstreakStats.ATKSpeedMultiplyPerKill - 1) * KillStreak;
+                Player.data.stats.movementSpeed *= 1 + (SoulstreakStats.MovementSpeedMultiplyPerKill - 1) * KillStreak;
+                Player.data.block.cooldown *= 1 + (SoulstreakStats.BlockCooldownMultiplyPerKill - 1) * KillStreak;
+                Player.data.maxHealth *= 1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillStreak;
+                Player.data.health *= 1 + (SoulstreakStats.HealthMultiplyPerKill - 1) * KillStreak;
 
                 AccessTools.Method(typeof(CharacterStatModifiers), "ConfigureMassAndSize").Invoke(Player.data.stats, null);
             }
@@ -169,45 +168,20 @@ namespace AALUND13Card.MonoBehaviours {
             if(CanResetKills) {
                 Utils.LogInfo($"Resetting kill streak of player with ID {Player.playerID}");
                 SetToBaseStats();
-                KillsStreak = 0;
+                KillStreak = 0;
                 if(Player.data.view.IsMine) {
                     SoulsCounterGUI.GetComponentInChildren<TextMeshProUGUI>().text = SoulsString;
                 }
             }
         }
 
-        public void AddKill(int kills = 1) {
+        public void AddKill(uint kills = 1) {
             if(CanResetKills) {
                 Utils.LogInfo($"Adding {kills} kills for player with ID {Player.playerID}");
                 SetToBaseStats();
-                KillsStreak += kills;
+                KillStreak += kills;
                 SetStats();
             }
         }
-
-        //private void PlayerDied(Player deadPlayer, Player killingPlayer)
-        //{
-        //    if (killingPlayer != null && killingPlayer.playerID == soulstreakPlayer.playerID && deadPlayer.playerID != soulstreakPlayer.playerID)
-        //    {
-        //        UnityEngine.Debug.Log("Soulstreak player '" + soulstreakPlayer.playerID + "' killed player '" + deadPlayer.playerID + "' adding killed");
-        //        SetToBaseStats();
-        //        killsStreak++;
-        //        SetStats();
-        //    }
-        //    else if (deadPlayer.playerID == soulstreakPlayer.playerID)
-        //    {
-        //        if (global::PlayerDied.CountOfAliveEnemyPlayers(soulstreakPlayer) == 0) return;
-
-        //        if (killingPlayer != null && killingPlayer.GetComponentInChildren<SoulstreakObject>() != null && killingPlayer != deadPlayer)
-        //        {
-        //            SoulstreakObject deadPlayerSoulstreakObject = deadPlayer.GetComponentInChildren<SoulstreakObject>();
-        //            killingPlayer.GetComponentInChildren<SoulstreakObject>().killsToGive += (int)Mathf.Round((float)(deadPlayerSoulstreakObject.killsStreak * 0.5));
-        //        }
-
-        //        UnityEngine.Debug.Log("Soulstreak player '" + soulstreakPlayer.playerID + "' died, resetting kill");
-        //        SetToBaseStats();
-        //        killsStreak = 0;
-        //    }
-        //}
     }
 }
