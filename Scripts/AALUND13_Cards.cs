@@ -17,6 +17,7 @@ namespace AALUND13Card {
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch")]
     [BepInDependency("root.classes.manager.reborn")]
     [BepInDependency("com.aalund13.rounds.jarl")]
+
     [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
@@ -25,7 +26,7 @@ namespace AALUND13Card {
         internal const string modInitials = "AAC";
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.0.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.2.0"; // What version are we on (major.minor.patch)?
         internal static List<BaseUnityPlugin> plugins;
 
         public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_cards_assets", typeof(AALUND13_Cards).Assembly);
