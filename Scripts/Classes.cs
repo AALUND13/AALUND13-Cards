@@ -24,26 +24,4 @@ namespace AALUND13Card {
             IgnoreBlock = ignoreBlock;
         }
     }
-
-    public class PlayerStats {
-        public float Damage;
-        public float AttackSpeed;
-        public float MovementSpeed;
-        public float Cooldown;
-        public float MaxHealth;
-        public float Health;
-
-        public PlayerStats(CharacterData data) {
-            Copy(data);
-        }
-
-        public void Copy(CharacterData data) {
-            Damage = data.weaponHandler.gun.damage;
-            AttackSpeed = data.weaponHandler.gun.attackSpeed;
-            MovementSpeed = data.stats.movementSpeed;
-            Cooldown = data.block.cooldown;
-            MaxHealth = data.maxHealth;
-            Health = data.health;
-        }
-    }
 }

@@ -296,14 +296,22 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  automatedlyCreateClass: 1
-  HealthMultiplyPerKill: 0
-  HealPercentagePerKill: 0
-  soulArmorPercentage: 0
-  soulArmorPercentageRegenRate: 0
-  DamageMultiplyPerKill: 0.25
-  ATKSpeedMultiplyPerKill: 0
+  AutomatedlyCreateClass: 1
+  OverrideClassName: 
+  CanBeReassigned: 1
+  AttackSpeed: 0
+  PlayerGravity: 0
+  MovementSpeed: 0
+  ProjectileGravity: 0
+  Damage: 0.25
+  PlayerSize: 0
+  MaxHealth: 0
+  BulletSpread: 0
+  BulletSpeed: 0
+  JumpHeight: 0
+  SoulArmorPercentage: 0
+  SoulArmorPercentageRegenRate: 0
   MovementSpeedMultiplyPerKill: 0
   BlockCooldownMultiplyPerKill: 0
-  abilityType: 0
+  AbilityType: 0
   SoulDrainMultiply: 0

@@ -6,41 +6,37 @@ using UnityEngine;
 namespace AALUND13Card.CustomCards {
     public class CustomCardSoulstreakStats : CustomCardAACard {
 
-        [Header("Health")]
-        public float HealthMultiplyPerKill;
-        public float HealPercentagePerKill;
+        [Header("Stats")]
+        public float
+            MaxHealth = 0,
+            PlayerSize = 0,
+            MovementSpeed = 0,
+
+            AttackSpeed = 0,
+            Damage = 0,
+            BulletSpeed = 0;
 
         [Header("Soul Armor")]
         public float SoulArmorPercentage;
         public float SoulArmorPercentageRegenRate;
 
-        [Header("Gun")]
-        public float DamageMultiplyPerKill;
-        public float ATKSpeedMultiplyPerKill;
-
-        [Header("Other")]
-        public float MovementSpeedMultiplyPerKill;
-        public float BlockCooldownMultiplyPerKill;
+        [Header("Ability")]
         public AbilityType AbilityType;
-
         public float SoulDrainMultiply;
 
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
             AALUND13_Cards.Instance.ExecuteAfterFrames(2, () => {
                 SoulStreakStats soulStreakStats = new SoulStreakStats();
 
-                soulStreakStats.HealthMultiplyPerKill = HealthMultiplyPerKill;
-                soulStreakStats.HealPercentagePerKill = HealPercentagePerKill;
+                soulStreakStats.AttackSpeed = AttackSpeed;
+                soulStreakStats.MovementSpeed = MovementSpeed;
+                soulStreakStats.Damage = Damage;
+                soulStreakStats.PlayerSize = PlayerSize;
+                soulStreakStats.MaxHealth = MaxHealth;
+                soulStreakStats.BulletSpeed = BulletSpeed;
 
                 soulStreakStats.SoulArmorPercentage = SoulArmorPercentage;
                 soulStreakStats.SoulArmorPercentageRegenRate = SoulArmorPercentageRegenRate;
-
-                soulStreakStats.DamageMultiplyPerKill = DamageMultiplyPerKill;
-                soulStreakStats.ATKSpeedMultiplyPerKill = ATKSpeedMultiplyPerKill;
-
-                soulStreakStats.MovementSpeedMultiplyPerKill = MovementSpeedMultiplyPerKill;
-                soulStreakStats.BlockCooldownMultiplyPerKill = BlockCooldownMultiplyPerKill;
-                soulStreakStats.AbilityType = AbilityType;
 
                 soulStreakStats.SoulDrainMultiply = SoulDrainMultiply;
 
