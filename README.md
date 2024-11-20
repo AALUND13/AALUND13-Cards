@@ -1,4 +1,4 @@
-# AALUND13 Cards v1.2.0
+# AALUND13 Cards v1.2.1
 
 AALUND13 Cards introduces 15 unique cards developed by AALUND13.
 

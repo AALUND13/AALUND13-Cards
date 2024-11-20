@@ -40,6 +40,9 @@ namespace AALUND13Card.CustomCards {
 
                 soulStreakStats.SoulDrainMultiply = SoulDrainMultiply;
 
+           
+                soulStreakStats.AbilityType |= AbilityType;
+
                 data.GetAdditionalData().SoulStreakStats.AddStats(soulStreakStats);
             });
         }
