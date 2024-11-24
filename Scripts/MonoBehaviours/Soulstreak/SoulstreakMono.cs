@@ -104,8 +104,8 @@ namespace AALUND13Card.MonoBehaviours {
             if(player.data.isPlaying) {
                 AbilityCooldown = Mathf.Max(AbilityCooldown - Time.deltaTime, 0);
 
-                if(armorHandler.GetArmorByType(typeof(SoulArmor)).CurrentArmorValue <= 0 && armorHandler.GetArmorByType(typeof(SoulArmor)).MaxArmorValue > 0) {
-                    armorHandler.GetArmorByType(typeof(SoulArmor)).MaxArmorValue = 0;
+                if(armorHandler.GetArmorByType<SoulArmor>().CurrentArmorValue <= 0 && armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue > 0) {
+                    armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue = 0;
                     AbilityCooldown = 10;
                     AbilityActive = false;
                 }
@@ -117,7 +117,7 @@ namespace AALUND13Card.MonoBehaviours {
         }
         public void BlockAbility() {
             if(SoulstreakStats.AbilityType == AbilityType.Armor && !AbilityActive && AbilityCooldown == 0) {
-                ArmorBase soulArmor = armorHandler.GetArmorByType(typeof(SoulArmor));
+                ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
                 soulArmor.MaxArmorValue = player.data.maxHealth * SoulstreakStats.SoulArmorPercentage * (Souls + 1);
                 soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * SoulstreakStats.SoulArmorPercentageRegenRate;
                 soulArmor.CurrentArmorValue = soulArmor.MaxArmorValue;
@@ -149,12 +149,12 @@ namespace AALUND13Card.MonoBehaviours {
 
         public void OnBattleStart() {
             CanResetKills = true;
-            armorHandler.GetArmorByType(typeof(SoulArmor)).MaxArmorValue = 0;
             player.gameObject.GetOrAddComponent<SoulstreakEffect>().ApplyStats();
         }
 
         public void OnPointEnd() {
             CanResetKills = false;
+            armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue = 0;
         }
     }
 }

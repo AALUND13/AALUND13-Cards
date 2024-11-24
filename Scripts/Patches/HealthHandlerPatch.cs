@@ -8,7 +8,6 @@ namespace AALUND13Card.Patches {
     public class HealthHandlerPatch {
         [HarmonyPatch("DoDamage")]
         [HarmonyPrefix]
-        [HarmonyBefore("com.aalund13.rounds.jarl")]
         public static void DoDamage(HealthHandler __instance, ref Vector2 damage, Vector2 position, Color blinkColor, GameObject damagingWeapon, Player damagingPlayer, bool healthRemoval, bool lethal, bool ignoreBlock) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             if(data.GetAdditionalData().secondToDealDamage > 0 && !data.GetAdditionalData().dealDamage) {
