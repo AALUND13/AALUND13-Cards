@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6530482265871079501}
   - component: {fileID: 7373786312307148828}
   m_Layer: 0
-  m_Name: __AAC__RollOfTheDice_Result_4
+  m_Name: __AAC__RollOfTheDice Result 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Fortunate Turn
+  cardName: Turning Tide
   cardDestription: You roll the dice, and as fate would have it, it comes to a rest
     on the number '4'.
   cardStats:

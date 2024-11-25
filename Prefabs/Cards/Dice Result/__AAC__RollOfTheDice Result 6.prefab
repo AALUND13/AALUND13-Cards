@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6879450492582717443}
   - component: {fileID: 7642679639027116232}
   m_Layer: 0
-  m_Name: __AAC__RollOfTheDice_Result_6
+  m_Name: __AAC__RollOfTheDice Result 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Unprecedented Luck
+  cardName: Fate Favor
   cardDestription: You roll the dice, and as fate would have it, it comes to a rest
     on the number '6'.
   cardStats:

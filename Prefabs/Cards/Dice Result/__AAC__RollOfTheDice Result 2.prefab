@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6637178897426768408}
   - component: {fileID: 5603118596645900888}
   m_Layer: 0
-  m_Name: __AAC__RollOfTheDice_Result_2
+  m_Name: __AAC__RollOfTheDice Result 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,30 +49,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Struggle for Survival
+  cardName: Endless Struggle
   cardDestription: You roll the dice, and as fate would have it, it comes to a rest
     on the number '2'.
   cardStats:
   - positive: 0
-    amount: -15%
+    amount: -35%
     simepleAmount: 0
     stat: Health
   - positive: 0
-    amount: -15%
+    amount: -50%
     simepleAmount: 0
     stat: Movement Speed
   - positive: 0
-    amount: -15%
+    amount: -25%
     simepleAmount: 0
     stat: Damage
   - positive: 0
-    amount: +25%
+    amount: +35%
     simepleAmount: 0
     stat: Block Cooldown
   - positive: 0
-    amount: -1
+    amount: -4
     simepleAmount: 0
     stat: Ammo
+  - positive: 0
+    amount: -25%
+    simepleAmount: 0
+    stat: Attack Speed
   rarity: 1
   cardArt: {fileID: 7857144345563810568, guid: 858b2cb2dc216de43b6b233d73c86c54, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -99,8 +103,8 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.85
-  movementSpeed: 0.85
+  health: 0.65
+  movementSpeed: 0.75
   jump: 1
   gravity: 1
   slow: 0
@@ -156,12 +160,12 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 0.85
+  damage: 0.75
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
   knockback: 1
-  attackSpeed: 1
+  attackSpeed: 0.75
   projectileSpeed: 1
   projectielSimulatonSpeed: 1
   gravity: 1
@@ -169,7 +173,7 @@ MonoBehaviour:
   bulletDamageMultiplier: 1
   multiplySpread: 1
   shakeM: 1
-  ammo: -1
+  ammo: -4
   ammoReg: 0
   size: 0
   overheatMultiplier: 0
@@ -240,7 +244,7 @@ MonoBehaviour:
   blockedPart: {fileID: 0}
   cooldown: 0
   counter: 1000
-  cdMultiplier: 1.25
+  cdMultiplier: 1.35
   cdAdd: 0
   forceToAdd: 0
   forceToAddUp: 0

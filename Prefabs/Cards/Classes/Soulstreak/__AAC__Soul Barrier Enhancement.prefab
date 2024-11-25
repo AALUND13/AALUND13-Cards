@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6356320218957805462}
   - component: {fileID: 2308517272888161913}
   m_Layer: 0
-  m_Name: __AAC__Soul_Barrier_Enhancement
+  m_Name: __AAC__Soul Barrier Enhancement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,10 @@ MonoBehaviour:
     amount: +8%
     simepleAmount: 0
     stat: Soul Armor Regen
+  - positive: 1
+    amount: +5% * (souls + 1)
+    simepleAmount: 0
+    stat: Soul Armor
   - positive: 1
     amount: +20%
     simepleAmount: 0
@@ -293,13 +297,15 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   AutomatedlyCreateClass: 1
-  HealthMultiplyPerKill: 0
-  HealPercentagePerKill: 0
-  SoulArmorPercentage: 0
+  OverrideClassName: 
+  CanBeReassigned: 1
+  MaxHealth: 0
+  PlayerSize: 0
+  MovementSpeed: 0
+  AttackSpeed: 0
+  Damage: 0
+  BulletSpeed: 0
+  SoulArmorPercentage: 0.05
   SoulArmorPercentageRegenRate: 0.08
-  DamageMultiplyPerKill: 0
-  ATKSpeedMultiplyPerKill: 0
-  MovementSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
   AbilityType: 1
   SoulDrainMultiply: 0
