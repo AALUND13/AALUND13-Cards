@@ -1,6 +1,7 @@
 ﻿using AALUND13Card.Armors;
 using AALUND13Card.Extensions;
 using AALUND13Card.MonoBehaviours;
+using AALUND13Card.Scripts.Handlers;
 using BepInEx;
 using ClassesManagerReborn;
 using HarmonyLib;
@@ -26,7 +27,7 @@ namespace AALUND13Card {
         internal const string modInitials = "AAC";
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.3.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.3.1"; // What version are we on (major.minor.patch)?
         internal static List<BaseUnityPlugin> plugins;
 
         public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_cards_assets", typeof(AALUND13_Cards).Assembly);
@@ -35,7 +36,7 @@ namespace AALUND13Card {
 
         public static AALUND13_Cards Instance { get; private set; }
 
-        void Awake() {
+        public void Awake() {
             Instance = this;
 
             ConfigHandler.RegesterMenu(Config);
@@ -58,7 +59,8 @@ namespace AALUND13Card {
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
         }
-        void Start() {
+
+        public void Start() {
             plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
@@ -67,9 +69,14 @@ namespace AALUND13Card {
             if(plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
                 TabinfoInterface.Setup();
             }
+
+            new GameObject("DamageHandler").AddComponent<DelayDamageHandler>();
         }
 
         void OnPlayerDeath(Player player, Dictionary<Player, DamageInfo> playerDamageInfos) {
+            if(player.GetComponent<DelayDamageHandler>() != null) {
+                player.GetComponent<DelayDamageHandler>().StopAllCoroutines();
+            }
             foreach(var playerDamageInfo in playerDamageInfos) {
                 if(playerDamageInfo.Value.TimeSinceLastDamage <= 5 && playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>() != null && !playerDamageInfo.Key.data.dead) {
                     playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
