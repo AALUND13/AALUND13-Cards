@@ -3,8 +3,8 @@ using AALUND13Card.MonoBehaviours;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.CustomCards {
-    public class CustomCardSoulstreakStats : CustomCardAACard {
+namespace AALUND13Card.Cards {
+    public class SoulstreakStatsCard : CustomCardAACard {
 
         [Header("Stats")]
         public float

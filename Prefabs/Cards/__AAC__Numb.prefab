@@ -283,7 +283,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c15ed57b41ee5438accbfa639cc78a, type: 3}
+  m_Script: {fileID: 11500000, guid: 089aac3e7a2b24c468a429412310722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -291,5 +291,7 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  automatedlyCreateClass: 1
-  secondToDealDamage: 4
+  AutomatedlyCreateClass: 1
+  OverrideClassName: 
+  CanBeReassigned: 1
+  SecondToDealDamage: 4

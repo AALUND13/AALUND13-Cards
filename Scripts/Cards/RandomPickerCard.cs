@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.CustomCards {
-    public class CustomCardRandomPicker : CustomCardAACard {
+namespace AALUND13Card.Cards {
+    public class RandomPickerCard : CustomCardAACard {
 
         public List<GameObject> randomCardsToChoseFrom = new List<GameObject>();
 
