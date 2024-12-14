@@ -127,7 +127,7 @@ namespace AALUND13Card.MonoBehaviours {
 
         public void ResetSouls() {
             if(CanResetKills) {
-                Utils.LogInfo($"Resetting kill streak of player with ID {player.playerID}");
+                LoggerUtils.LogInfo($"Resetting kill streak of player with ID {player.playerID}");
                 if(player.gameObject.GetComponent<SoulstreakEffect>() != null) {
                     Destroy(player.gameObject.GetComponent<SoulstreakEffect>());
                 }
@@ -140,7 +140,7 @@ namespace AALUND13Card.MonoBehaviours {
 
         public void AddSouls(uint kills = 1) {
             if(CanResetKills) {
-                Utils.LogInfo($"Adding {kills} kills for player with ID {player.playerID}");
+                LoggerUtils.LogInfo($"Adding {kills} kills for player with ID {player.playerID}");
 
                 Souls += kills;
                 player.gameObject.GetOrAddComponent<SoulstreakEffect>().ApplyStats();

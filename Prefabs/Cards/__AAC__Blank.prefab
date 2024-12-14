@@ -15,9 +15,8 @@ GameObject:
   - component: {fileID: 1473282574127126102}
   - component: {fileID: 1473282574127126097}
   - component: {fileID: 1473282574127126096}
-  - component: {fileID: 114438293517548990}
   m_Layer: 0
-  m_Name: __AAC__DefectiveCard
+  m_Name: __AAC__Blank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Defective Card
-  cardDestription: A defective card...
+  cardName: Blank
+  cardDestription: 
   cardStats: []
-  rarity: 1
+  rarity: 0
   cardArt: {fileID: 0}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
@@ -62,7 +61,7 @@ MonoBehaviour:
   allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 4
+  colorTheme: 0
 --- !u!114 &1473282574127126100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 6772870482662453463, guid: 6ac365615b85a3c4ea3a9529d54743a1,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
@@ -266,23 +266,3 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114438293517548990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e48e19355aa2948b76bc58516aa030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardInfo: {fileID: 0}
-  gun: {fileID: 0}
-  cardStats: {fileID: 0}
-  statModifiers: {fileID: 0}
-  block: {fileID: 0}
-  AutomatedlyCreateClass: 1
-  OverrideClassName: 
-  CanBeReassigned: 1

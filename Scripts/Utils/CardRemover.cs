@@ -23,7 +23,6 @@ namespace AALUND13Card {
             CardBarButton[] cardBarButtons = ModdingUtils.Utils.CardBarUtils.instance.PlayersCardBar(player).GetComponentsInChildren<CardBarButton>();
             cardBarButtons.ToList().ForEach(cardBarButton => {
                 CardInfo card = (CardInfo)cardBarButton.GetFieldValue("card");
-                UnityEngine.Debug.Log(cardInfo.cardName + " == " + card.cardName);
                 if(card == cardInfo) {
                     UnityEngine.Object.Destroy(cardBarButton.gameObject);
                 }

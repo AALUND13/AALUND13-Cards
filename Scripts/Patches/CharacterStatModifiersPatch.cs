@@ -14,6 +14,7 @@ namespace AALUND13Card.Patches {
 
             data.GetAdditionalData().SoulStreakStats = new SoulStreakStats();
             data.GetAdditionalData().Souls = 0;
+            data.GetAdditionalData().RandomCardsAtStart = 0;
         }
     }
 }

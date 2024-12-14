@@ -1,8 +1,10 @@
-﻿using AALUND13Card.Armors;
+﻿using AALUND13_Card.Utils;
+using AALUND13Card.Armors;
 using AALUND13Card.Extensions;
 using AALUND13Card.MonoBehaviours;
 using AALUND13Card.Scripts.Handlers;
 using BepInEx;
+using BepInEx.Logging;
 using ClassesManagerReborn;
 using HarmonyLib;
 using JARL.Armor;
@@ -27,17 +29,20 @@ namespace AALUND13Card {
         internal const string modInitials = "AAC";
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.3.1"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.4.1"; // What version are we on (major.minor.patch)?
         internal static List<BaseUnityPlugin> plugins;
 
         public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_cards_assets", typeof(AALUND13_Cards).Assembly);
+        public static GameObject BlankCardPrefab = assets.LoadAsset<GameObject>("__AAC__Blank");
 
         public static CardCategory SoulstreakClassCards;
 
         public static AALUND13_Cards Instance { get; private set; }
+        internal static ManualLogSource logger;
 
         public void Awake() {
             Instance = this;
+            logger = Logger;
 
             ConfigHandler.RegesterMenu(Config);
 
@@ -54,7 +59,7 @@ namespace AALUND13Card {
             ClassesRegistry.Register(CardManager.cards["__AAC__Soul Drain"].cardInfo, CardType.SubClass, CardManager.cards["__AAC__Soulstreak"].cardInfo);
             ClassesRegistry.Register(CardManager.cards["__AAC__Soul Drain Enhancement"].cardInfo, CardType.Card, CardManager.cards["__AAC__Soul Drain"].cardInfo, 2);
 
-
+            NegativeStatCardGenerator.Setup();
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();

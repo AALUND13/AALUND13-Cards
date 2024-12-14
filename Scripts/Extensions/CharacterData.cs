@@ -9,6 +9,8 @@ namespace AALUND13Card.Extensions {
 
         public SoulStreakStats SoulStreakStats = new SoulStreakStats();
         public uint Souls = 0;
+
+        public int RandomCardsAtStart = 0;
     }
 
     public static class CharacterDataExtensions {
