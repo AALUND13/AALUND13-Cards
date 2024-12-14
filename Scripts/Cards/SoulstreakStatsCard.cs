@@ -4,7 +4,7 @@ using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {
-    public class SoulstreakStatsCard : CustomCardAACard {
+    public class SoulstreakStatsCard : AACustomCard {
 
         [Header("Stats")]
         public float

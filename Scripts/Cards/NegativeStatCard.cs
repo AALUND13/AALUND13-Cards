@@ -10,7 +10,7 @@ using UnboundLib.Networking;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {
-    public class NegativeStatCard : CustomCardAACard {
+    public class NegativeStatCard : AACustomCard {
         protected int? cardSeed;
 
         protected static readonly Dictionary<int, (Func<int, CardInfoStat>, Action<float, Gun, CharacterStatModifiers, Block>)> StatGenerators =

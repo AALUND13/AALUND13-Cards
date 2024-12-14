@@ -4,7 +4,7 @@ using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {
-    public class RandomPickerCard : CustomCardAACard {
+    public class RandomPickerCard : AACustomCard {
 
         public List<GameObject> randomCardsToChoseFrom = new List<GameObject>();
 
