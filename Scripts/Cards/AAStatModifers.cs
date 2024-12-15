@@ -2,7 +2,7 @@
 using AALUND13Card.MonoBehaviours;
 using UnityEngine;
 
-namespace Assets.Mods._AALUND13_Card.Scripts.Cards {
+namespace AALUND13Card.Cards {
     public class AAStatModifers : MonoBehaviour {
         [Header("Soulstreak Stats")]
         public float MaxHealth = 0;
