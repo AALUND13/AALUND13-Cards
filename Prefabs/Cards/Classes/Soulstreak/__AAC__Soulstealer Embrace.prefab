@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 2923868160581864608}
   - component: {fileID: 2923868160581864615}
   - component: {fileID: 2923868160581864614}
-  - component: {fileID: 7092568899150549008}
+  - component: {fileID: 114512298111136474}
+  - component: {fileID: 114350818871218354}
   m_Layer: 0
   m_Name: __AAC__Soulstealer Embrace
   m_TagString: Untagged
@@ -283,7 +284,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7092568899150549008
+--- !u!114 &114512298111136474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2923868160581864618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7fd566bd3d3f4a84907a47c6baf66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -303,19 +304,29 @@ MonoBehaviour:
   AutomatedlyCreateClass: 1
   OverrideClassName: 
   CanBeReassigned: 1
-  AttackSpeed: 0
-  PlayerGravity: 0
-  MovementSpeed: 0
-  ProjectileGravity: 0
-  Damage: 0.15
-  PlayerSize: 0
+--- !u!114 &114350818871218354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923868160581864618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   MaxHealth: 0.15
-  BulletSpread: 0
+  PlayerSize: 0
+  MovementSpeed: 0
+  AttackSpeed: 0
+  Damage: 0.15
   BulletSpeed: 0
-  JumpHeight: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  MovementSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
-  AbilityType: 0
   SoulDrainMultiply: 0
+  AbilityType: 0
+  MaxHealthCap: 0
+  MaxDamageCap: 0
+  RandomCardsAtStart: 0
+  secondToDealDamage: 0

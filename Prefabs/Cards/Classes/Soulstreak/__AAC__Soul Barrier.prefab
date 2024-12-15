@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 8755052810975907761}
   - component: {fileID: 2880740354404939706}
   - component: {fileID: 1340209889411700910}
-  - component: {fileID: 7685056856848292161}
+  - component: {fileID: 114119035868824418}
+  - component: {fileID: 114389077992494606}
   m_Layer: 0
   m_Name: __AAC__Soul Barrier
   m_TagString: Untagged
@@ -279,7 +280,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7685056856848292161
+--- !u!114 &114119035868824418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2387666261174291440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7fd566bd3d3f4a84907a47c6baf66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -299,13 +300,29 @@ MonoBehaviour:
   AutomatedlyCreateClass: 1
   OverrideClassName: 
   CanBeReassigned: 1
+--- !u!114 &114389077992494606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387666261174291440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   MaxHealth: 0
   PlayerSize: 0
   MovementSpeed: 0
   AttackSpeed: 0
   Damage: 0
   BulletSpeed: 0
-  SoulArmorPercentage: 0.3
-  SoulArmorPercentageRegenRate: 0
-  AbilityType: 1
+  SoulArmorPercentage: 0
+  SoulArmorPercentageRegenRate: 0.3
   SoulDrainMultiply: 0
+  AbilityType: 1
+  MaxHealthCap: 0
+  MaxDamageCap: 0
+  RandomCardsAtStart: 0
+  secondToDealDamage: 0

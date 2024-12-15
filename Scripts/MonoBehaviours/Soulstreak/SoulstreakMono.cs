@@ -32,22 +32,6 @@ namespace AALUND13Card.MonoBehaviours {
             SoulDrainMultiply = 0;
 
         public AbilityType AbilityType;
-
-        public void AddStats(SoulStreakStats soulStreakStats) {
-            MaxHealth += soulStreakStats.MaxHealth;
-            PlayerSize += soulStreakStats.PlayerSize;
-            MovementSpeed += soulStreakStats.MovementSpeed;
-
-            AttackSpeed += soulStreakStats.AttackSpeed;
-            Damage += soulStreakStats.Damage;
-            BulletSpeed += soulStreakStats.BulletSpeed;
-
-            SoulArmorPercentage += soulStreakStats.SoulArmorPercentage;
-            SoulArmorPercentageRegenRate += soulStreakStats.SoulArmorPercentageRegenRate;
-            SoulDrainMultiply += soulStreakStats.SoulDrainMultiply;
-
-            AbilityType |= soulStreakStats.AbilityType;
-        }
     }
 
     public class SoulstreakMono : MonoBehaviour, IBattleStartHookHandler, IPointEndHookHandler {

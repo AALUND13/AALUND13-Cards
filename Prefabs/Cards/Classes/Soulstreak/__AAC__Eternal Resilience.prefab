@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 8163522322292975031}
   - component: {fileID: 8163522322292975016}
   - component: {fileID: 8163522322292975017}
-  - component: {fileID: 3337968873461526657}
+  - component: {fileID: 114375967796397380}
+  - component: {fileID: 114091091859157152}
   m_Layer: 0
   m_Name: __AAC__Eternal Resilience
   m_TagString: Untagged
@@ -274,7 +275,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3337968873461526657
+--- !u!114 &114375967796397380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7fd566bd3d3f4a84907a47c6baf66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -294,19 +295,29 @@ MonoBehaviour:
   AutomatedlyCreateClass: 1
   OverrideClassName: 
   CanBeReassigned: 1
-  AttackSpeed: 0
-  PlayerGravity: 0
-  MovementSpeed: 0
-  ProjectileGravity: 0
-  Damage: 0.15
-  PlayerSize: 0
+--- !u!114 &114091091859157152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8163522322292975021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   MaxHealth: 0
-  BulletSpread: 0
+  PlayerSize: 0
+  MovementSpeed: 0
+  AttackSpeed: 0
+  Damage: 0.15
   BulletSpeed: 0
-  JumpHeight: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  MovementSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
-  AbilityType: 0
   SoulDrainMultiply: 0
+  AbilityType: 0
+  MaxHealthCap: 0
+  MaxDamageCap: 0
+  RandomCardsAtStart: 0
+  secondToDealDamage: 0

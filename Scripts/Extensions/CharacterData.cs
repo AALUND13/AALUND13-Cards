@@ -11,6 +11,19 @@ namespace AALUND13Card.Extensions {
         public uint Souls = 0;
 
         public int RandomCardsAtStart = 0;
+
+        public float MaxHealthCap = 0;
+        public float MaxDamageCap = 0;
+
+        public void Reset() {
+            secondToDealDamage = 0;
+            dealDamage = true;
+            SoulStreakStats = new SoulStreakStats();
+            Souls = 0;
+            RandomCardsAtStart = 0;
+            MaxHealthCap = 0;
+            MaxDamageCap = 0;
+        }
     }
 
     public static class CharacterDataExtensions {

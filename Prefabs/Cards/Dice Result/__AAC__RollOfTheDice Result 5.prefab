@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7472125458548062465}
   - component: {fileID: 3497125704716380374}
   - component: {fileID: 3554075196355529557}
+  - component: {fileID: 114737009672678684}
   m_Layer: 0
   m_Name: __AAC__RollOfTheDice Result 5
   m_TagString: Untagged
@@ -290,3 +291,23 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &114737009672678684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647749677671276803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
+  AutomatedlyCreateClass: 1
+  OverrideClassName: 
+  CanBeReassigned: 1

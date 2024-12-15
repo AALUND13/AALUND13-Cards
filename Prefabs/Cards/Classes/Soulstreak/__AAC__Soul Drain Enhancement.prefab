@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 3463904881980186725}
   - component: {fileID: 3463904881980186722}
   - component: {fileID: 3463904881980186723}
-  - component: {fileID: 3463904881980186720}
+  - component: {fileID: 114383101961269428}
+  - component: {fileID: 114266538836415854}
   m_Layer: 0
-  m_Name: __AAC__Soul_Drain_Enhancement
+  m_Name: __AAC__Soul Drain Enhancement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +276,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3463904881980186720
+--- !u!114 &114383101961269428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3463904881980186721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7fd566bd3d3f4a84907a47c6baf66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -292,14 +293,32 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  automatedlyCreateClass: 1
-  HealthMultiplyPerKill: 0
-  HealPercentagePerKill: 0
-  soulArmorPercentage: 0
-  soulArmorPercentageRegenRate: 0
-  DamageMultiplyPerKill: 0
-  ATKSpeedMultiplyPerKill: 0
-  MovementSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
-  abilityType: 0
+  AutomatedlyCreateClass: 1
+  OverrideClassName: 
+  CanBeReassigned: 1
+--- !u!114 &114266538836415854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3463904881980186721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  PlayerSize: 0
+  MovementSpeed: 0
+  AttackSpeed: 0
+  Damage: 0
+  BulletSpeed: 0
+  SoulArmorPercentage: 0
+  SoulArmorPercentageRegenRate: 0
   SoulDrainMultiply: 0.05
+  AbilityType: 0
+  MaxHealthCap: 0
+  MaxDamageCap: 0
+  RandomCardsAtStart: 0
+  secondToDealDamage: 0

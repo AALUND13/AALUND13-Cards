@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 3653424183742710748}
   - component: {fileID: 1691787583690612696}
   - component: {fileID: 1774751977049206925}
-  - component: {fileID: 5571222369147775111}
+  - component: {fileID: 114906609052272654}
+  - component: {fileID: 114258392857231854}
   m_Layer: 0
   m_Name: __AAC__Soulstreak
   m_TagString: Untagged
@@ -279,7 +280,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5571222369147775111
+--- !u!114 &114906609052272654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7882910650094676032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7fd566bd3d3f4a84907a47c6baf66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -299,19 +300,29 @@ MonoBehaviour:
   AutomatedlyCreateClass: 1
   OverrideClassName: 
   CanBeReassigned: 1
-  AttackSpeed: 0
-  PlayerGravity: 0
-  MovementSpeed: 0
-  ProjectileGravity: 0
-  Damage: 0.25
-  PlayerSize: 0
+--- !u!114 &114258392857231854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882910650094676032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   MaxHealth: 0
-  BulletSpread: 0
+  PlayerSize: 0
+  MovementSpeed: 0
+  AttackSpeed: 0
+  Damage: 0.25
   BulletSpeed: 0
-  JumpHeight: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  MovementSpeedMultiplyPerKill: 0
-  BlockCooldownMultiplyPerKill: 0
-  AbilityType: 0
   SoulDrainMultiply: 0
+  AbilityType: 0
+  MaxHealthCap: 0
+  MaxDamageCap: 0
+  RandomCardsAtStart: 0
+  secondToDealDamage: 0
