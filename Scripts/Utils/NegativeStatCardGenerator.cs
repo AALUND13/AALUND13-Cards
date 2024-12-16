@@ -1,10 +1,12 @@
 ﻿using AALUND13Card;
 using AALUND13Card.Cards;
+using ModdingUtils.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnboundLib;
 using UnboundLib.Networking;
+using UnboundLib.Utils;
 using UnityEngine;
 
 namespace AALUND13_Card.Utils {
@@ -101,7 +103,7 @@ namespace AALUND13_Card.Utils {
                 customCard.BuildUnityCard((cardInfo) => {
                     ModdingUtils.Utils.Cards.instance.AddHiddenCard(cardInfo);
 
-                    AALUND13_Cards.Instance.ExecuteAfterSeconds(0.5f, () => {
+                    AALUND13_Cards.Instance.ExecuteAfterSeconds(0.2f, () => {
                         ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, false, "", 2f, 2f, true);
                     });
 

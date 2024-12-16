@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 1473282574127126102}
   - component: {fileID: 1473282574127126097}
   - component: {fileID: 1473282574127126096}
-  - component: {fileID: 114122593140596588}
-  - component: {fileID: 114694404421051310}
-  - component: {fileID: 114152794504035388}
+  - component: {fileID: 114209141494545390}
+  - component: {fileID: 114227293413271254}
+  - component: {fileID: 114203678359837342}
   m_Layer: 0
-  m_Name: __AAC__CardFactory
+  m_Name: __AAC__Battleforged Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,20 +52,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Card Factory
-  cardDestription: <color=#00ff00>Create <b>Any Card</b> at the start of a rounds</color>,
-    But there <color=#ff0000>30% chance the factory will create a <b>Defective Card</b></color>
+  cardName: Battleforged Plate
+  cardDestription: This armor gains <color=#00ff00>10%</color> of the damage taken
+    as armor health, But <color=#ff0000>-50%</color> health.
   cardStats: []
-  rarity: 2
+  rarity: 1
   cardArt: {fileID: 0}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 1
+  allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 3
+  colorTheme: 2
 --- !u!114 &1473282574127126100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,11 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 6772870482662453463, guid: 6ac365615b85a3c4ea3a9529d54743a1,
-    type: 3}
+  AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 1
+  health: 0.5
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -270,7 +269,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114122593140596588
+--- !u!114 &114209141494545390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rarityName: Legendary
---- !u!114 &114694404421051310
+--- !u!114 &114227293413271254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,7 +302,7 @@ MonoBehaviour:
   AutomatedlyCreateClass: 1
   OverrideClassName: 
   CanBeReassigned: 1
---- !u!114 &114152794504035388
+--- !u!114 &114203678359837342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,6 +324,7 @@ MonoBehaviour:
   SoulArmorPercentageRegenRate: 0
   SoulDrainMultiply: 0
   AbilityType: 0
-  RandomCardsAtStart: 1
+  RandomCardsAtStart: 0
   SecondToDealDamage: 0
   MaxDamageCapPercent: 0
+  BattleforgedArmor: 100

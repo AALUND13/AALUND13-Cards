@@ -1,13 +1,8 @@
 ﻿using AALUND13_Card.Utils;
-using AALUND13Card;
-using AALUND13Card.Cards;
 using AALUND13Card.Extensions;
 using ModdingUtils.GameModes;
 using Photon.Pun;
-using System.Collections;
 using UnboundLib;
-using UnboundLib.Cards;
-using UnboundLib.Networking;
 using UnityEngine;
 
 namespace AALUND13_Card.MonoBehaviours {
@@ -42,8 +37,9 @@ namespace AALUND13_Card.MonoBehaviours {
             if(PhotonNetwork.IsMasterClient) {
                 for(int i = 0; i < Player.data.GetAdditionalData().RandomCardsAtStart; i++) {
                     float random = Random.Range(0f, 1f);
-                    if(random < 0.5f) {
+                    if(random < 0.7f) {
                         CardInfo card = ModdingUtils.Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(Player, Gun, GunAmmo, Data, Health, Gravity, Block, CharacterStats, condition);
+
                         ModdingUtils.Utils.Cards.instance.AddCardToPlayer(Player, card, false, "", 0f, 0f, true);
                     } else {
                         NegativeStatCardGenerator.AddDefectiveCard(Player);

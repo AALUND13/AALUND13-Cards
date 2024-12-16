@@ -318,11 +318,10 @@ MonoBehaviour:
   AttackSpeed: 0
   Damage: 0
   BulletSpeed: 0
-  SoulArmorPercentage: 0
-  SoulArmorPercentageRegenRate: 0.3
+  SoulArmorPercentage: 0.3
+  SoulArmorPercentageRegenRate: 0
   SoulDrainMultiply: 0
   AbilityType: 1
-  MaxHealthCap: 0
-  MaxDamageCap: 0
   RandomCardsAtStart: 0
-  secondToDealDamage: 0
+  SecondToDealDamage: 0
+  MaxDamageCapPercent: 0

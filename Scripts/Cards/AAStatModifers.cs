@@ -1,5 +1,7 @@
-﻿using AALUND13Card.Extensions;
+﻿using AALUND13Card.Armors;
+using AALUND13Card.Extensions;
 using AALUND13Card.MonoBehaviours;
+using JARL.Armor;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {
@@ -20,13 +22,12 @@ namespace AALUND13Card.Cards {
 
         public AbilityType AbilityType;
 
-        [Header("Clamp Stats")]
-        public float MaxHealthCap = 0;
-        public float MaxDamageCap = 0;
-
         [Header("Uncategorized Stats")]
         public int RandomCardsAtStart = 0;
-        public float secondToDealDamage = 0;
+        public float SecondToDealDamage = 0;
+
+        [Header("Armors Stats")]
+        public float BattleforgedArmor = 0;
 
         public void Apply(Player player) {
             CharacterData data = player.data;
@@ -48,13 +49,13 @@ namespace AALUND13Card.Cards {
 
             additionalData.SoulStreakStats.AbilityType |= AbilityType;
 
-            //Apply Clamp Stats
-            additionalData.MaxHealthCap += MaxHealthCap;
-            additionalData.MaxDamageCap += MaxDamageCap;
-
             // Apply Uncategorized Stats
             additionalData.RandomCardsAtStart += RandomCardsAtStart;
-            additionalData.secondToDealDamage += secondToDealDamage;
+            additionalData.secondToDealDamage += SecondToDealDamage;
+
+            if(BattleforgedArmor > 0) {
+                ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
+            }
         }
     }
 }

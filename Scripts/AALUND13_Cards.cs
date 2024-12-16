@@ -71,6 +71,8 @@ namespace AALUND13Card {
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
             ArmorFramework.RegisterArmorType(new SoulArmor());
+            ArmorFramework.RegisterArmorType(new BattleforgedArmor());
+
             if(plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
                 TabinfoInterface.Setup();
             }
