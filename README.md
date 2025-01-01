@@ -2,24 +2,30 @@
 
 AALUND13 Cards introduces 15 unique cards developed by AALUND13.
 
-If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/JARL/issues) tab.
+If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
 ## Cards
 
 - Numb
 - Roll Of The Dice
-    - Misfortune Strikes
-    - Struggle for Survival
-    - Steady Gains
-    - Fortunate Turn
-    - Excellent Fortune
-    - Unprecedented Luck
+  - Misfortune Strikes
+  - Struggle for Survival
+  - Steady Gains
+  - Fortunate Turn
+  - Excellent Fortune
+  - Unprecedented Luck
 - Soulstreak
-    - Eternal Resilience
-    - Soulstealer Embrace
-    - Soul Barrier
-        - Soul Barrier Enhancement
-    - Soul Drain
-        - Soul Drain Enhancement
+  - Eternal Resilience
+  - Soulstealer Embrace
+  - Soul Barrier
+    - Soul Barrier Enhancement
+  - Soul Drain
+    - Soul Drain Enhancement
+- Card Factory
+- Battleforge Plate
 
-For details about the cards, you can take a look at the [Wiki](https://github.com/AALUND13/AALUND13-Cards/wiki/Cards).
+## Curse Cards
+
+- Late19thCentury
+
+For details about the cards, you can take a look at the [Wiki](https://github.com__AAC__Late19thCentury/AALUND13/AALUND13-Cards/wiki/Cards).
