@@ -59,7 +59,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Health
   - positive: 0
-    amount: -50%
+    amount: -25%
     simepleAmount: 0
     stat: Movement Speed
   - positive: 0

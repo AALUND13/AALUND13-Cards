@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 1473282574127126102}
   - component: {fileID: 1473282574127126097}
   - component: {fileID: 1473282574127126096}
-  - component: {fileID: 114227293413271254}
   - component: {fileID: 114203678359837342}
+  - component: {fileID: 114893802925970238}
   m_Layer: 0
-  m_Name: __AAC__Numb
+  m_Name: __AAC__Late19thCentury
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,24 +51,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Numb
-  cardDestription: Your damage is delayed for 4 seconds.
-  cardStats:
-  - positive: 1
-    amount: +4 seconds
-    simepleAmount: 0
-    stat: Of Delay Damage
-  - positive: 0
-    amount: -50%
-    simepleAmount: 0
-    stat: Health
+  cardName: Late 19th Century
+  cardDestription: Thing is looking a bit old.
+  cardStats: []
   rarity: 1
   cardArt: {fileID: 0}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
-  categories: []
-  allowMultiple: 1
+  categories:
+  - {fileID: 11400000, guid: d443daa7822cddd4ba30cb5dcaf1b1b2, type: 2}
+  allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 4
@@ -88,7 +81,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.5
+  health: 1
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -275,26 +268,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114227293413271254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardInfo: {fileID: 0}
-  gun: {fileID: 0}
-  cardStats: {fileID: 0}
-  statModifiers: {fileID: 0}
-  block: {fileID: 0}
-  AutomatedlyCreateClass: 1
-  OverrideClassName: 
-  CanBeReassigned: 1
 --- !u!114 &114203678359837342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,5 +291,28 @@ MonoBehaviour:
   SoulDrainMultiply: 0
   AbilityType: 0
   RandomCardsAtStart: 0
-  SecondToDealDamage: 4
+  SecondToDealDamage: 0
   BattleforgedArmor: 0
+--- !u!114 &114893802925970238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473282574127126098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fab6cad7f95b874a802ecc4944e579b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
+  AutomatedlyCreateClass: 1
+  OverrideClassName: 
+  CanBeReassigned: 1
+  PostProcessingEffects:
+  - {fileID: 2100000, guid: 279c0e411ed71214a85b524380895cbb, type: 2}
+  - {fileID: 2100000, guid: d2c74b3ba6827c9408764b523bac3d8f, type: 2}
