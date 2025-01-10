@@ -1,4 +1,6 @@
-﻿namespace AALUND13Card {
+﻿using AALUND13Card.Handlers;
+
+namespace AALUND13Card {
     public static class LoggerUtils {
         public static bool logging = ConfigHandler.DebugMode.Value;
 

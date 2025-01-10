@@ -3,7 +3,7 @@ using ModdingUtils.GameModes;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Scripts.Handlers {
+namespace AALUND13Card.Handlers {
     public class DelayDamageHandler : MonoBehaviour, IBattleStartHookHandler {
         public Player player;
 

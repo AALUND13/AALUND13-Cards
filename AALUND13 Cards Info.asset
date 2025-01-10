@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AALUND13 Cards Info
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards
-  Version: 1.3.1
+  Version: 1.4.0
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Explore a collection of unique cards crafted by 'AALUND13'. If you
     encounter any issues, please report them on the GitHub page.
@@ -29,3 +29,4 @@ MonoBehaviour:
   - CrazyCoders-RarityBundle-0.1.0
   - willuwontu-WillsWackyManagers-1.5.13
   DllDependencies: []
+  AssemblyDefinitionDependencies: []

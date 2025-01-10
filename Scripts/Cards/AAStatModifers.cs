@@ -1,10 +1,19 @@
 ﻿using AALUND13Card.Armors;
 using AALUND13Card.Extensions;
+using AALUND13Card.Handlers;
+using AALUND13Card.Handlers.ExtraPickHandlers;
 using AALUND13Card.MonoBehaviours;
 using JARL.Armor;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {
+    public enum ExtraPicksType {
+        None,
+        Normal,
+        Steel
+    }
+
     public class AAStatModifers : MonoBehaviour {
         [Header("Soulstreak Stats")]
         public float MaxHealth = 0;
@@ -28,6 +37,10 @@ namespace AALUND13Card.Cards {
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
+
+        [Header("Extra Picks")]
+        public int ExtraPicks = 0;
+        public ExtraPicksType ExtraPicksType;
 
         public void Apply(Player player) {
             CharacterData data = player.data;
@@ -55,6 +68,22 @@ namespace AALUND13Card.Cards {
 
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
+            }
+
+            ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
+            if(extraPickHandler != null && ExtraPicks > 0) {
+                ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
+            }
+        }
+
+        public ExtraPickHandler GetExtraPickHandler(ExtraPicksType type) {
+            switch(type) {
+                case ExtraPicksType.Normal:
+                    return new ExtraPickHandler();
+                case ExtraPicksType.Steel:
+                    return new SteelPickHandler();
+                default:
+                    return null;
             }
         }
     }

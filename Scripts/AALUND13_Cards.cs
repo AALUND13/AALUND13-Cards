@@ -1,8 +1,8 @@
 ﻿using AALUND13_Card.Utils;
 using AALUND13Card.Armors;
 using AALUND13Card.Extensions;
+using AALUND13Card.Handlers;
 using AALUND13Card.MonoBehaviours;
-using AALUND13Card.Scripts.Handlers;
 using BepInEx;
 using BepInEx.Logging;
 using ClassesManagerReborn;
@@ -11,6 +11,7 @@ using JARL.Armor;
 using JARL.Utils;
 using System.Collections.Generic;
 using System.Reflection;
+using UnboundLib.GameModes;
 using UnboundLib.Utils;
 using UnityEngine;
 
@@ -66,6 +67,8 @@ namespace AALUND13Card {
             ClassesRegistry.Register(CardManager.cards["__AAC__Soul Drain Enhancement"].cardInfo, CardType.Card, CardManager.cards["__AAC__Soul Drain"].cardInfo, 2);
 
             NegativeStatCardGenerator.Setup();
+
+            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();

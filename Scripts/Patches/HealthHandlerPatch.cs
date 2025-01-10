@@ -1,5 +1,5 @@
 ﻿using AALUND13Card.Extensions;
-using AALUND13Card.Scripts.Handlers;
+using AALUND13Card.Handlers;
 using HarmonyLib;
 using UnboundLib;
 using UnityEngine;
