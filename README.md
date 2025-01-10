@@ -29,4 +29,4 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 
 - Retro Vision
 
-For details about the cards, you can take a look at the [Wiki](https://github.com__AAC__Late19thCentury/AALUND13/AALUND13-Cards/wiki/Cards).
+For details about the cards, you can take a look at the [Wiki](https://github.com/AALUND13/AALUND13-Cards/wiki/Cards).
