@@ -13,6 +13,10 @@ namespace AALUND13Card.Patches {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             data.GetAdditionalData().Reset();
 
+            if (ExtraCardPickHandler.extraPicks.ContainsKey(data.player)) {
+                ExtraCardPickHandler.extraPicks[data.player].Clear();
+            }
+
             Camera mainCamera = Camera.main;
             if(mainCamera != null) {
                 foreach(var effect in mainCamera.GetComponents<Effect>()) {

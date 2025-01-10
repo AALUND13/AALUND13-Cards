@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 15 unique cards developed by AALUND13.
+AALUND13 Cards introduces 19 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -23,9 +23,10 @@ If you encounter any bugs, please report them in the [issues](https://github.com
     - Soul Drain Enhancement
 - Card Factory
 - Battleforge Plate
+- Card Theft
 
 ## Curse Cards
 
-- Late19thCentury
+- Retro Vision
 
 For details about the cards, you can take a look at the [Wiki](https://github.com__AAC__Late19thCentury/AALUND13/AALUND13-Cards/wiki/Cards).

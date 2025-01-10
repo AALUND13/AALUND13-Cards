@@ -15,7 +15,7 @@ namespace AALUND13Card.Handlers.ExtraPickHandlers {
         public override bool OnExtraPickStart(Player player, CardInfo card) {
             // Get all currest cards of other player
             List<CardInfo> otherPlayerCards = new List<CardInfo>();
-            foreach(Player otherPlayer in PlayerManager.instance.players) {
+            foreach(Player otherPlayer in PlayerStatus.GetEnemyPlayers(player)) {
                 if(otherPlayer != player) {
                     otherPlayerCards.AddRange(otherPlayer.data.currentCards);
                 }

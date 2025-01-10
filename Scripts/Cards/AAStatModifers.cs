@@ -71,7 +71,7 @@ namespace AALUND13Card.Cards {
             }
 
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
-            if(extraPickHandler != null && ExtraPicks > 0) {
+            if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
                 ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
             }
         }
