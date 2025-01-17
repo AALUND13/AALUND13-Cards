@@ -26,7 +26,7 @@ namespace AALUND13Card.Cards {
         }
 
         public override string GetModName() {
-            return AALUND13_Cards.curseInitials;
+            return AALUND13_Cards.CurseInitials;
         }
     }
 }

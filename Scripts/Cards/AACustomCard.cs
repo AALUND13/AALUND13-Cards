@@ -5,7 +5,7 @@ namespace AALUND13Card.Cards {
         public virtual void OnRegister(CardInfo cardInfo) { }
 
         public override string GetModName() {
-            return AALUND13_Cards.modInitials;
+            return AALUND13_Cards.ModInitials;
         }
     }
 }

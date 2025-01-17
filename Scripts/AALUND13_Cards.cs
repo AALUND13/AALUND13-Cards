@@ -5,14 +5,12 @@ using AALUND13Card.Handlers;
 using AALUND13Card.MonoBehaviours;
 using BepInEx;
 using BepInEx.Logging;
-using ClassesManagerReborn;
 using HarmonyLib;
 using JARL.Armor;
 using JARL.Utils;
 using System.Collections.Generic;
 using System.Reflection;
 using UnboundLib.GameModes;
-using UnboundLib.Utils;
 using UnityEngine;
 
 namespace AALUND13Card {
@@ -28,65 +26,61 @@ namespace AALUND13Card {
     [BepInProcess("Rounds.exe")]
 
     public class AALUND13_Cards : BaseUnityPlugin {
-        internal const string modInitials = "AAC";
-        internal const string curseInitials = "AAC (Curse)";
+        internal const string ModInitials = "AAC";
+        internal const string CurseInitials = "AAC (Curse)";
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.5.0"; // What version are we on (major.minor.patch)?
-        internal static List<BaseUnityPlugin> plugins;
+        internal const string Version = "1.5.1"; // What version are we on (major.minor.patch)?
 
-        public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_cards_assets", typeof(AALUND13_Cards).Assembly);
-        public static GameObject BlankCardPrefab = assets.LoadAsset<GameObject>("__AAC__Blank");
+        public static AALUND13_Cards Instance { get; private set; }
+
+        internal static List<BaseUnityPlugin> Plugins;
+        internal static ManualLogSource ModLogger;
+
+        public static AssetBundle Assets;
+        public static GameObject BlankCardPrefab;
 
         public static CardCategory SoulstreakClassCards;
 
-        public static AALUND13_Cards Instance { get; private set; }
-        internal static ManualLogSource logger;
-
-        public static Material PixelateEffectMaterial = assets.LoadAsset<Material>("PixelateEffectMaterial");
-        public static Material ScanEffectMaterial = assets.LoadAsset<Material>("ScanEffectMaterial");
+        public static Material PixelateEffectMaterial;
+        public static Material ScanEffectMaterial;
 
         public void Awake() {
             Instance = this;
-            logger = Logger;
+            ModLogger = Logger;
 
             ConfigHandler.RegesterMenu(Config);
 
-            assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
+            Assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_cards_assets", typeof(AALUND13_Cards).Assembly);
 
-            ClassesRegistry.Register(CardManager.cards["__AAC__Soulstreak"].cardInfo, CardType.Entry);
+            BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
+            PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
+            ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 
-            ClassesRegistry.Register(CardManager.cards["__AAC__Eternal Resilience"].cardInfo, CardType.Card, CardManager.cards["__AAC__Soulstreak"].cardInfo, 2);
-            ClassesRegistry.Register(CardManager.cards["__AAC__Soulstealer Embrace"].cardInfo, CardType.Card, CardManager.cards["__AAC__Soulstreak"].cardInfo);
-
-            ClassesRegistry.Register(CardManager.cards["__AAC__Soul Barrier"].cardInfo, CardType.SubClass, CardManager.cards["__AAC__Soulstreak"].cardInfo);
-            ClassesRegistry.Register(CardManager.cards["__AAC__Soul Barrier Enhancement"].cardInfo, CardType.Card, CardManager.cards["__AAC__Soul Barrier"].cardInfo, 2);
-
-            ClassesRegistry.Register(CardManager.cards["__AAC__Soul Drain"].cardInfo, CardType.SubClass, CardManager.cards["__AAC__Soulstreak"].cardInfo);
-            ClassesRegistry.Register(CardManager.cards["__AAC__Soul Drain Enhancement"].cardInfo, CardType.Card, CardManager.cards["__AAC__Soul Drain"].cardInfo, 2);
+            Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
             NegativeStatCardGenerator.Setup();
-
-            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
         }
 
         public void Start() {
-            plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
+            Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
             ArmorFramework.RegisterArmorType(new SoulArmor());
             ArmorFramework.RegisterArmorType(new BattleforgedArmor());
 
-            if(plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
+            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
+
+            if(Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
                 TabinfoInterface.Setup();
             }
 
-            new GameObject("DamageHandler").AddComponent<DelayDamageHandler>();
+            gameObject.AddComponent<DelayDamageHandler>();
         }
 
         void OnPlayerDeath(Player player, Dictionary<Player, DamageInfo> playerDamageInfos) {
