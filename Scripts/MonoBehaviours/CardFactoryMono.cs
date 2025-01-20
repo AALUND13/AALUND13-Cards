@@ -1,5 +1,5 @@
-﻿using AALUND13_Card.Utils;
-using AALUND13Card.Extensions;
+﻿using AALUND13Card.Extensions;
+using AALUND13Card.Utils.RandomStatsGenerator;
 using ModdingUtils.GameModes;
 using Photon.Pun;
 using UnboundLib;
@@ -42,7 +42,7 @@ namespace AALUND13_Card.MonoBehaviours {
 
                         ModdingUtils.Utils.Cards.instance.AddCardToPlayer(Player, card, false, "", 0f, 0f, true);
                     } else {
-                        NegativeStatCardGenerator.AddDefectiveCard(Player);
+                        RandomStatManager.CreateRandomStatsCard("NegativeStatGenerator", "Defective Card", "A defective card", 1, 4, Player);
                     }
                 }
             }

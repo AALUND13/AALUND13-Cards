@@ -1,8 +1,8 @@
-﻿using AALUND13_Card.Utils;
-using AALUND13Card.Armors;
+﻿using AALUND13Card.Armors;
 using AALUND13Card.Extensions;
 using AALUND13Card.Handlers;
 using AALUND13Card.MonoBehaviours;
+using AALUND13Card.Utils.RandomStatsGenerator;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -60,7 +60,15 @@ namespace AALUND13Card {
 
             Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
-            NegativeStatCardGenerator.Setup();
+            new RandomStatHandler("NegativeStatGenerator", new List<RandomStatGenerator> {
+                new DamageStatGenerator(-0.5f, 0),
+                new ReloadTimeStatGenerator(0, 0.5f),
+                new AttackSpeedStatGenerator(0, 0.5f),
+                new MovementSpeedStatGenerator(-0.5f, 0f),
+                new HealthStatGenerator(-0.5f, 0),
+                new BlockCooldownStatGenerator(0, 0.5f),
+                new BulletSpeedStatGenerator(-0.5f, 0)
+            });
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
