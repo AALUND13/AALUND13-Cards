@@ -1,7 +1,6 @@
-﻿using AALUND13Card.Cards;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace AALUND13Card.Utils.RandomStatsGenerator {
+namespace AALUND13Card.RandomStatGenerators {
     public class DamageStatGenerator : RandomStatGenerator {
         public override string StatName => "Damage";
         public DamageStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }

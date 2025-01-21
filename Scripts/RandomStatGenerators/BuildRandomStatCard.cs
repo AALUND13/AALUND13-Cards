@@ -3,7 +3,7 @@ using System.Linq;
 using TMPro;
 using UnboundLib;
 
-namespace AALUND13Card.Utils.RandomStatsGenerator {
+namespace AALUND13Card.RandomStatGenerators {
     public class BuildRandomStatCard : AACustomCard {
         public string CardName;
 

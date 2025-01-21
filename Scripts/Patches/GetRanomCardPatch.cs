@@ -1,4 +1,5 @@
 ﻿using AALUND13Card.Extensions;
+using AALUND13Card.RandomStatGenerators.Generators ;
 using HarmonyLib;
 using ModdingUtils.Patches;
 using System;
@@ -13,7 +14,7 @@ namespace AALUND13Card.Patches {
             if(pickingPlayer != null) {
                 bool spawnGlitchCard = random.NextFloat(0f, 1f) < pickingPlayer.data.GetAdditionalData().GlitchedCardSpawnChance;
                 if(spawnGlitchCard) {
-                    cards = AALUND13_Cards.GlitchedCards.ToArray();
+                    cards = GlitchedStatGenerator.GlitchedCards.ToArray();
                 }
             }
         }

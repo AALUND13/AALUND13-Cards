@@ -2,7 +2,7 @@
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Utils.RandomStatsGenerator {
+namespace AALUND13Card.RandomStatGenerators {
     public class GlitchedCardSpawnedChanceStatGenerator : RandomStatGenerator {
         public override string StatName => "Glitched Card Spawned Chance";
         public GlitchedCardSpawnedChanceStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }

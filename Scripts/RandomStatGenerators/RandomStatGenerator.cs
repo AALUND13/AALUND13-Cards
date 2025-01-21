@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace AALUND13Card.Utils.RandomStatsGenerator {
+namespace AALUND13Card.RandomStatGenerators {
     public abstract class RandomStatGenerator {
         public abstract string StatName { get; }
 

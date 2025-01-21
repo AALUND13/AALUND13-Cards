@@ -1,10 +1,11 @@
 ﻿using AALUND13Card.Extensions;
+using AALUND13Card.Utils;
 using System;
 using System.Collections.Generic;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Utils.RandomStatsGenerator {
+namespace AALUND13Card.RandomStatGenerators {
     public static class RandomStatManager {
         public readonly static Dictionary<string, RandomStatHandler> RandomStatHandlers = new Dictionary<string, RandomStatHandler>();
         public readonly static Dictionary<string, List<CardInfo>> GeneratedCards = new Dictionary<string, List<CardInfo>>();
