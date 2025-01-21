@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using TMPro;
 using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours {
     public class GlitchingTextMono : MonoBehaviour {
-        public List<(TextMeshProUGUI, string)> textMeshes = new List<(TextMeshProUGUI, string)>();
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=<>?:\"{ }|,./;'[]\\'~";
-        List<char> characters = new List<char>();
+        public static Regex regex = new Regex(@"<glitch>(.*?)<\/glitch>", RegexOptions.Compiled);
+
+        public bool UseGlitchTag = false;
+
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=<>?:\"{}|,./;'[]\\'~";
+        private List<(TextMeshProUGUI, string)> textMeshes = new List<(TextMeshProUGUI, string)>();
+        private List<char> characters = new List<char>();
 
         private void Start() {
             this.ExecuteAfterFrames(3, () => {
@@ -24,8 +25,16 @@ namespace AALUND13Card.MonoBehaviours {
 
         private void Update() {
             if(textMeshes.Count == 0) return;
+
             foreach((TextMeshProUGUI textMesh, string originalText) in textMeshes) {
-                GlitchCharacters(textMesh, originalText);
+                if(UseGlitchTag) {
+                    // Handle glitch effect with the <glitch> tag
+                    string processedText = ProcessTextWithGlitchTag(originalText);
+                    textMesh.text = processedText;
+                } else {
+                    // Apply glitch effect to the entire text
+                    GlitchCharacters(textMesh, originalText);
+                }
             }
         }
 
@@ -34,6 +43,23 @@ namespace AALUND13Card.MonoBehaviours {
             for(int i = 0; i < originalText.Length; i++) {
                 textMesh.text += characters[UnityEngine.Random.Range(0, characters.Count)];
             }
+        }
+
+        private string ProcessTextWithGlitchTag(string originalText) {
+            // Find all <glitch>...</glitch> matches and replace their content with random characters
+            return regex.Replace(originalText, match => {
+                string glitchText = match.Groups[1].Value;
+                string randomGlitchedText = GenerateGlitchedText(glitchText.Length);
+                return $"<mspace=0.5em>{randomGlitchedText}</mspace>";
+            });
+        }
+
+        private string GenerateGlitchedText(int length) {
+            char[] glitchedChars = new char[length];
+            for(int i = 0; i < length; i++) {
+                glitchedChars[i] = characters[UnityEngine.Random.Range(0, characters.Count)];
+            }
+            return new string(glitchedChars);
         }
     }
 }

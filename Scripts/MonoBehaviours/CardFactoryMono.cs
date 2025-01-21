@@ -1,5 +1,5 @@
 ﻿using AALUND13Card.Extensions;
-using AALUND13Card.Utils.RandomStatsGenerator;
+using AALUND13Card.RandomStatGenerators;
 using ModdingUtils.GameModes;
 using Photon.Pun;
 using UnboundLib;

@@ -1,11 +1,13 @@
-﻿using AALUND13Card.Handlers;
+﻿using AALUND13Card.Extensions;
+using AALUND13Card.Handlers;
 using HarmonyLib;
 using ModsPlus;
 using UnityEngine;
 
 namespace AALUND13Card.Patches {
-    [HarmonyPatch(typeof(CardChoice), "IDoEndPick")]
-    public class CardChoiceIDoEndPickPatch {
+    [HarmonyPatch(typeof(CardChoice))]
+    public class CardChoicePatch {
+        [HarmonyPatch("IDoEndPick")]
         private static void Postfix(GameObject pickedCard, int theInt, int pickId) {
             Player player = PlayerManager.instance.GetPlayerWithID(pickId);
             if(player == null) return;
@@ -15,6 +17,12 @@ namespace AALUND13Card.Patches {
                 var func = ExtraCardPickHandler.extraPicks[player][0];
                 func.OnExtraPick(player, pickedCard.GetComponent<CardInfo>());
             }
+        }
+
+        [HarmonyPatch("StartPick")]
+        private static void Prefix(int pickerIDToSet) {
+            Player player = PlayerManager.instance.GetPlayerWithID(pickerIDToSet);
+            player.data.GetAdditionalData().GlitchedCardSpawnChance += player.data.GetAdditionalData().GlitchedCardSpawnChancePerPick;
         }
     }
 }

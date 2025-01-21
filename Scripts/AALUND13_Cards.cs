@@ -13,6 +13,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnboundLib;
 using UnboundLib.GameModes;
 using UnityEngine;
 
@@ -79,7 +80,6 @@ namespace AALUND13Card {
             ArmorFramework.RegisterArmorType(new BattleforgedArmor());
 
             GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
-            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, OnPlayerPick);
             GameModeManager.AddHook(GameModeHooks.HookPickStart, OnPickStart);
 
             if(Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
@@ -89,12 +89,6 @@ namespace AALUND13Card {
             GlitchedStatGenerator.BuildGlitchedCard();
 
             gameObject.AddComponent<DelayDamageHandler>();
-        }
-
-        IEnumerator OnPlayerPick(IGameModeHandler gameModeHandler) {
-            Player player = PlayerManager.instance.GetPlayerWithID(CardChoice.instance.pickrID);
-            player.data.GetAdditionalData().GlitchedCardSpawnChance += player.data.GetAdditionalData().GlitchedCardSpawnChancePerPick;
-            yield break;
         }
 
         IEnumerator OnPickStart(IGameModeHandler gameModeHandler) {
