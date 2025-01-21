@@ -4,14 +4,21 @@ using System.Runtime.CompilerServices;
 
 namespace AALUND13Card.Extensions {
     public class AALUND13CardCharacterDataAdditionalData {
+        // Delayed Damage
         public float secondToDealDamage = 0;
         public bool dealDamage = true;
 
+        // Soulstreak
         public SoulStreakStats SoulStreakStats = new SoulStreakStats();
         public uint Souls = 0;
 
+        // Extra Cards
         public int RandomCardsAtStart = 0;
-        public float GlitchedCardSpawnChance = 0.3f;
+        public int ExtraCardPicks = 0;
+
+        // Glitched Cards
+        public float GlitchedCardSpawnChance = 0;
+        public float GlitchedCardSpawnChancePerPick = 0;
 
         public void Reset() {
             secondToDealDamage = 0;
@@ -19,7 +26,7 @@ namespace AALUND13Card.Extensions {
             SoulStreakStats = new SoulStreakStats();
             Souls = 0;
             RandomCardsAtStart = 0;
-            GlitchedCardSpawnChance = 0.3f;
+            GlitchedCardSpawnChance = 0;
         }
     }
 

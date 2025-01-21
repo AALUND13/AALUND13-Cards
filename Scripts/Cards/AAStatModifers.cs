@@ -32,9 +32,7 @@ namespace AALUND13Card.Cards {
         public AbilityType AbilityType;
 
         [Header("Uncategorized Stats")]
-        public int RandomCardsAtStart = 0;
         public float SecondToDealDamage = 0;
-        public float GlitchedCardSpawnChance = 0f;
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
@@ -42,6 +40,14 @@ namespace AALUND13Card.Cards {
         [Header("Extra Picks")]
         public int ExtraPicks = 0;
         public ExtraPicksType ExtraPicksType;
+
+        [Header("Extra Cards")]
+        public int RandomCardsAtStart = 0;
+        public int ExtraCardPicks = 0;
+
+        [Header("Glitched Cards")]
+        public float GlitchedCardSpawnChance = 0f;
+        public float GlitchedCardSpawnChancePerPick = 0f;
 
         public void Apply(Player player) {
             CharacterData data = player.data;
@@ -64,10 +70,15 @@ namespace AALUND13Card.Cards {
             additionalData.SoulStreakStats.AbilityType |= AbilityType;
 
             // Apply Uncategorized Stats
-            additionalData.RandomCardsAtStart += RandomCardsAtStart;
             additionalData.secondToDealDamage += SecondToDealDamage;
 
+            // Apply Extra Cards Stats
+            additionalData.RandomCardsAtStart += RandomCardsAtStart;
+            additionalData.ExtraCardPicks += ExtraCardPicks;
+
+            // Apply Glitched Cards Stats
             additionalData.GlitchedCardSpawnChance += GlitchedCardSpawnChance;
+            additionalData.GlitchedCardSpawnChancePerPick += GlitchedCardSpawnChancePerPick;
 
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);

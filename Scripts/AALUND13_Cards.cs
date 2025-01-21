@@ -63,7 +63,7 @@ namespace AALUND13Card {
             Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
             // Common stats
-            new RandomStatHandler("GlitchedStatGeneratorCommon", new List<RandomStatGenerator> {
+            new RandomStatHandler("GlitchedStatGenerator Common", new List<RandomStatGenerator> {
                 new DamageStatGenerator(-0.3f, 0.3f),
                 new ReloadTimeStatGenerator(-0.3f, 0.3f),
                 new AttackSpeedStatGenerator(-0.3f, 0.3f),
@@ -72,7 +72,7 @@ namespace AALUND13Card {
                 new BlockCooldownStatGenerator(-0.3f, 0.3f),
                 new BulletSpeedStatGenerator(-0.3f, 0.3f),
                 new AmmoStatGenerator(-2f, 2f),
-                new GlitchedCardSpawnedChanceStatGenerator(-0.035f, 0.05f)
+                new GlitchedCardSpawnedChanceStatGenerator(-0.05f, 0.05f)
             }).OnCardGenerated += (card, context) => { 
                 GlitchedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingTextMono>();
@@ -90,7 +90,7 @@ namespace AALUND13Card {
                 new AmmoStatGenerator(-2f, 4f),
                 new RegenStatGenerator(0, 15),
                 new AdditionalBlocksStatGenerator(0, 0.60f),
-                new GlitchedCardSpawnedChanceStatGenerator(-0.05f, 0.1f)
+                new GlitchedCardSpawnedChanceStatGenerator(-0.1f, 0.1f)
             }).OnCardGenerated += (card, context) => { 
                 GlitchedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingTextMono>();
@@ -109,7 +109,7 @@ namespace AALUND13Card {
                 new AmmoStatGenerator(-3f, 6f),
                 new RegenStatGenerator(0, 35),
                 new AdditionalBlocksStatGenerator(0, 0.8f),
-                new GlitchedCardSpawnedChanceStatGenerator(-0.1f, 0.2f)
+                new GlitchedCardSpawnedChanceStatGenerator(-0.2f, 0.2f)
             }).OnCardGenerated += (card, context) => { 
                 GlitchedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingTextMono>();
