@@ -24,7 +24,8 @@
         "PhotonRealtime.dll",
         "PhotonUnityNetworking.dll",
         "SonigonAudioEngine.Runtime.dll",
-        "Photon3Unity3D.dll"
+        "Photon3Unity3D.dll",
+        "NullManager.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": []

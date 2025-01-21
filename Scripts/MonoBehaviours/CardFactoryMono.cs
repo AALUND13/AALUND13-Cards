@@ -42,7 +42,7 @@ namespace AALUND13_Card.MonoBehaviours {
 
                         ModdingUtils.Utils.Cards.instance.AddCardToPlayer(Player, card, false, "", 0f, 0f, true);
                     } else {
-                        RandomStatManager.CreateRandomStatsCard("NegativeStatGenerator", "Defective Card", "A defective card", 1, 4, Player);
+                        RandomStatManager.CreateRandomStatsCard("NegativeStatGenerator", "Defective Card", "A defective card", 1, 4, Player, "DC");
                     }
                 }
             }

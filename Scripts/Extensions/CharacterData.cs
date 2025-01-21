@@ -17,8 +17,8 @@ namespace AALUND13Card.Extensions {
         public int ExtraCardPicks = 0;
 
         // Glitched Cards
-        public float GlitchedCardSpawnChance = 0;
-        public float GlitchedCardSpawnChancePerPick = 0;
+        public float CorruptedCardSpawnChance = 0;
+        public float CorruptedCardSpawnChancePerPick = 0;
 
         public void Reset() {
             secondToDealDamage = 0;
@@ -26,7 +26,7 @@ namespace AALUND13Card.Extensions {
             SoulStreakStats = new SoulStreakStats();
             Souls = 0;
             RandomCardsAtStart = 0;
-            GlitchedCardSpawnChance = 0;
+            CorruptedCardSpawnChance = 0;
         }
     }
 

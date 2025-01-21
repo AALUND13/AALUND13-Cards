@@ -22,7 +22,7 @@ namespace AALUND13Card.Patches {
         [HarmonyPatch("StartPick")]
         private static void Prefix(int pickerIDToSet) {
             Player player = PlayerManager.instance.GetPlayerWithID(pickerIDToSet);
-            player.data.GetAdditionalData().GlitchedCardSpawnChance += player.data.GetAdditionalData().GlitchedCardSpawnChancePerPick;
+            player.data.GetAdditionalData().CorruptedCardSpawnChance += player.data.GetAdditionalData().CorruptedCardSpawnChancePerPick;
         }
     }
 }

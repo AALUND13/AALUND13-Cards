@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AALUND13Card.MonoBehaviours {
     public class GlitchingCardEffect : MonoBehaviour {
         private void Start() {
-            if(gameObject.transform.GetChild(0) == null) return;
+            if(gameObject.transform.childCount == 0) return;
             this.ExecuteAfterFrames(1, () => {
 
                 GlitchingTextMono glitchingTextMono = gameObject.GetOrAddComponent<GlitchingTextMono>();

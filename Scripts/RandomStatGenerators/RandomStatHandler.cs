@@ -29,12 +29,12 @@ namespace AALUND13Card.RandomStatGenerators {
             return new List<CardInfo>();
         }
 
-        public static void CreateRandomStatsCard(string statGenName, int seed, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null) {
-            RandomSyncSeed.InvokeWithSeed(statGenName, seed, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1);
+        public static void CreateRandomStatsCard(string statGenName, int seed, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null, string twoLetterCode = null) {
+            RandomSyncSeed.InvokeWithSeed(statGenName, seed, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1, twoLetterCode);
         }
 
-        public static void CreateRandomStatsCard(string statGenName, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null) {
-            RandomSyncSeed.Invoke(statGenName, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1);
+        public static void CreateRandomStatsCard(string statGenName, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null, string twoLetterCode = null) {
+            RandomSyncSeed.Invoke(statGenName, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1, twoLetterCode);
         }
     }
 
@@ -61,6 +61,7 @@ namespace AALUND13Card.RandomStatGenerators {
 
             Player player = null;
             if(context.Parameters.Length > 4 && (int)context.Parameters[4] != -1) player = PlayerManager.instance.players.Find(p => p.playerID == (int)context.Parameters[4]);
+            string twoLetterCode = context.Parameters.Length > 5 ? (string)context.Parameters[5] : null;
 
             GameObject newCard = GameObject.Instantiate(AALUND13_Cards.BlankCardPrefab);
             GameObject.DestroyImmediate(newCard.transform.GetChild(0).gameObject);
@@ -110,7 +111,7 @@ namespace AALUND13Card.RandomStatGenerators {
 
                 if(player != null) {
                     AALUND13_Cards.Instance.ExecuteAfterSeconds(0.2f, () => {
-                        ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, false, "", 2f, 2f, true);
+                        ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, false, twoLetterCode, 2f, 2f, true);
                     });
                 }
 

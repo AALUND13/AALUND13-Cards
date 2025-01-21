@@ -12,7 +12,7 @@ namespace AALUND13Card.Patches {
         private static void Prefix(ref CardInfo[] cards) {
             Player pickingPlayer = PickingPlayer(CardChoice.instance);
             if(pickingPlayer != null) {
-                bool spawnGlitchCard = random.NextFloat(0f, 1f) < pickingPlayer.data.GetAdditionalData().GlitchedCardSpawnChance;
+                bool spawnGlitchCard = random.NextFloat(0f, 1f) < pickingPlayer.data.GetAdditionalData().CorruptedCardSpawnChance;
                 if(spawnGlitchCard) {
                     cards = CorruptedStatGenerator.CorruptedCards.ToArray();
                 }

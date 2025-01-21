@@ -8,13 +8,11 @@ using BepInEx.Logging;
 using HarmonyLib;
 using JARL.Armor;
 using JARL.Utils;
-using ModsPlus;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnboundLib;
 using UnboundLib.GameModes;
 using UnityEngine;
 
@@ -25,6 +23,7 @@ namespace AALUND13Card {
     [BepInDependency("root.classes.manager.reborn")]
     [BepInDependency("com.aalund13.rounds.jarl")]
     [BepInDependency("com.willuwontu.rounds.managers")]
+    [BepInDependency("com.Root.Null")]
 
     [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(ModId, ModName, Version)]
@@ -64,7 +63,7 @@ namespace AALUND13Card {
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 
             Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
-
+            
             NegativeStatGenerator.RegisterNegativeStatGenerators();
             CorruptedStatGenerator.RegisterCorruptedStatGenerators();
 

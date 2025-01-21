@@ -5,6 +5,18 @@ using TabInfo.Utils;
 namespace AALUND13Card {
     public class TabinfoInterface {
         public static void Setup() {
+            var aaStatsCategory = TabInfoManager.RegisterCategory("AA Stats", 6);
+            TabInfoManager.RegisterStat(aaStatsCategory, "Random Cards At Start", (p) => p.data.GetAdditionalData().RandomCardsAtStart != 0,
+                (p) => $"{p.data.GetAdditionalData().RandomCardsAtStart}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Extra Card Picks", (p) => p.data.GetAdditionalData().ExtraCardPicks != 0,
+                (p) => $"{p.data.GetAdditionalData().ExtraCardPicks}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Corrupted Card Spawn Chance", (p) => p.data.GetAdditionalData().CorruptedCardSpawnChance != 0,
+                (p) => $"{p.data.GetAdditionalData().CorruptedCardSpawnChance * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Corrupted Card Spawn Chance Per Pick", (p) => p.data.GetAdditionalData().CorruptedCardSpawnChancePerPick != 0,
+                (p) => $"{p.data.GetAdditionalData().CorruptedCardSpawnChancePerPick * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Delay Damage", (p) => p.data.GetAdditionalData().secondToDealDamage != 0,
+                (p) => $"{p.data.GetAdditionalData().secondToDealDamage} seconds");
+
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);
 
             // Character Stats

@@ -1,6 +1,7 @@
 ﻿using AALUND13Card.MonoBehaviours;
 using RarityLib.Utils;
 using System.Collections.Generic;
+using Nullmanager;
 
 namespace AALUND13Card.RandomStatGenerators.Generators {
     internal class CorruptedStatGenerator {
@@ -21,6 +22,7 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
             }).OnCardGenerated += (card, context) => {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
+                card.MarkUnNullable();
             };
 
             // Uncommon stats
@@ -40,6 +42,7 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = CardInfo.Rarity.Uncommon;
+                card.MarkUnNullable();
             };
 
             // Rare stats
@@ -59,6 +62,7 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = CardInfo.Rarity.Rare;
+                card.MarkUnNullable();
             };
 
             // Legendary stats
@@ -79,6 +83,7 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Legendary");
+                card.MarkUnNullable();
             };
         }
         public static void BuildGlitchedCard() {

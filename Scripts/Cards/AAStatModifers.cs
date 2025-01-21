@@ -77,8 +77,8 @@ namespace AALUND13Card.Cards {
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
             // Apply Glitched Cards Stats
-            additionalData.GlitchedCardSpawnChance += GlitchedCardSpawnChance;
-            additionalData.GlitchedCardSpawnChancePerPick += GlitchedCardSpawnChancePerPick;
+            additionalData.CorruptedCardSpawnChance += GlitchedCardSpawnChance;
+            additionalData.CorruptedCardSpawnChancePerPick += GlitchedCardSpawnChancePerPick;
 
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
