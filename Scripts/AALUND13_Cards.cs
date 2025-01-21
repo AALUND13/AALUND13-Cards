@@ -12,6 +12,7 @@ using ModsPlus;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnboundLib;
 using UnboundLib.GameModes;
@@ -65,7 +66,7 @@ namespace AALUND13Card {
             Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
             NegativeStatGenerator.RegisterNegativeStatGenerators();
-            GlitchedStatGenerator.RegisterGlitchedStatGenerators();
+            CorruptedStatGenerator.RegisterCorruptedStatGenerators();
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
@@ -86,7 +87,7 @@ namespace AALUND13Card {
                 TabinfoInterface.Setup();
             }
 
-            GlitchedStatGenerator.BuildGlitchedCard();
+            CorruptedStatGenerator.BuildGlitchedCard();
 
             gameObject.AddComponent<DelayDamageHandler>();
         }
@@ -94,10 +95,11 @@ namespace AALUND13Card {
         IEnumerator OnPickStart(IGameModeHandler gameModeHandler) {
             foreach(Player player in PlayerManager.instance.players) {
                 if(PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
-                    if(player.data.GetAdditionalData().ExtraCardPicks > 0) ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetAdditionalData().ExtraCardPicks);
+                    bool isWinner = gameModeHandler.GetRoundWinners().Contains(player.teamID);
+                    if(player.data.GetAdditionalData().ExtraCardPicks > 0 && !isWinner) ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetAdditionalData().ExtraCardPicks);
                 }
-                yield break;
             }
+            yield break;
         }
         void OnPlayerDeath(Player player, Dictionary<Player, DamageInfo> playerDamageInfos) {
             if(player.GetComponent<DelayDamageHandler>() != null) {

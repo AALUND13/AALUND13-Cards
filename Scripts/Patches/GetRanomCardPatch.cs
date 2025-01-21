@@ -14,7 +14,7 @@ namespace AALUND13Card.Patches {
             if(pickingPlayer != null) {
                 bool spawnGlitchCard = random.NextFloat(0f, 1f) < pickingPlayer.data.GetAdditionalData().GlitchedCardSpawnChance;
                 if(spawnGlitchCard) {
-                    cards = GlitchedStatGenerator.GlitchedCards.ToArray();
+                    cards = CorruptedStatGenerator.CorruptedCards.ToArray();
                 }
             }
         }

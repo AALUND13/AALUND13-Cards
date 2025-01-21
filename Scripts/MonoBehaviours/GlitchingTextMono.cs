@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
-using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours {
@@ -10,17 +9,22 @@ namespace AALUND13Card.MonoBehaviours {
         public static Regex regex = new Regex(@"<glitch>(.*?)<\/glitch>", RegexOptions.Compiled);
 
         public bool UseGlitchTag = false;
+        public bool EffectAllText = true;
 
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=<>?:\"{}|,./;'[]\\'~";
         private List<(TextMeshProUGUI, string)> textMeshes = new List<(TextMeshProUGUI, string)>();
         private List<char> characters = new List<char>();
 
         private void Start() {
-            this.ExecuteAfterFrames(3, () => {
-                characters = chars.ToList();
-                TextMeshProUGUI[] allChildren = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
-                textMeshes.AddRange(allChildren.Select(obj => (obj, obj.text)));
-            });
+            characters = chars.ToList();
+            if(!EffectAllText) return;
+
+            TextMeshProUGUI[] allChildren = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+            textMeshes.AddRange(allChildren.Select(obj => (obj, obj.text)));
+        }
+
+        public void AddTextMesh(TextMeshProUGUI textMesh) {
+            textMeshes.Add((textMesh, textMesh.text));
         }
 
         private void Update() {
