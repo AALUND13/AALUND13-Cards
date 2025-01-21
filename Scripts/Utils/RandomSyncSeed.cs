@@ -10,7 +10,11 @@ namespace AALUND13Card.Utils {
     public static class RandomSyncSeed {
         private static readonly System.Random Random = new System.Random();
 
-        public static void SyncSeed(string target, params object[] additionalParams) {
+        public static void InvokeWithSeed(string target, int seed, params object[] additionalParams) {
+            NetworkingManager.RPC(typeof(RandomSyncSeed), nameof(RPCA_SyncSeed), seed, target, additionalParams);
+        }
+
+        public static void Invoke(string target, params object[] additionalParams) {
             NetworkingManager.RPC(typeof(RandomSyncSeed), nameof(RPCA_SyncSeed), Random.Next(), target, additionalParams);
         }
 

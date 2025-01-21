@@ -28,8 +28,12 @@ namespace AALUND13Card.Utils.RandomStatsGenerator {
             return new List<CardInfo>();
         }
 
+        public static void CreateRandomStatsCard(string statGenName, int seed, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null) {
+            RandomSyncSeed.InvokeWithSeed(statGenName, seed, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1);
+        }
+
         public static void CreateRandomStatsCard(string statGenName, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null) {
-            RandomSyncSeed.SyncSeed(statGenName, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1);
+            RandomSyncSeed.Invoke(statGenName, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1);
         }
     }
 
@@ -65,7 +69,7 @@ namespace AALUND13Card.Utils.RandomStatsGenerator {
             BuildRandomStatCard buildRandomStatCard = newCard.AddComponent<BuildRandomStatCard>();
             RandomStatManager.AddCardToGenerated(StatGenName, newCardInfo);
 
-            newCardInfo.cardName = $"{cardName} ({RandomStatManager.GetGeneratedCards(StatGenName).Count})";
+            newCardInfo.cardName = $"{StatGenName} Card ({RandomStatManager.GetGeneratedCards(StatGenName).Count})";
             newCardInfo.cardDestription = cardDescription;
             buildRandomStatCard.CardName = cardName;
 
@@ -75,22 +79,24 @@ namespace AALUND13Card.Utils.RandomStatsGenerator {
 
             LoggerUtils.LogInfo($"Generating random stats for {cardName}...");
             int numberOfStats = context.Random.Next(minRandomStat, maxRandomStat);
-            List<RandomStatGenerator> selectedStats = new List<RandomStatGenerator>();
+            Dictionary<RandomStatGenerator, float> selectedStats = new Dictionary<RandomStatGenerator, float>();
 
             while(selectedStats.Count < numberOfStats) {
                 int index = context.Random.Next(StatGenerators.Count);
-                if(!selectedStats.Contains(StatGenerators[index])) {
-                    selectedStats.Add(StatGenerators[index]);
+                if(!selectedStats.ContainsKey(StatGenerators[index])) {
+                    float value = context.Random.NextFloat(StatGenerators[index].MinValue, StatGenerators[index].MaxValue);
+                    if(!StatGenerators[index].ShouldAddStat(value)) continue;
+
+                    selectedStats.Add(StatGenerators[index], value);
                 }
             }
 
             List<CardInfoStat> cardStats = new List<CardInfoStat>();
             foreach(var item in selectedStats) {
-                float value = context.Random.NextFloat(item.MinValue, item.MaxValue);
                 cardStats.Add(new CardInfoStat {
-                    stat = item.StatName,
-                    amount = item.Apply(value, gun, statModifiers, block),
-                    positive = item.IsPositive(value)
+                    stat = item.Key.StatName,
+                    amount = item.Key.Apply(item.Value, newCard, gun, statModifiers, block),
+                    positive = item.Key.IsPositive(item.Value)
                 });
             }
             newCardInfo.cardStats = cardStats.ToArray();

@@ -11,6 +11,7 @@ namespace AALUND13Card.Extensions {
         public uint Souls = 0;
 
         public int RandomCardsAtStart = 0;
+        public float GlitchedCardSpawnChance = 0.3f;
 
         public void Reset() {
             secondToDealDamage = 0;
@@ -18,6 +19,7 @@ namespace AALUND13Card.Extensions {
             SoulStreakStats = new SoulStreakStats();
             Souls = 0;
             RandomCardsAtStart = 0;
+            GlitchedCardSpawnChance = 0.3f;
         }
     }
 

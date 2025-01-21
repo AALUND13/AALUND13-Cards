@@ -34,6 +34,7 @@ namespace AALUND13Card.Cards {
         [Header("Uncategorized Stats")]
         public int RandomCardsAtStart = 0;
         public float SecondToDealDamage = 0;
+        public float GlitchedCardSpawnChance = 0f;
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
@@ -65,6 +66,8 @@ namespace AALUND13Card.Cards {
             // Apply Uncategorized Stats
             additionalData.RandomCardsAtStart += RandomCardsAtStart;
             additionalData.secondToDealDamage += SecondToDealDamage;
+
+            additionalData.GlitchedCardSpawnChance += GlitchedCardSpawnChance;
 
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);

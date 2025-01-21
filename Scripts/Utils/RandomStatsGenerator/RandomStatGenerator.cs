@@ -13,11 +13,15 @@ namespace AALUND13Card.Utils.RandomStatsGenerator {
             MaxValue = maxValue;
         }
 
-        public abstract string Apply(float value, Gun gun, CharacterStatModifiers characterStats, Block block);
+        public abstract string Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block);
         public abstract bool IsPositive(float value);
 
-        protected string GetStringValue(float value) {
-            return $"{(value > 0 ? "+" : "")}{Mathf.Round(value * 100)}%";
+        public virtual bool ShouldAddStat(float value) {
+            return value != 0;
+        }
+
+        protected string GetStringValue(float value, bool isPercentage = true) {
+            return $"{(value > 0 ? "+" : "")}{Mathf.Round(value)}{(isPercentage ? "%" : "")}";
         }
     }
 }
