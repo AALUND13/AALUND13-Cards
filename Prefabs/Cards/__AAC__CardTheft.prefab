@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4904866182938917399}
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
-  - component: {fileID: 114950648958982844}
   - component: {fileID: 114446284750240874}
   - component: {fileID: 114872248861204110}
   m_Layer: 0
@@ -269,19 +268,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114950648958982844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b2bbcc09027464da20acbbb271927e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rarityName: Legendary
 --- !u!114 &114446284750240874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +287,8 @@ MonoBehaviour:
   block: {fileID: 0}
   AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardRarity: 8
+  CardRarityCustom: 
   CanBeReassigned: 0
 --- !u!114 &114872248861204110
 MonoBehaviour:
@@ -324,8 +312,11 @@ MonoBehaviour:
   SoulArmorPercentageRegenRate: 0
   SoulDrainMultiply: 0
   AbilityType: 0
-  RandomCardsAtStart: 0
   SecondToDealDamage: 0
   BattleforgedArmor: 0
   ExtraPicks: 1
   ExtraPicksType: 2
+  RandomCardsAtStart: 0
+  ExtraCardPicks: 0
+  CorruptedCardSpawnChance: 0
+  CorruptedCardSpawnChancePerPick: 0

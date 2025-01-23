@@ -1,7 +1,6 @@
 ﻿using AALUND13Card.MonoBehaviours;
 using RarityLib.Utils;
 using System.Collections.Generic;
-using Nullmanager;
 
 namespace AALUND13Card.RandomStatGenerators.Generators {
     internal class CorruptedStatGenerator {
@@ -15,14 +14,13 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new AttackSpeedStatGenerator(-0.3f, 0.3f),
                 new MovementSpeedStatGenerator(-0.1f, 0.1f),
                 new HealthStatGenerator(-0.3f, 0.3f),
-                new BlockCooldownStatGenerator(-0.3f, 0.3f),
+                new BlockCooldownStatGenerator(-0.1f, 0.1f),
                 new BulletSpeedStatGenerator(-0.3f, 0.3f),
                 new AmmoStatGenerator(-2f, 2f),
                 new GlitchedCardSpawnedChanceStatGenerator(-0.05f, 0.05f)
             }).OnCardGenerated += (card, context) => {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
-                card.MarkUnNullable();
             };
 
             // Uncommon stats
@@ -32,7 +30,7 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new AttackSpeedStatGenerator(-0.45f, 0.3f),
                 new MovementSpeedStatGenerator(-0.15f, 0.25f),
                 new HealthStatGenerator(-0.3f, 0.5f),
-                new BlockCooldownStatGenerator(-0.45f, 0.3f),
+                new BlockCooldownStatGenerator(-0.25f, 0.15f),
                 new BulletSpeedStatGenerator(-0.3f, 0.4f),
                 new AmmoStatGenerator(-2f, 4f),
                 new RegenStatGenerator(0, 15),
@@ -42,7 +40,6 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = CardInfo.Rarity.Uncommon;
-                card.MarkUnNullable();
             };
 
             // Rare stats
@@ -52,17 +49,16 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new AttackSpeedStatGenerator(-0.6f, 0.3f),
                 new MovementSpeedStatGenerator(-0.2f, 0.35f),
                 new HealthStatGenerator(-0.3f, 0.75f),
-                new BlockCooldownStatGenerator(-0.60f, 0.3f),
+                new BlockCooldownStatGenerator(-0.3f, 0.1f),
                 new BulletSpeedStatGenerator(-0.3f, 0.60f),
                 new AmmoStatGenerator(-3f, 6f),
                 new RegenStatGenerator(0, 35),
-                new AdditionalBlocksStatGenerator(0, 0.8f),
+                new AdditionalBlocksStatGenerator(0, 0.6f),
                 new GlitchedCardSpawnedChanceStatGenerator(-0.2f, 0.2f)
             }).OnCardGenerated += (card, context) => {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = CardInfo.Rarity.Rare;
-                card.MarkUnNullable();
             };
 
             // Legendary stats
@@ -72,18 +68,17 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new AttackSpeedStatGenerator(-0.75f, 0.3f),
                 new MovementSpeedStatGenerator(-0.25f, 0.45f),
                 new HealthStatGenerator(-0.3f, 1f),
-                new BlockCooldownStatGenerator(-0.75f, 0.3f),
+                new BlockCooldownStatGenerator(-0.5f, 0.25f),
                 new BulletSpeedStatGenerator(-0.3f, 0.75f),
                 new AmmoStatGenerator(-4f, 8f),
                 new RegenStatGenerator(0, 50),
                 new GlitchedCardSpawnedChanceStatGenerator(-0.35f, 0.35f),
-                new AdditionalBlocksStatGenerator(0, 2f),
-                new ExtraLiveStatGenerator(0, 1)
+                new AdditionalBlocksStatGenerator(0, 1.6f),
+                new ExtraLiveStatGenerator(0, 0.8f)
             }).OnCardGenerated += (card, context) => {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Legendary");
-                card.MarkUnNullable();
             };
         }
         public static void BuildGlitchedCard() {

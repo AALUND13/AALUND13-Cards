@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours {
     public class GlitchingTextMono : MonoBehaviour {
-        public static Regex regex = new Regex(@"<glitch>(.*?)<\/glitch>", RegexOptions.Compiled);
+        public static Regex regex = new Regex(@"<glitch>(.*?)(<\/glitch>|$)", RegexOptions.Compiled);
 
         public bool UseGlitchTag = false;
         public bool EffectAllText = true;

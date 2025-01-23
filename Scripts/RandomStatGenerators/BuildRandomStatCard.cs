@@ -7,8 +7,7 @@ namespace AALUND13Card.RandomStatGenerators {
     public class BuildRandomStatCard : AACustomCard {
         public string CardName;
 
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block) {
-            base.SetupCard(cardInfo, gun, cardStats, statModifiers, block);
+        public override void OnSetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block) {
             this.ExecuteAfterFrames(1, () => {
                 TextMeshProUGUI[] allChildren = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
                 if(allChildren.Length > 0) {

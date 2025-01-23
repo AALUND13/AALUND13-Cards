@@ -64,7 +64,7 @@ namespace AALUND13Card.RandomStatGenerators {
             string twoLetterCode = context.Parameters.Length > 5 ? (string)context.Parameters[5] : null;
 
             GameObject newCard = GameObject.Instantiate(AALUND13_Cards.BlankCardPrefab);
-            GameObject.DestroyImmediate(newCard.transform.GetChild(0).gameObject);
+            GameObject.Destroy(newCard.transform.GetChild(0).gameObject);
             GameObject.DontDestroyOnLoad(newCard);
 
             CardInfo newCardInfo = newCard.GetComponent<CardInfo>();

@@ -9,7 +9,7 @@ namespace AALUND13Card.RandomStatGenerators {
 
         public override string Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) {
             AAStatModifers statModifiers = cardObj.GetOrAddComponent<AAStatModifers>();
-            statModifiers.GlitchedCardSpawnChance += value;
+            statModifiers.CorruptedCardSpawnChance += value;
             return GetStringValue(value * 100);
         }
         public override bool IsPositive(float value) => value < 0;

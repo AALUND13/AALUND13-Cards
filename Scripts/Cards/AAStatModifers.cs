@@ -45,9 +45,9 @@ namespace AALUND13Card.Cards {
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
 
-        [Header("Glitched Cards")]
-        public float GlitchedCardSpawnChance = 0f;
-        public float GlitchedCardSpawnChancePerPick = 0f;
+        [Header("Corrupted Cards")]
+        public float CorruptedCardSpawnChance = 0f;
+        public float CorruptedCardSpawnChancePerPick = 0f;
 
         public void Apply(Player player) {
             CharacterData data = player.data;
@@ -77,8 +77,8 @@ namespace AALUND13Card.Cards {
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
             // Apply Glitched Cards Stats
-            additionalData.CorruptedCardSpawnChance += GlitchedCardSpawnChance;
-            additionalData.CorruptedCardSpawnChancePerPick += GlitchedCardSpawnChancePerPick;
+            additionalData.CorruptedCardSpawnChance += CorruptedCardSpawnChance;
+            additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
 
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
@@ -88,6 +88,13 @@ namespace AALUND13Card.Cards {
             if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
                 ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
             }
+        }
+
+        public void OnReassign(Player player) {
+            CharacterData data = player.data;
+            var additionalData = data.GetAdditionalData();
+
+            additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
         }
 
         public ExtraPickHandler GetExtraPickHandler(ExtraPicksType type) {

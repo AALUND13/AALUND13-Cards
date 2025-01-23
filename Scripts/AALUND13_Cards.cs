@@ -26,6 +26,7 @@ namespace AALUND13Card {
     [BepInDependency("com.Root.Null")]
 
     [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
+
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
 
@@ -35,14 +36,14 @@ namespace AALUND13Card {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.5.1"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.6.0"; // What version are we on (major.minor.patch)?
 
         public static AALUND13_Cards Instance { get; private set; }
 
         internal static List<BaseUnityPlugin> Plugins;
         internal static ManualLogSource ModLogger;
 
-        public static AssetBundle Assets;
+        internal static AssetBundle Assets;
         public static GameObject BlankCardPrefab;
 
         public static CardCategory SoulstreakClassCards;
@@ -56,14 +57,18 @@ namespace AALUND13Card {
 
             ConfigHandler.RegesterMenu(Config);
 
-            Assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aalund13_cards_assets", typeof(AALUND13_Cards).Assembly);
+            Assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacardart", typeof(AALUND13_Cards).Assembly);
+            if(Assets == null) {
+                Logger.LogError("Failed to load asset bundle");
+                return;
+            }
 
             BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 
             Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
-            
+
             NegativeStatGenerator.RegisterNegativeStatGenerators();
             CorruptedStatGenerator.RegisterCorruptedStatGenerators();
 
@@ -80,6 +85,7 @@ namespace AALUND13Card {
             ArmorFramework.RegisterArmorType(new BattleforgedArmor());
 
             GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
+            GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);
             GameModeManager.AddHook(GameModeHooks.HookPickStart, OnPickStart);
 
             if(Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
@@ -89,6 +95,16 @@ namespace AALUND13Card {
             CorruptedStatGenerator.BuildGlitchedCard();
 
             gameObject.AddComponent<DelayDamageHandler>();
+        }
+
+        IEnumerator OnGameStart(IGameModeHandler gameModeHandler) {
+            foreach(Player player in PlayerManager.instance.players) {
+                if(PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
+                    player.data.GetAdditionalData().Souls = 0;
+                    player.data.GetAdditionalData().CorruptedCardSpawnChance = 0;
+                }
+            }
+            yield break;
         }
 
         IEnumerator OnPickStart(IGameModeHandler gameModeHandler) {
@@ -115,6 +131,9 @@ namespace AALUND13Card {
             }
 
             player.GetComponentInChildren<SoulstreakMono>()?.ResetSouls();
+            if(player.GetComponentInChildren<SoulstreakMono>() == null) {
+                player.data.GetAdditionalData().Souls = 0;
+            }
         }
     }
 }

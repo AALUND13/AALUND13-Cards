@@ -28,6 +28,14 @@ namespace AALUND13Card.Handlers {
             NetworkingManager.RPC(typeof(ExtraCardPickHandler), nameof(RPCA_AddExtraPick), player.playerID, typeof(T).AssemblyQualifiedName, picks);
         }
 
+        public static void RemoveExtraPick(ExtraPickHandler extraPickHandler, Player player, int picks) {
+            NetworkingManager.RPC(typeof(ExtraCardPickHandler), nameof(RPCA_RemoveExtraPick), player.playerID, extraPickHandler.GetType().AssemblyQualifiedName, picks);
+        }
+
+        public static void RemoveExtraPick<T>(Player player, int picks) where T : ExtraPickHandler {
+            NetworkingManager.RPC(typeof(ExtraCardPickHandler), nameof(RPCA_RemoveExtraPick), player.playerID, typeof(T).AssemblyQualifiedName, picks);
+        }
+
         [UnboundRPC]
         private static void RPCA_AddExtraPick(int playerId, string handlerType, int picks) {
             Player player = PlayerManager.instance.players.Find(p => p.playerID == playerId);
@@ -43,6 +51,20 @@ namespace AALUND13Card.Handlers {
             }
             for(int i = 0; i < picks; i++) {
                 extraPicks[player].Add(handler);
+            }
+        }
+
+        [UnboundRPC]
+        public static void RPCA_RemoveExtraPick(int playerId, string handlerType, int picks) {
+            Player player = PlayerManager.instance.players.Find(p => p.playerID == playerId);
+            if(player == null) return;
+            Type type = Type.GetType(handlerType);
+            if(type == null) return;
+            ExtraPickHandler handler = (ExtraPickHandler)Activator.CreateInstance(type);
+            if(extraPicks.ContainsKey(player)) {
+                for(int i = 0; i < picks; i++) {
+                    extraPicks[player].Remove(handler);
+                }
             }
         }
 

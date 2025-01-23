@@ -18,9 +18,8 @@ GameObject:
   - component: {fileID: 114446284750240874}
   - component: {fileID: 114872248861204110}
   - component: {fileID: 114204876372223932}
-  - component: {fileID: 114715374933760386}
   m_Layer: 0
-  m_Name: __AAC__Corrupting Pick
+  m_Name: __AAC__Corrupting Picks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Corrupting Pick
+  cardName: Corrupting Picks
   cardDestription: You get a extra picks every pick phase, But something wrong with
     the hand...
   cardStats:
@@ -297,6 +296,8 @@ MonoBehaviour:
   block: {fileID: 0}
   AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardRarity: 8
+  CardRarityCustom: 
   CanBeReassigned: 0
 --- !u!114 &114872248861204110
 MonoBehaviour:
@@ -326,8 +327,8 @@ MonoBehaviour:
   ExtraPicksType: 1
   RandomCardsAtStart: 0
   ExtraCardPicks: 1
-  GlitchedCardSpawnChance: 0
-  GlitchedCardSpawnChancePerPick: 0.05
+  CorruptedCardSpawnChance: 0
+  CorruptedCardSpawnChancePerPick: 0.05
 --- !u!114 &114204876372223932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,16 +343,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseGlitchTag: 1
   EffectAllText: 1
---- !u!114 &114715374933760386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b2bbcc09027464da20acbbb271927e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rarityName: Legendary

@@ -24,9 +24,9 @@ namespace AALUND13Card.Extensions {
             secondToDealDamage = 0;
             dealDamage = true;
             SoulStreakStats = new SoulStreakStats();
-            Souls = 0;
             RandomCardsAtStart = 0;
-            CorruptedCardSpawnChance = 0;
+            ExtraCardPicks = 0;
+            CorruptedCardSpawnChancePerPick = 0;
         }
     }
 
