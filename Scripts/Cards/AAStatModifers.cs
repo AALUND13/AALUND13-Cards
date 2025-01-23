@@ -76,8 +76,8 @@ namespace AALUND13Card.Cards {
             additionalData.RandomCardsAtStart += RandomCardsAtStart;
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
-            // Apply Glitched Cards Stats
-            additionalData.CorruptedCardSpawnChance += CorruptedCardSpawnChance;
+            // Corrupted Glitched Cards Stats
+            additionalData.CorruptedCardSpawnChance = Mathf.Max(additionalData.CorruptedCardSpawnChance + CorruptedCardSpawnChance, 0);
             additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
 
             if(BattleforgedArmor > 0) {
@@ -95,6 +95,7 @@ namespace AALUND13Card.Cards {
             var additionalData = data.GetAdditionalData();
 
             additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
+            additionalData.ExtraCardPicks += ExtraCardPicks;
         }
 
         public ExtraPickHandler GetExtraPickHandler(ExtraPicksType type) {

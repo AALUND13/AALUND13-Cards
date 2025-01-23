@@ -57,17 +57,14 @@ namespace AALUND13Card {
 
             ConfigHandler.RegesterMenu(Config);
 
-            Assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacardart", typeof(AALUND13_Cards).Assembly);
+            Assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacardassets", typeof(AALUND13_Cards).Assembly);
             if(Assets == null) {
-                Logger.LogError("Failed to load asset bundle");
-                return;
+                throw new System.Exception("Failed to load asset bundle");
             }
 
             BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
-
-            Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
             NegativeStatGenerator.RegisterNegativeStatGenerators();
             CorruptedStatGenerator.RegisterCorruptedStatGenerators();
@@ -78,6 +75,8 @@ namespace AALUND13Card {
 
         public void Start() {
             Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
+
+            Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 

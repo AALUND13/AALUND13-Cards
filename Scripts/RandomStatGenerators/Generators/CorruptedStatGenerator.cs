@@ -53,7 +53,7 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new BulletSpeedStatGenerator(-0.3f, 0.60f),
                 new AmmoStatGenerator(-3f, 6f),
                 new RegenStatGenerator(0, 35),
-                new AdditionalBlocksStatGenerator(0, 0.6f),
+                new AdditionalBlocksStatGenerator(0, 0.625f), // '0.625' is '20%' chance to gain an extra block
                 new GlitchedCardSpawnedChanceStatGenerator(-0.2f, 0.2f)
             }).OnCardGenerated += (card, context) => {
                 CorruptedCards.Add(card);
@@ -68,13 +68,13 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new AttackSpeedStatGenerator(-0.75f, 0.3f),
                 new MovementSpeedStatGenerator(-0.25f, 0.45f),
                 new HealthStatGenerator(-0.3f, 1f),
-                new BlockCooldownStatGenerator(-0.5f, 0.25f),
+                new BlockCooldownStatGenerator(-0.4f, 0.25f),
                 new BulletSpeedStatGenerator(-0.3f, 0.75f),
                 new AmmoStatGenerator(-4f, 8f),
                 new RegenStatGenerator(0, 50),
-                new GlitchedCardSpawnedChanceStatGenerator(-0.35f, 0.35f),
-                new AdditionalBlocksStatGenerator(0, 1.6f),
-                new ExtraLiveStatGenerator(0, 0.8f)
+                new AdditionalBlocksStatGenerator(0, 0.833333333333f), // '0.833333333333' is '40%' chance to gain an extra block
+                new ExtraLiveStatGenerator(0, 0.769230769231f), // '0.769230769231' is '35%' chance to gain an extra life
+                new GlitchedCardSpawnedChanceStatGenerator(-0.35f, 0.35f)
             }).OnCardGenerated += (card, context) => {
                 CorruptedCards.Add(card);
                 card.gameObject.AddComponent<GlitchingCardEffect>();
