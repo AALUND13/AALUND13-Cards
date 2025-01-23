@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 19 unique cards developed by AALUND13.
+AALUND13 Cards introduces 20 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -24,6 +24,7 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Card Factory
 - Battleforge Plate
 - Card Theft
+- Corrupting Picks
 
 ## Curse Cards
 
