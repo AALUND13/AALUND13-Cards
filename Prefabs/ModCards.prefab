@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2491925878121971275}
-  - component: {fileID: 1073770186733798749}
+  - component: {fileID: 114191692696711394}
   m_Layer: 0
   m_Name: ModCards
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1073770186733798749
+--- !u!114 &114191692696711394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7028265965542963888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee196708f6f6c947b8582b830f3ed08, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e47ba06f7ff05b4b97ede3f0763c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Cards:
@@ -58,7 +58,6 @@ MonoBehaviour:
   - {fileID: 1473282574127126098, guid: 2c6f197d4b6e2c040952e36de0ecd281, type: 3}
   - {fileID: 5011008801069171712, guid: 0e4da0bb4d8ae414eb0252582d43ab57, type: 3}
   - {fileID: 5011008801069171712, guid: b8e0f58dd2ba8a94faa64a8ff96585c3, type: 3}
-  HiddenCards:
   - {fileID: 7451438178602277890, guid: 1c63b366f085e014c93f5ca5df2c3add, type: 3}
   - {fileID: 4414326956795446328, guid: 0b40e9c12127216438620752973e2cca, type: 3}
   - {fileID: 2486157976607851580, guid: 34a6cd4c4de6f9d4389d1889d9aad4c1, type: 3}

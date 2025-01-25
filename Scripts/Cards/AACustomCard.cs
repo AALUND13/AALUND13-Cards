@@ -6,8 +6,6 @@ using ModdingUtils.Utils;
 
 namespace AALUND13Card.Cards {
     public class AACustomCard : CustomUnityCard {
-        public virtual void OnRegister(CardInfo cardInfo) { }
-
         public override void OnSetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block) {
             LoggerUtils.LogInfo($"[{GetModName()}][Card] {GetTitle()} has been setup.");
         }

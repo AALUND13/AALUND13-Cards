@@ -74,6 +74,7 @@ namespace AALUND13Card.RandomStatGenerators {
             newCardInfo.cardName = $"{StatGenName} Card ({RandomStatManager.GetGeneratedCards(StatGenName).Count})";
             newCardInfo.cardDestription = cardDescription;
             buildRandomStatCard.CardName = cardName;
+            buildRandomStatCard.IsHidden = true;
 
             Gun gun = newCard.GetComponent<Gun>();
             CharacterStatModifiers statModifiers = newCard.GetComponent<CharacterStatModifiers>();
@@ -106,7 +107,7 @@ namespace AALUND13Card.RandomStatGenerators {
 
             LoggerUtils.LogInfo("Building card...");
             buildRandomStatCard.BuildUnityCard((cardInfo) => {
-                ModdingUtils.Utils.Cards.instance.AddHiddenCard(cardInfo);
+                buildRandomStatCard.Register(cardInfo);
                 OnCardGenerated?.Invoke(cardInfo, context);
 
                 if(player != null) {

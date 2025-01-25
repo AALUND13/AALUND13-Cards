@@ -18,9 +18,5 @@ namespace AALUND13Card.RandomStatGenerators {
 
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
         }
-
-        public override bool GetEnabled() {
-            return false;
-        }
     }
 }

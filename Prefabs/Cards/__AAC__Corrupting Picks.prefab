@@ -61,7 +61,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Of Cards To Pick
   - positive: 0
-    amount: +5%
+    amount: +2.5%
     simepleAmount: 0
     stat: <glitch>Unknow</glitch> per pick
   rarity: 2
@@ -294,11 +294,15 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardType: 0
+  CardLimit: 0
+  RequiredClass: {fileID: 0}
+  RequiredClassTree: []
   CardRarity: 8
   CardRarityCustom: 
   CanBeReassigned: 0
+  IsHidden: 0
 --- !u!114 &114872248861204110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +332,7 @@ MonoBehaviour:
   RandomCardsAtStart: 0
   ExtraCardPicks: 1
   CorruptedCardSpawnChance: 0
-  CorruptedCardSpawnChancePerPick: 0.05
+  CorruptedCardSpawnChancePerPick: 0.025
 --- !u!114 &114204876372223932
 MonoBehaviour:
   m_ObjectHideFlags: 0

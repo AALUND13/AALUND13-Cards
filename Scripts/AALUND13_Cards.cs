@@ -6,6 +6,7 @@ using AALUND13Card.RandomStatGenerators.Generators;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using JARL;
 using JARL.Armor;
 using JARL.Utils;
 using Photon.Pun;
@@ -36,7 +37,7 @@ namespace AALUND13Card {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.6.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.6.1"; // What version are we on (major.minor.patch)?
 
         public static AALUND13_Cards Instance { get; private set; }
 
@@ -76,7 +77,7 @@ namespace AALUND13Card {
         public void Start() {
             Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
-            Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards();
+            Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards<AALUND13_Cards>("AAC");
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 

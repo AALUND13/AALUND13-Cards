@@ -294,9 +294,16 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardClassType: 2
+  CardLimit: 0
+  RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
+    type: 3}
+  RequiredClassTree: []
+  CardRarity: 0
+  CardRarityCustom: 
   CanBeReassigned: 1
+  IsHidden: 0
 --- !u!114 &114998351715114196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +326,11 @@ MonoBehaviour:
   SoulArmorPercentageRegenRate: 0
   SoulDrainMultiply: 0.08
   AbilityType: 0
-  MaxHealthCap: 0
-  MaxDamageCap: 0
+  SecondToDealDamage: 0
+  BattleforgedArmor: 0
+  ExtraPicks: 0
+  ExtraPicksType: 0
   RandomCardsAtStart: 0
-  secondToDealDamage: 0
+  ExtraCardPicks: 0
+  CorruptedCardSpawnChance: 0
+  CorruptedCardSpawnChancePerPick: 0
