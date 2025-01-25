@@ -19,7 +19,7 @@ namespace AALUND13Card.Armors {
             }
         }
 
-        public SoulArmor() {
+        public override void OnRegister() {
             ArmorRegenCooldownSeconds = 5;
         }
     }

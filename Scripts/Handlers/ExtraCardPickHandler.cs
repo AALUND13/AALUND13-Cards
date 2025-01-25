@@ -71,7 +71,7 @@ namespace AALUND13Card.Handlers {
         internal static IEnumerator HandleExtraPicks() {
             foreach(Player player in PlayerManager.instance.players.ToArray()) {
                 if(extraPicks.ContainsKey(player) && extraPicks[player].Count > 0) {
-                    yield return HandleExtraPickForPlayer(player);;
+                    yield return HandleExtraPickForPlayer(player);
                 }
             }
             currentPlayer = null;
@@ -84,7 +84,10 @@ namespace AALUND13Card.Handlers {
             CardChoiceVisuals.instance.Show(Enumerable.Range(0, PlayerManager.instance.players.Count).Where(i => PlayerManager.instance.players[i].playerID == player.playerID).First(), true);
             yield return CardChoice.instance.DoPick(1, player.playerID, PickerType.Player);
             yield return new WaitForSecondsRealtime(0.1f);
-            extraPicks[player].RemoveAt(0);
+            // check if the player sill has extra picks to prevent 'ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.' error
+            if(extraPicks.ContainsKey(player) && extraPicks[player].Count > 0) {
+                extraPicks[player].RemoveAt(0);
+            }
             yield return GameModeManager.TriggerHook(GameModeHooks.HookPlayerPickEnd);
         }
     }
