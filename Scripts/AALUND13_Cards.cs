@@ -81,8 +81,8 @@ namespace AALUND13Card {
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
-            ArmorFramework.RegisterArmorType(new SoulArmor());
-            ArmorFramework.RegisterArmorType(new BattleforgedArmor());
+            ArmorFramework.RegisterArmorType<SoulArmor>();
+            ArmorFramework.RegisterArmorType<BattleforgedArmor>();
 
             GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
             GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);
