@@ -81,7 +81,7 @@ namespace AALUND13Card.Cards {
             additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
 
             if(BattleforgedArmor > 0) {
-                ArmorFramework.ArmorHandlers[player].AddArmor(typeof(BattleforgedArmor), BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
+                ArmorFramework.ArmorHandlers[player].AddArmor<BattleforgedArmor>(BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
             }
 
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
