@@ -2,6 +2,7 @@
 using AALUND13Card.Utils;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
 using UnboundLib;
 using UnityEngine;
 
@@ -50,6 +51,35 @@ namespace AALUND13Card.RandomStatGenerators {
             RandomStatManager.RandomStatHandlers.Add(statGenName, this);
 
             RandomSyncSeed.RegisterSyncedRandom(statGenName, SyncRandomSyncStats);
+        }
+
+        public void GetCardStatsFromSeed(int seed, int minRandomStat, int maxRandomStat, GameObject newCard, Gun gun, CharacterStatModifiers statModifiers, Block block) {
+            System.Random random = new System.Random(seed);
+
+            int numberOfStats = random.Next(minRandomStat, maxRandomStat);
+            Dictionary<RandomStatGenerator, float> selectedStats = new Dictionary<RandomStatGenerator, float>();
+
+            while(selectedStats.Count < numberOfStats) {
+                int index = random.Next(StatGenerators.Count);
+                if(!selectedStats.ContainsKey(StatGenerators[index])) {
+                    float value = random.NextFloat(StatGenerators[index].MinValue, StatGenerators[index].MaxValue);
+                    if(!StatGenerators[index].ShouldAddStat(value)) continue;
+
+                    selectedStats.Add(StatGenerators[index], value);
+                }
+            }
+
+            List<CardInfoStat> cardStats = new List<CardInfoStat>();
+            foreach(var item in selectedStats) {
+                cardStats.Add(new CardInfoStat {
+                    stat = item.Key.StatName,
+                    amount = item.Key.Apply(item.Value, newCard, gun, statModifiers, block),
+                    positive = item.Key.IsPositive(item.Value)
+                });
+            }
+
+            CardInfo newCardInfo = newCard.GetComponent<CardInfo>();
+            newCardInfo.cardStats = cardStats.ToArray();
         }
 
         private void SyncRandomSyncStats(SyncedRandomContext context) {
