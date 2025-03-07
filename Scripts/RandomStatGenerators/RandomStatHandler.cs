@@ -78,7 +78,7 @@ namespace AALUND13Card.RandomStatGenerators {
                 int index = random.Next(StatGenerators.Count);
                 if(!selectedStats.ContainsKey(StatGenerators[index])) {
                     float value = random.NextFloat(StatGenerators[index].MinValue, StatGenerators[index].MaxValue);
-                    if(!StatGenerators[index].ShouldAddStat(value)) continue;
+                    if(!StatGenerators[index].ShouldApply(value)) continue;
 
                     selectedStats.Add(StatGenerators[index], value);
                 }
@@ -116,7 +116,7 @@ namespace AALUND13Card.RandomStatGenerators {
                 int index = random.Next(StatGenerators.Count);
                 if(!selectedStats.ContainsKey(StatGenerators[index])) {
                     float value = random.NextFloat(StatGenerators[index].MinValue, StatGenerators[index].MaxValue);
-                    if(!StatGenerators[index].ShouldAddStat(value)) continue;
+                    if(!StatGenerators[index].ShouldApply(value)) continue;
 
                     selectedStats.Add(StatGenerators[index], value);
                 }
@@ -165,7 +165,7 @@ namespace AALUND13Card.RandomStatGenerators {
                 int index = random.Next(StatGenerators.Count);
                 if(!selectedStats.ContainsKey(StatGenerators[index])) {
                     float value = random.NextFloat(StatGenerators[index].MinValue, StatGenerators[index].MaxValue);
-                    if(!StatGenerators[index].ShouldAddStat(value)) continue;
+                    if(!StatGenerators[index].ShouldApply(value)) continue;
 
                     selectedStats.Add(StatGenerators[index], value);
                 }

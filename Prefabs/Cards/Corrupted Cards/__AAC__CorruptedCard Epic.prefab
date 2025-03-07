@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Corrupted Card Rare
+  cardName: Corrupted Card Epic
   cardDestription: 
   cardStats: []
   rarity: 0
@@ -279,5 +279,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0af2f9f5678384aa5859923135c66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rarity: 6
+  Rarity: 7
   RandomStatRange: {x: 1, y: 4}

@@ -279,20 +279,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0af2f9f5678384aa5859923135c66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardInfo: {fileID: 0}
-  gun: {fileID: 0}
-  cardStats: {fileID: 0}
-  statModifiers: {fileID: 0}
-  block: {fileID: 0}
-  OverrideClassName: 
-  CardClassType: 0
-  CardLimit: 0
-  RequiredClass: {fileID: 0}
-  RequiredClassTree: []
-  CardRarity: 4
-  CardRarityCustom: 
-  CanBeReassigned: 0
-  IsHidden: 1
-  CardName: Corrupted Card
   Rarity: 4
-  RandomStatRange: {x: 1, y: 4}
+  RandomStatRange: {x: 1, y: 3}

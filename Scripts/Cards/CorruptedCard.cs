@@ -2,9 +2,6 @@
 using AALUND13Card.RandomStatGenerators;
 using JARL.Bases;
 using Photon.Pun;
-using RarityLib.Utils;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {

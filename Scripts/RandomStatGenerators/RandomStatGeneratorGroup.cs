@@ -2,9 +2,15 @@
 
 namespace AALUND13Card.RandomStatGenerators {
     public class DamageStatGenerator : RandomStatGenerator {
+        
         public override string StatName => "Damage";
-        public DamageStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public DamageStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.05f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             gun.damage += value;
 
@@ -13,8 +19,13 @@ namespace AALUND13Card.RandomStatGenerators {
 
     public class ReloadTimeStatGenerator : RandomStatGenerator {
         public override string StatName => "Reload Time";
-        public ReloadTimeStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public ReloadTimeStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.05f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             gun.reloadTime += value;
 
@@ -23,8 +34,13 @@ namespace AALUND13Card.RandomStatGenerators {
 
     public class AttackSpeedStatGenerator : RandomStatGenerator {
         public override string StatName => "Attack Speed";
-        public AttackSpeedStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public AttackSpeedStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.05f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             gun.attackSpeed += value;
 
@@ -33,19 +49,28 @@ namespace AALUND13Card.RandomStatGenerators {
 
     public class MovementSpeedStatGenerator : RandomStatGenerator {
         public override string StatName => "Movement Speed";
-        public MovementSpeedStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public MovementSpeedStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.05f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             characterStats.movementSpeed += value;
 
-        public override bool ShouldAddStat(float value) => Mathf.Abs(value) > 0.05f;
         public override bool IsPositive(float value) => value > 0;
     }
 
     public class HealthStatGenerator : RandomStatGenerator {
         public override string StatName => "Health";
-        public HealthStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public HealthStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.05f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             characterStats.health += value;
 
@@ -54,19 +79,29 @@ namespace AALUND13Card.RandomStatGenerators {
 
     public class BlockCooldownStatGenerator : RandomStatGenerator {
         public override string StatName => "Block Cooldown";
-        public BlockCooldownStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        
+
+        public BlockCooldownStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.025f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             block.cdMultiplier += value;
 
-        public override bool ShouldAddStat(float value) => Mathf.Abs(value) > 0.025f;
         public override bool IsPositive(float value) => value < 0;
     }
 
     public class BulletSpeedStatGenerator : RandomStatGenerator {
         public override string StatName => "Bullet Speed";
-        public BulletSpeedStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public BulletSpeedStatGenerator(float minValue, float maxValue, float thresholdToZero = 0.05f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             gun.projectileSpeed += value;
 
@@ -75,8 +110,13 @@ namespace AALUND13Card.RandomStatGenerators {
 
     public class RegenStatGenerator : RandomStatGenerator {
         public override string StatName => "Regen";
-        public RegenStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
 
+        public float ThresholdToZero;
+        public RegenStatGenerator(float minValue, float maxValue, float thresholdToZero = 1f) : base(minValue, maxValue) {
+            ThresholdToZero = thresholdToZero;
+        }
+
+        public override bool ShouldApply(float value) => Mathf.Abs(value) >= ThresholdToZero;
         public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
             characterStats.regen += value;
         public override string GetStatString(float value) => GetStringValue(value, false);
@@ -92,7 +132,7 @@ namespace AALUND13Card.RandomStatGenerators {
             gun.ammo += Mathf.RoundToInt(value);
         public override string GetStatString(float value) => GetStringValue(value, false);
 
-        public override bool ShouldAddStat(float value) => Mathf.RoundToInt(value) != 0;
+        public override bool ShouldApply(float value) => Mathf.RoundToInt(value) != 0;
 
         public override bool IsPositive(float value) => value > 0;
     }
@@ -105,7 +145,7 @@ namespace AALUND13Card.RandomStatGenerators {
             block.additionalBlocks += Mathf.RoundToInt(value);
         public override string GetStatString(float value) => GetStringValue(value, false);
 
-        public override bool ShouldAddStat(float value) => Mathf.RoundToInt(value) != 0;
+        public override bool ShouldApply(float value) => Mathf.RoundToInt(value) != 0;
         public override bool IsPositive(float value) => value > 0;
     }
 
@@ -117,7 +157,18 @@ namespace AALUND13Card.RandomStatGenerators {
             characterStats.respawns += Mathf.RoundToInt(value);
         public override string GetStatString(float value) => GetStringValue(value, false);
 
-        public override bool ShouldAddStat(float value) => Mathf.RoundToInt(value) != 0;
+        public override bool ShouldApply(float value) => Mathf.RoundToInt(value) != 0;
+        public override bool IsPositive(float value) => value > 0;
+    }
+
+    public class JumpStatGenerator : RandomStatGenerator {
+        public override string StatName => "Jump";
+        public JumpStatGenerator(float minValue, float maxValue) : base(minValue, maxValue) { }
+        public override void Apply(float value, GameObject cardObj, Gun gun, CharacterStatModifiers characterStats, Block block) =>
+            characterStats.numberOfJumps += Mathf.RoundToInt(value);
+        public override string GetStatString(float value) => GetStringValue(value, false);
+
+        public override bool ShouldApply(float value) => Mathf.RoundToInt(value) != 0;
         public override bool IsPositive(float value) => value > 0;
     }
 }

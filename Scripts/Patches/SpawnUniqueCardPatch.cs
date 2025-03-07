@@ -18,7 +18,7 @@ namespace AALUND13Card.Patches {
             CardInfo cardInfo = __result.GetComponent<CardInfo>();
             if(player == null) return;
 
-            // Check thew object to see they have a Ccmponents name `NullCard` if so skip 
+            // Check thew object to see they have a Ccmponents name `NullCard` if so skip the card
             if(cardInfo.GetComponents<MonoBehaviour>().Any(x => x.GetType().Name == "NullCard")) return;
 
             bool spawnGlitchCard = Random.Range(0f, 1f) < player.data.GetAdditionalData().CorruptedCardSpawnChance;

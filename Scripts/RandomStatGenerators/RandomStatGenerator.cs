@@ -9,6 +9,7 @@ namespace AALUND13Card.RandomStatGenerators {
 
         /// <param name="minValue">The minimum value that can be generated</param>
         /// <param name="maxValue">The maximum value that can be generated</param>
+        /// <param name="thresholdToZero">The threshold to consider a value as zero [default is 0.05f (5%)]</param>
         public RandomStatGenerator(float minValue, float maxValue) {
             MinValue = minValue;
             MaxValue = maxValue;
@@ -19,8 +20,8 @@ namespace AALUND13Card.RandomStatGenerators {
 
         public abstract bool IsPositive(float value);
 
-        public virtual bool ShouldAddStat(float value) {
-            return Mathf.Abs(value) > 0.1f;
+        public virtual bool ShouldApply(float value) {
+            return value != 0;
         }
 
         protected string GetStringValue(float value, bool isPercentage = true) {

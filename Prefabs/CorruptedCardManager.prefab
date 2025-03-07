@@ -44,7 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CorruptedCardPrefabs:
+  - {fileID: 1473282574127126101, guid: f51b4b2693f43164b8d93dfee8aa63af, type: 3}
   - {fileID: 1473282574127126101, guid: 9a34f4a900f04144e968fbba24fbd8bb, type: 3}
+  - {fileID: 1473282574127126101, guid: 3eb62814b5aab574aba1d6b82d8a4196, type: 3}
   - {fileID: 1473282574127126101, guid: 9dee846c15cfc014d811a66161af4725, type: 3}
+  - {fileID: 1473282574127126101, guid: beab97af6519aa0459fa9f6bd59f7c36, type: 3}
+  - {fileID: 1473282574127126101, guid: 8a0fa5071dfc32b4da3de71bc8513b64, type: 3}
   - {fileID: 1473282574127126101, guid: 78521d8e22d0577499611a74d3ff3263, type: 3}
   - {fileID: 1473282574127126101, guid: 839546b564face846bc6a55167f77d0e, type: 3}
+  - {fileID: 1473282574127126101, guid: 16b2d781289a3b146aedfa11b123d553, type: 3}
+  - {fileID: 1473282574127126101, guid: bcc51e63ae2b1304785152f6882bce6d, type: 3}
