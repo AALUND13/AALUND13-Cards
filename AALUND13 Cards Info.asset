@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: AALUND13 Cards Info
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards
-  Version: 1.6.2
+  Author: AALUND13
+  Version: 1.6.3
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Explore a collection of unique cards crafted by 'AALUND13'. If you
     encounter any issues, please report them on the GitHub page.
+  BeforeBuildCommand: 
+  AfterBuildCommand: 
   Dependencies:
   - Root-Classes_Manager_Reborn-1.5.4
   - Pykess-ModdingUtils-0.4.6
@@ -30,3 +33,4 @@ MonoBehaviour:
   - willuwontu-WillsWackyManagers-1.5.13
   DllDependencies: []
   AssemblyDefinitionDependencies: []
+  IncludeInAllExports: 1

@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace AALUND13Card.Handlers {
     public class ExtraPickHandler {
-        public virtual bool OnExtraPickStart(Player player, CardInfo card) { 
-            return true; 
+        public virtual bool OnExtraPickStart(Player player, CardInfo card) {
+            return true;
         }
         public virtual void OnExtraPick(Player player, CardInfo card) { } // This is a method that will be called after the player picks a card
     }

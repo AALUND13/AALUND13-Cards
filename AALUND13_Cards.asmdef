@@ -10,12 +10,13 @@
         "ModsPlus",
         "JARL",
         "RarityLib",
-        "WillsWackyManagers"
+        "WillsWackyManagers",
+        "FancyCardBar"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": false,
+    "allowUnsafeCode": true,
     "overrideReferences": true,
     "precompiledReferences": [
         "0Harmony.dll",

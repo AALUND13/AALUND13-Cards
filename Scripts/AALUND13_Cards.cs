@@ -3,6 +3,7 @@ using AALUND13Card.Extensions;
 using AALUND13Card.Handlers;
 using AALUND13Card.MonoBehaviours;
 using AALUND13Card.RandomStatGenerators.Generators;
+using AALUND13Card.Scripts;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -14,6 +15,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Metadata;
 using UnboundLib.GameModes;
 using UnityEngine;
 
@@ -43,9 +45,11 @@ namespace AALUND13Card {
 
         internal static List<BaseUnityPlugin> Plugins;
         internal static ManualLogSource ModLogger;
-
         internal static AssetBundle Assets;
+
         public static GameObject BlankCardPrefab;
+        public static GameObject CorruptedCardFancyIconPrefab;
+        public static CardResgester CardResgester;
 
         public static CardCategory SoulstreakClassCards;
 
@@ -64,6 +68,8 @@ namespace AALUND13Card {
             }
 
             BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
+            CorruptedCardFancyIconPrefab = Assets.LoadAsset<GameObject>("I_Corrupted");
+
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 
@@ -77,7 +83,10 @@ namespace AALUND13Card {
         public void Start() {
             Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
-            Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>().RegisterCards<AALUND13_Cards>("AAC");
+            Assets.LoadAsset<GameObject>("CorruptedCardManager").GetComponent<CorruptedCardManager>().Init();
+            CardResgester = Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>();
+            CardResgester.RegisterCards<AALUND13_Cards>("AAC");
+
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
@@ -92,8 +101,7 @@ namespace AALUND13Card {
                 TabinfoInterface.Setup();
             }
 
-            CorruptedStatGenerator.BuildGlitchedCard();
-
+            //CorruptedStatGenerator.BuildGlitchedCard();
             gameObject.AddComponent<DelayDamageHandler>();
         }
 
