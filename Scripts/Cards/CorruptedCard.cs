@@ -23,7 +23,7 @@ namespace AALUND13Card.Cards {
             gameObject.transform.localScale = localScale;
 
             string statGenName = $"CorruptedStatGenerator_{rarity}";
-            LoggerUtils.LogInfo($"[CorruptedCard] Generating card with seed {seed} and rarity {rarity} using stat generator {statGenName}");
+            LoggerUtils.LogInfo($"Generating card with seed {seed} and rarity {rarity} using stat generator {statGenName}");
 
             RandomStatHandler randomStatHandler = RandomStatManager.RandomStatHandlers[statGenName];
             GenerateCard(randomStatHandler, seed, randomStatRange);
@@ -34,11 +34,11 @@ namespace AALUND13Card.Cards {
             System.Random random = new System.Random(seed);
 
             randomStatHandler.GenerateRandomStats(random, "Corrupted Card", "A random description", randomStatRange.x, randomStatRange.y, null, null, (card, outputRandom) => {
-                LoggerUtils.LogInfo($"[CorruptedCard] Generated card with seed {seed} and rarity {Rarity} using stat generator {randomStatHandler.StatGenName}");
+                LoggerUtils.LogInfo($"Generated card with seed {seed} and rarity {Rarity} using stat generator {randomStatHandler.StatGenName}");
 
                 CardInfoStat[] stats = card.cardStats;
                 randomStatHandler.ApplyRandomStats(cardInfo, new System.Random(seed), "Corrupted Card", randomStatRange.x, randomStatRange.y);
-                LoggerUtils.LogInfo($"[CorruptedCard] Applied stats to card with seed {seed} and rarity {Rarity} using stat generator {randomStatHandler.StatGenName}");
+                LoggerUtils.LogInfo($"Applied stats to card with seed {seed} and rarity {Rarity} using stat generator {randomStatHandler.StatGenName}");
 
                 cardInfo.sourceCard = card;
                 cardInfo.cardStats = stats;
@@ -46,7 +46,7 @@ namespace AALUND13Card.Cards {
 
                 CardInfoDisplayer cardInfoDisplayer = cardInfo.GetComponentInChildren<CardInfoDisplayer>();
                 cardInfoDisplayer.DrawCard(stats, "Corrupted Card", "A random description");
-                LoggerUtils.LogInfo($"[CorruptedCard] Displayed card with seed {seed} and rarity {Rarity} using stat generator {randomStatHandler.StatGenName}");
+                LoggerUtils.LogInfo($"Displayed card with seed {seed} and rarity {Rarity} using stat generator {randomStatHandler.StatGenName}");
             });
         }
     }

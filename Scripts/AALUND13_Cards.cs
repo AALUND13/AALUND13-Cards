@@ -26,7 +26,6 @@ namespace AALUND13Card {
     [BepInDependency("root.classes.manager.reborn")]
     [BepInDependency("com.aalund13.rounds.jarl")]
     [BepInDependency("com.willuwontu.rounds.managers")]
-    [BepInDependency("com.Root.Null")]
 
     [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
 
