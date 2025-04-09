@@ -1,6 +1,5 @@
 ﻿using AALUND13Card.Cards;
 using AALUND13Card.RandomStatGenerators;
-using JARL.Bases;
 using Photon.Pun;
 using RarityLib.Utils;
 using System;
@@ -20,10 +19,10 @@ namespace AALUND13Card.Scripts {
             }
         }
 
-        public void GiveCorruptedCard(Player player, CardRarity cardRarity) {
-            string statGenName = $"CorruptedStatGenerator_{cardRarity}";
+        public void GiveCorruptedCard(Player player, string rarity) {
+            string statGenName = $"CorruptedStatGenerator_{rarity}";
             if(!RandomStatManager.RandomStatHandlers.ContainsKey(statGenName)) {
-                throw new ArgumentException($"Stat generator for rarity {cardRarity} not found");
+                throw new ArgumentException($"Stat generator for rarity {rarity} not found");
             }
 
             RandomStatManager.CreateRandomStatsCard(statGenName, "Corrupted Card", "A random description", 1, 3, player);
