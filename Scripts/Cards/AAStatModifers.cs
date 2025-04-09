@@ -4,7 +4,6 @@ using AALUND13Card.Handlers;
 using AALUND13Card.Handlers.ExtraPickHandlers;
 using AALUND13Card.MonoBehaviours;
 using JARL.Armor;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AALUND13Card.Cards {
@@ -27,7 +26,8 @@ namespace AALUND13Card.Cards {
         public float SoulArmorPercentage = 0;
         public float SoulArmorPercentageRegenRate = 0;
 
-        public float SoulDrainMultiply = 0;
+        public float SoulDrainDamageMultiply = 0;
+        public float SoulDrainLifestealMultiply = 0;
 
         public AbilityType AbilityType;
 
@@ -65,7 +65,8 @@ namespace AALUND13Card.Cards {
             additionalData.SoulStreakStats.SoulArmorPercentage += SoulArmorPercentage;
             additionalData.SoulStreakStats.SoulArmorPercentageRegenRate += SoulArmorPercentageRegenRate;
 
-            additionalData.SoulStreakStats.SoulDrainMultiply += SoulDrainMultiply;
+            additionalData.SoulStreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
+            additionalData.SoulStreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
 
             additionalData.SoulStreakStats.AbilityType |= AbilityType;
 

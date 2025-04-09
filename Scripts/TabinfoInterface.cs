@@ -44,8 +44,8 @@ namespace AALUND13Card {
                 (p) => $"{p.data.GetAdditionalData().SoulStreakStats.SoulArmorPercentageRegenRate * 100:0}%");
 
             // Soul Drain
-            TabInfoManager.RegisterStat(category, "Soul Drain Multiply", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.SoulDrainMultiply != 0,
-                               (p) => $"{p.data.GetAdditionalData().SoulStreakStats.SoulDrainMultiply * 100:0}%");
+            TabInfoManager.RegisterStat(category, "Soul Drain DPS Factor", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.SoulDrainDPSFactor != 0,
+                               (p) => $"{p.data.GetAdditionalData().SoulStreakStats.SoulDrainDPSFactor * 100:0}%");
 
             // Souls
             TabInfoManager.RegisterStat(category, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().Souls != 0,

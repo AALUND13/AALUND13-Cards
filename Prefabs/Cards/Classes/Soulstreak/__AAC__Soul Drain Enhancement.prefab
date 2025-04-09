@@ -52,13 +52,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Soul Drain Enhancement
-  cardDestription: This card enhances your soul drain by adding +5% to your damage
-    for soul drain.
+  cardDestription: This card enhances your soul drain by adding +5% soul drain dps.
   cardStats:
   - positive: 1
-    amount: +5% Your Damage
+    amount: +5% Your DPS
     simepleAmount: 0
-    stat: Of Soul Drain
+    stat: For Soul Drain DPS
   - positive: 1
     amount: +10%
     simepleAmount: 0
@@ -323,7 +322,8 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  SoulDrainMultiply: 0.05
+  SoulDrainDamageMultiply: 0.05
+  SoulDrainLifestealMultiply: 0
   AbilityType: 0
   SecondToDealDamage: 0
   BattleforgedArmor: 0

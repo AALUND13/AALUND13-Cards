@@ -29,7 +29,8 @@ namespace AALUND13Card.MonoBehaviours {
             SoulArmorPercentage = 0,
             SoulArmorPercentageRegenRate = 0,
 
-            SoulDrainMultiply = 0;
+            SoulDrainDPSFactor = 0,
+            SoulDrainLifestealMultiply = 0;
 
         public AbilityType AbilityType;
     }

@@ -11319,7 +11319,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5030356124992742541}
-  - component: {fileID: 4923888109941216246}
   - component: {fileID: 4924517182837587647}
   - component: {fileID: 4924083876466970784}
   - component: {fileID: 4924335045461174353}
@@ -11350,22 +11349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &4923888109941216246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5028120881987239697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2bd859302a0443418026d4d81069a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundDamage: {fileID: 11400000, guid: a89547a30efd39c41882078365653856, type: 2}
-  damage: 5
-  lethal: 1
-  targetPlayer: 1
 --- !u!114 &4924517182837587647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11452,19 +11435,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4923888109941216246}
-        m_MethodName: Go
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5342612660985379769}
-        m_MethodName: Heal
+        m_MethodName: TriggerDamage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11530,6 +11502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7239fff9cbb1a74fb388e37b127e0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundDamage: {fileID: 11400000, guid: a89547a30efd39c41882078365653856, type: 2}
 --- !u!114 &114023138268451816
 MonoBehaviour:
   m_ObjectHideFlags: 0
