@@ -1,16 +1,11 @@
-﻿using AALUND13Card.Cards;
-using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Card.MonoBehaviours;
 using FancyCardBar;
 using RarityLib.Utils;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AALUND13Card.RandomStatGenerators.Generators {
-    internal class CorruptedStatGenerator {
-        public static List<CardInfo> CorruptedCards => AALUND13_Cards.CardResgester != null ? AALUND13_Cards.CardResgester.Cards
-            .FindAll(c => c.GetComponent<CorruptedCard>() != null)
-            .Select(c => c.GetComponent<CardInfo>())
-            .ToList() : new List<CardInfo>();
+    public static class CorruptedStatGenerator {
+        public static List<CardInfo> CorruptedCards = new List<CardInfo>();
 
         public static void RegisterCorruptedStatGenerators() {
             // Trinket stats
@@ -26,6 +21,8 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Trinket");
+
+                CorruptedCards.Add(card);
             };
 
             // Common stats
@@ -42,6 +39,9 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
             }).OnCardGenerated += (card, random) => {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
+                card.rarity = RarityUtils.GetRarity("Common");
+
+                CorruptedCards.Add(card);
             };
 
             // Scarce stats
@@ -60,6 +60,8 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Scarce");
+
+                CorruptedCards.Add(card);
             };
 
             // Uncommon stats
@@ -78,7 +80,9 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
             }).OnCardGenerated += (card, random) => {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
-                card.rarity = CardInfo.Rarity.Uncommon;
+                card.rarity = RarityUtils.GetRarity("Uncommon");
+
+                CorruptedCards.Add(card);
             };
 
             // Exotic stats
@@ -98,6 +102,8 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Exotic");
+
+                CorruptedCards.Add(card);
             };
 
             // Rare stats
@@ -117,7 +123,9 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
             }).OnCardGenerated += (card, random) => {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
-                card.rarity = CardInfo.Rarity.Rare;
+                card.rarity = RarityUtils.GetRarity("Rare");
+
+                CorruptedCards.Add(card);
             };
 
             // Epic stats
@@ -139,6 +147,8 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Epic");
+
+                CorruptedCards.Add(card);
             };
 
             // Legendary stats
@@ -160,6 +170,8 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Legendary");
+
+                CorruptedCards.Add(card);
             };
 
             // Mythical stats
@@ -175,12 +187,14 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 new RegenStatGenerator(0, 65),
                 new AdditionalBlocksStatGenerator(0, 1f),
                 new JumpStatGenerator(0f, 2.5f),
-                new ExtraLiveStatGenerator(0, 0.909090909091f), // '0.909090909091' is '45%' chance to gain an extra life
+                new ExtraLiveStatGenerator(0, 1f), // '0.909090909091' is '45%' chance to gain an extra life
                 new GlitchedCardSpawnedChanceStatGenerator(-0.4f, 0.4f)
             }).OnCardGenerated += (card, random) => {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Mythical");
+
+                CorruptedCards.Add(card);
             };
 
             // Divine stats
@@ -202,23 +216,17 @@ namespace AALUND13Card.RandomStatGenerators.Generators {
                 card.gameObject.AddComponent<FancyIcon>().fancyIcon = AALUND13_Cards.CorruptedCardFancyIconPrefab;
                 card.gameObject.AddComponent<GlitchingCardEffect>();
                 card.rarity = RarityUtils.GetRarity("Divine");
+
+                CorruptedCards.Add(card);
             };
         }
-        //public static void BuildGlitchedCard() {
-        //    System.Random random = new System.Random(AALUND13_Cards.Version.GetHashCode());
-        //    for(int i = 0; i < 100; i++) {
-        //        RandomStatManager.CreateRandomStatsCard("CorruptedStatGenerator_Common", random.Next(), "Corrupted Card", "A random description", 1, 3);
-        //    }
-        //    for(int i = 0; i < 75; i++) {
-        //        RandomStatManager.CreateRandomStatsCard("CorruptedStatGenerator_Uncommon", random.Next(), "Corrupted Card", "A random description", 1, 4);
-        //    }
-        //    for(int i = 0; i < 50; i++) {
-        //        RandomStatManager.CreateRandomStatsCard("CorruptedStatGenerator_Rare", random.Next(), "Corrupted Card", "A random description", 1, 5);
-        //    }
-        //    for(int i = 0; i < 25; i++) {
-        //        RandomStatManager.CreateRandomStatsCard("CorruptedStatGenerator_Legendary", random.Next(), "Corrupted Card", "A random description", 2, 6);
-        //    }
 
-        //}
+        public static bool IsCorruptedCard(CardInfo card) {
+            if(card.sourceCard != null) {
+                return CorruptedCards.Contains(card.sourceCard);
+            } else {
+                return CorruptedCards.Contains(card);
+            }
+        }
     }
 }

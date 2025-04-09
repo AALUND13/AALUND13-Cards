@@ -40,18 +40,6 @@ namespace AALUND13Card.RandomStatGenerators {
         public static void CreateRandomStatsCard(string statGenName, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null, string twoLetterCode = null) {
             RandomSyncSeed.Invoke(statGenName, cardName, cardDescription, minRandomStat, maxRandomStat, player?.playerID ?? -1, twoLetterCode);
         }
-
-        // IEnumerator method first Create a random card with the given parameters and then wait for it to be generated
-        public static IEnumerator CreateRandomStatsCardCoroutine(string statGenName, string cardName, string cardDescription, int minRandomStat, int maxRandomStat, Player player = null, string twoLetterCode = null) {
-            int lastCardCount = GetGeneratedCards(statGenName).Count;
-            if (PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
-                CreateRandomStatsCard(statGenName, cardName, cardDescription, minRandomStat, maxRandomStat, player, twoLetterCode);
-            }
-
-            while(GetGeneratedCards(statGenName).Count <= lastCardCount) {
-                yield return null;
-            }
-        }
     }
 
     public class RandomStatHandler {
