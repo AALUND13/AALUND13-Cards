@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4904866182938917399}
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
-  - component: {fileID: 219239468987744106}
+  - component: {fileID: 114203408726523956}
+  - component: {fileID: 114729959749941734}
   m_Layer: 0
   m_Name: __AAC__RollOfTheDice
   m_TagString: Untagged
@@ -266,7 +267,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &219239468987744106
+--- !u!114 &114203408726523956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,7 +276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7891c6eef356d8409f44fd767a4ef7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
@@ -283,9 +284,27 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardClassType: 0
+  CardLimit: 0
+  RequiredClass: {fileID: 0}
+  RequiredClassTree: []
+  CardRarity: 0
+  CardRarityCustom: 
   CanBeReassigned: 0
+  IsHidden: 0
+--- !u!114 &114729959749941734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75875ace1af68f44a809baeebced7bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   randomCardsToChoseFrom:
   - {fileID: 7451438178602277890, guid: 1c63b366f085e014c93f5ca5df2c3add, type: 3}
   - {fileID: 4414326956795446328, guid: 0b40e9c12127216438620752973e2cca, type: 3}
@@ -293,3 +312,4 @@ MonoBehaviour:
   - {fileID: 3773405924563542092, guid: 68330b21558495e43abdae9a9beb89e3, type: 3}
   - {fileID: 5647749677671276803, guid: a6901a58c9b86ec4187a689da3b0161f, type: 3}
   - {fileID: 3064542637086822442, guid: 3885ebf76e05d9a4f802687836c5c3fc, type: 3}
+  cardCount: 1
