@@ -16,6 +16,8 @@ namespace AALUND13Card {
                 (p) => $"{p.data.GetAdditionalData().CorruptedCardSpawnChancePerPick * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "Delay Damage", (p) => p.data.GetAdditionalData().secondToDealDamage != 0,
                 (p) => $"{p.data.GetAdditionalData().secondToDealDamage} seconds");
+            TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
+                (p) => $"{p.GetDPS()}");
 
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);
 
