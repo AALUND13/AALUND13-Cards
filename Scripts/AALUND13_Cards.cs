@@ -15,7 +15,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Metadata;
 using UnboundLib.GameModes;
 using UnityEngine;
 
@@ -100,7 +99,6 @@ namespace AALUND13Card {
                 TabinfoInterface.Setup();
             }
 
-            //CorruptedStatGenerator.BuildGlitchedCard();
             gameObject.AddComponent<DelayDamageHandler>();
         }
 

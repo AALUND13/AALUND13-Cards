@@ -13,6 +13,8 @@ namespace AALUND13Card.Patches {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             var characterAdditionalData = data.GetAdditionalData();
 
+            
+
             if(characterAdditionalData.secondToDealDamage > 0 && !characterAdditionalData.dealDamage) {
                 Vector2 damageCopy = new Vector2(damage.x, damage.y);
                 __instance.gameObject.GetOrAddComponent<DelayDamageHandler>().DelayDamage(damageCopy, position, blinkColor, damagingWeapon, damagingPlayer, healthRemoval, lethal, ignoreBlock);

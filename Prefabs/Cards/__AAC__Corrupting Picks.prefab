@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Corrupting Picks
-  cardDestription: You get a extra picks every pick phase, But something wrong with
-    the hand...
+  cardDestription: You get a extra picks every pick phase, But your hand slowing get
+    corrupted by the <glitch>Void</glitch>.
   cardStats:
   - positive: 1
     amount: +1
@@ -295,7 +295,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardType: 0
+  CardClassType: 0
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
@@ -323,7 +323,8 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  SoulDrainMultiply: 0
+  SoulDrainDamageMultiply: 0
+  SoulDrainLifestealMultiply: 0
   AbilityType: 0
   SecondToDealDamage: 0
   BattleforgedArmor: 0

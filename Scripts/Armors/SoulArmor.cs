@@ -14,6 +14,7 @@ namespace AALUND13Card.Armors {
             if(soulstreak != null) {
                 MaxArmorValue = 0;
                 CurrentArmorValue = 0;
+
                 soulstreak.AbilityCooldown = 0;
                 soulstreak.AbilityActive = false;
             }

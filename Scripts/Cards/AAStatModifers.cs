@@ -71,6 +71,9 @@ namespace AALUND13Card.Cards {
             additionalData.SoulStreakStats.AbilityType |= AbilityType;
 
             // Apply Uncategorized Stats
+            if(SecondToDealDamage > 0) {
+                additionalData.dealDamage = false;
+            }
             additionalData.secondToDealDamage += SecondToDealDamage;
 
             // Apply Extra Cards Stats
