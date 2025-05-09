@@ -19,6 +19,10 @@ public class GridManager : MonoBehaviour {
     private float nodeDiameter;
     private Vector2 bottomLeft;
     private int gridSizeX, gridSizeY;
+    static readonly (int dx, int dy)[] NeighborsOffsets = {
+      (-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)
+    };
+
 
     private int gridIndex;
     private int NodesPerFrame => gridSizeX * gridSizeY / NodesBatchSize;
@@ -90,21 +94,32 @@ public class GridManager : MonoBehaviour {
         }
     }
 
-    public Node NodeFromWorldPoint(Vector2 worldPos) {
+    public Node NodeFromWorldPoint(Node[,] grid, Vector2 worldPos) {
         float px = Mathf.Clamp01((worldPos.x - bottomLeft.x) / (gridSizeX * nodeDiameter));
         float py = Mathf.Clamp01((worldPos.y - bottomLeft.y) / (gridSizeY * nodeDiameter));
         int x = Mathf.RoundToInt((gridSizeX - 1) * px);
         int y = Mathf.RoundToInt((gridSizeY - 1) * py);
         return grid[x, y];
     }
-    public List<Node> GetNeighbors(Node node) {
-        var neighbors = new List<Node>();
-        foreach(int index in node.neighborIndices) {
-            int x = index / gridSizeY;
-            int y = index % gridSizeY;
-            neighbors.Add(grid[x, y]);
+
+    public List<Node> GetNeighbors(Node[,] grid, Node node) {
+        var result = new List<Node>(8);
+        for(int i = 0; i < NeighborsOffsets.Length; i++) {
+            int nx = node.gridX + NeighborsOffsets[i].dx, ny = node.gridY + NeighborsOffsets[i].dy;
+            if(nx >= 0 && nx < gridSizeX && ny >= 0 && ny < gridSizeY)
+                result.Add(grid[nx, ny]);
         }
-        return neighbors;
+        return result;
+    }
+
+    public Node[,] CloneGrid() {
+        Node[,] clone = new Node[gridSizeX, gridSizeY];
+        for(int x = 0; x < gridSizeX; x++) {
+            for(int y = 0; y < gridSizeY; y++) {
+                clone[x, y] = new Node(grid[x, y]);
+            }
+        }
+        return clone;
     }
 
     void OnDrawGizmos() {

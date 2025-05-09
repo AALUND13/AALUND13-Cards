@@ -8,7 +8,8 @@ public class Node : IHeapItem<Node> {
     public bool walkable;
     public int[] neighborIndices;
 
-    public int gCost, hCost;
+    public int gCost = int.MaxValue;
+    public int hCost = 0;
     public Node parent;
     public int fCost => gCost + hCost;
 
@@ -16,6 +17,14 @@ public class Node : IHeapItem<Node> {
     public int HeapIndex {
         get => heapIndex;
         set => heapIndex = value;
+    }
+
+    public Node(Node other) {
+        this.worldPosition = other.worldPosition;
+        this.gridX = other.gridX;
+        this.gridY = other.gridY;
+        this.walkable = other.walkable;
+        this.neighborIndices = other.neighborIndices;
     }
 
     public Node(Vector2 worldPos, int x, int y, bool walkable, List<int> neighborIndices) {

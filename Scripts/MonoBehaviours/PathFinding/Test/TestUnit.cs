@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours.PathFinding.Test {
     internal class TestUnit : MonoBehaviour {
@@ -7,7 +8,7 @@ namespace AALUND13Card.MonoBehaviours.PathFinding.Test {
         private Vector2[] path;
 
         private void Start() {
-            PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+            PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
         }
 
         private void OnPathFound(Vector2[] newPath, bool success) {
@@ -19,7 +20,12 @@ namespace AALUND13Card.MonoBehaviours.PathFinding.Test {
                 UnityEngine.Debug.Log("Path not found!");
             }
 
-            PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+            StartCoroutine(WaitBeforeRequestingPath(0.5f));
+        }
+
+        private IEnumerator WaitBeforeRequestingPath(float waitTime) {
+            yield return new WaitForSeconds(waitTime);
+            PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
         }
 
         private void OnDrawGizmos() {
@@ -32,8 +38,10 @@ namespace AALUND13Card.MonoBehaviours.PathFinding.Test {
                     }
                 }
 
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(transform.position, path[0]);
+                if(path.Length > 0) {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawLine(transform.position, path[0]);
+                }
             }
         }
     }
