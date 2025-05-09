@@ -121,6 +121,7 @@ namespace AALUND13Card {
             }
             yield break;
         }
+
         void OnPlayerDeath(Player player, Dictionary<Player, DamageInfo> playerDamageInfos) {
             if(player.GetComponent<DelayDamageHandler>() != null) {
                 player.GetComponent<DelayDamageHandler>().StopAllCoroutines();
