@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours.PathFinding {
-
-
     [RequireComponent(typeof(PathRequestManager), typeof(GridManager))]
     public class Pathfinding : MonoBehaviour {
         PathRequestManager pathRequestManager;

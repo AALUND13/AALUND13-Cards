@@ -9,10 +9,9 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
         public int threadId;
         public bool isRunning;
 
-        Pathfinding pathfinding;
-
-        Queue<PathRequest> pathfindingRequests = new Queue<PathRequest>();
-        Queue<PathResult> pathfindingResults = new Queue<PathResult>();
+        private readonly Pathfinding pathfinding;
+        private readonly Queue<PathRequest> pathfindingRequests = new Queue<PathRequest>();
+        private readonly Queue<PathResult> pathfindingResults = new Queue<PathResult>();
 
         public PathfindingThread(int threadId, Pathfinding pathfinding) {
             this.threadId = threadId;
@@ -32,18 +31,15 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
 
         public void RunThread(object id) {
             int threadId = (int)id;
-            UnityEngine.Debug.Log($"Pathfinding thread {threadId} started.");
-
+            
             while(isRunning) {
                 if(pathfindingRequests.Count > 0) {
                     PathRequest request;
                     lock(pathfindingRequests) {
-                        UnityEngine.Debug.Log($"Thread {threadId} processing request.");
                         request = pathfindingRequests.Dequeue();
                     }
 
                     pathfinding.FindPath(request, FinishedProcessingPath);
-                    UnityEngine.Debug.Log($"Thread {threadId} finished processing request.");
                 } else {
                     Thread.Sleep(IDLE_SLEEP);
                 }

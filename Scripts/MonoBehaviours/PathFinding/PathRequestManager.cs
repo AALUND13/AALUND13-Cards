@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 namespace AALUND13Card.MonoBehaviours.PathFinding {
@@ -37,7 +36,7 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
             }
         }
 
-        
+
         public void StartThreads() {
             pathfindingThreads = new PathfindingThread[Threads];
             for(int i = 0; i < Threads; i++) {
@@ -58,12 +57,18 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
                 }
             }
         }
+
+        private void OnDestroy() {
+            for(int i = 0; i < Threads; i++) {
+                pathfindingThreads[i].StopThread();
+            }
+        }
     }
 
     public struct PathRequest {
         public Vector2 startPos;
         public Vector2 endPos;
-        
+
         public Action<Vector2[], bool> callback;
         public PathRequest(Vector2 start, Vector2 end, Action<Vector2[], bool> callback) {
             this.startPos = start;
