@@ -16,10 +16,12 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
         [Header("Debug")]
         public bool showGridGizmos = true;
 
+        public int gridSizeX { get; private set; }
+        public int gridSizeY { get; private set; }
+
         private Node[,] grid;
         private float nodeDiameter;
         private Vector2 bottomLeft;
-        private int gridSizeX, gridSizeY;
         static readonly (int dx, int dy)[] NeighborsOffsets = {
       (-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)
     };

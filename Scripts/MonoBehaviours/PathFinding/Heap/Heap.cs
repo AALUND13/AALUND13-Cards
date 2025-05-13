@@ -38,10 +38,8 @@ namespace AALUND13Card.MonoBehaviours.PathFinding.Heap {
             while(true) {
                 int leftChild = item.HeapIndex * 2 + 1;
                 int rightChild = item.HeapIndex * 2 + 2;
-                int swapIndex = -1;
-
                 if(leftChild < currentItemCount) {
-                    swapIndex = leftChild;
+                    int swapIndex = leftChild;
                     if(rightChild < currentItemCount &&
                         items[rightChild].CompareTo(items[leftChild]) < 0) {
                         swapIndex = rightChild;

@@ -12,7 +12,7 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
         public int gCost = int.MaxValue;
         public int hCost = 0;
         public Node parent;
-        public int fCost => gCost + hCost;
+        public int FCost => gCost + hCost;
 
         int heapIndex;
         public int HeapIndex {
@@ -37,7 +37,7 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
         }
 
         public int CompareTo(Node other) {
-            int cmp = fCost.CompareTo(other.fCost);
+            int cmp = FCost.CompareTo(other.FCost);
             if(cmp == 0)
                 cmp = hCost.CompareTo(other.hCost);
             return cmp;

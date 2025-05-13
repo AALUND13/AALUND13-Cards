@@ -31,19 +31,25 @@ namespace AALUND13Card.MonoBehaviours.PathFinding {
 
         public void RunThread(object id) {
             int threadId = (int)id;
-            
-            while(isRunning) {
-                if(pathfindingRequests.Count > 0) {
-                    PathRequest request;
-                    lock(pathfindingRequests) {
-                        request = pathfindingRequests.Dequeue();
-                    }
 
-                    pathfinding.FindPath(request, FinishedProcessingPath);
-                } else {
-                    Thread.Sleep(IDLE_SLEEP);
+            UnityEngine.Debug.Log($"Thread {threadId} started.");
+            while(isRunning) {
+                try {
+                    if(pathfindingRequests.Count > 0) {
+                        PathRequest request;
+                        lock(pathfindingRequests) {
+                            request = pathfindingRequests.Dequeue();
+                        }
+
+                        pathfinding.FindPath(request, FinishedProcessingPath);
+                    } else {
+                        Thread.Sleep(IDLE_SLEEP);
+                    }
+                } catch(System.Exception e) {
+                    UnityEngine.Debug.LogError($"Thread {threadId} encountered an error: {e}");
                 }
             }
+            UnityEngine.Debug.Log($"Thread {threadId} stopped.");
         }
 
         public void AssignRequests(Queue<PathRequest> requests) {

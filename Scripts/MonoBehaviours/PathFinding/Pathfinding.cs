@@ -6,11 +6,9 @@ using UnityEngine;
 namespace AALUND13Card.MonoBehaviours.PathFinding {
     [RequireComponent(typeof(PathRequestManager), typeof(GridManager))]
     public class Pathfinding : MonoBehaviour {
-        PathRequestManager pathRequestManager;
         GridManager gridManager;
 
         private void Awake() {
-            pathRequestManager = GetComponent<PathRequestManager>();
             gridManager = GetComponent<GridManager>();
         }
 
