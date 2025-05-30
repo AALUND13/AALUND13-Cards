@@ -18,11 +18,5 @@ namespace AALUND13Card.Patches {
                 func.OnExtraPick(player, pickedCard.GetComponent<CardInfo>());
             }
         }
-
-        [HarmonyPatch("StartPick")]
-        private static void Prefix(int pickerIDToSet) {
-            Player player = PlayerManager.instance.GetPlayerWithID(pickerIDToSet);
-            player.data.GetAdditionalData().CorruptedCardSpawnChance += player.data.GetAdditionalData().CorruptedCardSpawnChancePerPick;
-        }
     }
 }

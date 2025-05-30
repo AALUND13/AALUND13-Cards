@@ -11,7 +11,9 @@
         "JARL",
         "RarityLib",
         "WillsWackyManagers",
-        "FancyCardBar"
+        "FancyCardBar",
+        "RandomCardsGenerator",
+        "CorruptedCardsManager"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

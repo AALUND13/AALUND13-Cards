@@ -10,10 +10,6 @@ namespace AALUND13Card {
                 (p) => $"{p.data.GetAdditionalData().RandomCardsAtStart}");
             TabInfoManager.RegisterStat(aaStatsCategory, "Extra Card Picks", (p) => p.data.GetAdditionalData().ExtraCardPicks != 0,
                 (p) => $"{p.data.GetAdditionalData().ExtraCardPicks}");
-            TabInfoManager.RegisterStat(aaStatsCategory, "Corrupted Card Spawn Chance", (p) => p.data.GetAdditionalData().CorruptedCardSpawnChance != 0,
-                (p) => $"{p.data.GetAdditionalData().CorruptedCardSpawnChance * 100:0}%");
-            TabInfoManager.RegisterStat(aaStatsCategory, "Corrupted Card Spawn Chance Per Pick", (p) => p.data.GetAdditionalData().CorruptedCardSpawnChancePerPick != 0,
-                (p) => $"{p.data.GetAdditionalData().CorruptedCardSpawnChancePerPick * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "Delay Damage", (p) => p.data.GetAdditionalData().secondToDealDamage != 0,
                 (p) => $"{p.data.GetAdditionalData().secondToDealDamage} seconds");
             TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,

@@ -45,10 +45,6 @@ namespace AALUND13Card.Cards {
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
 
-        [Header("Corrupted Cards")]
-        public float CorruptedCardSpawnChance = 0f;
-        public float CorruptedCardSpawnChancePerPick = 0f;
-
         public void Apply(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
@@ -80,10 +76,6 @@ namespace AALUND13Card.Cards {
             additionalData.RandomCardsAtStart += RandomCardsAtStart;
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
-            // Corrupted Glitched Cards Stats
-            additionalData.CorruptedCardSpawnChance = Mathf.Max(additionalData.CorruptedCardSpawnChance + CorruptedCardSpawnChance, 0);
-            additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
-
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor<BattleforgedArmor>(BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
             }
@@ -98,7 +90,6 @@ namespace AALUND13Card.Cards {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
 
-            additionalData.CorruptedCardSpawnChancePerPick += CorruptedCardSpawnChancePerPick;
             additionalData.ExtraCardPicks += ExtraCardPicks;
         }
 

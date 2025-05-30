@@ -2,8 +2,6 @@
 using AALUND13Card.Extensions;
 using AALUND13Card.Handlers;
 using AALUND13Card.MonoBehaviours;
-using AALUND13Card.RandomStatGenerators.Generators;
-using AALUND13Card.Scripts;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -71,8 +69,7 @@ namespace AALUND13Card {
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 
-            NegativeStatGenerator.RegisterNegativeStatGenerators();
-            CorruptedStatGenerator.RegisterCorruptedStatGenerators();
+            AACardsGenerators.RegisterGenerators();
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
@@ -81,7 +78,6 @@ namespace AALUND13Card {
         public void Start() {
             Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
-            Assets.LoadAsset<GameObject>("CorruptedCardManager").GetComponent<CorruptedCardManager>().Init();
             CardResgester = Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>();
             CardResgester.RegisterCards<AALUND13_Cards>("AAC");
 
@@ -106,7 +102,6 @@ namespace AALUND13Card {
             foreach(Player player in PlayerManager.instance.players) {
                 if(PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
                     player.data.GetAdditionalData().Souls = 0;
-                    player.data.GetAdditionalData().CorruptedCardSpawnChance = 0;
                 }
             }
             yield break;
