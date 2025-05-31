@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 114446284750240874}
   - component: {fileID: 114872248861204110}
   - component: {fileID: 114183907993328010}
-  - component: {fileID: 114204876372223932}
+  - component: {fileID: 114632712158575802}
   m_Layer: 0
   m_Name: __AAC__Corrupting Picks
   m_TagString: Untagged
@@ -333,8 +333,6 @@ MonoBehaviour:
   ExtraPicksType: 1
   RandomCardsAtStart: 0
   ExtraCardPicks: 1
-  CorruptedCardSpawnChance: 0
-  CorruptedCardSpawnChancePerPick: 0.025
 --- !u!114 &114183907993328010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +348,7 @@ MonoBehaviour:
   CorruptedCardSpawnChance: 0
   CorruptedCardSpawnChancePerPick: 0.025
   CorruptedCardSpawnChancePerFight: 0
---- !u!114 &114204876372223932
+--- !u!114 &114632712158575802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68075ae1a74f2d541a14cd65e0467ba4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ff7d6a69afbd0a4a9e7204c34f22769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseGlitchTag: 1
