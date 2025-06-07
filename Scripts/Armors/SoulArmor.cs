@@ -1,9 +1,9 @@
-﻿using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.MonoBehaviours;
 using JARL.Armor;
 using JARL.Armor.Bases;
 using UnityEngine;
 
-namespace AALUND13Card.Armors {
+namespace AALUND13Cards.Armors {
     public class SoulArmor : ArmorBase {
         public override BarColor GetBarColor() {
             return new BarColor(Color.magenta * 0.6f, Color.magenta * 0.45f);

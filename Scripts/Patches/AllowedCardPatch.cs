@@ -1,7 +1,7 @@
-﻿using AALUND13Card.Handlers;
+﻿using AALUND13Cards.Handlers;
 using HarmonyLib;
 
-namespace AALUND13Card.Patches {
+namespace AALUND13Cards.Patches {
     [HarmonyPatch(typeof(ModdingUtils.Utils.Cards), "PlayerIsAllowedCard")]
     public class AllowedCardPatch {
         private static void Postfix(Player player, CardInfo card, ref bool __result, ModdingUtils.Utils.Cards __instance) {

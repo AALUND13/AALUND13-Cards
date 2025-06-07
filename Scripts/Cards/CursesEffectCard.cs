@@ -1,9 +1,9 @@
-﻿using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.MonoBehaviours;
 using System.Collections.Generic;
 using UnityEngine;
 using WillsWackyManagers.Utils;
 
-namespace AALUND13Card.Cards {
+namespace AALUND13Cards.Cards {
     public class CursesEffectCard : AACustomCard {
 
         public List<Material> PostProcessingEffects = new List<Material>();

@@ -3,7 +3,7 @@ using Photon.Pun;
 using System.Collections.Generic;
 using UnboundLib;
 
-namespace AALUND13Card.Handlers.ExtraPickHandlers {
+namespace AALUND13Cards.Handlers.ExtraPickHandlers {
     public class SteelPickHandler : ExtraPickHandler {
         public override bool OnExtraPickStart(Player player, CardInfo card) {
             // Get all currest cards of other player

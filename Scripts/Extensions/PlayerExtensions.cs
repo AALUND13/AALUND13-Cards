@@ -1,7 +1,7 @@
 ﻿using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Extensions {
+namespace AALUND13Cards.Extensions {
     public static class PlayerExtensions {
         public static float GetDPS(this Player player) {
             float damage = player.data.weaponHandler.gun.damage

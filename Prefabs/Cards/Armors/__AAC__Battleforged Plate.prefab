@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Battleforged Plate
+  cardName: Battleforged Armor
   cardDestription: This armor gains <color=#00ff00>10%</color> of the damage taken
     as armor health, But <color=#ff0000>-50%</color> health.
   cardStats: []
   rarity: 1
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 3652933540651433932, guid: df3de9df3d77de9488d440898a95b537, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -285,11 +285,15 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardClassType: 0
+  CardLimit: 0
+  RequiredClass: {fileID: 0}
+  RequiredClassTree: []
   CardRarity: 8
   CardRarityCustom: 
   CanBeReassigned: 1
+  IsHidden: 0
 --- !u!114 &114203678359837342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +314,8 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  SoulDrainMultiply: 0
+  SoulDrainDamageMultiply: 0
+  SoulDrainLifestealMultiply: 0
   AbilityType: 0
   SecondToDealDamage: 0
   BattleforgedArmor: 100
@@ -318,5 +323,3 @@ MonoBehaviour:
   ExtraPicksType: 0
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
-  CorruptedCardSpawnChance: 0
-  CorruptedCardSpawnChancePerPick: 0

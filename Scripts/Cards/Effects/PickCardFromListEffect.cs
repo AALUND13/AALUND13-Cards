@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Cards.Effects {
+namespace AALUND13Cards.Cards.Effects {
     public class PickCardFromListEffect : OnAddedEffect {
         public List<GameObject> randomCardsToChoseFrom = new List<GameObject>();
         public int cardCount = 1;

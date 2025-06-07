@@ -1,12 +1,12 @@
-﻿using AALUND13Card.Armors;
-using AALUND13Card.Extensions;
-using AALUND13Card.Handlers;
-using AALUND13Card.Handlers.ExtraPickHandlers;
-using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.Armors;
+using AALUND13Cards.Extensions;
+using AALUND13Cards.Handlers;
+using AALUND13Cards.Handlers.ExtraPickHandlers;
+using AALUND13Cards.MonoBehaviours;
 using JARL.Armor;
 using UnityEngine;
 
-namespace AALUND13Card.Cards {
+namespace AALUND13Cards.Cards {
     public enum ExtraPicksType {
         None,
         Normal,

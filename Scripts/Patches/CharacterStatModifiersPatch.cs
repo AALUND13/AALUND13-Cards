@@ -1,10 +1,10 @@
-﻿using AALUND13Card.Extensions;
-using AALUND13Card.Handlers;
-using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.Extensions;
+using AALUND13Cards.Handlers;
+using AALUND13Cards.MonoBehaviours;
 using HarmonyLib;
 using UnityEngine;
 
-namespace AALUND13Card.Patches {
+namespace AALUND13Cards.Patches {
     [HarmonyPatch(typeof(CharacterStatModifiers))]
     public class CharacterStatModifiersPatch {
         [HarmonyPatch("ResetStats")]

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnboundLib.Networking;
 using UnboundLib;
 
-namespace AALUND13Card.Utils {
+namespace AALUND13Cards.Utils {
     public static class RandomSyncSeed {
         private static readonly System.Random Random = new System.Random();
 

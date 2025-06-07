@@ -1,8 +1,8 @@
-﻿using AALUND13Card.Extensions;
-using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.Extensions;
+using AALUND13Cards.MonoBehaviours;
 using TabInfo.Utils;
 
-namespace AALUND13Card {
+namespace AALUND13Cards {
     public class TabinfoInterface {
         public static void Setup() {
             var aaStatsCategory = TabInfoManager.RegisterCategory("AA Stats", 6);

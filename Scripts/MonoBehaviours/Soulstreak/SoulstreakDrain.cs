@@ -1,9 +1,9 @@
-﻿using AALUND13Card.Extensions;
+﻿using AALUND13Cards.Extensions;
 using Sonigon;
 using SoundImplementation;
 using UnityEngine;
 
-namespace AALUND13Card.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours {
     public class SoulstreakDrain : MonoBehaviour {
         [Header("Sounds")]
         public SoundEvent SoundDamage;

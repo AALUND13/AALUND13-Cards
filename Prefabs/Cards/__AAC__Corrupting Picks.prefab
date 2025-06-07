@@ -66,7 +66,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: <glitch>Unknow</glitch> per pick
   rarity: 2
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6788372332091249553, guid: 02e3da83b385a444b93e9da3b442d0c3, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -74,7 +74,7 @@ MonoBehaviour:
   allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 4
+  colorTheme: 3
 --- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0

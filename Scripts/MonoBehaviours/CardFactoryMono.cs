@@ -1,5 +1,5 @@
-﻿using AALUND13Card;
-using AALUND13Card.Extensions;
+﻿using AALUND13Cards;
+using AALUND13Cards.Extensions;
 using ModdingUtils.GameModes;
 using Photon.Pun;
 using UnboundLib;

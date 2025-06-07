@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards
   Author: AALUND13
-  Version: 1.7.0
+  Version: 1.9.0
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Explore a collection of unique cards crafted by 'AALUND13'. If you
     encounter any issues, please report them on the GitHub page.
@@ -33,7 +33,7 @@ MonoBehaviour:
   - willuwontu-WillsWackyManagers-1.5.13
   - RS_Mind-FancyCardBar-1.3.2
   - AALUND13-RandomCardsGenerator-1.0.0
-  - AALUND13-CorruptedCardsManager-1.0.0
+  - AALUND13-CorruptedCardsManager-1.0.1
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   IncludeInAllExports: 1

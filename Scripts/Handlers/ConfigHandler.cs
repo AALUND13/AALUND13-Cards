@@ -4,7 +4,7 @@ using UnboundLib;
 using UnboundLib.Utils.UI;
 using UnityEngine;
 
-namespace AALUND13Card.Handlers {
+namespace AALUND13Cards.Handlers {
     internal class ConfigHandler {
         public static ConfigEntry<bool> DetailsMode;
         public static ConfigEntry<bool> DebugMode;

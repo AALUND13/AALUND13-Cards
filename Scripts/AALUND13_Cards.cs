@@ -1,7 +1,7 @@
-﻿using AALUND13Card.Armors;
-using AALUND13Card.Extensions;
-using AALUND13Card.Handlers;
-using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.Armors;
+using AALUND13Cards.Extensions;
+using AALUND13Cards.Handlers;
+using AALUND13Cards.MonoBehaviours;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -16,7 +16,7 @@ using System.Reflection;
 using UnboundLib.GameModes;
 using UnityEngine;
 
-namespace AALUND13Card {
+namespace AALUND13Cards {
     [BepInDependency("com.willis.rounds.unbound")]
     [BepInDependency("pykess.rounds.plugins.moddingutils")]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch")]
@@ -35,8 +35,8 @@ namespace AALUND13Card {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.7.0"; // What version are we on (major.minor.patch)?
-
+        internal const string Version = "1.9.0"; // What version are we on (major.minor.patch)?
+        
         public static AALUND13_Cards Instance { get; private set; }
 
         internal static List<BaseUnityPlugin> Plugins;
@@ -65,7 +65,7 @@ namespace AALUND13Card {
 
             BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
             CorruptedCardFancyIconPrefab = Assets.LoadAsset<GameObject>("I_Corrupted");
-
+            
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 

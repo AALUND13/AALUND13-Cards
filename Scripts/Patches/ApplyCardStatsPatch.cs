@@ -1,7 +1,7 @@
-﻿using AALUND13Card.Cards;
+﻿using AALUND13Cards.Cards;
 using HarmonyLib;
 
-namespace AALUND13Card.Patches {
+namespace AALUND13Cards.Patches {
     [HarmonyPatch(typeof(ApplyCardStats), "ApplyStats")]
     public class ApplyCardStatsPatch {
         public static void Postfix(ApplyCardStats __instance, Player ___playerToUpgrade) {

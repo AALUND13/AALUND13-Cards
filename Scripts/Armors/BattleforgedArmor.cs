@@ -3,7 +3,7 @@ using JARL.Armor.Bases;
 using JARL.Armor.Utlis;
 using UnityEngine;
 
-namespace AALUND13Card.Armors {
+namespace AALUND13Cards.Armors {
     public class BattleforgedArmor : ArmorBase {
         public override BarColor GetBarColor() {
             return new BarColor(Color.yellow * 0.6f, Color.yellow * 0.45f);

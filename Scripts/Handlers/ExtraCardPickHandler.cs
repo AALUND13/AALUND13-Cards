@@ -8,7 +8,7 @@ using UnboundLib.GameModes;
 using UnboundLib.Networking;
 using UnityEngine;
 
-namespace AALUND13Card.Handlers {
+namespace AALUND13Cards.Handlers {
     public class ExtraPickHandler {
         public virtual bool OnExtraPickStart(Player player, CardInfo card) {
             return true;

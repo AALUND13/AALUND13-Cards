@@ -2,7 +2,7 @@
 using RandomCardsGenerators;
 using RandomCardsGenerators.StatsGroup;
 
-namespace AALUND13Card {
+namespace AALUND13Cards {
     public enum AACardsGeneratorType {
         CardFactoryGenerator,
     }

@@ -68,7 +68,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Block CD
   rarity: 2
-  cardArt: {fileID: 4445684221163458179, guid: ee63fe61a01099a4baef34856af1a738, type: 3}
+  cardArt: {fileID: 3792706242500395005, guid: c3418af57a8ac774c9d7976c386124d1, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -327,7 +327,8 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0.3
   SoulArmorPercentageRegenRate: 0
-  SoulDrainMultiply: 0
+  SoulDrainDamageMultiply: 0
+  SoulDrainLifestealMultiply: 0
   AbilityType: 1
   SecondToDealDamage: 0
   BattleforgedArmor: 0
@@ -335,5 +336,3 @@ MonoBehaviour:
   ExtraPicksType: 0
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
-  CorruptedCardSpawnChance: 0
-  CorruptedCardSpawnChancePerPick: 0

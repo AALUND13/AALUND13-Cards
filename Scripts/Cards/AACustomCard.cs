@@ -1,7 +1,7 @@
-﻿using AALUND13Card.Cards.Effects;
+﻿using AALUND13Cards.Cards.Effects;
 using JARL.Bases;
 
-namespace AALUND13Card.Cards {
+namespace AALUND13Cards.Cards {
     public class AACustomCard : CustomUnityCard {
         public override void OnSetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block) {
             LoggerUtils.LogInfo($"[{GetModName()}][Card] {GetTitle()} has been setup.");

@@ -1,9 +1,9 @@
-﻿using AALUND13Card.Extensions;
+﻿using AALUND13Cards.Extensions;
 using ModdingUtils.GameModes;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Card.Handlers {
+namespace AALUND13Cards.Handlers {
     public class DelayDamageHandler : MonoBehaviour, IBattleStartHookHandler {
         public Player player;
 

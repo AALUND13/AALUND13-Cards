@@ -2,7 +2,7 @@
 using UnboundLib.GameModes;
 using UnityEngine;
 
-namespace AALUND13Card.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours {
     [ExecuteInEditMode]
     [RequireComponent(typeof(Camera))]
     public class Effect : MonoBehaviour {

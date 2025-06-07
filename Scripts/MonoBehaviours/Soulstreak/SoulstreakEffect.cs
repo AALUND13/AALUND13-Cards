@@ -1,8 +1,8 @@
-﻿using AALUND13Card.Extensions;
+﻿using AALUND13Cards.Extensions;
 using ModdingUtils.GameModes;
 using ModdingUtils.MonoBehaviours;
 
-namespace AALUND13Card.MonoBehaviours.Soulstreak {
+namespace AALUND13Cards.MonoBehaviours.Soulstreak {
     public class SoulstreakEffect : ReversibleEffect, IPickStartHookHandler, IGameStartHookHandler {
         public override void OnStart() {
             InterfaceGameModeHooksManager.instance.RegisterHooks(this);

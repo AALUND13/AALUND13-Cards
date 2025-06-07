@@ -1,8 +1,8 @@
-﻿using AALUND13Card.MonoBehaviours;
+﻿using AALUND13Cards.MonoBehaviours;
 using System;
 using System.Runtime.CompilerServices;
 
-namespace AALUND13Card.Extensions {
+namespace AALUND13Cards.Extensions {
     public class AALUND13CardCharacterDataAdditionalData {
         // Delayed Damage
         public float secondToDealDamage = 0;

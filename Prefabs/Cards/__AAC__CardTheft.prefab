@@ -56,7 +56,7 @@ MonoBehaviour:
     can steel.
   cardStats: []
   rarity: 0
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 8018227539916861486, guid: 160b465f76278654099058ec6f8fbad6, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -285,11 +285,15 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  AutomatedlyCreateClass: 1
   OverrideClassName: 
+  CardClassType: 0
+  CardLimit: 0
+  RequiredClass: {fileID: 0}
+  RequiredClassTree: []
   CardRarity: 8
   CardRarityCustom: 
   CanBeReassigned: 0
+  IsHidden: 0
 --- !u!114 &114872248861204110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +314,8 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  SoulDrainMultiply: 0
+  SoulDrainDamageMultiply: 0
+  SoulDrainLifestealMultiply: 0
   AbilityType: 0
   SecondToDealDamage: 0
   BattleforgedArmor: 0
@@ -318,5 +323,3 @@ MonoBehaviour:
   ExtraPicksType: 2
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
-  CorruptedCardSpawnChance: 0
-  CorruptedCardSpawnChancePerPick: 0
