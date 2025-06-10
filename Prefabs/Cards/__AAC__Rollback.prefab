@@ -15,13 +15,9 @@ GameObject:
   - component: {fileID: 4904866182938917399}
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
-  - component: {fileID: 114446284750240874}
-  - component: {fileID: 114872248861204110}
-  - component: {fileID: 114183907993328010}
-  - component: {fileID: 114632712158575802}
-  - component: {fileID: 114516313399366106}
+  - component: {fileID: 114203408726523956}
   m_Layer: 0
-  m_Name: __AAC__Corrupting Picks
+  m_Name: __AAC__Rollback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,20 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Corrupting Picks
-  cardDestription: You get a extra picks every pick phase, But your hand slowing get
-    corrupted by the <glitch>Void</glitch>.
-  cardStats:
-  - positive: 1
-    amount: +1
-    simepleAmount: 0
-    stat: Of Cards To Pick
-  - positive: 0
-    amount: +2.5%
-    simepleAmount: 0
-    stat: <glitch>Unknow</glitch> per pick
-  rarity: 2
-  cardArt: {fileID: 6788372332091249553, guid: 02e3da83b385a444b93e9da3b442d0c3, type: 3}
+  cardName: Rollback
+  cardDestription: Places a waypoint when you block. The next time you block, you
+    will teleport to that waypoint instead
+  cardStats: []
+  rarity: 1
+  cardArt: {fileID: 1106564977526338631, guid: 0da2af5f9657852449970eca8506c43b, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -75,7 +63,7 @@ MonoBehaviour:
   allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 3
+  colorTheme: 8
 --- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 5290711042843129823, guid: 1d3dc1bbd6684164cb436a5a0b89e170,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
@@ -279,7 +268,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114446284750240874
+--- !u!114 &114203408726523956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -301,80 +290,7 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 8
+  CardRarity: 0
   CardRarityCustom: 
-  CanBeReassigned: 0
+  CanBeReassigned: 1
   IsHidden: 0
---- !u!114 &114872248861204110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 0
-  PlayerSize: 0
-  MovementSpeed: 0
-  AttackSpeed: 0
-  Damage: 0
-  BulletSpeed: 0
-  SoulArmorPercentage: 0
-  SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0
-  SoulDrainLifestealMultiply: 0
-  AbilityType: 0
-  SecondToDealDamage: 0
-  BattleforgedArmor: 0
-  ExtraPicks: 1
-  ExtraPicksType: 1
-  RandomCardsAtStart: 0
-  ExtraCardPicks: 1
---- !u!114 &114183907993328010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a9e82e78972ff840a265104ab9b9f47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CorruptedCardSpawnChance: 0
-  CorruptedCardSpawnChancePerPick: 0.025
-  CorruptedCardSpawnChancePerFight: 0
---- !u!114 &114632712158575802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ff7d6a69afbd0a4a9e7204c34f22769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseGlitchTag: 1
-  EffectAllText: 1
---- !u!114 &114516313399366106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: CorruptedDarkGray
-  targetColor: {r: 0, g: 0, b: 0, a: 0}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}

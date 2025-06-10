@@ -35,7 +35,7 @@ namespace AALUND13Cards {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.9.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.9.1"; // What version are we on (major.minor.patch)?
         
         public static AALUND13_Cards Instance { get; private set; }
 
@@ -44,7 +44,6 @@ namespace AALUND13Cards {
         internal static AssetBundle Assets;
 
         public static GameObject BlankCardPrefab;
-        public static GameObject CorruptedCardFancyIconPrefab;
         public static CardResgester CardResgester;
 
         public static CardCategory SoulstreakClassCards;
@@ -62,9 +61,8 @@ namespace AALUND13Cards {
             if(Assets == null) {
                 throw new System.Exception("Failed to load asset bundle");
             }
-
+            
             BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
-            CorruptedCardFancyIconPrefab = Assets.LoadAsset<GameObject>("I_Corrupted");
             
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
@@ -81,7 +79,7 @@ namespace AALUND13Cards {
             CardResgester = Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>();
             CardResgester.RegisterCards<AALUND13_Cards>("AAC");
 
-
+            
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
             ArmorFramework.RegisterArmorType<SoulArmor>();

@@ -5,7 +5,7 @@ using Photon.Pun;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13_Card.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours {
     public class CardFactoryMono : MonoBehaviour, IPickEndHookHandler {
         public Player Player;
         public Gun Gun;
