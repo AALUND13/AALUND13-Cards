@@ -14,6 +14,7 @@ namespace AALUND13Cards.Cards {
     }
 
     public class AAStatModifers : MonoBehaviour {
+        #region Soulstreak Stats
         [Header("Soulstreak Stats")]
         public float MaxHealth = 0;
         public float PlayerSize = 0;
@@ -30,9 +31,11 @@ namespace AALUND13Cards.Cards {
         public float SoulDrainLifestealMultiply = 0;
 
         public AbilityType AbilityType;
+        #endregion
 
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
+        public float CurrentHPRegenPercentage = 0;
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
@@ -71,6 +74,7 @@ namespace AALUND13Cards.Cards {
                 additionalData.dealDamage = false;
             }
             additionalData.secondToDealDamage += SecondToDealDamage;
+            additionalData.CurrentHPRegenPercentage += CurrentHPRegenPercentage;
 
             // Apply Extra Cards Stats
             additionalData.RandomCardsAtStart += RandomCardsAtStart;

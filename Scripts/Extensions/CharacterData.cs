@@ -16,12 +16,19 @@ namespace AALUND13Cards.Extensions {
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
 
+        // Uncategorized
+        public float CurrentHPRegenPercentage = 0f;
+
         public void Reset() {
             secondToDealDamage = 0;
             dealDamage = true;
+            
             SoulStreakStats = new SoulStreakStats();
+            
             RandomCardsAtStart = 0;
             ExtraCardPicks = 0;
+            
+            CurrentHPRegenPercentage = 0f;
         }
     }
 

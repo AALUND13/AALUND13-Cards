@@ -17,7 +17,7 @@ namespace AALUND13Cards.Armors {
             return damageArmorInfo;
         }
 
-        public override void OnRegister() {
+        public BattleforgedArmor() {
             ArmorTags.Add("CanArmorPierce");
             ArmorRegenCooldownSeconds = 5;
         }
