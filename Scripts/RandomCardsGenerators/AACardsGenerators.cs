@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using RandomCardsGenerators;
+﻿using RandomCardsGenerators;
 using RandomCardsGenerators.StatsGroup;
+using System.Collections.Generic;
 
 namespace AALUND13Cards {
     public enum AACardsGeneratorType {
@@ -11,8 +11,9 @@ namespace AALUND13Cards {
         public static ModRandomCardsGenerators<AACardsGeneratorType> Generators;
 
         public static void RegisterGenerators() {
-            var generators = new Dictionary<AACardsGeneratorType, RandomCardsGenerator>();
-            generators.Add(AACardsGeneratorType.CardFactoryGenerator, CreateCardFactoryGenerator());
+            var generators = new Dictionary<AACardsGeneratorType, RandomCardsGenerator>() {
+                {AACardsGeneratorType.CardFactoryGenerator, CreateCardFactoryGenerator()}
+            };
 
             Generators = new ModRandomCardsGenerators<AACardsGeneratorType>(generators);
         }

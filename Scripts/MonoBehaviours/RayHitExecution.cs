@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using JARL.Extensions;
+using Photon.Pun;
 using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours {
@@ -12,13 +13,13 @@ namespace AALUND13Cards.MonoBehaviours {
             var data = hit.transform.GetComponent<CharacterData>();
             if(data == null || data.dead) return HasToReturn.canContinue;
 
-            float healthPercentage = data.health / data.maxHealth;
+            float healthPercentage = (data.health + data.GetAdditionalData().totalArmor) / data.maxHealth;
             if(healthPercentage > executionPercentage) return HasToReturn.canContinue;
 
             if(data.stats.remainingRespawns > 0) {
-                data.view.RPC("RPCA_Die_Phoenix", RpcTarget.All, Vector2.one * 100000f);
+                data.view.RPC("RPCA_Die_Phoenix", RpcTarget.All, Vector2.down);
             } else {
-                data.view.RPC("RPCA_Die", RpcTarget.All, Vector2.one * 100000f);
+                data.view.RPC("RPCA_Die", RpcTarget.All, Vector2.down);
             }
             data.health = 0f;
 

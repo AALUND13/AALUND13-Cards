@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace AALUND13Cards.VisualEffect {
-    public class AddAComponentToRandomObjects : MonoBehaviour{
+    public class AddAComponentToRandomObjects : MonoBehaviour {
         public int NumberOfObjectsToAdd = 1;
         public MonoBehaviour ComponentToAdd;
         public List<GameObject> TargetObjects;

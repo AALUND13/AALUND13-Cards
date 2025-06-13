@@ -18,6 +18,7 @@ namespace AALUND13Cards.Extensions {
 
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
+        public int BlocksWhenRecharge = 0;
 
         public void Reset() {
             secondToDealDamage = 0;
@@ -29,19 +30,20 @@ namespace AALUND13Cards.Extensions {
             ExtraCardPicks = 0;
             
             CurrentHPRegenPercentage = 0f;
+            BlocksWhenRecharge = 0;
         }
     }
 
     public static class CharacterDataExtensions {
         public static readonly ConditionalWeakTable<CharacterData, AALUND13CardCharacterDataAdditionalData> data = new ConditionalWeakTable<CharacterData, AALUND13CardCharacterDataAdditionalData>();
 
-        public static AALUND13CardCharacterDataAdditionalData GetAdditionalData(this CharacterData block) {
-            return data.GetOrCreateValue(block);
+        public static AALUND13CardCharacterDataAdditionalData GetAdditionalData(this CharacterData characterData) {
+            return data.GetOrCreateValue(characterData);
         }
 
-        public static void AddData(this CharacterData block, AALUND13CardCharacterDataAdditionalData value) {
+        public static void AddData(this CharacterData characterData, AALUND13CardCharacterDataAdditionalData value) {
             try {
-                data.Add(block, value);
+                data.Add(characterData, value);
             } catch(Exception) { }
         }
     }

@@ -36,6 +36,7 @@ namespace AALUND13Cards.Cards {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
         public float CurrentHPRegenPercentage = 0;
+        public int BlocksWhenRecharge = 0;
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
@@ -75,6 +76,7 @@ namespace AALUND13Cards.Cards {
             }
             additionalData.secondToDealDamage += SecondToDealDamage;
             additionalData.CurrentHPRegenPercentage += CurrentHPRegenPercentage;
+            additionalData.BlocksWhenRecharge += BlocksWhenRecharge;
 
             // Apply Extra Cards Stats
             additionalData.RandomCardsAtStart += RandomCardsAtStart;
