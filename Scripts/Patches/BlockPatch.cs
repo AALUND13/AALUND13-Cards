@@ -2,6 +2,7 @@
 using HarmonyLib;
 using System.Collections.Generic;
 using UnboundLib;
+using UnityEngine;
 
 namespace AALUND13Cards.Patches {
     [HarmonyPatch(typeof(Block))]
@@ -32,6 +33,20 @@ namespace AALUND13Cards.Patches {
 
                 BlockRechargeAlreadyTriggered[__instance] = true;
             };
+        }
+
+        [HarmonyPatch("blocked")]
+        public static void Prefix(Block __instance, GameObject projectile, Vector3 forward, Vector3 hitPos) {
+            ProjectileHit projectileHit = projectile.GetComponent<ProjectileHit>();
+            HealthHandler healthHandler = (HealthHandler)__instance.GetFieldValue("health");
+
+            float blockPircePercent = projectileHit.ownPlayer.data.GetAdditionalData().BlockPircePercent;
+            if(blockPircePercent > 0f) {
+                Vector2 damage = (projectileHit.bulletCanDealDeamage ? projectileHit.damage : 1f) * blockPircePercent * forward.normalized;
+                healthHandler.TakeDamage(damage, hitPos, projectileHit.projectileColor, projectileHit.ownWeapon, projectileHit.ownPlayer, true, true);
+
+                GameObject.Destroy(projectile);
+            }
         }
     }
 }

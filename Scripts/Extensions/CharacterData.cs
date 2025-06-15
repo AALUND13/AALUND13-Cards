@@ -18,9 +18,11 @@ namespace AALUND13Cards.Extensions
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
 
+        // Blocks
+        public int BlocksWhenRecharge = 0;
+        public float BlockPircePercent = 0f;
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
-        public int BlocksWhenRecharge = 0;
 
         public void Reset()
         {
@@ -36,6 +38,8 @@ namespace AALUND13Cards.Extensions
             BlocksWhenRecharge = 0;
 
             CurrentHPRegenPercentage = 0f;
+            BlockPircePercent = 0f;
+
         }
     }
 

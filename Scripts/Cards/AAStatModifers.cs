@@ -36,7 +36,10 @@ namespace AALUND13Cards.Cards {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
         public float CurrentHPRegenPercentage = 0;
+
+        [Header("Blocks Stats")]
         public int BlocksWhenRecharge = 0;
+        public float BlockPircePercent = 0f;
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
@@ -53,7 +56,7 @@ namespace AALUND13Cards.Cards {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
 
-            // Apply Soulstreak Stats
+            #region Soulstreak Stats
             additionalData.SoulStreakStats.MaxHealth += MaxHealth;
             additionalData.SoulStreakStats.PlayerSize += PlayerSize;
             additionalData.SoulStreakStats.MovementSpeed += MovementSpeed;
@@ -69,6 +72,7 @@ namespace AALUND13Cards.Cards {
             additionalData.SoulStreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
 
             additionalData.SoulStreakStats.AbilityType |= AbilityType;
+            #endregion
 
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) {
@@ -76,12 +80,16 @@ namespace AALUND13Cards.Cards {
             }
             additionalData.secondToDealDamage += SecondToDealDamage;
             additionalData.CurrentHPRegenPercentage += CurrentHPRegenPercentage;
+
+            // Apply Blocks Stats
             additionalData.BlocksWhenRecharge += BlocksWhenRecharge;
+            additionalData.BlockPircePercent = Mathf.Clamp(additionalData.BlockPircePercent + BlockPircePercent, 0f, 1f);
 
             // Apply Extra Cards Stats
             additionalData.RandomCardsAtStart += RandomCardsAtStart;
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
+            // Apply Armor Stats
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor<BattleforgedArmor>(BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
             }
