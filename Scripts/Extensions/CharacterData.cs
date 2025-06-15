@@ -18,9 +18,13 @@ namespace AALUND13Cards.Extensions
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
 
+        // Armor
+        public float DamageAgainstArmorPercentage = 1f;
+
         // Blocks
         public int BlocksWhenRecharge = 0;
         public float BlockPircePercent = 0f;
+
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
 
@@ -34,12 +38,12 @@ namespace AALUND13Cards.Extensions
             RandomCardsAtStart = 0;
             ExtraCardPicks = 0;
 
-            CurrentHPRegenPercentage = 0f;
-            BlocksWhenRecharge = 0;
+            DamageAgainstArmorPercentage = 1f;
 
-            CurrentHPRegenPercentage = 0f;
+            BlocksWhenRecharge = 0;
             BlockPircePercent = 0f;
 
+            CurrentHPRegenPercentage = 0f;
         }
     }
 

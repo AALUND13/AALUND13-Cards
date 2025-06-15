@@ -1,4 +1,5 @@
 ﻿using AALUND13Cards.Armors;
+using AALUND13Cards.Armors.Processor;
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours;
@@ -84,6 +85,7 @@ namespace AALUND13Cards {
 
             ArmorFramework.RegisterArmorType<SoulArmor>();
             ArmorFramework.RegisterArmorType<BattleforgedArmor>();
+            ArmorFramework.RegisterArmorProcessor<DamageAgainstArmorPercentagePeocessor>();
 
             GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
             GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);

@@ -43,6 +43,8 @@ namespace AALUND13Cards.Cards {
 
         [Header("Armors Stats")]
         public float BattleforgedArmor = 0;
+        public float ArmorPiercePercent = 0f;
+        public float DamageAgainstArmorPercentage = 1f;
 
         [Header("Extra Picks")]
         public int ExtraPicks = 0;
@@ -55,6 +57,7 @@ namespace AALUND13Cards.Cards {
         public void Apply(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
+            var jarlAdditionalData = JARL.Extensions.CharacterDataExtensions.GetAdditionalData(data);
 
             #region Soulstreak Stats
             additionalData.SoulStreakStats.MaxHealth += MaxHealth;
@@ -93,6 +96,8 @@ namespace AALUND13Cards.Cards {
             if(BattleforgedArmor > 0) {
                 ArmorFramework.ArmorHandlers[player].AddArmor<BattleforgedArmor>(BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
             }
+            jarlAdditionalData.ArmorPiercePercent = Mathf.Clamp(jarlAdditionalData.ArmorPiercePercent + ArmorPiercePercent, 0f, 1f);
+            additionalData.DamageAgainstArmorPercentage += DamageAgainstArmorPercentage - 1f;
 
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
             if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
