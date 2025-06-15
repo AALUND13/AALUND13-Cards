@@ -52,15 +52,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Leaf Skin
-  cardDestription: Replace your skin with leaves, Regen 30% of your <b>curremt</b>
-    hp per seconds
+  cardDestription: Replace your skin with leaves, Regen 15% of your <b>current</b>
+    hp per seconds if your health is below 75%
   cardStats:
   - positive: 1
-    amount: +25%
+    amount: +15%
     simepleAmount: 0
     stat: Current Hp Regen
   - positive: 0
-    amount: -80%
+    amount: -60%
     simepleAmount: 0
     stat: Health
   rarity: 1
@@ -69,7 +69,7 @@ MonoBehaviour:
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 1
+  allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 6
@@ -90,7 +90,7 @@ MonoBehaviour:
     type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.2
+  health: 0.4
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -299,7 +299,7 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 6
+  CardRarity: 8
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
@@ -327,7 +327,8 @@ MonoBehaviour:
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
   SecondToDealDamage: 0
-  CurrentHPRegenPercentage: 0.25
+  CurrentHPRegenPercentage: 0.15
+  BlocksWhenRecharge: 0
   BattleforgedArmor: 0
   ExtraPicks: 0
   ExtraPicksType: 0
