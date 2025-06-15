@@ -328,7 +328,9 @@ MonoBehaviour:
   CurrentHPRegenPercentage: 0
   BlocksWhenRecharge: 1
   BattleforgedArmor: 0
+  ArmorPiercePercent: 0
+  DamageAgainstArmorPercentage: 1
   ExtraPicks: 0
   ExtraPicksType: 1
   RandomCardsAtStart: 0
-  ExtraCardPicks: 1
+  ExtraCardPicks: 0
