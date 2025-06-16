@@ -6,15 +6,34 @@ namespace AALUND13Cards {
     public class TabinfoInterface {
         public static void Setup() {
             var aaStatsCategory = TabInfoManager.RegisterCategory("AA Stats", 6);
+
+            // Delayed Damage
+            TabInfoManager.RegisterStat(aaStatsCategory, "Delay Damage", (p) => p.data.GetAdditionalData().secondToDealDamage != 0,
+                (p) => $"{p.data.GetAdditionalData().secondToDealDamage} seconds");
+
+            // Extra Cards
             TabInfoManager.RegisterStat(aaStatsCategory, "Random Cards At Start", (p) => p.data.GetAdditionalData().RandomCardsAtStart != 0,
                 (p) => $"{p.data.GetAdditionalData().RandomCardsAtStart}");
             TabInfoManager.RegisterStat(aaStatsCategory, "Extra Card Picks", (p) => p.data.GetAdditionalData().ExtraCardPicks != 0,
                 (p) => $"{p.data.GetAdditionalData().ExtraCardPicks}");
-            TabInfoManager.RegisterStat(aaStatsCategory, "Delay Damage", (p) => p.data.GetAdditionalData().secondToDealDamage != 0,
-                (p) => $"{p.data.GetAdditionalData().secondToDealDamage} seconds");
+
+            // Armor Stats
+            TabInfoManager.RegisterStat(aaStatsCategory, "Damage Against Armor Percentage", (p) => p.data.GetAdditionalData().DamageAgainstArmorPercentage != 1f,
+                (p) => $"{p.data.GetAdditionalData().DamageAgainstArmorPercentage * 100:0}%");
+
+            // Blocks Stats
+            TabInfoManager.RegisterStat(aaStatsCategory, "Blocks When Recharge", (p) => p.data.GetAdditionalData().BlocksWhenRecharge != 0,
+                (p) => $"{p.data.GetAdditionalData().BlocksWhenRecharge}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Block Pierce Percent", (p) => p.data.GetAdditionalData().BlockPircePercent != 0,
+                (p) => $"{p.data.GetAdditionalData().BlockPircePercent * 100:0}%");
+
+            // Uncategorized Stats
+            TabInfoManager.RegisterStat(aaStatsCategory, "Current HP Regen Percentage", (p) => p.data.GetAdditionalData().CurrentHPRegenPercentage != 0,
+                (p) => $"{p.data.GetAdditionalData().CurrentHPRegenPercentage * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
                 (p) => $"{p.GetDPS()}");
 
+            #region Soulstreak Stats
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);
 
             // Character Stats
@@ -46,6 +65,7 @@ namespace AALUND13Cards {
             // Souls
             TabInfoManager.RegisterStat(category, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().Souls != 0,
                 (p) => $"{p.data.GetAdditionalData().Souls}");
+            #endregion
         }
     }
 }
