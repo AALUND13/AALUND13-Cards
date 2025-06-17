@@ -5,8 +5,6 @@ using JARL.Armor.Processors;
 
 namespace AALUND13Cards.Armors.Processor {
     internal class DamageAgainstArmorPercentagePeocessor : ArmorProcessor {
-        public DamageAgainstArmorPercentagePeocessor(ArmorBase armorBase, Player damagingPlayer, Player hurtPlayer, ArmorDamagePatchType armorDamagePatchType) : base(armorBase, damagingPlayer, hurtPlayer, armorDamagePatchType) { }
-
         public override float AfterArmorProcess(float remaindingDamage, float originalDamage, float takenArmorDamage) {
             if(Armor.ArmorTags.Contains("CanArmorPierce")) {
                 if(DamagingPlayer == null || DamagingPlayer.data.GetAdditionalData().DamageAgainstArmorPercentage == 1f || takenArmorDamage <= 0)

@@ -2,10 +2,8 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace AALUND13Cards.Extensions
-{
-    public class AALUND13CardCharacterDataAdditionalData
-    {
+namespace AALUND13Cards.Extensions {
+    public class AALUND13CardCharacterDataAdditionalData {
         // Delayed Damage
         public float secondToDealDamage = 0;
         public bool dealDamage = true;
@@ -27,9 +25,9 @@ namespace AALUND13Cards.Extensions
 
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
+        public RailgunStats RailgunStats = new RailgunStats();
 
-        public void Reset()
-        {
+        public void Reset() {
             secondToDealDamage = 0;
             dealDamage = true;
 
@@ -44,25 +42,21 @@ namespace AALUND13Cards.Extensions
             BlockPircePercent = 0f;
 
             CurrentHPRegenPercentage = 0f;
+            RailgunStats = new RailgunStats();
         }
     }
 
-    public static class CharacterDataExtensions
-    {
+    public static class CharacterDataExtensions {
         public static readonly ConditionalWeakTable<CharacterData, AALUND13CardCharacterDataAdditionalData> data = new ConditionalWeakTable<CharacterData, AALUND13CardCharacterDataAdditionalData>();
 
-        public static AALUND13CardCharacterDataAdditionalData GetAdditionalData(this CharacterData characterData)
-        {
+        public static AALUND13CardCharacterDataAdditionalData GetAdditionalData(this CharacterData characterData) {
             return data.GetOrCreateValue(characterData);
         }
 
-        public static void AddData(this CharacterData characterData, AALUND13CardCharacterDataAdditionalData value)
-        {
-            try
-            {
+        public static void AddData(this CharacterData characterData, AALUND13CardCharacterDataAdditionalData value) {
+            try {
                 data.Add(characterData, value);
-            }
-            catch (Exception) { }
+            } catch(Exception) { }
         }
     }
 }

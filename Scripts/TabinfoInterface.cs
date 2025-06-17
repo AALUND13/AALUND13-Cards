@@ -66,6 +66,24 @@ namespace AALUND13Cards {
             TabInfoManager.RegisterStat(category, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().Souls != 0,
                 (p) => $"{p.data.GetAdditionalData().Souls}");
             #endregion
+
+            #region Railgun Stats
+            var railgunCategory = TabInfoManager.RegisterCategory("Railgun Stats", 8);
+
+            // Charge Stats
+            TabInfoManager.RegisterStat(railgunCategory, "Charge", (p) => p.data.GetAdditionalData().RailgunStats.IsEnabled && p.data.GetAdditionalData().RailgunStats.MaximumCharge != 0,
+                (p) => $"{p.data.GetAdditionalData().RailgunStats.CurrentCharge:0.00}/{p.data.GetAdditionalData().RailgunStats.MaximumCharge:0.00}");
+            TabInfoManager.RegisterStat(railgunCategory, "Charge Rate", (p) => p.data.GetAdditionalData().RailgunStats.IsEnabled && p.data.GetAdditionalData().RailgunStats.ChargeRate != 0,
+                (p) => $"{p.data.GetAdditionalData().RailgunStats.ChargeRate:0.00}/s");
+
+            // Gun Stats
+            TabInfoManager.RegisterStat(railgunCategory, "Railgun Damage Multiplier", (p) => p.data.GetAdditionalData().RailgunStats.IsEnabled && p.data.GetAdditionalData().RailgunStats.RailgunDamageMultiplier != 1f,
+                (p) => $"{p.data.GetAdditionalData().RailgunStats.RailgunDamageMultiplier * 100:0}%");
+            TabInfoManager.RegisterStat(railgunCategory, "Railgun Bullet Speed Multiplier", (p) => p.data.GetAdditionalData().RailgunStats.IsEnabled && p.data.GetAdditionalData().RailgunStats.RailgunBulletSpeedMultiplier != 1f,
+                (p) => $"{p.data.GetAdditionalData().RailgunStats.RailgunBulletSpeedMultiplier * 100:0}%");
+            TabInfoManager.RegisterStat(railgunCategory, "Railgun Full Charge Threshold", (p) => p.data.GetAdditionalData().RailgunStats.IsEnabled && p.data.GetAdditionalData().RailgunStats.FullChargeThreshold != 0,
+                (p) => $"{p.data.GetAdditionalData().RailgunStats.FullChargeThreshold:0.00}");
+            #endregion
         }
     }
 }

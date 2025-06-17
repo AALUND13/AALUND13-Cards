@@ -16,6 +16,7 @@ namespace AALUND13Cards.Cards {
     public class AAStatModifers : MonoBehaviour {
         #region Soulstreak Stats
         [Header("Soulstreak Stats")]
+        
         public float MaxHealth = 0;
         public float PlayerSize = 0;
         public float MovementSpeed = 0;
@@ -31,6 +32,20 @@ namespace AALUND13Cards.Cards {
         public float SoulDrainLifestealMultiply = 0;
 
         public AbilityType AbilityType;
+        #endregion
+
+        #region Railgun Stats
+        [Header("Railgun Stats Add")]
+        public float MaximumCharge = 0f;
+        public float ChargeRate = 0f;
+        public float FullChargeThreshold = 0f;
+
+        [Header("Railgun Stats Multiplier")]
+        public float MaximumChargeMultiplier = 1f;
+        public float ChargeRateMultiplier = 1f;
+
+        public float RailgunDamageMultiplier = 1f;
+        public float RailgunBulletSpeedMultiplier = 1f;
         #endregion
 
         [Header("Uncategorized Stats")]
@@ -75,6 +90,19 @@ namespace AALUND13Cards.Cards {
             additionalData.SoulStreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
 
             additionalData.SoulStreakStats.AbilityType |= AbilityType;
+            #endregion
+
+            #region Railgun Stats
+            // Apply Railgun Add Stats
+            additionalData.RailgunStats.MaximumCharge = Mathf.Max(additionalData.RailgunStats.MaximumCharge + MaximumCharge, 0f);
+            additionalData.RailgunStats.ChargeRate = Mathf.Max(additionalData.RailgunStats.ChargeRate + ChargeRate, 0f);
+            additionalData.RailgunStats.FullChargeThreshold = Mathf.Max(additionalData.RailgunStats.FullChargeThreshold + FullChargeThreshold, 0f);
+
+            // Apply Railgun Multiplier Stats
+            additionalData.RailgunStats.MaximumCharge *= MaximumChargeMultiplier;
+            additionalData.RailgunStats.ChargeRate *= ChargeRateMultiplier;
+            additionalData.RailgunStats.RailgunDamageMultiplier += RailgunDamageMultiplier - 1f;
+            additionalData.RailgunStats.RailgunBulletSpeedMultiplier += RailgunBulletSpeedMultiplier - 1f;  
             #endregion
 
             // Apply Uncategorized Stats
