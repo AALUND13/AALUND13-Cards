@@ -72,8 +72,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
-  categories:
-  - {fileID: 11400000, guid: 7c210deaff9af214f93445f2eba5950b, type: 2}
+  categories: []
   allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
@@ -330,6 +329,13 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
+  MaximumCharge: 0
+  ChargeRate: 0
+  FullChargeThreshold: 0
+  MaximumChargeMultiplier: 1
+  ChargeRateMultiplier: 1
+  RailgunDamageMultiplier: 1
+  RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
   CurrentHPRegenPercentage: 0
   BlocksWhenRecharge: 0
