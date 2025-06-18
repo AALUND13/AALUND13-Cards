@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 29 unique cards developed by AALUND13.
+AALUND13 Cards introduces 30 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -34,6 +34,7 @@ If you encounter any bugs, please report them in the [issues](https://github.com
   - Quick Charge Battery
   - Improve Capacitors
   - Coil Extension
+- Bigger Cartridge Case
 
 ## Curse Cards
 
