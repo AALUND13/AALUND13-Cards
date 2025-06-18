@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   m_Layer: 0
-  m_Name: __AAC__ Bigger Cartridge Case
+  m_Name: __AAC__Bigger Cartridge Case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Bullets Speed
   - positive: 0
-    amount: +15%
+    amount: -15%
     simepleAmount: 0
     stat: Attack Speed
   rarity: 0

@@ -52,9 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Improve Capacitors
-  cardDestription: 'Increased the capacitors energy capacity of your railgun
-
-    Get additiona:'
+  cardDestription: Increased the capacitors energy capacity of your railgun
   cardStats:
   - positive: 1
     amount: +25
