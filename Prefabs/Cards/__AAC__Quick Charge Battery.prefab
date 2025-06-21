@@ -147,7 +147,7 @@ MonoBehaviour:
   isReloading: 0
   damage: 1
   reloadTime: 1
-  reloadTimeAdd: 0.25
+  reloadTimeAdd: 0
   recoilMuiltiplier: 1
   knockback: 1
   attackSpeed: 1

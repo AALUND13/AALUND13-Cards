@@ -59,7 +59,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Charge Capacity
   - positive: 0
-    amount: 0.25s
+    amount: +20%
     simepleAmount: 0
     stat: Reload Time
   rarity: 1
@@ -146,8 +146,8 @@ MonoBehaviour:
   player: {fileID: 0}
   isReloading: 0
   damage: 1
-  reloadTime: 1
-  reloadTimeAdd: 0.25
+  reloadTime: 1.2
+  reloadTimeAdd: 0
   recoilMuiltiplier: 1
   knockback: 1
   attackSpeed: 1

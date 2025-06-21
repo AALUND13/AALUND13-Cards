@@ -56,15 +56,15 @@ MonoBehaviour:
     50% of its damage bypasses both armor and blocks"
   cardStats:
   - positive: 1
-    amount: 3x
+    amount: +200%
     simepleAmount: 0
     stat: DMG VS Armors
   - positive: 1
-    amount: 50%
+    amount: +50%
     simepleAmount: 0
     stat: Armor Piercing
   - positive: 0
-    amount: 30%
+    amount: +30%
     simepleAmount: 0
     stat: Gravity
   rarity: 1
