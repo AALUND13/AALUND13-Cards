@@ -32,6 +32,8 @@ namespace AALUND13Cards {
                 (p) => $"{p.data.GetAdditionalData().CurrentHPRegenPercentage * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
                 (p) => $"{p.GetDPS()}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().isBind,
+                (p) => p.data.GetAdditionalData().isBind ? "Yes" : "No");
 
             #region Soulstreak Stats
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);

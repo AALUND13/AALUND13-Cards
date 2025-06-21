@@ -51,6 +51,7 @@ namespace AALUND13Cards.Cards {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
         public float CurrentHPRegenPercentage = 0;
+        public bool IsBind = false;
 
         [Header("Blocks Stats")]
         public int BlocksWhenRecharge = 0;
@@ -106,9 +107,8 @@ namespace AALUND13Cards.Cards {
             #endregion
 
             // Apply Uncategorized Stats
-            if(SecondToDealDamage > 0) {
-                additionalData.dealDamage = false;
-            }
+            if(SecondToDealDamage > 0) additionalData.dealDamage = false;
+            if(IsBind) additionalData.isBind = true;
             additionalData.secondToDealDamage += SecondToDealDamage;
             additionalData.CurrentHPRegenPercentage += CurrentHPRegenPercentage;
 

@@ -36,7 +36,7 @@ namespace AALUND13Cards {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.11.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.11.1"; // What version are we on (major.minor.patch)?
         
         public static AALUND13_Cards Instance { get; private set; }
 
@@ -80,7 +80,9 @@ namespace AALUND13Cards {
             CardResgester = Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>();
             CardResgester.RegisterCards<AALUND13_Cards>("AAC");
 
-            
+            GameObject flashlightMaskHandler = GameObject.Instantiate(Assets.LoadAsset<GameObject>("FlashlightMaskHandler"));
+            DontDestroyOnLoad(flashlightMaskHandler);
+
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
             ArmorFramework.RegisterArmorType<SoulArmor>();

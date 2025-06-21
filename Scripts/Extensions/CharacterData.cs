@@ -26,6 +26,7 @@ namespace AALUND13Cards.Extensions {
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
         public RailgunStats RailgunStats = new RailgunStats();
+        public bool isBind = false;
 
         public void Reset() {
             secondToDealDamage = 0;
@@ -43,6 +44,7 @@ namespace AALUND13Cards.Extensions {
 
             CurrentHPRegenPercentage = 0f;
             RailgunStats = new RailgunStats();
+            isBind = false;
         }
     }
 

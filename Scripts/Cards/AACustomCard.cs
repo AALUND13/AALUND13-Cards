@@ -1,10 +1,22 @@
 ﻿using AALUND13Cards.Cards.Effects;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using JARL.Bases;
+using System.Collections.Generic;
+using System.Linq;
+using WillsWackyManagers.Utils;
 
 namespace AALUND13Cards.Cards {
     public class AACustomCard : CustomUnityCard {
-        public override void OnSetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block) {
-            LoggerUtils.LogInfo($"[{GetModName()}][Card] {GetTitle()} has been setup.");
+        public bool IsCursed = false;
+        
+        public override void OnRegister(CardInfo cardInfo) {
+            if(IsCursed) {
+                CurseManager.instance.RegisterCurse(cardInfo);
+                List<CardCategory> cardCategoriesList = new List<CardCategory>(cardInfo.categories) {
+                    CustomCardCategories.instance.CardCategory("Curse")
+                };
+                cardInfo.categories = cardCategoriesList.ToArray();
+            }
         }
 
         public override void OnReassignCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
@@ -22,7 +34,11 @@ namespace AALUND13Cards.Cards {
         }
 
         public override string GetModName() {
-            return AALUND13_Cards.ModInitials;
+            if(IsCursed) {
+                return AALUND13_Cards.CurseInitials;
+            } else {
+                return AALUND13_Cards.ModInitials;
+            }
         }
     }
 }
