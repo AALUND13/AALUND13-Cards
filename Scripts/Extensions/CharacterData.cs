@@ -1,4 +1,5 @@
-﻿using AALUND13Cards.MonoBehaviours;
+﻿using AALUND13Cards.MonoBehaviours.CardsEffects;
+using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using System;
 using System.Runtime.CompilerServices;
 

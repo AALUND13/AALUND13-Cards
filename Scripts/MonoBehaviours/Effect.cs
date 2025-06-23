@@ -1,6 +1,4 @@
-﻿using ModdingUtils.GameModes;
-using UnboundLib.GameModes;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours {
     [ExecuteInEditMode]

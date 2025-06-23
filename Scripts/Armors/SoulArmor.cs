@@ -1,4 +1,4 @@
-﻿using AALUND13Cards.MonoBehaviours;
+﻿using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using JARL.Armor;
 using JARL.Armor.Bases;
 using UnityEngine;

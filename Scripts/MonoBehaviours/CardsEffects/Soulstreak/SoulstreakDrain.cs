@@ -3,7 +3,7 @@ using Sonigon;
 using SoundImplementation;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
     public class SoulstreakDrain : MonoBehaviour {
         [Header("Sounds")]
         public SoundEvent SoundDamage;

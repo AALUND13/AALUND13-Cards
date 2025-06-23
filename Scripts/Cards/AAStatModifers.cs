@@ -2,7 +2,7 @@
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.Handlers.ExtraPickHandlers;
-using AALUND13Cards.MonoBehaviours;
+using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using JARL.Armor;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ namespace AALUND13Cards.Cards {
     public class AAStatModifers : MonoBehaviour {
         #region Soulstreak Stats
         [Header("Soulstreak Stats")]
-        
+
         public float MaxHealth = 0;
         public float PlayerSize = 0;
         public float MovementSpeed = 0;
@@ -103,7 +103,7 @@ namespace AALUND13Cards.Cards {
             additionalData.RailgunStats.MaximumCharge *= MaximumChargeMultiplier;
             additionalData.RailgunStats.ChargeRate *= ChargeRateMultiplier;
             additionalData.RailgunStats.RailgunDamageMultiplier += RailgunDamageMultiplier - 1f;
-            additionalData.RailgunStats.RailgunBulletSpeedMultiplier += RailgunBulletSpeedMultiplier - 1f;  
+            additionalData.RailgunStats.RailgunBulletSpeedMultiplier += RailgunBulletSpeedMultiplier - 1f;
             #endregion
 
             // Apply Uncategorized Stats

@@ -1,5 +1,5 @@
 ﻿using AALUND13Cards.Extensions;
-using AALUND13Cards.MonoBehaviours;
+using AALUND13Cards.MonoBehaviours.CardsEffects;
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Reflection.Emit;

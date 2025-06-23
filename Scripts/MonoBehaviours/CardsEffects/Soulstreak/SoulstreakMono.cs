@@ -1,6 +1,5 @@
 ﻿using AALUND13Cards.Armors;
 using AALUND13Cards.Extensions;
-using AALUND13Cards.MonoBehaviours.Soulstreak;
 using JARL.Armor;
 using JARL.Armor.Bases;
 using ModdingUtils.GameModes;
@@ -9,7 +8,7 @@ using TMPro;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
     [Flags]
     public enum AbilityType {
         Armor = 1 << 0,

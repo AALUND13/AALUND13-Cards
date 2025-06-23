@@ -3,7 +3,7 @@ using SoundImplementation;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     public class RollBackTeleport : MonoBehaviour {
         [Header("Sounds")]
         public SoundEvent SoundTeleport;

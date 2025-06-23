@@ -3,6 +3,7 @@ using AALUND13Cards.Armors.Processor;
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours;
+using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;

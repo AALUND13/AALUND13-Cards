@@ -1,7 +1,7 @@
 ﻿using AALUND13Cards.Extensions;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     public class CurrentHPRegenMono : MonoBehaviour {
         public float activatePercentage = 0.75f; // Percentage of current health to activate the regeneration
 

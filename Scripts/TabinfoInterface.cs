@@ -1,5 +1,5 @@
 ﻿using AALUND13Cards.Extensions;
-using AALUND13Cards.MonoBehaviours;
+using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using TabInfo.Utils;
 
 namespace AALUND13Cards {

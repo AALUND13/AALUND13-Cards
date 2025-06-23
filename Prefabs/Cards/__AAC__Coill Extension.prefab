@@ -73,7 +73,7 @@ MonoBehaviour:
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 0
+  allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 3
@@ -307,6 +307,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
+  IsCursed: 0
 --- !u!114 &114625336960515888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +340,7 @@ MonoBehaviour:
   RailgunBulletSpeedMultiplier: 1.2
   SecondToDealDamage: 0
   CurrentHPRegenPercentage: 0
+  IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
   BattleforgedArmor: 0

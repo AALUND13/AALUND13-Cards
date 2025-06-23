@@ -2,7 +2,7 @@
 using ModsPlus;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     public class RailgunStats {
         public struct RailgunChargeStats {
             public float ChargeDamageMultiplier;
