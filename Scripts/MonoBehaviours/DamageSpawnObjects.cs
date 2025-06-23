@@ -4,7 +4,7 @@ using UnityEngine;
 namespace AALUND13Cards.MonoBehaviours {
     [RequireComponent(typeof(DamageSpawnObjects))]
     public class DamageSpawnObjects : SpawnObjects, IOnDoDamageEvent, IOnTakeDamageEvent, IOnTakeDamageOvertimeEvent {
-        public float DmaageThreshold = 0.5f; // Minimum damage to trigger spawning
+        public float DamageThreshold = 0.5f; // Minimum damage to trigger spawning
 
         public bool TriggerOnDamage = false;
         public bool TriggerOnTakeDamage = true;
@@ -22,19 +22,19 @@ namespace AALUND13Cards.MonoBehaviours {
         }
 
         public void OnDamage(Vector2 damage) {
-            if(TriggerOnDamage && damage.magnitude >= DmaageThreshold) {
+            if(TriggerOnDamage && damage.magnitude >= DamageThreshold) {
                 SpawnDamage(damage);
             }
         }
 
         public void OnTakeDamage(Vector2 damage) {
-            if(TriggerOnTakeDamage && damage.magnitude >= DmaageThreshold) {
+            if(TriggerOnTakeDamage && damage.magnitude >= DamageThreshold) {
                 SpawnDamage(damage);
             }
         }
 
         public void OnTakeDamageOvertime(Vector2 damage) {
-            if(TriggerOnOvertimeDamage && damage.magnitude >= DmaageThreshold) {
+            if(TriggerOnOvertimeDamage && damage.magnitude >= DamageThreshold) {
                 SpawnDamage(damage);
             }
         }
