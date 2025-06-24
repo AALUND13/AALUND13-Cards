@@ -10,7 +10,10 @@ namespace AALUND13Cards.Patches {
         public static void TakeDamageOverTimePrefix(DamageOverTime __instance, Vector2 damage) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
 
-            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamageOvertime, data.player, damage);
+            // If TakeDamageRunning is true, it means we are already in the process of taking damage
+            if(!HealthHandlerPatch.TakeDamageRunning) {
+                DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamageOvertime, data.player, damage);
+            }
         }
     }
 }

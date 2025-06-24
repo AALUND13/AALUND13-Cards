@@ -16,6 +16,7 @@ namespace AALUND13Cards.Extensions {
         // Extra Cards
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
+        public int DuplicatesAsCorrupted = 0;
 
         // Armor
         public float DamageAgainstArmorPercentage = 1f;
@@ -37,6 +38,7 @@ namespace AALUND13Cards.Extensions {
 
             RandomCardsAtStart = 0;
             ExtraCardPicks = 0;
+            DuplicatesAsCorrupted = 0;
 
             DamageAgainstArmorPercentage = 1f;
 

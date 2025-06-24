@@ -4,6 +4,8 @@ using AALUND13Cards.Handlers;
 using AALUND13Cards.Handlers.ExtraPickHandlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using JARL.Armor;
+using System.Collections.Generic;
+using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Cards.Cards {
@@ -65,10 +67,13 @@ namespace AALUND13Cards.Cards {
         [Header("Extra Picks")]
         public int ExtraPicks = 0;
         public ExtraPicksType ExtraPicksType;
+        public int ExtraPicksForEnemies = 0;
+        public ExtraPicksType ExtraPicksTypeForEnemies;
 
         [Header("Extra Cards")]
         public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
+        public int DuplicatesAsCorrupted = 0;
 
         public void Apply(Player player) {
             CharacterData data = player.data;
@@ -127,9 +132,26 @@ namespace AALUND13Cards.Cards {
             jarlAdditionalData.ArmorPiercePercent = Mathf.Clamp(jarlAdditionalData.ArmorPiercePercent + ArmorPiercePercent, 0f, 1f);
             additionalData.DamageAgainstArmorPercentage += DamageAgainstArmorPercentage - 1f;
 
+            #region Extra Picks
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
             if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
                 ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
+            }
+
+            ExtraPickHandler enemyExtraPickHandler = GetExtraPickHandler(ExtraPicksTypeForEnemies);
+            if(extraPickHandler != null && ExtraPicksForEnemies > 0) {
+                List<Player> enemies = ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player);
+
+                foreach(Player enemy in enemies) {
+                    ExtraCardPickHandler.AddExtraPick(enemyExtraPickHandler, enemy, ExtraPicksForEnemies);
+                }
+            }
+            #endregion
+
+            if(DuplicatesAsCorrupted > 0) {
+                AALUND13_Cards.Instance.ExecuteAfterFrames(1, () => {
+                    additionalData.DuplicatesAsCorrupted += DuplicatesAsCorrupted;
+                });
             }
         }
 
