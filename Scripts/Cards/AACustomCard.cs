@@ -8,7 +8,7 @@ using WillsWackyManagers.Utils;
 namespace AALUND13Cards.Cards {
     public class AACustomCard : CustomUnityCard {
         public bool IsCursed = false;
-        
+
         public override void OnRegister(CardInfo cardInfo) {
             if(IsCursed) {
                 CurseManager.instance.RegisterCurse(cardInfo);

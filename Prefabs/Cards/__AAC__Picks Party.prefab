@@ -56,7 +56,7 @@ MonoBehaviour:
     +1 picks
   cardStats:
   - positive: 1
-    amount: +3
+    amount: +2
     simepleAmount: 0
     stat: Picks
   - positive: 0
@@ -68,11 +68,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
-  categories: []
+  categories:
+  - {fileID: 11400000, guid: 7e0551f6dfaab0a4c8d1670306530ce5, type: 2}
   allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 7
+  colorTheme: 3
 --- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ MonoBehaviour:
   RequiredClassTree: []
   CardRarity: 9
   CardRarityCustom: 
-  CanBeReassigned: 1
+  CanBeReassigned: 0
   IsHidden: 0
   IsCursed: 0
 --- !u!114 &114145420087494294
@@ -341,10 +342,10 @@ MonoBehaviour:
   BattleforgedArmor: 0
   ArmorPiercePercent: 0
   DamageAgainstArmorPercentage: 1
-  ExtraPicks: 3
-  ExtraPicksType: 1
+  ExtraPicks: 2
+  ExtraPicksType: 2
   ExtraPicksForEnemies: 1
-  ExtraPicksTypeForEnemies: 1
+  ExtraPicksTypeForEnemies: 2
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0

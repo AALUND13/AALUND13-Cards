@@ -12,6 +12,7 @@ namespace AALUND13Cards.Cards {
     public enum ExtraPicksType {
         None,
         Normal,
+        Party,
         Steel
     }
 
@@ -166,6 +167,8 @@ namespace AALUND13Cards.Cards {
             switch(type) {
                 case ExtraPicksType.Normal:
                     return new ExtraPickHandler();
+                case ExtraPicksType.Party:
+                    return new PicksPartyPickHandler();
                 case ExtraPicksType.Steel:
                     return new SteelPickHandler();
                 default:
