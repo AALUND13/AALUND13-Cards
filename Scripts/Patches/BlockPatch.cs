@@ -10,7 +10,8 @@ namespace AALUND13Cards.Patches {
         public static Dictionary<Block, bool> BlockRechargeAlreadyTriggered = new Dictionary<Block, bool>();
 
         [HarmonyPatch("IDoBlock")]
-        public static void Prefix(Block __instance, bool firstBlock, bool dontSetCD, BlockTrigger.BlockTriggerType triggerType) {
+        [HarmonyPrefix]
+        public static void IDoBlockPrefix(Block __instance, bool firstBlock, bool dontSetCD, BlockTrigger.BlockTriggerType triggerType) {
             if(!firstBlock || dontSetCD || triggerType != BlockTrigger.BlockTriggerType.Default)
                 return;
 
@@ -18,7 +19,8 @@ namespace AALUND13Cards.Patches {
         }
 
         [HarmonyPatch("Start")]
-        public static void Postfix(Block __instance) {
+        [HarmonyPostfix]
+        public static void StartPostfix(Block __instance) {
             CharacterData data = (CharacterData)__instance.GetFieldValue("data");
             __instance.BlockRechargeAction = () => {
                 if(BlockRechargeAlreadyTriggered.TryGetValue(__instance, out bool alreadyTriggered) && alreadyTriggered)
@@ -34,9 +36,27 @@ namespace AALUND13Cards.Patches {
                 BlockRechargeAlreadyTriggered[__instance] = true;
             };
         }
+        
+        [HarmonyPatch("ResetCD")]
+        [HarmonyPostfix]
+        public static void ResetCDPostfix(Block __instance) {
+            CharacterData data = (CharacterData)__instance.GetFieldValue("data");
+            if(BlockRechargeAlreadyTriggered.TryGetValue(__instance, out bool alreadyTriggered) && alreadyTriggered)
+                return;
+
+            for(int i = 0; i < data.GetAdditionalData().BlocksWhenRecharge; i++) {
+                float timeBetweenBlocks = (float)__instance.GetFieldValue("timeBetweenBlocks");
+                float delay = i * timeBetweenBlocks;
+
+                __instance.StartCoroutine("DelayBlock", delay);
+            }
+
+            BlockRechargeAlreadyTriggered[__instance] = false;
+        }
 
         [HarmonyPatch("blocked")]
-        public static void Prefix(Block __instance, GameObject projectile, Vector3 forward, Vector3 hitPos) {
+        [HarmonyPrefix]
+        public static void BlockedPrefix(Block __instance, GameObject projectile, Vector3 forward, Vector3 hitPos) {
             ProjectileHit projectileHit = projectile.GetComponent<ProjectileHit>();
             HealthHandler healthHandler = (HealthHandler)__instance.GetFieldValue("health");
 
@@ -48,5 +68,6 @@ namespace AALUND13Cards.Patches {
                 GameObject.Destroy(projectile);
             }
         }
+
     }
 }
