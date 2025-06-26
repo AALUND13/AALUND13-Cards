@@ -16,10 +16,9 @@ GameObject:
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
-  - component: {fileID: 114348158324077934}
-  - component: {fileID: 114321907632477298}
+  - component: {fileID: 114625336960515888}
   m_Layer: 0
-  m_Name: __AAC__Corruption Reflection
+  m_Name: __AAC__Spiritual Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,12 +51,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Corruption Reflection
-  cardDestription: Gain a corrupted copy of this card in addition to the original,
-    if available
-  cardStats: []
-  rarity: 2
-  cardArt: {fileID: 1187390336370271531, guid: d7cbd275c56b93b41a7ad5df2df05179, type: 3}
+  cardName: Spiritual Shield
+  cardDestription: You can only get cures with a rarity less than <b>Rare</b>
+  cardStats:
+  - positive: 1
+    amount: Less Than Rare
+    simepleAmount: 0
+    stat: Cures Cards
+  - positive: 1
+    amount: +25%
+    simepleAmount: 0
+    stat: Health
+  - positive: 0
+    amount: +20%
+    simepleAmount: 0
+    stat: Block Cooldown
+  rarity: 1
+  cardArt: {fileID: 1037536825006436887, guid: 7cbd655ccead7c6428cc30314a334aca, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -65,7 +75,7 @@ MonoBehaviour:
   allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 0
+  colorTheme: 8
 --- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +92,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 1
+  health: 1.25
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -223,7 +233,7 @@ MonoBehaviour:
   blockedPart: {fileID: 0}
   cooldown: 0
   counter: 1000
-  cdMultiplier: 1
+  cdMultiplier: 1.2
   cdAdd: 0
   forceToAdd: 0
   forceToAddUp: 0
@@ -291,12 +301,12 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 8
+  CardRarity: 0
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
   IsCursed: 0
---- !u!114 &114348158324077934
+--- !u!114 &114625336960515888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,12 +334,12 @@ MonoBehaviour:
   FullChargeThreshold: 0
   MaximumChargeMultiplier: 1
   ChargeRateMultiplier: 1
-  RailgunDamageMultiplier: 1
-  RailgunBulletSpeedMultiplier: 1
+  RailgunDamageMultiplier: 0
+  RailgunBulletSpeedMultiplier: 2
   SecondToDealDamage: 0
   CurrentHPRegenPercentage: 0
-  SetMaxRarityForCurse: 0
-  MaxRarityForCurse: 0
+  SetMaxRarityForCurse: 1
+  MaxRarityForCurse: 6
   IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
@@ -342,19 +352,4 @@ MonoBehaviour:
   ExtraPicksTypeForEnemies: 0
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
-  DuplicatesAsCorrupted: 1
---- !u!114 &114321907632477298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: CorruptedDarkGray
-  targetColor: {r: 0, g: 0, b: 0, a: 0}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
+  DuplicatesAsCorrupted: 0

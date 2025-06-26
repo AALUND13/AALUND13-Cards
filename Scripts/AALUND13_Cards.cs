@@ -98,6 +98,7 @@ namespace AALUND13Cards {
             }
 
             gameObject.AddComponent<DelayDamageHandler>();
+            gameObject.AddComponent<PickCardTracker>();
         }
 
         IEnumerator OnGameStart(IGameModeHandler gameModeHandler) {

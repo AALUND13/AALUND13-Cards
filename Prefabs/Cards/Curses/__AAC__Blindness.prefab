@@ -290,7 +290,7 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 0
+  CardRarity: 8
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
@@ -327,6 +327,8 @@ MonoBehaviour:
   RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
   CurrentHPRegenPercentage: 0
+  SetMaxRarityForCurse: 0
+  MaxRarityForCurse: 0
   IsBind: 1
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
@@ -335,8 +337,11 @@ MonoBehaviour:
   DamageAgainstArmorPercentage: 1
   ExtraPicks: 0
   ExtraPicksType: 0
+  ExtraPicksForEnemies: 0
+  ExtraPicksTypeForEnemies: 0
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
+  DuplicatesAsCorrupted: 0
 --- !u!114 &114661199985760654
 MonoBehaviour:
   m_ObjectHideFlags: 0

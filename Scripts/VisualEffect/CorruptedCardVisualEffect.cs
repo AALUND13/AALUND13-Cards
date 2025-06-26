@@ -20,5 +20,17 @@ namespace AALUND13Cards.VisualEffect {
                 transform.rotation = Quaternion.Euler(currentRotation);
             }
         }
+
+        private void OnDisable() {
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            currentRotation.z = oldRotationZ;
+            transform.rotation = Quaternion.Euler(currentRotation);
+        }
+
+        private void OnDestroy() {
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            currentRotation.z = oldRotationZ;
+            transform.rotation = Quaternion.Euler(currentRotation);
+        }
     }
 }

@@ -37,23 +37,6 @@ namespace AALUND13Cards.Patches {
             };
         }
         
-        [HarmonyPatch("ResetCD")]
-        [HarmonyPostfix]
-        public static void ResetCDPostfix(Block __instance) {
-            CharacterData data = (CharacterData)__instance.GetFieldValue("data");
-            if(BlockRechargeAlreadyTriggered.TryGetValue(__instance, out bool alreadyTriggered) && alreadyTriggered)
-                return;
-
-            for(int i = 0; i < data.GetAdditionalData().BlocksWhenRecharge; i++) {
-                float timeBetweenBlocks = (float)__instance.GetFieldValue("timeBetweenBlocks");
-                float delay = i * timeBetweenBlocks;
-
-                __instance.StartCoroutine("DelayBlock", delay);
-            }
-
-            BlockRechargeAlreadyTriggered[__instance] = false;
-        }
-
         [HarmonyPatch("blocked")]
         [HarmonyPrefix]
         public static void BlockedPrefix(Block __instance, GameObject projectile, Vector3 forward, Vector3 hitPos) {

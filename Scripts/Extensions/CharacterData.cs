@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.MonoBehaviours.CardsEffects;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
+using RarityLib.Utils;
 using System;
 using System.Runtime.CompilerServices;
 
@@ -25,10 +26,13 @@ namespace AALUND13Cards.Extensions {
         public int BlocksWhenRecharge = 0;
         public float BlockPircePercent = 0f;
 
+        // Curses
+        public Rarity MaxRarityForCurse = null;
+        public bool isBind = false;
+
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
         public RailgunStats RailgunStats = new RailgunStats();
-        public bool isBind = false;
 
         public void Reset() {
             secondToDealDamage = 0;
@@ -45,9 +49,11 @@ namespace AALUND13Cards.Extensions {
             BlocksWhenRecharge = 0;
             BlockPircePercent = 0f;
 
+            MaxRarityForCurse = null;
+            isBind = false;
+
             CurrentHPRegenPercentage = 0f;
             RailgunStats = new RailgunStats();
-            isBind = false;
         }
     }
 

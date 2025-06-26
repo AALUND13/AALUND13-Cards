@@ -41,7 +41,7 @@ namespace AALUND13Cards {
             // Character Stats
             TabInfoManager.RegisterStat(category, "Max Health Per Kill", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.MaxHealth != 0,
                 (p) => $"{p.data.GetAdditionalData().SoulStreakStats.MaxHealth * 100:0}%");
-            TabInfoManager.RegisterStat(category, "Player Size Per Kill", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.PlayerSize != 0,
+            TabInfoManager.RegisterStat(category, "player Size Per Kill", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.PlayerSize != 0,
                 (p) => $"{p.data.GetAdditionalData().SoulStreakStats.PlayerSize * 100:0}%");
             TabInfoManager.RegisterStat(category, "Movement Speed Per Kill", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.MovementSpeed != 0,
                 (p) => $"{p.data.GetAdditionalData().SoulStreakStats.MovementSpeed * 100:0}%");

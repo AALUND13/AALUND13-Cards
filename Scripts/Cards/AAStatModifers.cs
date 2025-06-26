@@ -4,6 +4,8 @@ using AALUND13Cards.Handlers;
 using AALUND13Cards.Handlers.ExtraPickHandlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using JARL.Armor;
+using JARL.Bases;
+using RarityLib.Utils;
 using System.Collections.Generic;
 using UnboundLib;
 using UnityEngine;
@@ -12,7 +14,6 @@ namespace AALUND13Cards.Cards {
     public enum ExtraPicksType {
         None,
         Normal,
-        Party,
         Steel
     }
 
@@ -54,6 +55,10 @@ namespace AALUND13Cards.Cards {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
         public float CurrentHPRegenPercentage = 0;
+
+        [Header("Curses Stats")]
+        public bool SetMaxRarityForCurse = false;
+        public CardRarity MaxRarityForCurse;
         public bool IsBind = false;
 
         [Header("Blocks Stats")]
@@ -70,6 +75,7 @@ namespace AALUND13Cards.Cards {
         public ExtraPicksType ExtraPicksType;
         public int ExtraPicksForEnemies = 0;
         public ExtraPicksType ExtraPicksTypeForEnemies;
+
 
         [Header("Extra Cards")]
         public int RandomCardsAtStart = 0;
@@ -114,9 +120,15 @@ namespace AALUND13Cards.Cards {
 
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) additionalData.dealDamage = false;
-            if(IsBind) additionalData.isBind = true;
             additionalData.secondToDealDamage += SecondToDealDamage;
             additionalData.CurrentHPRegenPercentage += CurrentHPRegenPercentage;
+
+            // Apply Curses Stats
+            if(SetMaxRarityForCurse) {
+                var rarity = RarityUtils.GetRarity(MaxRarityForCurse.ToString());
+                additionalData.MaxRarityForCurse = RarityUtils.GetRarityData(rarity);
+            }
+            if(IsBind) additionalData.isBind = true;
 
             // Apply Blocks Stats
             additionalData.BlocksWhenRecharge += BlocksWhenRecharge;
@@ -140,7 +152,7 @@ namespace AALUND13Cards.Cards {
             }
 
             ExtraPickHandler enemyExtraPickHandler = GetExtraPickHandler(ExtraPicksTypeForEnemies);
-            if(extraPickHandler != null && ExtraPicksForEnemies > 0) {
+            if(extraPickHandler != null && ExtraPicksForEnemies > 0 && player.data.view.IsMine) {
                 List<Player> enemies = ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player);
 
                 foreach(Player enemy in enemies) {
@@ -167,8 +179,6 @@ namespace AALUND13Cards.Cards {
             switch(type) {
                 case ExtraPicksType.Normal:
                     return new ExtraPickHandler();
-                case ExtraPicksType.Party:
-                    return new PicksPartyPickHandler();
                 case ExtraPicksType.Steel:
                     return new SteelPickHandler();
                 default:

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   - component: {fileID: 114145420087494294}
+  - component: {fileID: 7530571558485534056}
   m_Layer: 0
   m_Name: __AAC__Picks Party
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Picks Party
-  cardDestription: Give yourself +3 picks, at the cost of giving all your enemies
+  cardDestription: Give yourself +2 picks, at the cost of giving all your enemies
     +1 picks
   cardStats:
   - positive: 1
@@ -69,7 +70,7 @@ MonoBehaviour:
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories:
-  - {fileID: 11400000, guid: 7e0551f6dfaab0a4c8d1670306530ce5, type: 2}
+  - {fileID: 11400000, guid: 47c9590585f269149b29d1c79146bc2f, type: 2}
   allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
@@ -336,6 +337,8 @@ MonoBehaviour:
   RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
   CurrentHPRegenPercentage: 0
+  SetMaxRarityForCurse: 0
+  MaxRarityForCurse: 0
   IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
@@ -343,9 +346,22 @@ MonoBehaviour:
   ArmorPiercePercent: 0
   DamageAgainstArmorPercentage: 1
   ExtraPicks: 2
-  ExtraPicksType: 2
+  ExtraPicksType: 1
   ExtraPicksForEnemies: 1
-  ExtraPicksTypeForEnemies: 2
+  ExtraPicksTypeForEnemies: 1
   RandomCardsAtStart: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
+--- !u!114 &7530571558485534056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182e8cc74569d314281dee4d11f7591b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllowedPickCount: 1

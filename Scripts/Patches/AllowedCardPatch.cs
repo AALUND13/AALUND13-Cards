@@ -1,6 +1,10 @@
 ﻿using AALUND13Cards.Cards.Conditions;
+using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
+using RarityLib.Utils;
+using System.Linq;
 
 namespace AALUND13Cards.Patches {
     [HarmonyPatch(typeof(ModdingUtils.Utils.Cards), "PlayerIsAllowedCard")]
@@ -15,7 +19,8 @@ namespace AALUND13Cards.Patches {
                 bool allowed = func.OnExtraPickStart(player, card);
                 __result = __result && allowed;
             }
-            
+
+            // For the `CardCondition` components on the card
             CardCondition[] conditions = card.GetComponents<CardCondition>();
             if(conditions != null && conditions.Length > 0) {
                 foreach(CardCondition condition in conditions) {
@@ -24,6 +29,16 @@ namespace AALUND13Cards.Patches {
                         __result = false;
                         break;
                     }
+                }
+            }
+
+            // For the `MaxRarityForCurse` condition
+            if(card.categories.Contains(CustomCardCategories.instance.CardCategory("Curse")) && player.data.GetAdditionalData().MaxRarityForCurse != null) {
+                Rarity cardRarity = RarityUtils.GetRarityData(card.rarity);
+                Rarity maxRarity = player.data.GetAdditionalData().MaxRarityForCurse;
+
+                if(cardRarity.relativeRarity < maxRarity.relativeRarity) {
+                    __result = false;
                 }
             }
         }
