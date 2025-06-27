@@ -3,6 +3,7 @@ using AALUND13Cards.Handlers;
 using CorruptedCardsManager;
 using HarmonyLib;
 using ModsPlus;
+using Photon.Pun;
 using RandomCardsGenerators.Cards;
 using System;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace AALUND13Cards.Patches {
                 func.OnExtraPick(player, pickedCard.GetComponent<CardInfo>());
             }
 
-            if(player.data.GetAdditionalData().DuplicatesAsCorrupted != 0 && (pickedCard.GetComponent<RandomCard>() == null || !pickedCard.GetComponent<RandomCard>().StatGenName.StartsWith("CCM_CorruptedCardsGenerator"))) {
+            if(player.data.GetAdditionalData().DuplicatesAsCorrupted != 0 && (pickedCard.GetComponent<RandomCard>() == null || !pickedCard.GetComponent<RandomCard>().StatGenName.StartsWith("CCM_CorruptedCardsGenerator")) && (PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode)) {
                 CardInfo.Rarity rarity = pickedCard.GetComponent<CardInfo>().rarity;
                 if(Enum.IsDefined(typeof(CorruptedCardRarity), rarity.ToString())) {
                     CorruptedCardRarity corruptedRarity = (CorruptedCardRarity)Enum.Parse(typeof(CorruptedCardRarity), rarity.ToString());
