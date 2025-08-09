@@ -29,6 +29,10 @@ namespace AALUND13Cards.Patches {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             var characterAdditionalData = data.GetAdditionalData();
 
+            if(characterAdditionalData.DamageReduction > 0) {
+                damage = new Vector2(damage.x * (1 - characterAdditionalData.DamageReduction), damage.y * (1 - characterAdditionalData.DamageReduction));
+            }
+
             Vector2 damageCopy = damage;
             DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnDoDamage, data.player, damageCopy);
             if(characterAdditionalData.secondToDealDamage > 0 && !characterAdditionalData.dealDamage) {

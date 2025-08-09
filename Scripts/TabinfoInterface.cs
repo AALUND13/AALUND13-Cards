@@ -30,6 +30,8 @@ namespace AALUND13Cards {
             // Uncategorized Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Current HP Regen Percentage", (p) => p.data.GetAdditionalData().CurrentHPRegenPercentage != 0,
                 (p) => $"{p.data.GetAdditionalData().CurrentHPRegenPercentage * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Damage Reduction", (p) => p.data.GetAdditionalData().DamageReduction != 0,
+                (p) => $"{p.data.GetAdditionalData().DamageReduction * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
                 (p) => $"{p.GetDPS()}");
             TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().isBind,

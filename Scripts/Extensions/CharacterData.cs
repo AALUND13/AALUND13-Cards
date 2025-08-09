@@ -33,6 +33,8 @@ namespace AALUND13Cards.Extensions {
         // Uncategorized
         public float CurrentHPRegenPercentage = 0f;
         public RailgunStats RailgunStats = new RailgunStats();
+        // Uncategorized
+        public float DamageReduction = 0f;
 
         public void Reset() {
             secondToDealDamage = 0;

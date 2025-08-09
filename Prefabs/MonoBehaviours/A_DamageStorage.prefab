@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3161776074050708169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3164806609244267510}
+  - component: {fileID: 3058645266990426139}
+  - component: {fileID: 3058118936529413131}
+  - component: {fileID: 9054084713813298522}
+  - component: {fileID: 6116028601478638547}
+  - component: {fileID: 4237130019881948348}
+  - component: {fileID: 8444611674493244382}
+  m_Layer: 0
+  m_Name: A_DamageStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3164806609244267510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5112158, y: -2.4873931, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &3058645266990426139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddbb0b842805694691c747fc53b8d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackLevel: 1
+  levelScaleM: 0.7
+--- !u!114 &3058118936529413131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820e4e3905cb94c4aa9e1e1e3c95718c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onLevelUp: 1
+  onStart: 0
+--- !u!114 &9054084713813298522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a814ebd7297bc4cb17faec59b9e36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageToStorePercentage: 0.5
+  MaxStoredDamageMultiplier: 2.5
+  CoolddownTime: 10
+--- !u!114 &6116028601478638547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6c745dc80c7564b89c6d9abe0ba3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn:
+  - {fileID: 2216628291669847790, guid: 589a76b526082cb47bf8e90b33bef976, type: 3}
+  spawnRot: 0
+  inheritScale: 0
+  destroyObject: 0
+  destroyRoot: 0
+  mostRecentlySpawnedObject: {fileID: 0}
+  DamageThreshold: 0.5
+  TriggerOnDamage: 0
+  TriggerOnTakeDamage: 0
+  TriggerOnOvertimeDamage: 0
+--- !u!114 &4237130019881948348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6322680b2805d5c4d905cbdb2e91e5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054084713813298522}
+        m_MethodName: ReleaseStoredDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerEventEarly:
+    m_PersistentCalls:
+      m_Calls: []
+  delayOtherActions: 0
+  triggerFirstBlockThatDelaysOthers:
+    m_PersistentCalls:
+      m_Calls: []
+  triggerSuperFirstBlock:
+    m_PersistentCalls:
+      m_Calls: []
+  successfulBlockEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  blockRechargeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  cooldown: 0
+  blackListedType: 1
+  cooldownSuccess: 0
+--- !u!114 &8444611674493244382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161776074050708169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100f04201a68ca14f8c737f45d1bfc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
