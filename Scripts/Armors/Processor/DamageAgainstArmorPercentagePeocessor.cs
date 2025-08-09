@@ -10,9 +10,6 @@ namespace AALUND13Cards.Armors.Processor {
                 if(DamagingPlayer == null || DamagingPlayer.data.GetAdditionalData().DamageAgainstArmorPercentage == 1f || takenArmorDamage <= 0)
                     return remaindingDamage;
 
-                // Log all values to see what nulls
-                UnityEngine.Debug.Log($"DamageAgainstArmorPercentagePeocessor: remaindingDamage={remaindingDamage}, originalDamage={originalDamage}, takenArmorDamage={takenArmorDamage}, DamagingPlayer={DamagingPlayer?.name}, Armor={Armor?.ToString()}");
-
                 DamageArmorInfo damageArmorInfo = Armor.OnDamage(takenArmorDamage * (DamagingPlayer.data.GetAdditionalData().DamageAgainstArmorPercentage - 1), DamagingPlayer, ArmorDamagePatchType);
                 Armor.CurrentArmorValue = damageArmorInfo.Armor;
             }
