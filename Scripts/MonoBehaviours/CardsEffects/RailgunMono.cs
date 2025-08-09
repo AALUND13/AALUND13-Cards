@@ -60,11 +60,11 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         private Player player;
 
         private void Start() {
-            player = gameObject.GetComponentInParent<Player>();
+            player = GetComponentInParent<Player>();
             RailgunStats.IsEnabled = true;
 
             RailgunChargeBar = CreateChargeBar();
-            GetComponentInParent<HealthHandler>().reviveAction += OnRevive;
+            player.data.healthHandler.reviveAction += OnRevive;
         }
 
         public void OnDestroy() {
@@ -72,12 +72,12 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
                 Destroy(RailgunChargeBar.gameObject);
             }
             RailgunStats.IsEnabled = false;
-            GetComponentInParent<HealthHandler>().reviveAction -= OnRevive;
+            player.data.healthHandler.reviveAction -= OnRevive;
         }
 
         public void Update() {
             if(RailgunStats.IsEnabled) {
-                RailgunStats.CurrentCharge = Mathf.Min(RailgunStats.CurrentCharge + RailgunStats.ChargeRate * Time.deltaTime, RailgunStats.MaximumCharge);
+                RailgunStats.CurrentCharge = Mathf.Min(RailgunStats.CurrentCharge + RailgunStats.ChargeRate * TimeHandler.deltaTime, RailgunStats.MaximumCharge);
             }
 
             RailgunChargeBar.SetValues(RailgunStats.CurrentCharge, RailgunStats.MaximumCharge);

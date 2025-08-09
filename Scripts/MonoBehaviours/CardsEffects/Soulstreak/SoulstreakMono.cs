@@ -31,6 +31,8 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
             SoulDrainDPSFactor = 0,
             SoulDrainLifestealMultiply = 0;
 
+        public uint Souls = 0;
+
         public AbilityType AbilityType;
     }
 
@@ -42,8 +44,8 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
         private string SoulsString => $"{(Souls > 1 ? "Souls" : "Soul")}: {Souls}";
         private uint Souls {
-            get => player.data.GetAdditionalData().Souls;
-            set => player.data.GetAdditionalData().Souls = value;
+            get => SoulstreakStats.Souls;
+            set => SoulstreakStats.Souls = value;
         }
 
         public bool CanResetKills = true;

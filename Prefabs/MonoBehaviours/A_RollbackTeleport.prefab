@@ -7012,8 +7012,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5296090198350467241}
-  - component: {fileID: 5496276200919083712}
   - component: {fileID: 5257999353685404345}
+  - component: {fileID: 5496276200919083712}
   m_Layer: 0
   m_Name: A_RollbackTeleport
   m_TagString: Untagged
@@ -7037,6 +7037,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5257999353685404345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290711042843129823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddbb0b842805694691c747fc53b8d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackLevel: 1
+  levelScaleM: 0
 --- !u!114 &5496276200919083712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7057,17 +7071,3 @@ MonoBehaviour:
   - {fileID: 5453656510316387194}
   remainParts:
   - {fileID: 5453071956119362111}
---- !u!114 &5257999353685404345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5290711042843129823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddbb0b842805694691c747fc53b8d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackLevel: 1
-  levelScaleM: 0

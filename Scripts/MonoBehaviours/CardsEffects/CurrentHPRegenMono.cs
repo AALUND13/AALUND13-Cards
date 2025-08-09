@@ -1,9 +1,10 @@
-﻿using AALUND13Cards.Extensions;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     public class CurrentHPRegenMono : MonoBehaviour {
-        public float activatePercentage = 0.75f; // Percentage of current health to activate the regeneration
+        [Tooltip("Percentage of current health to activate the regeneration. If the character's health is above this percentage, regeneration will not be applied.")]
+        public float activatePercentage = 0.75f;
+        public float CurrentHPRegenPercentage = 0.15f;
 
         private CharacterData data;
         private float oldRegen;
@@ -13,20 +14,17 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         }
 
         public void Update() {
-            float regenPercentage = data.GetAdditionalData().CurrentHPRegenPercentage;
-            if(regenPercentage != 0) {
-                if (oldRegen != 0 && data.health / data.maxHealth > activatePercentage) {
-                    data.healthHandler.regeneration -= oldRegen;
-                    oldRegen = 0;
-                    return;
-                } else if(data.health / data.maxHealth <= activatePercentage) {
-                    float regen = data.health * regenPercentage;
+            if(oldRegen != 0 && data.health / data.maxHealth > activatePercentage) {
+                data.healthHandler.regeneration -= oldRegen;
+                oldRegen = 0;
+                return;
+            } else if(data.health / data.maxHealth <= activatePercentage) {
+                float regen = data.health * CurrentHPRegenPercentage;
 
-                    data.healthHandler.regeneration -= oldRegen;
-                    data.healthHandler.regeneration += regen;
+                data.healthHandler.regeneration -= oldRegen;
+                data.healthHandler.regeneration += regen;
 
-                    oldRegen = regen;
-                }
+                oldRegen = regen;
             }
         }
     }

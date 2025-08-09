@@ -6,14 +6,17 @@ using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     public class CardFactoryMono : MonoBehaviour, IPickEndHookHandler {
-        public Player Player;
-        public Gun Gun;
-        public GunAmmo GunAmmo;
-        public CharacterData Data;
-        public HealthHandler Health;
-        public Gravity Gravity;
-        public Block Block;
-        public CharacterStatModifiers CharacterStats;
+        public int RandomCardsAtStart = 1;
+        public float DefectiveCardChance = 0.7f;
+
+        private Player Player;
+        private Gun Gun;
+        private GunAmmo GunAmmo;
+        private CharacterData Data;
+        private HealthHandler Health;
+        private Gravity Gravity;
+        private Block Block;
+        private CharacterStatModifiers CharacterStats;
 
         public void Start() {
             Player = GetComponentInParent<Player>();
@@ -34,9 +37,9 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
 
         public void OnPickEnd() {
             if(PhotonNetwork.IsMasterClient) {
-                for(int i = 0; i < Player.data.GetAdditionalData().RandomCardsAtStart; i++) {
+                for(int i = 0; i < RandomCardsAtStart; i++) {
                     float random = Random.Range(0f, 1f);
-                    if(random < 0.7f) {
+                    if(random < DefectiveCardChance) {
                         CardInfo card = ModdingUtils.Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(Player, Gun, GunAmmo, Data, Health, Gravity, Block, CharacterStats, condition);
 
                         ModdingUtils.Utils.Cards.instance.AddCardToPlayer(Player, card, false, "", 0f, 0f, true);

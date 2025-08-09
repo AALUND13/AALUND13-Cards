@@ -10,16 +10,11 @@ namespace AALUND13Cards.Extensions {
         public float secondToDealDamage = 0;
         public bool dealDamage = true;
 
-        // Soulstreak
-        public SoulStreakStats SoulStreakStats = new SoulStreakStats();
-        public uint Souls = 0;
-
         // Extra Cards
-        public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
         public int DuplicatesAsCorrupted = 0;
 
-        // Armor
+        // Armors
         public float DamageAgainstArmorPercentage = 1f;
 
         // Blocks
@@ -30,32 +25,39 @@ namespace AALUND13Cards.Extensions {
         public Rarity MaxRarityForCurse = null;
         public bool isBind = false;
 
-        // Uncategorized
-        public float CurrentHPRegenPercentage = 0f;
+        // Stats Classes
         public RailgunStats RailgunStats = new RailgunStats();
+        public SoulStreakStats SoulStreakStats = new SoulStreakStats();
+
         // Uncategorized
         public float DamageReduction = 0f;
 
         public void Reset() {
+            // Delayed Damage
             secondToDealDamage = 0;
             dealDamage = true;
 
-            SoulStreakStats = new SoulStreakStats();
-
-            RandomCardsAtStart = 0;
+            // Extra Cards
             ExtraCardPicks = 0;
             DuplicatesAsCorrupted = 0;
 
+            // Armors
             DamageAgainstArmorPercentage = 1f;
 
+            // Blocks
             BlocksWhenRecharge = 0;
             BlockPircePercent = 0f;
 
+            // Reset curses
             MaxRarityForCurse = null;
             isBind = false;
 
-            CurrentHPRegenPercentage = 0f;
+            // Reset stats classes
             RailgunStats = new RailgunStats();
+            SoulStreakStats = new SoulStreakStats();
+
+            // Uncategorized
+            DamageReduction = 0f;
         }
     }
 

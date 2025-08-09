@@ -14,7 +14,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
         public void ApplyStats() {
             SoulStreakStats soulStreakStats = data.GetAdditionalData().SoulStreakStats;
-            uint souls = data.GetAdditionalData().Souls;
+            uint souls = soulStreakStats.Souls;
 
             ClearModifiers();
             characterDataModifier.maxHealth_mult = 1 + (soulStreakStats.MaxHealth - 1) * souls;

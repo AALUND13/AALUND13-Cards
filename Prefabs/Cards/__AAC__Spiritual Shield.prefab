@@ -52,10 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Spiritual Shield
-  cardDestription: You can only get cures with a rarity less than <b>Rare</b>
+  cardDestription: You can only get curses with a rarity of <b>Rare</b> or less
   cardStats:
   - positive: 1
-    amount: Less Than Rare
+    amount: Rare Or Less
     simepleAmount: 0
     stat: Cures Cards
   - positive: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
     amount: +20%
     simepleAmount: 0
     stat: Block Cooldown
-  rarity: 1
+  rarity: 2
   cardArt: {fileID: 1037536825006436887, guid: 7cbd655ccead7c6428cc30314a334aca, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
@@ -337,7 +337,6 @@ MonoBehaviour:
   RailgunDamageMultiplier: 0
   RailgunBulletSpeedMultiplier: 2
   SecondToDealDamage: 0
-  CurrentHPRegenPercentage: 0
   SetMaxRarityForCurse: 1
   MaxRarityForCurse: 6
   IsBind: 0
@@ -350,6 +349,5 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
-  RandomCardsAtStart: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
