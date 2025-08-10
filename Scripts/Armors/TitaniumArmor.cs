@@ -34,7 +34,7 @@ namespace AALUND13Cards.Armors {
             var info = base.OnDamage(damage, DamagingPlayer, armorDamagePatchType);
 
             float segmentedArmorValue = Mathf.Max(info.Armor, minArmorHealth);
-            if(segmentedArmorValue <= minArmorHealth + 0.1f) {
+            if(segmentedArmorValue <= minArmorHealth + 0.1f && minArmorHealth > 0) {
                 info = new DamageArmorInfo(0, minArmorHealth);
                 minArmorHealth = Mathf.Max(minArmorHealth - (MaxArmorValue / ArmorSegments), 0);
 
