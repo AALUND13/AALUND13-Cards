@@ -4,9 +4,12 @@ using AALUND13Cards.Handlers;
 using AALUND13Cards.Handlers.ExtraPickHandlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using JARL.Armor;
+using JARL.Armor.Bases;
 using JARL.Bases;
 using RarityLib.Utils;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnboundLib;
 using UnityEngine;
 
@@ -15,6 +18,12 @@ namespace AALUND13Cards.Cards {
         None,
         Normal,
         Steel
+    }
+
+    public enum ArmorType {
+        Battleforged,
+        Titanium,
+        None
     }
 
     public class AAStatModifers : MonoBehaviour {
@@ -54,7 +63,6 @@ namespace AALUND13Cards.Cards {
 
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
-        public float CurrentHPRegenPercentage = 0;
 
         [Header("Curses Stats")]
         public bool SetMaxRarityForCurse = false;
@@ -66,7 +74,14 @@ namespace AALUND13Cards.Cards {
         public float BlockPircePercent = 0f;
 
         [Header("Armors Stats")]
-        public float BattleforgedArmor = 0;
+        public ArmorType Armor = ArmorType.None;
+        public float ArmorHealth = 0f;
+        public float ArmorRegenRate = 0f;
+        public float ArmorRegenCooldown = 0f;
+        public ArmorReactivateType ArmorReactivateType = ArmorReactivateType.Percent;
+        public float ArmorReactivateValue = 0f;
+
+        [Header("Armor Pierce Stats")]
         public float ArmorPiercePercent = 0f;
         public float DamageAgainstArmorPercentage = 1f;
 
@@ -78,7 +93,6 @@ namespace AALUND13Cards.Cards {
 
 
         [Header("Extra Cards")]
-        public int RandomCardsAtStart = 0;
         public int ExtraCardPicks = 0;
         public int DuplicatesAsCorrupted = 0;
 
@@ -121,7 +135,6 @@ namespace AALUND13Cards.Cards {
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) additionalData.dealDamage = false;
             additionalData.secondToDealDamage += SecondToDealDamage;
-            additionalData.CurrentHPRegenPercentage += CurrentHPRegenPercentage;
 
             // Apply Curses Stats
             if(SetMaxRarityForCurse) {
@@ -135,13 +148,15 @@ namespace AALUND13Cards.Cards {
             additionalData.BlockPircePercent = Mathf.Clamp(additionalData.BlockPircePercent + BlockPircePercent, 0f, 1f);
 
             // Apply Extra Cards Stats
-            additionalData.RandomCardsAtStart += RandomCardsAtStart;
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
             // Apply Armor Stats
-            if(BattleforgedArmor > 0) {
-                ArmorFramework.ArmorHandlers[player].AddArmor<BattleforgedArmor>(BattleforgedArmor, 0, 0, ArmorReactivateType.Percent, 0.5f);
+            if(Armor != ArmorType.None) {
+                // Because the "AddArmor" method is a generic method and just generic methods, we need to use reflection to invoke it
+                MethodInfo addArmorMethodInfo = typeof(ArmorHandler).GetMethod("AddArmor", BindingFlags.Public | BindingFlags.Instance);
+                addArmorMethodInfo.MakeGenericMethod(GetArmorType()).Invoke(ArmorFramework.ArmorHandlers[player], new object[] { ArmorHealth, ArmorRegenRate, ArmorRegenCooldown, ArmorReactivateType, ArmorReactivateValue });
             }
+
             jarlAdditionalData.ArmorPiercePercent = Mathf.Clamp(jarlAdditionalData.ArmorPiercePercent + ArmorPiercePercent, 0f, 1f);
             additionalData.DamageAgainstArmorPercentage += DamageAgainstArmorPercentage - 1f;
 
@@ -173,6 +188,17 @@ namespace AALUND13Cards.Cards {
             var additionalData = data.GetAdditionalData();
 
             additionalData.ExtraCardPicks += ExtraCardPicks;
+        }
+
+        public Type GetArmorType() {
+            switch(Armor) {
+                case ArmorType.Battleforged:
+                    return typeof(BattleforgedArmor);
+                case ArmorType.Titanium:
+                    return typeof(TitaniumArmor);
+                default:
+                    return null;
+            }
         }
 
         public ExtraPickHandler GetExtraPickHandler(ExtraPicksType type) {
