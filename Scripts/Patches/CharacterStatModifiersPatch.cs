@@ -13,14 +13,16 @@ namespace AALUND13Cards.Patches {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             data.GetAdditionalData().Reset();
 
-            if (ExtraCardPickHandler.extraPicks.ContainsKey(data.player)) {
+            if(ExtraCardPickHandler.extraPicks.ContainsKey(data.player)) {
                 ExtraCardPickHandler.extraPicks[data.player].Clear();
             }
 
-            Camera mainCamera = Camera.main;
-            if(mainCamera != null) {
-                foreach(var effect in mainCamera.GetComponents<Effect>()) {
-                    MonoBehaviour.Destroy(effect);
+            if(data.view.IsMine) {
+                Camera mainCamera = Camera.main;
+                if(mainCamera != null) {
+                    foreach(var effect in mainCamera.GetComponents<Effect>()) {
+                        MonoBehaviour.Destroy(effect);
+                    }
                 }
             }
         }
