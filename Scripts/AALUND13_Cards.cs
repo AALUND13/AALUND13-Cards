@@ -1,5 +1,5 @@
 ﻿using AALUND13Cards.Armors;
-using AALUND13Cards.Armors.Processor;
+using AALUND13Cards.Armors.Processors;
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
@@ -87,7 +87,9 @@ namespace AALUND13Cards {
             ArmorFramework.RegisterArmorType<SoulArmor>();
             ArmorFramework.RegisterArmorType<TitaniumArmor>();
             ArmorFramework.RegisterArmorType<BattleforgedArmor>();
-            ArmorFramework.RegisterArmorProcessor<DamageAgainstArmorPercentagePeocessor>();
+
+            ArmorFramework.RegisterArmorProcessor<DamageAgainstArmorPercentageProcessor>();
+            ArmorFramework.RegisterArmorProcessor<ArmorDamageReductionProcessor>();
 
             GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
             GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);

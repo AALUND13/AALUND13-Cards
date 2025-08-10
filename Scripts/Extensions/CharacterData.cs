@@ -16,6 +16,7 @@ namespace AALUND13Cards.Extensions {
 
         // Armors
         public float DamageAgainstArmorPercentage = 1f;
+        public float ArmorDamageReduction = 0f;
 
         // Blocks
         public int BlocksWhenRecharge = 0;
@@ -43,6 +44,7 @@ namespace AALUND13Cards.Extensions {
 
             // Armors
             DamageAgainstArmorPercentage = 1f;
+            ArmorDamageReduction = 0f;
 
             // Blocks
             BlocksWhenRecharge = 0;

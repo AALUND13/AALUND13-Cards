@@ -74,6 +74,9 @@ namespace AALUND13Cards.Cards {
         public float BlockPircePercent = 0f;
 
         [Header("Armors Stats")]
+        public float ArmorDamageReduction = 0f;
+
+        [Space(10)]
         public ArmorType Armor = ArmorType.None;
         public float ArmorHealth = 0f;
         public float ArmorRegenRate = 0f;
@@ -151,6 +154,8 @@ namespace AALUND13Cards.Cards {
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
             // Apply Armor Stats
+            additionalData.ArmorDamageReduction = Mathf.Min(additionalData.ArmorDamageReduction + ArmorDamageReduction, 0.80f);
+
             if(Armor != ArmorType.None) {
                 // Because the "AddArmor" method is a generic method and just generic methods, we need to use reflection to invoke it
                 MethodInfo addArmorMethodInfo = typeof(ArmorHandler).GetMethod("AddArmor", BindingFlags.Public | BindingFlags.Instance);

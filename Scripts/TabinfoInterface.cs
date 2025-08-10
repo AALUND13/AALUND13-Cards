@@ -20,6 +20,8 @@ namespace AALUND13Cards {
             // Armor Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Against Armor Percentage", (p) => p.data.GetAdditionalData().DamageAgainstArmorPercentage != 1f,
                 (p) => $"{p.data.GetAdditionalData().DamageAgainstArmorPercentage * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Armor Damage Reduction", (p) => p.data.GetAdditionalData().ArmorDamageReduction != 0f,
+                (p) => $"{p.data.GetAdditionalData().ArmorDamageReduction * 100:0}%");
 
             // Blocks Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Blocks When Recharge", (p) => p.data.GetAdditionalData().BlocksWhenRecharge != 0,

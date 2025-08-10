@@ -3,8 +3,8 @@ using JARL.Armor;
 using JARL.Armor.Bases;
 using JARL.Armor.Processors;
 
-namespace AALUND13Cards.Armors.Processor {
-    internal class DamageAgainstArmorPercentagePeocessor : ArmorProcessor {
+namespace AALUND13Cards.Armors.Processors {
+    internal class DamageAgainstArmorPercentageProcessor : ArmorProcessor {
         public override float AfterArmorProcess(float remaindingDamage, float originalDamage, float takenArmorDamage) {
             if(Armor.ArmorTags.Contains("CanArmorPierce")) {
                 if(DamagingPlayer == null || DamagingPlayer.data.GetAdditionalData().DamageAgainstArmorPercentage == 1f || takenArmorDamage <= 0)

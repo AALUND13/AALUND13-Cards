@@ -16,8 +16,10 @@ GameObject:
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
+  - component: {fileID: 114642101177217248}
+  - component: {fileID: 114341955976271268}
   m_Layer: 0
-  m_Name: __AAC__Damage Storage
+  m_Name: __AAC__Reinforced Plating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,28 +52,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Damage Storage
-  cardDestription: "Store 50% of the damage you taken \nWhen you block deal the store
-    damage back to nearby enemies"
+  cardName: Reinforced Plating
+  cardDestription: Apply reinforced plating to all your armors giving 10% damage reduction
+    for your armors
   cardStats:
   - positive: 1
-    amount: +250% Your Max HP
+    amount: +10% Armor
     simepleAmount: 0
-    stat: Of Store Damage
+    stat: Damage Reduction
   - positive: 0
-    amount: 10s
+    amount: -10%
     simepleAmount: 0
-    stat: Cooldown
-  rarity: 2
-  cardArt: {fileID: 2180157440484295938, guid: d2cffe5fefb93f842b461c8dfc878a99, type: 3}
+    stat: Health
+  rarity: 1
+  cardArt: {fileID: 42324315890551338, guid: 47afc77563681cc488eb1be22718e5cd, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 0
+  allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 0
+  colorTheme: 2
 --- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,11 +87,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 3161776074050708169, guid: a8a65fe1309a3d74d9c1dc186c45a51f,
-    type: 3}
+  AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 1
+  health: 0.9
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -303,3 +304,68 @@ MonoBehaviour:
   CanBeReassigned: 1
   IsHidden: 0
   IsCursed: 0
+--- !u!114 &114642101177217248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  PlayerSize: 0
+  MovementSpeed: 0
+  AttackSpeed: 0
+  Damage: 0
+  BulletSpeed: 0
+  SoulArmorPercentage: 0
+  SoulArmorPercentageRegenRate: 0
+  SoulDrainDamageMultiply: 0
+  SoulDrainLifestealMultiply: 0
+  AbilityType: 0
+  MaximumCharge: 0
+  ChargeRate: 0
+  FullChargeThreshold: 0
+  MaximumChargeMultiplier: 1
+  ChargeRateMultiplier: 1
+  RailgunDamageMultiplier: 1
+  RailgunBulletSpeedMultiplier: 1
+  SecondToDealDamage: 0
+  SetMaxRarityForCurse: 0
+  MaxRarityForCurse: 0
+  IsBind: 0
+  BlocksWhenRecharge: 0
+  BlockPircePercent: 0
+  ArmorDamageReduction: 0.1
+  Armor: 2
+  ArmorHealth: 0
+  ArmorRegenRate: 0
+  ArmorRegenCooldown: 0
+  ArmorReactivateType: 0
+  ArmorReactivateValue: 0
+  ArmorPiercePercent: 0
+  DamageAgainstArmorPercentage: 1
+  ExtraPicks: 0
+  ExtraPicksType: 0
+  ExtraPicksForEnemies: 0
+  ExtraPicksTypeForEnemies: 0
+  ExtraCardPicks: 0
+  DuplicatesAsCorrupted: 0
+--- !u!114 &114341955976271268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5110629305c2f40832fa6dbe9aa8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlacklistedArmorTag:
+  - NoDamageReduction

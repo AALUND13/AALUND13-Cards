@@ -340,6 +340,7 @@ MonoBehaviour:
   IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  ArmorDamageReduction: 0
   Armor: 1
   ArmorHealth: 250
   ArmorRegenRate: 0
