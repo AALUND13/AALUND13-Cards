@@ -12,10 +12,10 @@ namespace AALUND13Cards {
                 (p) => $"{p.data.GetAdditionalData().secondToDealDamage} seconds");
 
             // Extra Cards
-            TabInfoManager.RegisterStat(aaStatsCategory, "Random Cards At Start", (p) => p.data.GetAdditionalData().RandomCardsAtStart != 0,
-                (p) => $"{p.data.GetAdditionalData().RandomCardsAtStart}");
             TabInfoManager.RegisterStat(aaStatsCategory, "Extra Card Picks", (p) => p.data.GetAdditionalData().ExtraCardPicks != 0,
                 (p) => $"{p.data.GetAdditionalData().ExtraCardPicks}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Duplicates As Corrupted", (p) => p.data.GetAdditionalData().DuplicatesAsCorrupted != 0,
+                (p) => $"{p.data.GetAdditionalData().DuplicatesAsCorrupted}");
 
             // Armor Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Against Armor Percentage", (p) => p.data.GetAdditionalData().DamageAgainstArmorPercentage != 1f,
@@ -27,15 +27,17 @@ namespace AALUND13Cards {
             TabInfoManager.RegisterStat(aaStatsCategory, "Block Pierce Percent", (p) => p.data.GetAdditionalData().BlockPircePercent != 0,
                 (p) => $"{p.data.GetAdditionalData().BlockPircePercent * 100:0}%");
 
+            // Curses Stats
+            TabInfoManager.RegisterStat(aaStatsCategory, "Max Rarity For Curse", (p) => p.data.GetAdditionalData().MaxRarityForCurse != null,
+                (p) => p.data.GetAdditionalData().MaxRarityForCurse.name);
+            TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().isBind,
+                (p) => p.data.GetAdditionalData().isBind ? "Yes" : "No");
+
             // Uncategorized Stats
-            TabInfoManager.RegisterStat(aaStatsCategory, "Current HP Regen Percentage", (p) => p.data.GetAdditionalData().CurrentHPRegenPercentage != 0,
-                (p) => $"{p.data.GetAdditionalData().CurrentHPRegenPercentage * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Reduction", (p) => p.data.GetAdditionalData().DamageReduction != 0,
                 (p) => $"{p.data.GetAdditionalData().DamageReduction * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
                 (p) => $"{p.GetDPS()}");
-            TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().isBind,
-                (p) => p.data.GetAdditionalData().isBind ? "Yes" : "No");
 
             #region Soulstreak Stats
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);
@@ -67,8 +69,8 @@ namespace AALUND13Cards {
                                (p) => $"{p.data.GetAdditionalData().SoulStreakStats.SoulDrainDPSFactor * 100:0}%");
 
             // Souls
-            TabInfoManager.RegisterStat(category, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().Souls != 0,
-                (p) => $"{p.data.GetAdditionalData().Souls}");
+            TabInfoManager.RegisterStat(category, "Souls", (p) => p.GetComponentInChildren<SoulstreakMono>() != null && p.data.GetAdditionalData().SoulStreakStats.Souls != 0,
+                (p) => $"{p.data.GetAdditionalData().SoulStreakStats.Souls}");
             #endregion
 
             #region Railgun Stats
