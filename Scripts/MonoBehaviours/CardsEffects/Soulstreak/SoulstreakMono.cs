@@ -88,7 +88,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
         // Update is called once per frame
         private void Update() {
             if(player.data.isPlaying) {
-                AbilityCooldown = Mathf.Max(AbilityCooldown - Time.deltaTime, 0);
+                AbilityCooldown = Mathf.Max(AbilityCooldown - TimeHandler.deltaTime, 0);
 
                 if(armorHandler.GetArmorByType<SoulArmor>().CurrentArmorValue <= 0 && armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue > 0) {
                     armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue = 0;
