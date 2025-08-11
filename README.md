@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 35 unique cards developed by AALUND13.
+AALUND13 Cards introduces 40 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -39,10 +39,15 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Corruption Reflection
 - Picks Party
 - Spiritual Shield
+- Damage Storage
+- Titanium Armor
+- Reinforced Plating
 
 ## Curse Cards
 
 - Retro Vision
 - Blindness
+- Fracture Armor
+- Healing Radiance
 
 For details about the cards, you can take a look at the [Wiki](https://github.com/AALUND13/AALUND13-Cards/wiki/Cards).
