@@ -52,9 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Titanium Armor
-  cardDestription: "Gives you armor which is divided into 4 segments\r, your enemies
-    must break through each segment to break the armor\r\n\nCopies of this card increase
-    this armor health"
+  cardDestription: "Gives you armor which is divided into 4 segments\r \nYour enemies
+    must break through each segment to break the armor"
   cardStats:
   - positive: 1
     amount: +250

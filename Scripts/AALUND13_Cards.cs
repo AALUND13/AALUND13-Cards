@@ -35,7 +35,7 @@ namespace AALUND13Cards {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.13.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.13.1"; // What version are we on (major.minor.patch)?
         
         public static AALUND13_Cards Instance { get; private set; }
 
