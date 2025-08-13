@@ -1,6 +1,8 @@
 ﻿using AALUND13Cards.Extensions;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.GameModes;
 using Photon.Pun;
+using System.Linq;
 using UnboundLib;
 using UnityEngine;
 
@@ -51,7 +53,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         }
 
         private bool condition(CardInfo card, Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
-            return true;
+            return !card.categories.Intersect(AALUND13_Cards.NoLotteryCategories).Any();
         }
     }
 }

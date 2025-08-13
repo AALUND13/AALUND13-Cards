@@ -71,6 +71,10 @@ MonoBehaviour:
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories:
   - {fileID: 11400000, guid: 47c9590585f269149b29d1c79146bc2f, type: 2}
+  - {fileID: 11400000, guid: 2695ae009eb8d4f4a820d89883a4b6a5, type: 2}
+  - {fileID: 11400000, guid: 0bb0827fbcf748447999210bf1aeb9d7, type: 2}
+  - {fileID: 11400000, guid: cfa13e8585a24b54fa3831e070b9eeae, type: 2}
+  - {fileID: 11400000, guid: 7035bb2974e64f349a324b617fb39bbd, type: 2}
   allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
@@ -336,20 +340,24 @@ MonoBehaviour:
   RailgunDamageMultiplier: 1
   RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
-  CurrentHPRegenPercentage: 0
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
-  BattleforgedArmor: 0
+  ArmorDamageReduction: 0
+  Armor: 2
+  ArmorHealth: 0
+  ArmorRegenRate: 0
+  ArmorRegenCooldown: 0
+  ArmorReactivateType: 0
+  ArmorReactivateValue: 0
   ArmorPiercePercent: 0
   DamageAgainstArmorPercentage: 1
   ExtraPicks: 2
   ExtraPicksType: 1
   ExtraPicksForEnemies: 1
   ExtraPicksTypeForEnemies: 1
-  RandomCardsAtStart: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
 --- !u!114 &7530571558485534056

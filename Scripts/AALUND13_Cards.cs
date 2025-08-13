@@ -5,6 +5,7 @@ using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using BepInEx;
 using BepInEx.Logging;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
 using JARL;
 using JARL.Armor;
@@ -35,7 +36,7 @@ namespace AALUND13Cards {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.13.2"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.13.3"; // What version are we on (major.minor.patch)?
         
         public static AALUND13_Cards Instance { get; private set; }
 
@@ -50,6 +51,9 @@ namespace AALUND13Cards {
 
         public static Material PixelateEffectMaterial;
         public static Material ScanEffectMaterial;
+
+        public static CardCategory[] NoLotteryCategories;
+        public static CardCategory[] NoSteelCategories;
 
         public void Awake() {
             Instance = this;
@@ -101,6 +105,9 @@ namespace AALUND13Cards {
 
             gameObject.AddComponent<DelayDamageHandler>();
             gameObject.AddComponent<PickCardTracker>();
+
+            NoLotteryCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("CardManipulation"), CustomCardCategories.instance.CardCategory("NoRandom") };
+            NoSteelCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("NoRemove") };
         }
 
         IEnumerator OnGameStart(IGameModeHandler gameModeHandler) {

@@ -1,11 +1,16 @@
 ﻿using ModdingUtils.Utils;
 using Photon.Pun;
 using System.Collections.Generic;
+using System.Linq;
 using UnboundLib;
 
 namespace AALUND13Cards.Handlers.ExtraPickHandlers {
     public class SteelPickHandler : ExtraPickHandler {
         public override bool OnExtraPickStart(Player player, CardInfo card) {
+            if (card.categories.Intersect(AALUND13_Cards.NoSteelCategories).Any()) {
+                return false;
+            }
+
             // Get all currest cards of other player
             List<CardInfo> otherPlayerCards = new List<CardInfo>();
             foreach(Player otherPlayer in PlayerStatus.GetEnemyPlayers(player)) {

@@ -62,7 +62,12 @@ MonoBehaviour:
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
   allowMultiple: 1
-  blacklistedCategories: []
+  blacklistedCategories:
+  - {fileID: 11400000, guid: 47c9590585f269149b29d1c79146bc2f, type: 2}
+  - {fileID: 11400000, guid: 2695ae009eb8d4f4a820d89883a4b6a5, type: 2}
+  - {fileID: 11400000, guid: 0bb0827fbcf748447999210bf1aeb9d7, type: 2}
+  - {fileID: 11400000, guid: cfa13e8585a24b54fa3831e070b9eeae, type: 2}
+  - {fileID: 11400000, guid: 7035bb2974e64f349a324b617fb39bbd, type: 2}
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 4
 --- !u!114 &4907890640190903806
@@ -294,6 +299,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 0
   IsHidden: 0
+  IsCursed: 0
 --- !u!114 &114872248861204110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,9 +323,31 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
+  MaximumCharge: 0
+  ChargeRate: 0
+  FullChargeThreshold: 0
+  MaximumChargeMultiplier: 1
+  ChargeRateMultiplier: 1
+  RailgunDamageMultiplier: 1
+  RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
-  BattleforgedArmor: 0
+  SetMaxRarityForCurse: 0
+  MaxRarityForCurse: 0
+  IsBind: 0
+  BlocksWhenRecharge: 0
+  BlockPircePercent: 0
+  ArmorDamageReduction: 0
+  Armor: 2
+  ArmorHealth: 0
+  ArmorRegenRate: 0
+  ArmorRegenCooldown: 0
+  ArmorReactivateType: 0
+  ArmorReactivateValue: 0
+  ArmorPiercePercent: 0
+  DamageAgainstArmorPercentage: 1
   ExtraPicks: 1
   ExtraPicksType: 2
-  RandomCardsAtStart: 0
+  ExtraPicksForEnemies: 0
+  ExtraPicksTypeForEnemies: 0
   ExtraCardPicks: 0
+  DuplicatesAsCorrupted: 0

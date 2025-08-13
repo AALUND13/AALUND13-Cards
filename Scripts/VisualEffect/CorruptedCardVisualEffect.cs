@@ -7,7 +7,7 @@ namespace AALUND13Cards.VisualEffect {
 
         private float oldRotationZ;
 
-        private void Start() {
+        private void Awake() {
             oldRotationZ = transform.rotation.eulerAngles.z;
         }
 

@@ -59,7 +59,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
-  categories: []
+  categories:
+  - {fileID: 11400000, guid: 0bb0827fbcf748447999210bf1aeb9d7, type: 2}
+  - {fileID: 11400000, guid: cfa13e8585a24b54fa3831e070b9eeae, type: 2}
   allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
@@ -293,6 +295,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 0
   IsHidden: 0
+  IsCursed: 0
 --- !u!114 &114729959749941734
 MonoBehaviour:
   m_ObjectHideFlags: 0

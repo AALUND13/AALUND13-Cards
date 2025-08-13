@@ -27,7 +27,9 @@ namespace AALUND13Cards.Armors {
 
         public override void OnRespawn() {
             minArmorHealth = MaxArmorValue - (MaxArmorValue / ArmorSegments);
-            armorMinArmorBar.fillAmount = minArmorHealth / MaxArmorValue;
+            if(armorMinArmorBar != null) {
+                armorMinArmorBar.fillAmount = minArmorHealth / MaxArmorValue;
+            }
         }
 
         public override DamageArmorInfo OnDamage(float damage, Player DamagingPlayer, ArmorDamagePatchType? armorDamagePatchType) {
