@@ -44,7 +44,6 @@ namespace AALUND13Cards {
         internal static ManualLogSource ModLogger;
         internal static AssetBundle Assets;
 
-        public static GameObject BlankCardPrefab;
         public static CardResgester CardResgester;
 
         public static CardCategory SoulstreakClassCards;
@@ -65,8 +64,6 @@ namespace AALUND13Cards {
             if(Assets == null) {
                 throw new System.Exception("Failed to load asset bundle");
             }
-            
-            BlankCardPrefab = Assets.LoadAsset<GameObject>("__AAC__Blank");
             
             PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
             ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
