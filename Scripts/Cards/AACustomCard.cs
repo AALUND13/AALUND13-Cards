@@ -20,9 +20,9 @@ namespace AALUND13Cards.Cards {
         }
 
         public override void OnReassignCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
-            AAStatModifers statModifers = GetComponent<AAStatModifers>();
-            if(statModifers != null) {
-                statModifers.OnReassign(player);
+            CustomStatModifers[] statModifers = GetComponents<CustomStatModifers>();
+            foreach(CustomStatModifers statModifer in statModifers) {
+                statModifer.OnReassign(player);
             }
         }
 

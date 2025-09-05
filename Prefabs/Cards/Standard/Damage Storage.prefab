@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   m_Layer: 0
-  m_Name: __AAC__Damage Storage
+  m_Name: Damage Storage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     damage back to nearby enemies"
   cardStats:
   - positive: 1
-    amount: +250% Your Max HP
+    amount: +50% Your Max HP
     simepleAmount: 0
     stat: Of Store Damage
   - positive: 0

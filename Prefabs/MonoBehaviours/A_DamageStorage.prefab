@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToStorePercentage: 0.5
-  MaxStoredDamageMultiplier: 2.5
+  MaxStoredDamageMultiplier: 0.5
   CoolddownTime: 10
 --- !u!114 &6116028601478638547
 MonoBehaviour:

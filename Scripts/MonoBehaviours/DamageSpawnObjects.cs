@@ -2,7 +2,6 @@
 using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours {
-    [RequireComponent(typeof(DamageSpawnObjects))]
     public class DamageSpawnObjects : SpawnObjects, IOnDoDamageEvent, IOnTakeDamageEvent, IOnTakeDamageOvertimeEvent {
         public float DamageThreshold = 0.5f; // Minimum damage to trigger spawning
 
@@ -14,26 +13,26 @@ namespace AALUND13Cards.MonoBehaviours {
 
         public void Start() {
             player = GetComponentInParent<Player>();
-            DamageEventHandler.RegisterDamageEvent(this, player);
+            DamageEventHandler.Instance.RegisterDamageEvent(this, player);
         }
 
         public void OnDestroy() {
-            DamageEventHandler.UnregisterDamageEvent(this, player);
+            DamageEventHandler.Instance.UnregisterDamageEvent(this, player);
         }
 
-        public void OnDamage(Vector2 damage) {
+        public void OnDamage(Vector2 damage, Player damagingPlayer) {
             if(TriggerOnDamage && damage.magnitude >= DamageThreshold) {
                 SpawnDamage(damage);
             }
         }
 
-        public void OnTakeDamage(Vector2 damage) {
+        public void OnTakeDamage(Vector2 damage, Player damagingPlayer) {
             if(TriggerOnTakeDamage && damage.magnitude >= DamageThreshold) {
                 SpawnDamage(damage);
             }
         }
 
-        public void OnTakeDamageOvertime(Vector2 damage) {
+        public void OnTakeDamageOvertime(Vector2 damage, Player damagingPlayer) {
             if(TriggerOnOvertimeDamage && damage.magnitude >= DamageThreshold) {
                 SpawnDamage(damage);
             }

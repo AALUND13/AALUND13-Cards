@@ -11,11 +11,11 @@ namespace AALUND13Cards.Patches {
 
         [HarmonyPatch(nameof(HealthHandler.TakeDamage), typeof(Vector2), typeof(Vector2), typeof(Color), typeof(GameObject), typeof(Player), typeof(bool), typeof(bool))]
         [HarmonyPrefix]
-        public static void TakeDamagePrefix(HealthHandler __instance, Vector2 damage) {
+        public static void TakeDamagePrefix(HealthHandler __instance, Player damagingPlayer, Vector2 damage) {
             TakeDamageRunning = true;
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
 
-            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamage, data.player, damage);
+            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamage, data.player, damagingPlayer, damage);
         }
         [HarmonyPatch(nameof(HealthHandler.TakeDamage), typeof(Vector2), typeof(Vector2), typeof(Color), typeof(GameObject), typeof(Player), typeof(bool), typeof(bool))]
         [HarmonyPostfix]
@@ -34,7 +34,7 @@ namespace AALUND13Cards.Patches {
             }
 
             Vector2 damageCopy = damage;
-            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnDoDamage, data.player, damageCopy);
+            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnDoDamage, data.player, damagingPlayer, damageCopy);
             if(characterAdditionalData.secondToDealDamage > 0 && !characterAdditionalData.dealDamage) {
                 Vector2 delayedDamage = new Vector2(damage.x, damage.y);
                 __instance.gameObject.GetOrAddComponent<DelayDamageHandler>().DelayDamage(delayedDamage, position, blinkColor, damagingWeapon, damagingPlayer, healthRemoval, lethal, ignoreBlock);

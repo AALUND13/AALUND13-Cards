@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 8163522322292975016}
   - component: {fileID: 8163522322292975017}
   - component: {fileID: 114375967796397380}
-  - component: {fileID: 114091091859157152}
+  - component: {fileID: 114451275234614244}
   m_Layer: 0
-  m_Name: __AAC__Eternal Resilience
+  m_Name: Eternal Resilience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,8 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
---- !u!114 &114091091859157152
+  IsCursed: 0
+--- !u!114 &114451275234614244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,7 +312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Script: {fileID: 11500000, guid: 244c01c9a87249e49ac22a04893366bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
@@ -325,9 +326,3 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
-  SecondToDealDamage: 0
-  BattleforgedArmor: 0
-  ExtraPicks: 0
-  ExtraPicksType: 0
-  RandomCardsAtStart: 0
-  ExtraCardPicks: 0

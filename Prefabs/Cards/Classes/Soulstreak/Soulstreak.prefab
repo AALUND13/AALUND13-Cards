@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 1691787583690612696}
   - component: {fileID: 1774751977049206925}
   - component: {fileID: 114906609052272654}
-  - component: {fileID: 114258392857231854}
+  - component: {fileID: 114194797520433834}
   m_Layer: 0
-  m_Name: __AAC__Soulstreak
+  m_Name: Soulstreak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,7 +306,8 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
---- !u!114 &114258392857231854
+  IsCursed: 0
+--- !u!114 &114194797520433834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,7 +316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7882910650094676032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Script: {fileID: 11500000, guid: 244c01c9a87249e49ac22a04893366bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
@@ -329,9 +330,3 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
-  SecondToDealDamage: 0
-  BattleforgedArmor: 0
-  ExtraPicks: 0
-  ExtraPicksType: 0
-  RandomCardsAtStart: 0
-  ExtraCardPicks: 0

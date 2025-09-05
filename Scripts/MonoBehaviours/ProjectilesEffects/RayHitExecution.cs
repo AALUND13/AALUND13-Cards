@@ -2,7 +2,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours.CardsEffects {
+namespace AALUND13Cards.MonoBehaviours.ProjectilesEffects {
     public class RayHitExecution : RayHitEffect {
         [Range(0, 1)]
         public float executionPercentage = 0.3f;

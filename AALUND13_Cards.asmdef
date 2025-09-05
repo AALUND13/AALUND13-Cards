@@ -13,7 +13,8 @@
         "WillsWackyManagers",
         "FancyCardBar",
         "RandomCardsGenerator",
-        "CorruptedCardsManager"
+        "CorruptedCardsManager",
+        "PickNCards"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

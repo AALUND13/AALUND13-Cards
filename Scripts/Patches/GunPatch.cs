@@ -23,6 +23,12 @@ namespace AALUND13Cards.Patches {
             }
         }
 
+        [HarmonyPatch("ApplyProjectileStats")]
+        public static void Postfix(Gun __instance, GameObject obj) {
+            ProjectileHit projectile = obj.GetComponent<ProjectileHit>();
+            projectile.percentageDamage += __instance.player.data.GetAdditionalData().ScalingPercentageDamage / __instance.player.GetShootsPerSecond();
+        }
+
         [HarmonyPatch("DoAttack")]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
             foreach(var code in instructions) {

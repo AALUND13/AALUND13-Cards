@@ -40,6 +40,8 @@ namespace AALUND13Cards {
                 (p) => $"{p.data.GetAdditionalData().DamageReduction * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
                 (p) => $"{p.GetDPS()}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Scaling Percentage Damage", (p) => p.data.GetAdditionalData().ScalingPercentageDamage != 0,
+                (p) => $"{p.data.GetAdditionalData().ScalingPercentageDamage * 100:0}%");
 
             #region Soulstreak Stats
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);

@@ -35,7 +35,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             }
         }
 
-        public void OnDamage(Vector2 damage) {
+        public void OnDamage(Vector2 damage, Player damagingPlayer) {
             if(cooldownTimer > 0f) return;
 
             float rawDamage = damage.magnitude / (1f - DamageToStorePercentage);
@@ -63,7 +63,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             damageSpawnObjects = GetComponent<DamageSpawnObjects>();
             storedDamageBar = CreateStoredDamageBar();
 
-            DamageEventHandler.RegisterDamageEvent(this, player);
+            DamageEventHandler.Instance.RegisterDamageEvent(this, player);
             player.data.healthHandler.reviveAction += OnRevive;
 
             maxStoredDamage = player.data.maxHealth * MaxStoredDamageMultiplier;
@@ -73,8 +73,9 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         }
 
         private void OnDestroy() {
-            DamageEventHandler.UnregisterDamageEvent(this, player);
+            DamageEventHandler.Instance.UnregisterDamageEvent(this, player);
             player.data.healthHandler.reviveAction -= OnRevive;
+            Destroy(storedDamageBar.gameObject);
         }
 
 
@@ -99,7 +100,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             }
         }
         private CustomHealthBar CreateStoredDamageBar() {
-            GameObject storedDamageBarObj = new GameObject("Railgun Charge Bar");
+            GameObject storedDamageBarObj = new GameObject("Damage Storage Bar");
 
             CustomHealthBar storedDamageBar = storedDamageBarObj.AddComponent<CustomHealthBar>();
             storedDamageBar.SetColor(new Color(1f, 0.6470588235f, 0f, 1f) * 0.8f);

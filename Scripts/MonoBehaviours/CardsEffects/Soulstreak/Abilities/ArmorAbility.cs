@@ -1,0 +1,60 @@
+﻿using AALUND13Cards.Armors;
+using JARL.Armor;
+using JARL.Armor.Bases;
+using Photon.Realtime;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEditor;
+using UnityEngine;
+
+namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak.Abilities {
+    public class ArmorAbility : ISoulstreakAbility {
+        public float AbilityCooldownTime;
+
+        private float abilityCooldown;
+        private bool abilityActive;
+
+        private ArmorHandler armorHandler;
+
+        public ArmorAbility(SoulstreakMono soulstreak, float abilityCooldownTime) {
+            AbilityCooldownTime = abilityCooldownTime;
+            abilityCooldown = 0f;
+            abilityActive = false;
+
+            armorHandler = ArmorFramework.ArmorHandlers[soulstreak.Player];
+        }
+
+        public void OnBlock(SoulstreakMono soulstreak) {
+            if(!abilityActive && abilityCooldown == 0) {
+                ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
+                soulArmor.MaxArmorValue = soulstreak.Player.data.maxHealth * soulstreak.SoulstreakStats.SoulArmorPercentage * (soulstreak.SoulstreakStats.Souls + 1);
+                soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * soulstreak.SoulstreakStats.SoulArmorPercentageRegenRate;
+                soulArmor.CurrentArmorValue = soulArmor.MaxArmorValue;
+                abilityActive = true;
+            }
+        }
+
+        public void OnReset(SoulstreakMono soulstreak) {
+            abilityActive = false;
+            abilityCooldown = 0;
+
+            ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>(); 
+            soulArmor.MaxArmorValue = 0;
+            soulArmor.CurrentArmorValue = 0;
+            
+        }
+
+        public void OnUpdate(SoulstreakMono soulstreak) {
+            abilityCooldown = Mathf.Max(abilityCooldown - TimeHandler.deltaTime, 0);
+
+            if(armorHandler.GetArmorByType<SoulArmor>().CurrentArmorValue <= 0 && armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue > 0) {
+                armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue = 0;
+                abilityCooldown = 10;
+                abilityActive = false;
+            }
+        }
+    }
+}

@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 3463904881980186722}
   - component: {fileID: 3463904881980186723}
   - component: {fileID: 114383101961269428}
-  - component: {fileID: 114266538836415854}
+  - component: {fileID: 114191682485588200}
   m_Layer: 0
-  m_Name: __AAC__Soul Drain Enhancement
+  m_Name: Soul Drain Enhancement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,8 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
---- !u!114 &114266538836415854
+  IsCursed: 0
+--- !u!114 &114191682485588200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,7 +312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3463904881980186721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Script: {fileID: 11500000, guid: 244c01c9a87249e49ac22a04893366bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
@@ -325,9 +326,3 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0.05
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
-  SecondToDealDamage: 0
-  BattleforgedArmor: 0
-  ExtraPicks: 0
-  ExtraPicksType: 0
-  RandomCardsAtStart: 0
-  ExtraCardPicks: 0

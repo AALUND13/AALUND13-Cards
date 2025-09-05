@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 40 unique cards developed by AALUND13.
+AALUND13 Cards introduces 47 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -42,6 +42,12 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Damage Storage
 - Titanium Armor
 - Reinforced Plating
+- Reaper
+  - Sharpened Scythe
+  - Sharper Scythe
+  - Reaper Deal
+  - Bloodlust
+  - Withering
 
 ## Curse Cards
 
@@ -49,5 +55,6 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Blindness
 - Fracture Armor
 - Healing Radiance
+- Life Drain
 
 For details about the cards, you can take a look at the [Wiki](https://github.com/AALUND13/AALUND13-Cards/wiki/Cards).

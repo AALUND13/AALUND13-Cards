@@ -36,7 +36,7 @@ namespace AALUND13Cards {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.13.3"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.13.6"; // What version are we on (major.minor.patch)?
         
         public static AALUND13_Cards Instance { get; private set; }
 
@@ -47,9 +47,6 @@ namespace AALUND13Cards {
         public static CardResgester CardResgester;
 
         public static CardCategory SoulstreakClassCards;
-
-        public static Material PixelateEffectMaterial;
-        public static Material ScanEffectMaterial;
 
         public static CardCategory[] NoLotteryCategories;
         public static CardCategory[] NoSteelCategories;
@@ -64,9 +61,6 @@ namespace AALUND13Cards {
             if(Assets == null) {
                 throw new System.Exception("Failed to load asset bundle");
             }
-            
-            PixelateEffectMaterial = Assets.LoadAsset<Material>("PixelateEffectMaterial");
-            ScanEffectMaterial = Assets.LoadAsset<Material>("ScanEffectMaterial");
 
             AACardsGenerators.RegisterGenerators();
 
@@ -102,6 +96,8 @@ namespace AALUND13Cards {
 
             gameObject.AddComponent<DelayDamageHandler>();
             gameObject.AddComponent<PickCardTracker>();
+            gameObject.AddComponent<DamageEventHandler>();
+            gameObject.AddComponent<ConstantDamageHandler>();
 
             NoLotteryCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("CardManipulation"), CustomCardCategories.instance.CardCategory("NoRandom") };
             NoSteelCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("NoRemove") };

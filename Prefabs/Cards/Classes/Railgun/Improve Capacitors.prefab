@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
-  - component: {fileID: 114625336960515888}
+  - component: {fileID: 114868439685266180}
   m_Layer: 0
-  m_Name: __AAC__Improve Capacitors
+  m_Name: Improve Capacitors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   CanBeReassigned: 1
   IsHidden: 0
   IsCursed: 0
---- !u!114 &114625336960515888
+--- !u!114 &114868439685266180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,20 +312,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ecd1dace8fa4984494754712e97cf52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  PlayerSize: 0
-  MovementSpeed: 0
-  AttackSpeed: 0
-  Damage: 0
-  BulletSpeed: 0
-  SoulArmorPercentage: 0
-  SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0
-  SoulDrainLifestealMultiply: 0
-  AbilityType: 0
   MaximumCharge: 25
   ChargeRate: 0
   FullChargeThreshold: 0
@@ -333,15 +322,3 @@ MonoBehaviour:
   ChargeRateMultiplier: 1
   RailgunDamageMultiplier: 1
   RailgunBulletSpeedMultiplier: 1
-  SecondToDealDamage: 0
-  CurrentHPRegenPercentage: 0
-  IsBind: 0
-  BlocksWhenRecharge: 0
-  BlockPircePercent: 0
-  BattleforgedArmor: 0
-  ArmorPiercePercent: 0
-  DamageAgainstArmorPercentage: 1
-  ExtraPicks: 0
-  ExtraPicksType: 0
-  RandomCardsAtStart: 0
-  ExtraCardPicks: 0

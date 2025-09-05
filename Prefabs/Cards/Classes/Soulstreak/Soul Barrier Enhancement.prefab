@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 7878269446529554562}
   - component: {fileID: 6356320218957805462}
   - component: {fileID: 114835280884674560}
-  - component: {fileID: 114924886258846666}
+  - component: {fileID: 114705031577598866}
   m_Layer: 0
-  m_Name: __AAC__Soul Barrier Enhancement
+  m_Name: Soul Barrier Enhancement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,7 +307,8 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
---- !u!114 &114924886258846666
+  IsCursed: 0
+--- !u!114 &114705031577598866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,7 +317,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7750131547516167368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
+  m_Script: {fileID: 11500000, guid: 244c01c9a87249e49ac22a04893366bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
@@ -330,9 +331,3 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 1
-  SecondToDealDamage: 0
-  BattleforgedArmor: 0
-  ExtraPicks: 0
-  ExtraPicksType: 0
-  RandomCardsAtStart: 0
-  ExtraCardPicks: 0

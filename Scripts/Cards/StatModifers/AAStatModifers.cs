@@ -13,7 +13,7 @@ using System.Reflection;
 using UnboundLib;
 using UnityEngine;
 
-namespace AALUND13Cards.Cards {
+namespace AALUND13Cards.Cards.StatModifers {
     public enum ExtraPicksType {
         None,
         Normal,
@@ -26,43 +26,12 @@ namespace AALUND13Cards.Cards {
         None
     }
 
-    public class AAStatModifers : MonoBehaviour {
-        #region Soulstreak Stats
-        [Header("Soulstreak Stats")]
-
-        public float MaxHealth = 0;
-        public float PlayerSize = 0;
-        public float MovementSpeed = 0;
-
-        public float AttackSpeed = 0;
-        public float Damage = 0;
-        public float BulletSpeed = 0;
-
-        public float SoulArmorPercentage = 0;
-        public float SoulArmorPercentageRegenRate = 0;
-
-        public float SoulDrainDamageMultiply = 0;
-        public float SoulDrainLifestealMultiply = 0;
-
-        public AbilityType AbilityType;
-        #endregion
-
-        #region Railgun Stats
-        [Header("Railgun Stats Add")]
-        public float MaximumCharge = 0f;
-        public float ChargeRate = 0f;
-        public float FullChargeThreshold = 0f;
-
-        [Header("Railgun Stats Multiplier")]
-        public float MaximumChargeMultiplier = 1f;
-        public float ChargeRateMultiplier = 1f;
-
-        public float RailgunDamageMultiplier = 1f;
-        public float RailgunBulletSpeedMultiplier = 1f;
-        #endregion
-
+    public class AAStatModifers : CustomStatModifers {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
+
+        [Header("Percentage Damage")]
+        public float ScalingPercentageDamage = 0;
 
         [Header("Curses Stats")]
         public bool SetMaxRarityForCurse = false;
@@ -99,45 +68,17 @@ namespace AALUND13Cards.Cards {
         public int ExtraCardPicks = 0;
         public int DuplicatesAsCorrupted = 0;
 
-        public void Apply(Player player) {
+        public override void Apply(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
             var jarlAdditionalData = JARL.Extensions.CharacterDataExtensions.GetAdditionalData(data);
 
-            #region Soulstreak Stats
-            additionalData.SoulStreakStats.MaxHealth += MaxHealth;
-            additionalData.SoulStreakStats.PlayerSize += PlayerSize;
-            additionalData.SoulStreakStats.MovementSpeed += MovementSpeed;
-
-            additionalData.SoulStreakStats.AttackSpeed += AttackSpeed;
-            additionalData.SoulStreakStats.Damage += Damage;
-            additionalData.SoulStreakStats.BulletSpeed += BulletSpeed;
-
-            additionalData.SoulStreakStats.SoulArmorPercentage += SoulArmorPercentage;
-            additionalData.SoulStreakStats.SoulArmorPercentageRegenRate += SoulArmorPercentageRegenRate;
-
-            additionalData.SoulStreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
-            additionalData.SoulStreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
-
-            additionalData.SoulStreakStats.AbilityType |= AbilityType;
-            #endregion
-
-            #region Railgun Stats
-            // Apply Railgun Add Stats
-            additionalData.RailgunStats.MaximumCharge = Mathf.Max(additionalData.RailgunStats.MaximumCharge + MaximumCharge, 0f);
-            additionalData.RailgunStats.ChargeRate = Mathf.Max(additionalData.RailgunStats.ChargeRate + ChargeRate, 0f);
-            additionalData.RailgunStats.FullChargeThreshold = Mathf.Max(additionalData.RailgunStats.FullChargeThreshold + FullChargeThreshold, 0f);
-
-            // Apply Railgun Multiplier Stats
-            additionalData.RailgunStats.MaximumCharge *= MaximumChargeMultiplier;
-            additionalData.RailgunStats.ChargeRate *= ChargeRateMultiplier;
-            additionalData.RailgunStats.RailgunDamageMultiplier += RailgunDamageMultiplier - 1f;
-            additionalData.RailgunStats.RailgunBulletSpeedMultiplier += RailgunBulletSpeedMultiplier - 1f;
-            #endregion
-
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) additionalData.dealDamage = false;
             additionalData.secondToDealDamage += SecondToDealDamage;
+
+            // Apply Percentage Damage
+            additionalData.ScalingPercentageDamage += ScalingPercentageDamage;
 
             // Apply Curses Stats
             if(SetMaxRarityForCurse) {
@@ -188,7 +129,7 @@ namespace AALUND13Cards.Cards {
             }
         }
 
-        public void OnReassign(Player player) {
+        public override void OnReassign(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
 

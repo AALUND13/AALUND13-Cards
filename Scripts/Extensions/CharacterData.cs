@@ -32,6 +32,7 @@ namespace AALUND13Cards.Extensions {
 
         // Uncategorized
         public float DamageReduction = 0f;
+        public float ScalingPercentageDamage = 0f;
 
         public void Reset() {
             // Delayed Damage
@@ -60,6 +61,7 @@ namespace AALUND13Cards.Extensions {
 
             // Uncategorized
             DamageReduction = 0f;
+            ScalingPercentageDamage = 0f;
         }
     }
 
