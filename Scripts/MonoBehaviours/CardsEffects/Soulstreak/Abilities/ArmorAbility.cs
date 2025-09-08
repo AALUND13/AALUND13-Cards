@@ -19,12 +19,12 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak.Abilities {
 
         private ArmorHandler armorHandler;
 
-        public ArmorAbility(SoulstreakMono soulstreak, float abilityCooldownTime) {
+        public ArmorAbility(Player player, float abilityCooldownTime) {
             AbilityCooldownTime = abilityCooldownTime;
             abilityCooldown = 0f;
             abilityActive = false;
 
-            armorHandler = ArmorFramework.ArmorHandlers[soulstreak.Player];
+            armorHandler = ArmorFramework.ArmorHandlers[player];
         }
 
         public void OnBlock(SoulstreakMono soulstreak) {

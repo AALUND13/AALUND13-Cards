@@ -26,8 +26,8 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         private float blood = 0;
         private float appliedScaling = 0f;
 
-        public void OnDamage(Vector2 damage, Player player) {
-            if(this.player != player) return;
+        public void OnDamage(DamageInfo damage) {
+            if(player != damage.DamagingPlayer) return;
 
             float bloodGained = BloodFillPerDamage / this.player.GetShootsPerSecond();
             float added = PercentageDamagePerDamage / this.player.GetShootsPerSecond();

@@ -2,14 +2,29 @@
 using UnityEngine;
 
 namespace AALUND13Cards.Handlers {
+    public struct DamageInfo {
+        public Vector2 Damage;
+        public bool IsLethal;
+
+        public Player DamagingPlayer;
+        public Player HurtPlayer;
+
+        public DamageInfo(Vector2 damage, bool isLethal, Player damagingPlayer, Player hurtPlayer) {
+            Damage = damage;
+            IsLethal = isLethal;
+            DamagingPlayer = damagingPlayer;
+            HurtPlayer = hurtPlayer;
+        }
+    }
+
     public interface IOnDoDamageEvent {
-        void OnDamage(Vector2 damage, Player player);
+        void OnDamage(DamageInfo damage);
     }
     public interface IOnTakeDamageEvent {
-        void OnTakeDamage(Vector2 damage, Player player);
+        void OnTakeDamage(DamageInfo damage);
     }
     public interface IOnTakeDamageOvertimeEvent {
-        void OnTakeDamageOvertime(Vector2 damage, Player player);
+        void OnTakeDamageOvertime(DamageInfo damage);
     }
 
 
@@ -95,26 +110,28 @@ namespace AALUND13Cards.Handlers {
             }
         }
 
-        internal static void TriggerDamageEvent(DamageEventType eventType, Player hurtPlayer, Player damagingPlayer, Vector2 damage) {
+        internal static void TriggerDamageEvent(DamageEventType eventType, Player hurtPlayer, Player damagingPlayer, Vector2 damage, bool isLethal) {
+            DamageInfo damageInfo = new DamageInfo(damage, isLethal, damagingPlayer, hurtPlayer);
+
             switch(eventType) {
                 case DamageEventType.OnDoDamage:
                     if(Instance.OnDoDamageEvents.ContainsKey(hurtPlayer)) {
                         foreach(var onDoDamageEvent in Instance.OnDoDamageEvents[hurtPlayer]) {
-                            onDoDamageEvent.OnDamage(damage, damagingPlayer);
+                            onDoDamageEvent.OnDamage(damageInfo);
                         }
                     }
                     break;
                 case DamageEventType.OnTakeDamage:
                     if(Instance.OnTakeDamageEvents.ContainsKey(hurtPlayer)) {
                         foreach(var onTakeDamageEvent in Instance.OnTakeDamageEvents[hurtPlayer]) {
-                            onTakeDamageEvent.OnTakeDamage(damage, damagingPlayer);
+                            onTakeDamageEvent.OnTakeDamage(damageInfo);
                         }
                     }
                     break;
                 case DamageEventType.OnTakeDamageOvertime:
                     if(Instance.OnTakeDamageOvertimeEvents.ContainsKey(hurtPlayer)) {
                         foreach(var onTakeDamageOvertimeEvent in Instance.OnTakeDamageOvertimeEvents[hurtPlayer]) {
-                            onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damage, damagingPlayer);
+                            onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damageInfo);
                         }
                     }
                     break;
@@ -124,7 +141,7 @@ namespace AALUND13Cards.Handlers {
                 if(kvp.Key != hurtPlayer) {
                     foreach(var onDoDamageEvent in kvp.Value) {
                         if(eventType == DamageEventType.OnDoDamage) {
-                            onDoDamageEvent.OnDamage(damage, damagingPlayer);
+                            onDoDamageEvent.OnDamage(damageInfo);
                         }
                     }
                 }
@@ -133,7 +150,7 @@ namespace AALUND13Cards.Handlers {
                 if(kvp.Key != hurtPlayer) {
                     foreach(var onTakeDamageEvent in kvp.Value) {
                         if(eventType == DamageEventType.OnTakeDamage) {
-                            onTakeDamageEvent.OnTakeDamage(damage, damagingPlayer);
+                            onTakeDamageEvent.OnTakeDamage(damageInfo);
                         }
                     }
                 }
@@ -142,7 +159,7 @@ namespace AALUND13Cards.Handlers {
                 if(kvp.Key != hurtPlayer) {
                     foreach(var onTakeDamageOvertimeEvent in kvp.Value) {
                         if(eventType == DamageEventType.OnTakeDamageOvertime) {
-                            onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damage, damagingPlayer);
+                            onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damageInfo);
                         }
                     }
                 }

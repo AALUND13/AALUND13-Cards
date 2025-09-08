@@ -3,6 +3,7 @@ using AALUND13Cards.Armors.Processors;
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.Utils;
 using BepInEx;
 using BepInEx.Logging;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
@@ -73,6 +74,7 @@ namespace AALUND13Cards {
 
             CardResgester = Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>();
             CardResgester.RegisterCards<AALUND13_Cards>("AAC");
+            Assets.LoadAsset<GameObject>("PhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
 
             GameObject flashlightMaskHandler = GameObject.Instantiate(Assets.LoadAsset<GameObject>("FlashlightMaskHandler"));
             DontDestroyOnLoad(flashlightMaskHandler);
@@ -122,7 +124,7 @@ namespace AALUND13Cards {
             yield break;
         }
 
-        void OnPlayerDeath(Player player, Dictionary<Player, DamageInfo> playerDamageInfos) {
+        void OnPlayerDeath(Player player, Dictionary<Player, JARL.Utils.DamageInfo> playerDamageInfos) {
             if(player.GetComponent<DelayDamageHandler>() != null) {
                 player.GetComponent<DelayDamageHandler>().StopAllCoroutines();
             }

@@ -15,6 +15,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         }
 
         public bool IsEnabled = false;
+        public bool AllowOvercharge = false;
 
         public float MaximumCharge = 0f;
         public float CurrentCharge = 0f;
@@ -29,27 +30,28 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         public float RailgunMinimumChargeBulletSpeedMultiplier = 0.5f;
 
         public RailgunChargeStats GetChargeStats(float charge) {
-            float clampedCharge = Mathf.Min(charge, FullChargeThreshold);
+            float clampedCharge = charge;
+            if(!AllowOvercharge) clampedCharge = Mathf.Min(clampedCharge, FullChargeThreshold);
+            else clampedCharge /= 2f;
             float chargeRatio = clampedCharge / FullChargeThreshold;
 
-            float damageMultiplier = Mathf.Lerp(
-                RailgunMinimumChargeDamageMultiplier,
-                RailgunDamageMultiplier,
-                chargeRatio
-            );
+            float damageMultiplier = RailgunMinimumChargeDamageMultiplier +
+                (RailgunDamageMultiplier - RailgunMinimumChargeDamageMultiplier) * chargeRatio;
 
-            float bulletSpeedMultiplier = Mathf.Lerp(
-                RailgunMinimumChargeBulletSpeedMultiplier,
-                RailgunBulletSpeedMultiplier,
-                chargeRatio
-            );
+            float bulletSpeedMultiplier = RailgunMinimumChargeBulletSpeedMultiplier +
+                (RailgunBulletSpeedMultiplier - RailgunMinimumChargeBulletSpeedMultiplier) * chargeRatio;
 
             return new RailgunChargeStats(damageMultiplier, bulletSpeedMultiplier);
         }
 
 
         public void UseCharge(RailgunStats stats) {
-            CurrentCharge = Mathf.Max(CurrentCharge - FullChargeThreshold, 0);
+            if(AllowOvercharge) {
+                CurrentCharge = 0f;
+            } else {
+                CurrentCharge = Mathf.Max(CurrentCharge - FullChargeThreshold, 0);
+            }
+            AllowOvercharge = false;
         }
     }
 

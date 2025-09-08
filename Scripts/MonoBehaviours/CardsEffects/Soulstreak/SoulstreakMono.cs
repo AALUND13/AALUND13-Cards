@@ -27,6 +27,8 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
         public float SoulDrainDPSFactor = 0;
         public float SoulDrainLifestealMultiply = 0;
 
+        // Abilities
+        public List<ISoulstreakAbility> Abilities = new List<ISoulstreakAbility>();
 
 
         public uint Souls = 0;
@@ -38,7 +40,6 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
         public GameObject SoulsCounter;
         public GameObject SoulsCounterGUI;
 
-        public List<ISoulstreakAbility> Abilities = new List<ISoulstreakAbility>();
 
         public SoulStreakStats SoulstreakStats => Player.data.GetAdditionalData().SoulStreakStats;
 
@@ -51,7 +52,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
         private bool CanResetKills;
 
         public void BlockAbility() {
-            foreach(ISoulstreakAbility ability in Abilities) {
+            foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
                 ability.OnBlock(this);
             }
         }
@@ -125,7 +126,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
         private void Update() {
             if(Player.data.isPlaying) {
-                foreach(ISoulstreakAbility ability in Abilities) {
+                foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
                     ability.OnUpdate(this);
                 }
             }
@@ -139,7 +140,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
 
         private void OnRevive() {
-            foreach(ISoulstreakAbility ability in Abilities) {
+            foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
                 ability.OnReset(this);
             }
         }

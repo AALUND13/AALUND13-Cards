@@ -20,21 +20,21 @@ namespace AALUND13Cards.MonoBehaviours {
             DamageEventHandler.Instance.UnregisterDamageEvent(this, player);
         }
 
-        public void OnDamage(Vector2 damage, Player damagingPlayer) {
-            if(TriggerOnDamage && damage.magnitude >= DamageThreshold) {
-                SpawnDamage(damage);
+        public void OnDamage(DamageInfo damage) {
+            if(TriggerOnDamage && damage.Damage.magnitude >= DamageThreshold) {
+                SpawnDamage(damage.Damage);
             }
         }
 
-        public void OnTakeDamage(Vector2 damage, Player damagingPlayer) {
-            if(TriggerOnTakeDamage && damage.magnitude >= DamageThreshold) {
-                SpawnDamage(damage);
+        public void OnTakeDamage(DamageInfo damage) {
+            if(TriggerOnTakeDamage && damage.Damage.magnitude >= DamageThreshold) {
+                SpawnDamage(damage.Damage);
             }
         }
 
-        public void OnTakeDamageOvertime(Vector2 damage, Player damagingPlayer) {
-            if(TriggerOnOvertimeDamage && damage.magnitude >= DamageThreshold) {
-                SpawnDamage(damage);
+        public void OnTakeDamageOvertime(DamageInfo damage) {
+            if(TriggerOnOvertimeDamage && damage.Damage.magnitude >= DamageThreshold) {
+                SpawnDamage(damage.Damage);
             }
         }
 

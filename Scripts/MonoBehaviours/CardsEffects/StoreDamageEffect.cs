@@ -35,10 +35,10 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             }
         }
 
-        public void OnDamage(Vector2 damage, Player damagingPlayer) {
+        public void OnDamage(DamageInfo damage) {
             if(cooldownTimer > 0f) return;
 
-            float rawDamage = damage.magnitude / (1f - DamageToStorePercentage);
+            float rawDamage = damage.Damage.magnitude / (1f - DamageToStorePercentage);
             storedDamage = Mathf.Min(maxStoredDamage, storedDamage + rawDamage * DamageToStorePercentage);
             if(storedDamage == maxStoredDamage && damageReductionApplied) {
                 player.data.GetAdditionalData().DamageReduction -= DamageToStorePercentage;

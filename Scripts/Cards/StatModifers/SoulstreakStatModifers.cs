@@ -1,4 +1,6 @@
 ﻿using AALUND13Cards.Extensions;
+using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,6 @@ namespace AALUND13Cards.Cards.StatModifers {
             CharacterData data = player.data;
             var additionalData = data.GetAdditionalData();
 
-            #region Soulstreak Stats
             additionalData.SoulStreakStats.MaxHealth += MaxHealth;
             additionalData.SoulStreakStats.PlayerSize += PlayerSize;
             additionalData.SoulStreakStats.MovementSpeed += MovementSpeed;
@@ -50,7 +51,10 @@ namespace AALUND13Cards.Cards.StatModifers {
 
             additionalData.SoulStreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
             additionalData.SoulStreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
-            #endregion
+            
+            if((AbilityType & AbilityType.Armor) == AbilityType.Armor) {
+                additionalData.SoulStreakStats.Abilities.Add(new ArmorAbility(player, 10f));
+            }
         }
     }
 }

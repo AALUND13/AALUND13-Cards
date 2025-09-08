@@ -29,6 +29,7 @@ namespace AALUND13Cards.Cards.StatModifers {
     public class AAStatModifers : CustomStatModifers {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
+        public float DamageMultiplier = 1f;
 
         [Header("Percentage Damage")]
         public float ScalingPercentageDamage = 0;
@@ -76,6 +77,7 @@ namespace AALUND13Cards.Cards.StatModifers {
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) additionalData.dealDamage = false;
             additionalData.secondToDealDamage += SecondToDealDamage;
+            data.weaponHandler.gun.damage *= DamageMultiplier;
 
             // Apply Percentage Damage
             additionalData.ScalingPercentageDamage += ScalingPercentageDamage;

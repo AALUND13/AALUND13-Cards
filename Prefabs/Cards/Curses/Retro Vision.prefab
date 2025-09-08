@@ -18,8 +18,9 @@ GameObject:
   - component: {fileID: 114203678359837342}
   - component: {fileID: 114553290272354044}
   - component: {fileID: 114200066083493298}
+  - component: {fileID: 114206302046362204}
   m_Layer: 0
-  m_Name: __AAC__RetroVision
+  m_Name: Retro Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +56,8 @@ MonoBehaviour:
   cardName: Retro Vision
   cardDestription: Thing is looking bit <b>retro</b>...
   cardStats: []
-  rarity: 1
-  cardArt: {fileID: 0}
+  rarity: 2
+  cardArt: {fileID: 3518800303552412274, guid: ec1e97dc295ee844586a34512e196bb4, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -281,36 +282,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  PlayerSize: 0
-  MovementSpeed: 0
-  AttackSpeed: 0
-  Damage: 0
-  BulletSpeed: 0
-  SoulArmorPercentage: 0
-  SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0
-  SoulDrainLifestealMultiply: 0
-  AbilityType: 0
-  MaximumCharge: 0
-  ChargeRate: 0
-  FullChargeThreshold: 0
-  MaximumChargeMultiplier: 1
-  ChargeRateMultiplier: 1
-  RailgunDamageMultiplier: 1
-  RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
-  CurrentHPRegenPercentage: 0
+  DamageMultiplier: 1
+  ScalingPercentageDamage: 0
+  SetMaxRarityForCurse: 0
+  MaxRarityForCurse: 0
   IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
-  BattleforgedArmor: 0
+  ArmorDamageReduction: 0
+  Armor: 2
+  ArmorHealth: 0
+  ArmorRegenRate: 0
+  ArmorRegenCooldown: 0
+  ArmorReactivateType: 0
+  ArmorReactivateValue: 0
   ArmorPiercePercent: 0
   DamageAgainstArmorPercentage: 1
   ExtraPicks: 0
   ExtraPicksType: 0
-  RandomCardsAtStart: 0
+  ExtraPicksForEnemies: 0
+  ExtraPicksTypeForEnemies: 0
   ExtraCardPicks: 0
+  DuplicatesAsCorrupted: 0
 --- !u!114 &114553290272354044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,3 +347,18 @@ MonoBehaviour:
   PostProcessingEffects:
   - {fileID: 2100000, guid: 279c0e411ed71214a85b524380895cbb, type: 2}
   - {fileID: 2100000, guid: d2c74b3ba6827c9408764b523bac3d8f, type: 2}
+--- !u!114 &114206302046362204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473282574127126098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: CorruptedRed
+  targetColor: {r: 0, g: 0, b: 0, a: 0}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}

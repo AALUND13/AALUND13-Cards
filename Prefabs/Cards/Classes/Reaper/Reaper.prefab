@@ -152,7 +152,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 0.2
+  damage: 1
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
@@ -321,25 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  PlayerSize: 0
-  MovementSpeed: 0
-  AttackSpeed: 0
-  Damage: 0
-  BulletSpeed: 0
-  SoulArmorPercentage: 0
-  SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0
-  SoulDrainLifestealMultiply: 0
-  AbilityType: 0
-  MaximumCharge: 0
-  ChargeRate: 0
-  FullChargeThreshold: 0
-  MaximumChargeMultiplier: 1
-  ChargeRateMultiplier: 1
-  RailgunDamageMultiplier: 1
-  RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
+  DamageMultiplier: 0.2
   ScalingPercentageDamage: 0.1
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0

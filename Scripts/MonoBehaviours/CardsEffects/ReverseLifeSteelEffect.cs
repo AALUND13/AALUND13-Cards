@@ -12,8 +12,8 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
 
         private Player player;
 
-        public void OnDamage(Vector2 damage, Player damagingPlayer) {
-            damagingPlayer.data.healthHandler.Heal(damage.magnitude * ReverseLifeSteelPercentage);
+        public void OnDamage(DamageInfo damage) {
+            damage.DamagingPlayer.data.healthHandler.Heal(damage.Damage.magnitude * ReverseLifeSteelPercentage);
         }
 
         private void Start() {

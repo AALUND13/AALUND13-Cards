@@ -34,6 +34,7 @@ If you encounter any bugs, please report them in the [issues](https://github.com
   - Quick Charge Battery
   - Improve Capacitors
   - Coil Extension
+  - Overcharge
 - Bigger Cartridge Case
 - Aftershock
 - Corruption Reflection
