@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 114642101177217248}
   - component: {fileID: 114547696684112084}
   m_Layer: 0
-  m_Name: Life Linked
+  m_Name: Life Link
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Life Linked
+  cardName: Life Link
   cardDestription: You are life linked to a player. If the player you are linked to
     dies, you will also die within 0.5 seconds
   cardStats: []

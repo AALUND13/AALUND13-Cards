@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 47 unique cards developed by AALUND13.
+AALUND13 Cards introduces 50 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -49,6 +49,7 @@ If you encounter any bugs, please report them in the [issues](https://github.com
   - Reaper Deal
   - Bloodlust
   - Withering
+- Restoration
 
 ## Curse Cards
 
@@ -57,5 +58,6 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Fracture Armor
 - Healing Radiance
 - Life Drain
+- Life Link
 
 For details about the cards, you can take a look at the [Wiki](https://github.com/AALUND13/AALUND13-Cards/wiki/Cards).
