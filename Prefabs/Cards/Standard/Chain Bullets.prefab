@@ -53,9 +53,13 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Chain Bullets
   cardDestription: Your bullets are linked by damaging chains that deal 75% bullet
-    damage to players on contact. Chains break if bullets are more than 20 meters
+    damage to players on contact. Chains break if bullets are more than 30 meters
     apart
-  cardStats: []
+  cardStats:
+  - positive: 1
+    amount: +30 Meters
+    simepleAmount: 0
+    stat: Chain Length
   rarity: 1
   cardArt: {fileID: 6540472884659583726, guid: 727ce840c40ca3d4195d981bdeeb8711, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -201,8 +205,8 @@ MonoBehaviour:
     AddToProjectile: {fileID: 5290711042843129823, guid: f8dccedbf955b764fa6d657538abb165,
       type: 3}
     removeScriptsFromProjectileObject: 0
-    scaleStacks: 0
-    scaleStackM: 0
+    scaleStacks: 1
+    scaleStackM: 1
     scaleFromDamage: 0
     stacks: 0
   projectileColor: {r: 0, g: 0, b: 0, a: 1}

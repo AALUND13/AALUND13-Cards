@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageInterval: 0.5
   DamageMultiplier: 0.75
+  MaxDistance: 30
   ConnectingBulletPrefab: {fileID: 1613465677555435263, guid: e7507b8462c0aad458dc1207100095f2,
     type: 3}
