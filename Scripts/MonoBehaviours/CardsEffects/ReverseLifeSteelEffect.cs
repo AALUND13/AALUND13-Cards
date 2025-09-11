@@ -18,6 +18,11 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
 
         private void Start() {
             player = GetComponentInParent<Player>();
+            DamageEventHandler.Instance.RegisterDamageEvent(this, player);
+        }
+
+        private void OnDestroy() {
+            DamageEventHandler.Instance.UnregisterDamageEvent(this, player);
         }
     }
 }

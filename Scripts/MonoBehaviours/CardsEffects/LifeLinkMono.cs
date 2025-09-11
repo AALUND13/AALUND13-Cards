@@ -1,12 +1,15 @@
 ﻿using AALUND13Cards.Handlers;
+using JARL.Utils;
 using Photon.Pun;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     [RequireComponent(typeof(PhotonView))]
-    public class LifeLinkMono : MonoBehaviour, IPunInstantiateMagicCallback, IOnDoDamageEvent {
+    public class LifeLinkMono : MonoBehaviour, IPunInstantiateMagicCallback {
         public GameObject LinkTargetOne;
         public GameObject LinkTargetTwo;
         public GameObject LineRenderer;
@@ -25,29 +28,27 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             player = PlayerManager.instance.players.FirstOrDefault(p => p.playerID == playerId);
             linkedPlayer = PlayerManager.instance.players.FirstOrDefault(p => p.playerID == linkedPlayerId);
 
-            DamageEventHandler.Instance.RegisterDamageEvent(this, linkedPlayer);
-            DamageEventHandler.Instance.RegisterDamageEvent(this, player);
+            DeathHandler.OnPlayerDeath += OnDeath;
 
             linkedPlayer.data.healthHandler.reviveAction += OnRevive;
             player.data.healthHandler.reviveAction += OnRevive;
         }
 
-        public void OnDamage(DamageInfo damage) {
-            if(!linkedPlayer.data.isPlaying || linkedPlayer.data.dead || linkedPlayer.data.healthHandler.isRespawning) {
-                return;
-            }
+        private void OnDeath(Player player, Dictionary<Player, JARL.Utils.DamageInfo> playerDamageInfos) {
+            this.ExecuteAfterFrames(1, () => {
+                if(player.data.healthHandler.isRespawning) return;
 
-            if(damage.HurtPlayer == linkedPlayer) {
-                if(damage.IsLethal && linkedPlayer.data.health < damage.Damage.magnitude) {
-                    StartCoroutine(LinkedDeath());
-                }
-            } else if(damage.HurtPlayer == player) {
-                if(damage.IsLethal && player.data.health < damage.Damage.magnitude) {
+                if(player == linkedPlayer) {
+                    if(!linkedDeathStarted) {
+                        linkedDeathStarted = true;
+                        StartCoroutine(LinkedDeath());
+                    }
+                } else if(player == this.player) {
                     linkedDeathStarted = true;
                     lineTurnBackAmount = 0f;
                     LineRenderer.gameObject.SetActive(false);
                 }
-            }
+            });
         }
 
         private void OnRevive() {
@@ -59,7 +60,6 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         }
 
         private IEnumerator LinkedDeath() {
-            linkedDeathStarted = true;
             Vector2 oldPosition = LinkTargetTwo.transform.position;
 
             while(lineTurnBackAmount > 0) {
@@ -85,6 +85,16 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             LinkTargetOne.transform.position = player.transform.position;
             if(!linkedDeathStarted) {
                 LinkTargetTwo.transform.position = linkedPlayer.transform.position;
+            }
+        }
+
+        private void OnDestroy() {
+            if(player != null) {
+                DeathHandler.OnPlayerDeath -= OnDeath;
+                player.data.healthHandler.reviveAction -= OnRevive;
+            }
+            if(linkedPlayer != null) {
+                linkedPlayer.data.healthHandler.reviveAction -= OnRevive;
             }
         }
 

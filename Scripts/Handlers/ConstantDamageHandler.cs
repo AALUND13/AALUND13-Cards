@@ -27,6 +27,15 @@ namespace AALUND13Cards.Handlers {
             PlayerConstantPrecentageDamages[player] += precentage;
         }
 
+        internal void RemovePlayerFromAll(Player player) {
+            if (playerConstantDamages.ContainsKey(player)) {
+                playerConstantDamages.Remove(player);
+            }
+            if (PlayerConstantPrecentageDamages.ContainsKey(player)) {
+                PlayerConstantPrecentageDamages.Remove(player);
+            }
+        }
+
         private void Start() {
             if (Instance == null) {
                 Instance = this;

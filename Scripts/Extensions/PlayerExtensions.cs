@@ -6,12 +6,13 @@ namespace AALUND13Cards.Extensions {
         public static float GetDPS(this Player player) {
             float damage = player.data.weaponHandler.gun.damage
                 * player.data.weaponHandler.gun.bulletDamageMultiplier
-                * player.data.weaponHandler.gun.projectiles[0].objectToSpawn.GetComponent<ProjectileHit>().damage;
+                * player.data.weaponHandler.gun.projectiles[0].objectToSpawn.GetComponent<ProjectileHit>().damage
+                * player.data.weaponHandler.gun.chargeDamageMultiplier;
 
             GunAmmo ammoComponent = player.data.weaponHandler.gun.GetComponentInChildren<GunAmmo>();
 
             int ammo = ammoComponent.maxAmmo;
-            int projectiles = player.data.weaponHandler.gun.numberOfProjectiles;
+            int projectiles = (int)(player.data.weaponHandler.gun.numberOfProjectiles + player.data.weaponHandler.gun.chargeNumberOfProjectilesTo);
             int bursts = Mathf.Max(player.data.weaponHandler.gun.bursts, 1);
 
             float timeBetweenShots = player.data.weaponHandler.gun.timeBetweenBullets;
@@ -32,7 +33,7 @@ namespace AALUND13Cards.Extensions {
             GunAmmo ammoComponent = player.data.weaponHandler.gun.GetComponentInChildren<GunAmmo>();
 
             int ammo = ammoComponent.maxAmmo;
-            int projectiles = player.data.weaponHandler.gun.numberOfProjectiles;
+            int projectiles = (int)(player.data.weaponHandler.gun.numberOfProjectiles + player.data.weaponHandler.gun.chargeNumberOfProjectilesTo);
             int bursts = Mathf.Max(player.data.weaponHandler.gun.bursts, 1);
 
             float timeBetweenShots = player.data.weaponHandler.gun.timeBetweenBullets;
@@ -43,10 +44,12 @@ namespace AALUND13Cards.Extensions {
             int triggerPulls = Mathf.Max(ammo / ammoPerTriggerPull, 1);
 
             float burstFireTime = (bursts - 1) * timeBetweenShots;
-            float totalFireCycleTime = (attackSpeed + burstFireTime) * (triggerPulls - 1) + Mathf.Max(reloadTime, attackSpeed + burstFireTime);
+            float totalFireCycleTime = (attackSpeed + burstFireTime) * (triggerPulls - 1)
+                                      + Mathf.Max(reloadTime, attackSpeed + burstFireTime);
 
-            float shootsPerSecond = triggerPulls / totalFireCycleTime;
+            float shootsPerSecond = (triggerPulls * projectiles) / totalFireCycleTime;
             return shootsPerSecond;
         }
+
     }
 }

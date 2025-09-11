@@ -358,4 +358,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0419d140a04ae468ada3f874198935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinRegen: 5
+  MinRegen: 1

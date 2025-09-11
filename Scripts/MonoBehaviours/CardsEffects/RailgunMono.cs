@@ -70,9 +70,8 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         }
 
         public void OnDestroy() {
-            if(RailgunChargeBar != null) {
-                Destroy(RailgunChargeBar.gameObject);
-            }
+            Destroy(RailgunChargeBar.gameObject);
+
             RailgunStats.IsEnabled = false;
             player.data.healthHandler.reviveAction -= OnRevive;
         }

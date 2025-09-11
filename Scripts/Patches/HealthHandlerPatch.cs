@@ -9,6 +9,12 @@ namespace AALUND13Cards.Patches {
     public class HealthHandlerPatch {
         public static bool TakeDamageRunning = false;
 
+        [HarmonyPatch(nameof(HealthHandler.Revive))]
+        [HarmonyPostfix]
+        public static void RevivePrefix(HealthHandler __instance, CharacterData ___data) {
+            ConstantDamageHandler.Instance.RemovePlayerFromAll(___data.player);
+        }
+
         [HarmonyPatch(nameof(HealthHandler.TakeDamage), typeof(Vector2), typeof(Vector2), typeof(Color), typeof(GameObject), typeof(Player), typeof(bool), typeof(bool))]
         [HarmonyPrefix]
         public static void TakeDamagePrefix(HealthHandler __instance, Player damagingPlayer, Vector2 damage, bool lethal) {

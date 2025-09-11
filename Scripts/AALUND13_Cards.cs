@@ -37,7 +37,7 @@ namespace AALUND13Cards {
 
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
-        internal const string Version = "1.13.6"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.14.0"; // What version are we on (major.minor.patch)?
         
         public static AALUND13_Cards Instance { get; private set; }
 
@@ -131,7 +131,7 @@ namespace AALUND13Cards {
             foreach(var playerDamageInfo in playerDamageInfos) {
                 if(playerDamageInfo.Value.TimeSinceLastDamage <= 5 && playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>() != null && !playerDamageInfo.Key.data.dead) {
                     playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
-
+                    
                     if(player.GetComponentInChildren<SoulstreakMono>() != null) {
                         playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().SoulStreakStats.Souls * 0.5f));
                     }
