@@ -329,10 +329,11 @@ MonoBehaviour:
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
   ArmorDamageReduction: 0
-  Armor: 2
+  Armor: 0
   ArmorHealth: 0
   ArmorRegenRate: 0
   ArmorRegenCooldown: 0
+  RemoveArmorPirceTag: 0
   ArmorReactivateType: 0
   ArmorReactivateValue: 0
   ArmorPiercePercent: 0

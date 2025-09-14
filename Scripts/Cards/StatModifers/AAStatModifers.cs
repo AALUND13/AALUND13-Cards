@@ -2,14 +2,13 @@
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.Handlers.ExtraPickHandlers;
-using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
 using JARL.Armor;
 using JARL.Armor.Bases;
 using JARL.Bases;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 using UnboundLib;
 using UnityEngine;
 
@@ -21,9 +20,10 @@ namespace AALUND13Cards.Cards.StatModifers {
     }
 
     public enum ArmorType {
+        None,
         Battleforged,
         Titanium,
-        None
+        ExoArmor
     }
 
     public class AAStatModifers : CustomStatModifers {
@@ -49,8 +49,12 @@ namespace AALUND13Cards.Cards.StatModifers {
         [Space(10)]
         public ArmorType Armor = ArmorType.None;
         public float ArmorHealth = 0f;
+        public float ArmorHealthMultiplier = 1f;
         public float ArmorRegenRate = 0f;
         public float ArmorRegenCooldown = 0f;
+        public bool RemoveArmorPirceTag = false;
+
+        [Space(10)]
         public ArmorReactivateType ArmorReactivateType = ArmorReactivateType.Percent;
         public float ArmorReactivateValue = 0f;
 
@@ -100,9 +104,25 @@ namespace AALUND13Cards.Cards.StatModifers {
             additionalData.ArmorDamageReduction = Mathf.Min(additionalData.ArmorDamageReduction + ArmorDamageReduction, 0.80f);
 
             if(Armor != ArmorType.None) {
-                // Because the "AddArmor" method is a generic method and just generic methods, we need to use reflection to invoke it
-                MethodInfo addArmorMethodInfo = typeof(ArmorHandler).GetMethod("AddArmor", BindingFlags.Public | BindingFlags.Instance);
-                addArmorMethodInfo.MakeGenericMethod(GetArmorType()).Invoke(ArmorFramework.ArmorHandlers[player], new object[] { ArmorHealth, ArmorRegenRate, ArmorRegenCooldown, ArmorReactivateType, ArmorReactivateValue });
+                ArmorBase armorInstance = ArmorFramework.ArmorHandlers[player].Armors.First(x => x.GetType() == GetArmorType());
+                if(armorInstance != null) {
+                    armorInstance.MaxArmorValue += ArmorHealth;
+                    if(AALUND13_Cards.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "Systems.R00t.AdditiveStats")) {
+                        armorInstance.MaxArmorValue += 100 * (ArmorHealthMultiplier - 1);
+                    } else {
+                        armorInstance.MaxArmorValue *= ArmorHealthMultiplier;
+                    }
+
+                    armorInstance.ArmorRegenerationRate += ArmorRegenRate;
+                    armorInstance.ArmorRegenCooldownSeconds += ArmorRegenCooldown;
+                    if(ArmorReactivateValue > 0f) {
+                        armorInstance.reactivateArmorType = ArmorReactivateType;
+                        armorInstance.reactivateArmorValue = ArmorReactivateValue;
+                    }
+                    if(RemoveArmorPirceTag && armorInstance.HasArmorTag("CanArmorPierce")) {
+                        armorInstance.ArmorTags.Remove("CanArmorPierce");
+                    }
+                }
             }
 
             jarlAdditionalData.ArmorPiercePercent = Mathf.Clamp(jarlAdditionalData.ArmorPiercePercent + ArmorPiercePercent, 0f, 1f);
@@ -144,6 +164,8 @@ namespace AALUND13Cards.Cards.StatModifers {
                     return typeof(BattleforgedArmor);
                 case ArmorType.Titanium:
                     return typeof(TitaniumArmor);
+                case ArmorType.ExoArmor:
+                    return typeof(ExoArmor);
                 default:
                     return null;
             }

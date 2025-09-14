@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 114258392857231854}
   - component: {fileID: 114881654511528766}
   m_Layer: 0
-  m_Name: Reaper Deal
+  m_Name: Death Contract
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,10 +345,11 @@ MonoBehaviour:
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
   ArmorDamageReduction: 0
-  Armor: 2
+  Armor: 0
   ArmorHealth: 0
   ArmorRegenRate: 0
   ArmorRegenCooldown: 0
+  RemoveArmorPirceTag: 0
   ArmorReactivateType: 0
   ArmorReactivateValue: 0
   ArmorPiercePercent: 0

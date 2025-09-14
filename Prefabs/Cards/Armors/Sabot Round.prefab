@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 114446284750240874}
   - component: {fileID: 114872248861204110}
   m_Layer: 0
-  m_Name: __AAC__Sabot Round
+  m_Name: Sabot Round
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 0
   IsHidden: 0
+  IsCursed: 0
 --- !u!114 &114872248861204110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,32 +319,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  PlayerSize: 0
-  MovementSpeed: 0
-  AttackSpeed: 0
-  Damage: 0
-  BulletSpeed: 0
-  SoulArmorPercentage: 0
-  SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0
-  SoulDrainLifestealMultiply: 0
-  AbilityType: 0
-  MaximumCharge: 0
-  ChargeRate: 0
-  FullChargeThreshold: 0
-  MaximumChargeMultiplier: 1
-  ChargeRateMultiplier: 1
-  RailgunDamageMultiplier: 1
-  RailgunBulletSpeedMultiplier: 1
   SecondToDealDamage: 0
-  CurrentHPRegenPercentage: 0
+  DamageMultiplier: 1
+  ScalingPercentageDamage: 0
+  SetMaxRarityForCurse: 0
+  MaxRarityForCurse: 0
+  IsBind: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0.5
-  BattleforgedArmor: 0
+  ArmorDamageReduction: 0
+  Armor: 0
+  ArmorHealth: 0
+  ArmorRegenRate: 0
+  ArmorRegenCooldown: 0
+  RemoveArmorPirceTag: 0
+  ArmorReactivateType: 0
+  ArmorReactivateValue: 0
   ArmorPiercePercent: 0.5
   DamageAgainstArmorPercentage: 3
   ExtraPicks: 0
   ExtraPicksType: 1
-  RandomCardsAtStart: 0
+  ExtraPicksForEnemies: 0
+  ExtraPicksTypeForEnemies: 0
   ExtraCardPicks: 0
+  DuplicatesAsCorrupted: 0

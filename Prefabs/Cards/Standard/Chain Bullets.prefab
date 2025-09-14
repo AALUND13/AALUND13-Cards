@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Chain Bullets
-  cardDestription: Your bullets are linked by damaging chains that deal 75% bullet
+  cardDestription: Your bullets are linked by damaging chains that deal 50% bullet
     damage to players on contact. Chains break if bullets are more than 30 meters
     apart
   cardStats:
@@ -337,10 +337,11 @@ MonoBehaviour:
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
   ArmorDamageReduction: 0
-  Armor: 2
+  Armor: 0
   ArmorHealth: 0
   ArmorRegenRate: 0
   ArmorRegenCooldown: 0
+  RemoveArmorPirceTag: 0
   ArmorReactivateType: 0
   ArmorReactivateValue: 0
   ArmorPiercePercent: 0

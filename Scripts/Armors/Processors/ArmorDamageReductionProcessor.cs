@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace AALUND13Cards.Armors.Processors {
     public class ArmorDamageReductionProcessor : ArmorProcessor {
         public override float BeforeArmorProcess(float remaindingDamage, float originalDamage) {
-            if(!Armor.ArmorTags.Contains("NoDamageReduction")) {
+            if(!Armor.HasArmorTag("NoDamageReduction")) {
                 if(HurtPlayer.data.GetAdditionalData().ArmorDamageReduction == 0f)
                     return remaindingDamage;
 

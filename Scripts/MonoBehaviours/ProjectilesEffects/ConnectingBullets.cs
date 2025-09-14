@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.ProjectilesEffects {
@@ -16,10 +17,12 @@ namespace AALUND13Cards.MonoBehaviours.ProjectilesEffects {
         private GameObject connectingBulletInstance;
         private GameObject connectedBullet;
         private ProjectileHit ProjectileHit;
+        private ChildRPC childRPC;
         private float spawnTime;
 
         private void Start() {
             ProjectileHit = GetComponentInParent<ProjectileHit>();
+            childRPC = GetComponentInParent<ChildRPC>();
 
             if(PlayerLastBullet.ContainsKey(ProjectileHit.ownPlayer) 
                 && PlayerLastBullet[ProjectileHit.ownPlayer] != null 
@@ -82,16 +85,20 @@ namespace AALUND13Cards.MonoBehaviours.ProjectilesEffects {
                     if(Time.time - lastDamageTime[player] >= DamageInterval) {
                         lastDamageTime[player] = Time.time;
                         Vector2 dir = (player.transform.position - (Vector3)center).normalized;
-                        player.data.healthHandler.CallTakeDamage(dir * GetChainDamage(), player.transform.position, ProjectileHit.ownWeapon, ProjectileHit.ownPlayer);
+                        player.data.healthHandler.CallTakeDamage(dir * GetChainDamage(player), player.transform.position, ProjectileHit.ownWeapon, ProjectileHit.ownPlayer);
                     }
                 }
             }
         }
 
-        private float GetChainDamage() {
+        private float GetChainDamage(Player targetPlayer) {
             float damage = ProjectileHit.damage;
             float otherProjectileDamage = connectedBullet.GetComponent<ProjectileHit>().damage;
-            return (damage + otherProjectileDamage) / 2f * DamageMultiplier;
+            
+            float percentageDamage = ProjectileHit.percentageDamage;
+            float otherPercentageDamage = connectedBullet.GetComponent<ProjectileHit>().percentageDamage;
+
+            return (((damage + otherProjectileDamage) / 2f) + (targetPlayer.data.maxHealth * (percentageDamage + otherPercentageDamage) / 2f)) * DamageMultiplier;
         }
     }
 }
