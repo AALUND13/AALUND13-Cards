@@ -38,10 +38,12 @@ namespace AALUND13Cards.Cards.StatModifers {
         public bool SetMaxRarityForCurse = false;
         public CardRarity MaxRarityForCurse;
         public bool IsBind = false;
+        public bool DisableDecayTime = false;
 
         [Header("Blocks Stats")]
         public int BlocksWhenRecharge = 0;
         public float BlockPircePercent = 0f;
+        public float StunBlockTime = 0f;
 
         [Header("Armors Stats")]
         public float ArmorDamageReduction = 0f;
@@ -91,11 +93,13 @@ namespace AALUND13Cards.Cards.StatModifers {
                 var rarity = RarityUtils.GetRarity(MaxRarityForCurse.ToString());
                 additionalData.MaxRarityForCurse = RarityUtils.GetRarityData(rarity);
             }
-            if(IsBind) additionalData.isBind = true;
+            if(IsBind) additionalData.IsBind = true;
+            if(DisableDecayTime) additionalData.DisableDecayTime = true;
 
             // Apply Blocks Stats
             additionalData.BlocksWhenRecharge += BlocksWhenRecharge;
             additionalData.BlockPircePercent = Mathf.Clamp(additionalData.BlockPircePercent + BlockPircePercent, 0f, 1f);
+            additionalData.StunBlockTime += StunBlockTime;
 
             // Apply Extra Cards Stats
             additionalData.ExtraCardPicks += ExtraCardPicks;

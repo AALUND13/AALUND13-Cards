@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 57 unique cards developed by AALUND13.
+AALUND13 Cards introduces 60 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -57,6 +57,9 @@ If you encounter any bugs, please report them in the [issues](https://github.com
   - Thicker Shell
   - Impenetrable Upgrade
   - Fragile Layer
+- Nanite Reallocation
+- Stunblock Bullets
+- Purifying Body
 
 ## Curse Cards
 

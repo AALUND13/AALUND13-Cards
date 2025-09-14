@@ -21,10 +21,12 @@ namespace AALUND13Cards.Extensions {
         // Blocks
         public int BlocksWhenRecharge = 0;
         public float BlockPircePercent = 0f;
+        public float StunBlockTime = 0f;
 
         // Curses
         public Rarity MaxRarityForCurse = null;
-        public bool isBind = false;
+        public bool IsBind = false;
+        public bool DisableDecayTime = false;
 
         // Stats Classes
         public RailgunStats RailgunStats = new RailgunStats();
@@ -38,7 +40,7 @@ namespace AALUND13Cards.Extensions {
             // Delayed Damage
             secondToDealDamage = 0;
             dealDamage = true;
-
+            
             // Extra Cards
             ExtraCardPicks = 0;
             DuplicatesAsCorrupted = 0;
@@ -50,10 +52,12 @@ namespace AALUND13Cards.Extensions {
             // Blocks
             BlocksWhenRecharge = 0;
             BlockPircePercent = 0f;
+            StunBlockTime = 0f;
 
             // Reset curses
             MaxRarityForCurse = null;
-            isBind = false;
+            DisableDecayTime = false;
+            IsBind = false;
 
             // Reset stats classes
             RailgunStats = new RailgunStats();

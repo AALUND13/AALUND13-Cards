@@ -32,8 +32,8 @@ namespace AALUND13Cards {
             // Curses Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Max Rarity For Curse", (p) => p.data.GetAdditionalData().MaxRarityForCurse != null,
                 (p) => p.data.GetAdditionalData().MaxRarityForCurse.name);
-            TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().isBind,
-                (p) => p.data.GetAdditionalData().isBind ? "Yes" : "No");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().IsBind,
+                (p) => p.data.GetAdditionalData().IsBind ? "Yes" : "No");
 
             // Uncategorized Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Reduction", (p) => p.data.GetAdditionalData().DamageReduction != 0,

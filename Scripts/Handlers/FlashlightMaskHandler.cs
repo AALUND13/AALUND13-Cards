@@ -36,7 +36,7 @@ namespace AALUND13Cards.Handlers {
             var players = PlayerManager.instance.players.Where(p => p.data.view.IsMine && !p.data.dead).ToList();
             int playerCount = Mathf.Clamp(players.Count, 0, 32);
 
-            isBattleActive = GameManager.instance.battleOngoing && players.Any(p => p.data.GetAdditionalData().isBind) && playerCount > 0;
+            isBattleActive = GameManager.instance.battleOngoing && players.Any(p => p.data.GetAdditionalData().IsBind) && playerCount > 0;
             if(isBattleActive != oldIsBattleActive) {
                 oldIsBattleActive = isBattleActive;
                 if(isBattleActive) {
