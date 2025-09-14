@@ -6,12 +6,19 @@ namespace AALUND13Cards.VisualEffect {
         private const float ROTATE_CARD_ANGLE_LIMIT = 180f;
 
         private float oldRotationZ;
+        private bool init;
 
         private void Awake() {
             oldRotationZ = transform.rotation.eulerAngles.z;
+            init = true;
         }
 
         private void Update() {
+            if(!init) {
+                oldRotationZ = transform.rotation.eulerAngles.z;
+                init = true;
+            }
+
             if(Random.Range(0f, 100f) < ROTATE_CARD_CHANCE) {
                 transform.Rotate(0f, 0f, Random.Range(-ROTATE_CARD_ANGLE_LIMIT, ROTATE_CARD_ANGLE_LIMIT));
             } else {
@@ -22,12 +29,14 @@ namespace AALUND13Cards.VisualEffect {
         }
 
         private void OnDisable() {
+            if(!init) return;
             Vector3 currentRotation = transform.rotation.eulerAngles;
             currentRotation.z = oldRotationZ;
             transform.rotation = Quaternion.Euler(currentRotation);
         }
 
         private void OnDestroy() {
+            if(!init) return;
             Vector3 currentRotation = transform.rotation.eulerAngles;
             currentRotation.z = oldRotationZ;
             transform.rotation = Quaternion.Euler(currentRotation);
