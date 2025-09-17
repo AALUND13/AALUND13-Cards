@@ -20,7 +20,7 @@ namespace AALUND13Cards.Patches {
 
             // This code block is for the 'Extra Card Pick Handler'  
             if(ExtraCardPickHandler.currentPlayer != null && ExtraCardPickHandler.extraPicks.ContainsKey(player) && ExtraCardPickHandler.extraPicks[player].Count > 0) {
-                var func = ExtraCardPickHandler.extraPicks[player][0];
+                var func = ExtraCardPickHandler.activePickHandler;
                 func.OnExtraPick(player, pickedCard.GetComponent<CardInfo>());
             }
 

@@ -17,8 +17,6 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   - component: {fileID: 114642101177217248}
-  - component: {fileID: 114714835611135800}
-  - component: {fileID: 114526856703882430}
   m_Layer: 0
   m_Name: Nanite Reallocation
   m_TagString: Untagged
@@ -88,7 +86,7 @@ MonoBehaviour:
     type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.5
+  health: 1
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -320,8 +318,10 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 0
   ArmorHealth: 0
@@ -337,31 +337,6 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
---- !u!114 &114714835611135800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5110629305c2f40832fa6dbe9aa8a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BlacklistedArmorTag: []
---- !u!114 &114526856703882430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011008801069171712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0419d140a04ae468ada3f874198935, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MinRegen: 1

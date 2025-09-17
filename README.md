@@ -59,7 +59,6 @@ If you encounter any bugs, please report them in the [issues](https://github.com
   - Fragile Layer
 - Nanite Reallocation
 - Stunblock Bullets
-- Purifying Body
 
 ## Curse Cards
 
@@ -69,5 +68,8 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Healing Radiance
 - Life Drain
 - Life Link
+- Purifying Body
+- Binding Swap
+- Loopy
 
 For details about the cards, you can take a look at the [Wiki](https://github.com/AALUND13/AALUND13-Cards/wiki/Cards).

@@ -55,7 +55,7 @@ MonoBehaviour:
   cardDestription: Suit yourself up in a armor that can be upgraded
   cardStats:
   - positive: 1
-    amount: +150
+    amount: +50
     simepleAmount: 0
     stat: Armor Health
   - positive: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 1
+  allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 2
@@ -324,11 +324,13 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 3
-  ArmorHealth: 150
+  ArmorHealth: 50
   ArmorHealthMultiplier: 1
   ArmorRegenRate: 5
   ArmorRegenCooldown: 3
@@ -341,5 +343,6 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0

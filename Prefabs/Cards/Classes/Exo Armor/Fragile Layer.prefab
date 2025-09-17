@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Fragile Layer
-  cardDestription: Put a fragile layer of plating on your armor, when your armor take
-    damage cause a explode hurting near by enemies
+  cardDestription: "\rDeal 50% damage of your taken armor damage back to enemies around
+    you"
   cardStats:
   - positive: 0
     amount: -30% Armor
@@ -319,8 +319,10 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 3
   ArmorHealth: 0
@@ -336,5 +338,6 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0

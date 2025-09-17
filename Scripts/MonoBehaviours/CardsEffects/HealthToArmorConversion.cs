@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects {
     public class HealthToArmorConversion : MonoBehaviour {
-        public float HealthToArmorConversions = 1f;
+        public float HealthToArmorConversions = 0.5f;
 
         private Dictionary<ArmorBase, float> armorAdded = new Dictionary<ArmorBase, float>();
         private CharacterData characterData;
@@ -15,14 +15,20 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
 
         private float oldHealth;
         private int oldArmorCount;
+        private bool isInitiated;
 
 
         private void Start() {
             characterData = GetComponentInParent<CharacterData>();
             armorHandler = GetComponentInParent<ArmorHandler>();
 
+            characterData.maxHealth *= HealthToArmorConversions;
+            characterData.health *= HealthToArmorConversions;
+
             oldHealth = characterData.maxHealth;
             oldArmorCount = Mathf.Max(armorHandler.ActiveArmors.Count, 1);
+            isInitiated = true;
+
             UpdateArmorStats();
         }
 
@@ -39,6 +45,10 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
                 armorAdded.Key.MaxArmorValue -= armorAdded.Value;
                 armorAdded.Key.CurrentArmorValue -= armorAdded.Value;
             }
+            if(isInitiated) {
+                characterData.maxHealth /= HealthToArmorConversions;
+                characterData.health /= HealthToArmorConversions;
+            }
         }
 
         private void UpdateArmorStats() {
@@ -49,7 +59,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             armorAdded.Clear();
 
             if(armorHandler.ActiveArmors.Count == 0) {
-                float addedArmor = characterData.maxHealth * HealthToArmorConversions;
+                float addedArmor = characterData.maxHealth * HealthToArmorConversions * 2;
                 ArmorBase defaultArmor = armorHandler.GetArmorByType<DefaultArmor>();
 
                 float armorChnage = addedArmor;
@@ -59,7 +69,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
                 defaultArmor.CurrentArmorValue = armorChnage;
                 armorAdded[defaultArmor] = addedArmor;
             } else {
-                float addedArmor = characterData.maxHealth * HealthToArmorConversions / armorHandler.ActiveArmors.Count;
+                float addedArmor = characterData.maxHealth * HealthToArmorConversions * 2 / armorHandler.ActiveArmors.Count;
                 foreach(var armor in armorHandler.ActiveArmors) {
                     float armorChnage = addedArmor;
                     if(armorAddedCloned.ContainsKey(armor)) armorChnage = addedArmor - armorAddedCloned[armor];

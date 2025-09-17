@@ -69,6 +69,7 @@ namespace AALUND13Cards.Cards.StatModifers {
         public ExtraPicksType ExtraPicksType;
         public int ExtraPicksForEnemies = 0;
         public ExtraPicksType ExtraPicksTypeForEnemies;
+        public ExtraPickPhaseTrigger ExtraPickPhaseTrigger = ExtraPickPhaseTrigger.TriggerInPlayerPickEnd;
 
 
         [Header("Extra Cards")]
@@ -135,7 +136,7 @@ namespace AALUND13Cards.Cards.StatModifers {
             #region Extra Picks
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
             if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
-                ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
+                ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks, ExtraPickPhaseTrigger);
             }
 
             ExtraPickHandler enemyExtraPickHandler = GetExtraPickHandler(ExtraPicksTypeForEnemies);
@@ -143,7 +144,7 @@ namespace AALUND13Cards.Cards.StatModifers {
                 List<Player> enemies = ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player);
 
                 foreach(Player enemy in enemies) {
-                    ExtraCardPickHandler.AddExtraPick(enemyExtraPickHandler, enemy, ExtraPicksForEnemies);
+                    ExtraCardPickHandler.AddExtraPick(enemyExtraPickHandler, enemy, ExtraPicksForEnemies, ExtraPickPhaseTrigger);
                 }
             }
             #endregion

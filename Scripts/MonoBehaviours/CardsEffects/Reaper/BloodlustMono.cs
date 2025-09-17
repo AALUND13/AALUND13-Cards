@@ -97,7 +97,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         }
 
         private void OnDestroy() {
-            Destroy(bloodBar);
+            Destroy(bloodBar.gameObject);
 
             player.data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
 

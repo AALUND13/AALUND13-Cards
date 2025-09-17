@@ -53,8 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Picks Party
-  cardDestription: Give yourself +2 picks, at the cost of giving all your enemies
+  cardDestription: 'Give yourself +2 picks, at the cost of giving all your enemies
     +1 picks
+
+    Trigger at the end of the pick phase'
   cardStats:
   - positive: 1
     amount: +2
@@ -327,11 +329,14 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 0
   ArmorHealth: 0
+  ArmorHealthMultiplier: 1
   ArmorRegenRate: 0
   ArmorRegenCooldown: 0
   RemoveArmorPirceTag: 0
@@ -343,6 +348,7 @@ MonoBehaviour:
   ExtraPicksType: 1
   ExtraPicksForEnemies: 1
   ExtraPicksTypeForEnemies: 1
+  ExtraPickPhaseTrigger: 1
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
 --- !u!114 &7530571558485534056

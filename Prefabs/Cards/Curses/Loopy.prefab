@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1473282574127126098
+--- !u!1 &5011008801069171712
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,31 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1473282574127126106}
-  - component: {fileID: 1473282574127126101}
-  - component: {fileID: 1473282574127126100}
-  - component: {fileID: 1473282574127126103}
-  - component: {fileID: 1473282574127126102}
-  - component: {fileID: 1473282574127126097}
-  - component: {fileID: 1473282574127126096}
-  - component: {fileID: 114203678359837342}
-  - component: {fileID: 114553290272354044}
-  - component: {fileID: 114200066083493298}
-  - component: {fileID: 114206302046362204}
+  - component: {fileID: 5010099618013555426}
+  - component: {fileID: 4908810688212451669}
+  - component: {fileID: 4907890640190903806}
+  - component: {fileID: 4907975652478829507}
+  - component: {fileID: 4904866182938917399}
+  - component: {fileID: 4904821094073587542}
+  - component: {fileID: 4907985382973923515}
+  - component: {fileID: 114203408726523956}
+  - component: {fileID: 114642101177217248}
+  - component: {fileID: 114547696684112084}
   m_Layer: 0
-  m_Name: Retro Vision
+  m_Name: Loopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1473282574127126106
+--- !u!4 &5010099618013555426
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -33.575146, y: 5.097765, z: -0.87890625}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,47 +39,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &1473282574127126101
+--- !u!114 &4908810688212451669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4b032fe9cba4be49be5bb256561788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Retro Vision
-  cardDestription: Thing is looking bit <b>retro</b>...
+  cardName: Loopy
+  cardDestription: You feal bit loopy...
   cardStats: []
   rarity: 2
-  cardArt: {fileID: 3518800303552412274, guid: ec1e97dc295ee844586a34512e196bb4, type: 3}
+  cardArt: {fileID: 6085523840918013047, guid: bab55e629502d8e45bd0a8b89fe2dcdc, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
-  categories:
-  - {fileID: 11400000, guid: d443daa7822cddd4ba30cb5dcaf1b1b2, type: 2}
+  categories: []
   allowMultiple: 0
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 4
---- !u!114 &1473282574127126100
+  colorTheme: 2
+--- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a7455d82e3521142be110549e6130ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 6772870482662453463, guid: b83dfc9bb66233240b7a1e1963c6dfec,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
@@ -102,13 +101,13 @@ MonoBehaviour:
   rageSpeed: 1
   attackSpeedMultiplier: 1
   slowPart: {fileID: 0}
---- !u!114 &1473282574127126103
+--- !u!114 &4907975652478829507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f92295fe49b73614591f58e9ea25e35f, type: 3}
@@ -201,13 +200,13 @@ MonoBehaviour:
   defaultCooldown: 1
   attackID: -1
   attackSpeedMultiplier: 1
---- !u!114 &1473282574127126102
+--- !u!114 &4904866182938917399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 786953031, guid: fbb25f4d567ecbd439bfbdcfed7eb232, type: 3}
@@ -235,26 +234,26 @@ MonoBehaviour:
   blockedAtPos: {x: 0, y: 0, z: 0}
   delayOtherActions: 0
   statusBlockPart: {fileID: 0}
---- !u!114 &1473282574127126097
+--- !u!114 &4904821094073587542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d09e61d8798559c41879e0963ec23e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootToPick: 0
---- !u!114 &1473282574127126096
+--- !u!114 &4907985382973923515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1283557461, guid: cc8a520cdc1a71048ac77742d0ea6366, type: 3}
@@ -270,13 +269,40 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114203678359837342
+--- !u!114 &114203408726523956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  gun: {fileID: 0}
+  cardStats: {fileID: 0}
+  statModifiers: {fileID: 0}
+  block: {fileID: 0}
+  OverrideClassName: 
+  CardClassType: 0
+  CardLimit: 0
+  RequiredClass: {fileID: 0}
+  RequiredClassTree: []
+  CardRarity: 9
+  CardRarityCustom: 
+  CanBeReassigned: 1
+  IsHidden: 0
+  IsCursed: 1
+--- !u!114 &114642101177217248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
@@ -310,55 +336,13 @@ MonoBehaviour:
   ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
---- !u!114 &114553290272354044
+--- !u!114 &114547696684112084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardInfo: {fileID: 0}
-  gun: {fileID: 0}
-  cardStats: {fileID: 0}
-  statModifiers: {fileID: 0}
-  block: {fileID: 0}
-  OverrideClassName: 
-  CardClassType: 0
-  CardLimit: 0
-  RequiredClass: {fileID: 0}
-  RequiredClassTree: []
-  CardRarity: 0
-  CardRarityCustom: 
-  CanBeReassigned: 1
-  IsHidden: 0
-  IsCursed: 1
---- !u!114 &114200066083493298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03291fa3dca37a48a5df5f62083dde9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PostProcessingEffects:
-  - {fileID: 2100000, guid: 9ab9a6414d3931848bfbd3be3fcf0c7d, type: 2}
-  - {fileID: 2100000, guid: d2c74b3ba6827c9408764b523bac3d8f, type: 2}
---- !u!114 &114206302046362204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473282574127126098}
+  m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}

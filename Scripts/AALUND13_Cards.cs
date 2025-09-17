@@ -89,7 +89,8 @@ namespace AALUND13Cards {
             ArmorFramework.RegisterArmorProcessor<DamageAgainstArmorPercentageProcessor>();
             ArmorFramework.RegisterArmorProcessor<ArmorDamageReductionProcessor>();
 
-            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks());
+            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPlayerPickEnd));
+            GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPickEnd));
             GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);
             GameModeManager.AddHook(GameModeHooks.HookPickStart, OnPickStart);
 

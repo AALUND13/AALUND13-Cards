@@ -28,12 +28,16 @@ namespace AALUND13Cards {
                 (p) => $"{p.data.GetAdditionalData().BlocksWhenRecharge}");
             TabInfoManager.RegisterStat(aaStatsCategory, "Block Pierce Percent", (p) => p.data.GetAdditionalData().BlockPircePercent != 0,
                 (p) => $"{p.data.GetAdditionalData().BlockPircePercent * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Stun Block Time", (p) => p.data.GetAdditionalData().StunBlockTime != 0,
+                (p) => $"{p.data.GetAdditionalData().StunBlockTime * 100:0}%");
 
             // Curses Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Max Rarity For Curse", (p) => p.data.GetAdditionalData().MaxRarityForCurse != null,
                 (p) => p.data.GetAdditionalData().MaxRarityForCurse.name);
             TabInfoManager.RegisterStat(aaStatsCategory, "Is Bind", (p) => p.data.GetAdditionalData().IsBind,
                 (p) => p.data.GetAdditionalData().IsBind ? "Yes" : "No");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Is Decay Time Disable", (p) => p.data.GetAdditionalData().DisableDecayTime,
+                (p) => p.data.GetAdditionalData().DisableDecayTime ? "Yes" : "No");
 
             // Uncategorized Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Reduction", (p) => p.data.GetAdditionalData().DamageReduction != 0,
