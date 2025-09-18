@@ -43,6 +43,7 @@ namespace AALUND13Cards.Patches {
             ProjectileHit projectileHit = projectile.GetComponent<ProjectileHit>();
             HealthHandler healthHandler = (HealthHandler)__instance.GetFieldValue("health");
             CharacterData projectileOwner = projectileHit.ownPlayer.data;
+            CharacterData data = (CharacterData)__instance.GetFieldValue("data");
 
             float blockPircePercent = projectileHit.ownPlayer.data.GetAdditionalData().BlockPircePercent;
             bool shouldDestroy = false;
@@ -55,10 +56,10 @@ namespace AALUND13Cards.Patches {
             }
 
             if(projectileOwner != null && projectileOwner.GetAdditionalData().StunBlockTime > 0f) {
-                projectileOwner.block.StopAllCoroutines();
-                projectileOwner.block.sinceBlock = float.PositiveInfinity;
+                data.block.StopAllCoroutines();
+                data.block.sinceBlock = float.PositiveInfinity;
 
-                projectileOwner.stunHandler.AddStun(projectileOwner.stunTime + projectileOwner.GetAdditionalData().StunBlockTime);
+                data.stunHandler.AddStun(data.stunTime + projectileOwner.GetAdditionalData().StunBlockTime);
                 shouldDestroy = true;
             }
 
