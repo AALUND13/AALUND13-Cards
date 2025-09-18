@@ -1,8 +1,6 @@
 ﻿using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using ModsPlus;
-using Photon.Pun;
-using Photon.Realtime;
 using UnboundLib.Extensions;
 using UnityEngine;
 
@@ -11,33 +9,35 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         public float MaxBlood = 100;
         public float StartingBlood = 50;
 
-        public float BloodDrainPerSecond = 5;
+        public float BloodDrainPerSecond = 2;
+        public float BloodDrainPerSecondRegen = 2;
+        public float BloodHealthRegenRate = 0.05f;
+
         public float BloodFillPerDamage = 50;
         public float BloodDamageMultiplier = 0.25f;
 
         public float PercentageDamagePerDamage = 0.03f;
 
-
-        private Player player;
+        private CharacterData data;
         private CustomHealthBar bloodBar;
 
-
-        private float decayingPrecentageDamage = 0f;
-        private float blood = 0;
-        private float appliedScaling = 0f;
+        private float decayingPrecentageDamage;
+        private float blood;
+        private float appliedScaling;
+        private float oldRegen;
 
         public void OnDamage(DamageInfo damage) {
-            if(player != damage.DamagingPlayer) return;
+            if(data.player != damage.DamagingPlayer) return;
 
-            float bloodGained = BloodFillPerDamage / this.player.GetShootsPerSecond();
-            float added = PercentageDamagePerDamage / this.player.GetShootsPerSecond();
+            float bloodGained = BloodFillPerDamage / this.data.player.GetShootsPerSecond();
+            float added = PercentageDamagePerDamage / this.data.player.GetShootsPerSecond();
             decayingPrecentageDamage += added;
 
-            player.data.GetAdditionalData().ScalingPercentageDamage += added;
+            data.GetAdditionalData().ScalingPercentageDamage += added;
             appliedScaling += added;
 
 
-            if(blood < 0) blood = 0;
+            if(blood < 0) blood = StartingBlood;
             blood = Mathf.Min(MaxBlood, blood + bloodGained);
 
             LoggerUtils.LogInfo($"Gained {bloodGained} blood from damage, now at {blood}/{MaxBlood}");
@@ -47,7 +47,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         private void OnRevive() {
             blood = StartingBlood;
 
-            player.data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
+            data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
             appliedScaling = 0f;
             decayingPrecentageDamage = 0f;
         }
@@ -58,7 +58,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
             CustomHealthBar bloodBar = bloodBarObj.AddComponent<CustomHealthBar>();
             bloodBar.SetColor(new Color(0.6615686275f, 0.0431372549f, 0.0431372549f, 1f) * 0.8f);
 
-            player.AddStatusIndicator(bloodBarObj);
+            data.player.AddStatusIndicator(bloodBarObj);
 
             Destroy(bloodBarObj.transform.Find("Healthbar(Clone)/Canvas/Image/White").gameObject);
 
@@ -75,14 +75,29 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
             );
 
             float diff = decayingPrecentageDamage - old;
-            player.data.GetAdditionalData().ScalingPercentageDamage += diff;
+            data.GetAdditionalData().ScalingPercentageDamage += diff;
             appliedScaling += diff;
 
-            blood -= BloodDrainPerSecond * Time.deltaTime;
+            float bloodDrainPerSecond = BloodDrainPerSecond;
+            if(data.health < data.maxHealth)
+                bloodDrainPerSecond += BloodDrainPerSecondRegen;
+
+            blood -= bloodDrainPerSecond * Time.deltaTime;
 
             if(blood <= 0) {
-                float damage = (player.data.maxHealth * ((-blood) * BloodDamageMultiplier)) * Time.deltaTime;
-                player.data.healthHandler.TakeDamage(Vector2.down * damage, Vector2.zero, null, null, true, true);
+                data.healthHandler.regeneration -= oldRegen;
+                oldRegen = 0;
+
+                float damage = (data.maxHealth * ((-blood) * BloodDamageMultiplier)) * Time.deltaTime;
+                data.healthHandler.TakeDamage(Vector2.down * damage, Vector2.zero, null, null, true, true);
+            } else if(blood > 0 && data.health < data.maxHealth) {
+                float regen = data.maxHealth * BloodHealthRegenRate;
+                data.healthHandler.regeneration -= oldRegen;
+                data.healthHandler.regeneration += regen;
+                oldRegen = regen;
+            } else if (oldRegen != 0) {
+                data.healthHandler.regeneration -= oldRegen;
+                oldRegen = 0;
             }
 
             bloodBar.SetValues(blood, MaxBlood);
@@ -90,19 +105,23 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
 
 
         private void Start() {
-            player = GetComponentInParent<Player>();
+            data = GetComponentInParent<CharacterData>();
             bloodBar = CreateStoredDamageBar();
-            player.data.healthHandler.reviveAction += OnRevive;
-            DamageEventHandler.Instance.RegisterDamageEventForOtherPlayers(this, player);
+            data.healthHandler.reviveAction += OnRevive;
+            DamageEventHandler.Instance.RegisterDamageEventForOtherPlayers(this, data.player);
         }
 
         private void OnDestroy() {
             Destroy(bloodBar.gameObject);
 
-            player.data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
+            data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
 
-            player.data.healthHandler.reviveAction -= OnRevive;
-            DamageEventHandler.Instance.UnregisterDamageEvent(this, player);
+            data.healthHandler.reviveAction -= OnRevive;
+            DamageEventHandler.Instance.UnregisterDamageEvent(this, data.player);
+
+            if(oldRegen != 0) {
+                data.healthHandler.regeneration -= oldRegen;
+            }
         }
     }
 }

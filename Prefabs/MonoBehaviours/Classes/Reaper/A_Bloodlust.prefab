@@ -59,8 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxBlood: 100
-  StartingBlood: 50
+  StartingBlood: 75
   BloodDrainPerSecond: 5
+  BloodDrainPerSecondRegen: 2
+  BloodHealthRegenRate: 0.05
   BloodFillPerDamage: 50
   BloodDamageMultiplier: 0.001
   PercentageDamagePerDamage: 0.03

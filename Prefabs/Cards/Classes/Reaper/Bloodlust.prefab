@@ -53,9 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Bloodlust
-  cardDestription: You hunger for blood, damaging players give you <b>+3%</b> percentage
-    damage that decay over time, but you have a life bar that drain over time that
-    can be filled by damaging player
+  cardDestription: "You hunger for <#BF1111>Blood</color>, damaging players grants
+    <b>+3%</b> percentage damage that decay over time, Your <#BF1111>Blood</color>
+    constantly drain if empty you take damage. While health not at full with <#BF1111>Blood</color>
+    remaining, you instead gain +5% regen/s until fully healed or the bar is empty\r\n"
   cardStats: []
   rarity: 2
   cardArt: {fileID: 799452286766514847, guid: 7295cd4b74cf2344fa375722b010e824, type: 3}
@@ -317,11 +318,14 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 0
   ArmorHealth: 0
+  ArmorHealthMultiplier: 1
   ArmorRegenRate: 0
   ArmorRegenCooldown: 0
   RemoveArmorPirceTag: 0
@@ -333,6 +337,7 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
 --- !u!114 &114602836669831300
