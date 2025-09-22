@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards_Beta
   Author: AALUND13
-  Version: 2.0.11
+  Version: 2.0.12
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: This is the beta version of the mod "AALUND13 Cards", If you encounter
     any issues, please report them on the GitHub page.
@@ -34,6 +34,7 @@ MonoBehaviour:
   - RS_Mind-FancyCardBar-1.3.3
   - AALUND13-RandomCardsGenerator-1.0.1
   - AALUND13-CorruptedCardsManager-1.1.0
+  - AALUND13-ToggleCardsCategories-1.0.0
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: 86029f7442797bc489aaa4aac21567d3, type: 3}

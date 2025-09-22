@@ -59,7 +59,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
                 if(armorAddedCloned.ContainsKey(defaultArmor)) armorChnage = addedArmor - armorAddedCloned[defaultArmor];
 
                 defaultArmor.MaxArmorValue += addedArmor;
-                defaultArmor.CurrentArmorValue = armorChnage;
+                defaultArmor.CurrentArmorValue += armorChnage;
                 armorAdded[defaultArmor] = addedArmor;
             } else {
                 float addedArmor = characterData.maxHealth * HealthToArmorConversions * 2 / armorHandler.ActiveArmors.Count;
