@@ -29,7 +29,7 @@ namespace AALUND13Cards {
             TabInfoManager.RegisterStat(aaStatsCategory, "Block Pierce Percent", (p) => p.data.GetAdditionalData().BlockPircePercent != 0,
                 (p) => $"{p.data.GetAdditionalData().BlockPircePercent * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "Stun Block Time", (p) => p.data.GetAdditionalData().StunBlockTime != 0,
-                (p) => $"{p.data.GetAdditionalData().StunBlockTime * 100:0}%");
+                (p) => $"{p.data.GetAdditionalData().StunBlockTime:0}s");
 
             // Curses Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Max Rarity For Curse", (p) => p.data.GetAdditionalData().MaxRarityForCurse != null,

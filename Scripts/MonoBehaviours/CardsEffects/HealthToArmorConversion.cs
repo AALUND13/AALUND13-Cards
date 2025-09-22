@@ -15,8 +15,6 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
 
         private float oldHealth;
         private int oldArmorCount;
-        private bool isInitiated;
-
 
         private void Start() {
             characterData = GetComponentInParent<CharacterData>();
@@ -27,7 +25,6 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
 
             oldHealth = characterData.maxHealth;
             oldArmorCount = Mathf.Max(armorHandler.ActiveArmors.Count, 1);
-            isInitiated = true;
 
             UpdateArmorStats();
         }
@@ -44,10 +41,6 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             foreach(var armorAdded in armorAdded) {
                 armorAdded.Key.MaxArmorValue -= armorAdded.Value;
                 armorAdded.Key.CurrentArmorValue -= armorAdded.Value;
-            }
-            if(isInitiated) {
-                characterData.maxHealth /= HealthToArmorConversions;
-                characterData.health /= HealthToArmorConversions;
             }
         }
 

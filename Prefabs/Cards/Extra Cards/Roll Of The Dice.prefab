@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 114203408726523956}
   - component: {fileID: 114729959749941734}
   m_Layer: 0
-  m_Name: __AAC__RollOfTheDice
+  m_Name: Roll Of The Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   CanBeReassigned: 0
   IsHidden: 0
   IsCursed: 0
+  Category: 1
 --- !u!114 &114729959749941734
 MonoBehaviour:
   m_ObjectHideFlags: 0

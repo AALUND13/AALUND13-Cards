@@ -298,6 +298,7 @@ MonoBehaviour:
   CanBeReassigned: 1
   IsHidden: 0
   IsCursed: 0
+  Category: 6
 --- !u!114 &114642101177217248
 MonoBehaviour:
   m_ObjectHideFlags: 0

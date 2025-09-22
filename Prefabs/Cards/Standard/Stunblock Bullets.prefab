@@ -55,7 +55,7 @@ MonoBehaviour:
   cardDestription: "Opponents shall not block forever \r\n\r\nIf the players bullet
     is blocked by a opponent the opponent is stunned for 2 seconds"
   cardStats:
-  - positive: 1
+  - positive: 0
     amount: -1
     simepleAmount: 0
     stat: Ammo
@@ -321,6 +321,7 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
   StunBlockTime: 2
@@ -339,5 +340,6 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0

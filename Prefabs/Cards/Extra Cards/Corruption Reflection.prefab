@@ -296,6 +296,7 @@ MonoBehaviour:
   CanBeReassigned: 1
   IsHidden: 0
   IsCursed: 0
+  Category: 1
 --- !u!114 &114348158324077934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,8 +315,10 @@ MonoBehaviour:
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
+  DisableDecayTime: 0
   BlocksWhenRecharge: 0
   BlockPircePercent: 0
+  StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 0
   ArmorHealth: 0
@@ -331,6 +334,7 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 1
 --- !u!114 &114321907632477298

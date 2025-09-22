@@ -1,22 +1,27 @@
 ﻿using AALUND13Cards.Armors;
 using AALUND13Cards.Armors.Processors;
+using AALUND13Cards.Cards;
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.MonoBehaviours.UI;
 using AALUND13Cards.Utils;
 using BepInEx;
 using BepInEx.Logging;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
-using JARL;
 using JARL.Armor;
 using JARL.Utils;
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using ToggleCardsCategories;
+using UnboundLib;
 using UnboundLib.GameModes;
+using UnboundLib.Utils.UI;
 using UnityEngine;
 
 namespace AALUND13Cards {
@@ -26,6 +31,7 @@ namespace AALUND13Cards {
     [BepInDependency("root.classes.manager.reborn")]
     [BepInDependency("com.aalund13.rounds.jarl")]
     [BepInDependency("com.willuwontu.rounds.managers")]
+    [BepInDependency("com.aalund13.rounds.toggle_cards_categories")]
 
     [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
 
@@ -43,9 +49,12 @@ namespace AALUND13Cards {
 
         internal static List<BaseUnityPlugin> Plugins;
         internal static ManualLogSource ModLogger;
-        internal static AssetBundle Assets;
+        
+        internal static AssetBundle MainAssets;
+        internal static AssetBundle ShaderAssets;
 
-        public static CardResgester CardResgester;
+        public static CardResgester CardMainResgester;
+        public static CardResgester CardShaderResgester;
 
         public static CardCategory SoulstreakClassCards;
 
@@ -58,26 +67,41 @@ namespace AALUND13Cards {
 
             ConfigHandler.RegesterMenu(Config);
 
-            Assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacardassets", typeof(AALUND13_Cards).Assembly);
-            if(Assets == null) {
-                throw new System.Exception("Failed to load asset bundle");
+            MainAssets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacard_main_assets", typeof(AALUND13_Cards).Assembly);
+            ShaderAssets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacard_shader_assets", typeof(AALUND13_Cards).Assembly);
+            
+            if(MainAssets != null) {
+                AACardsGenerators.RegisterGenerators();
+                ToggleCardsCategoriesManager.instance.RegisterCategories(ModInitials);
+
+                var harmony = new Harmony(ModId);
+                harmony.PatchAll();
             }
-
-            AACardsGenerators.RegisterGenerators();
-
-            var harmony = new Harmony(ModId);
-            harmony.PatchAll();
         }
 
         public void Start() {
             Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
-            CardResgester = Assets.LoadAsset<GameObject>("ModCards").GetComponent<CardResgester>();
-            CardResgester.RegisterCards<AALUND13_Cards>("AAC");
-            Assets.LoadAsset<GameObject>("PhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
+            if(MainAssets == null) {
+                Unbound.BuildModal("AALUND13 Cards Error", "The mod \"AALUND13 Cards\" main asset failled to load, All the cards will be disable");
+                throw new NullReferenceException("Failled to load \"AALUND13 Cards\" main assets");
+            } else if(ShaderAssets == null) {
+                Unbound.BuildModal("AALUND13 Cards Error", "The mod \"AALUND13 Cards\" shader asset failled to load, Some the cards will be disable\nBut not all.");
+                Logger.LogWarning("Failled to load \"AALUND13 Cards\" shader assets");
+            }
+            
+            CardMainResgester = MainAssets.LoadAsset<GameObject>("ModMainCards").GetComponent<CardResgester>();
+            CardMainResgester.RegisterCards();
 
-            GameObject flashlightMaskHandler = GameObject.Instantiate(Assets.LoadAsset<GameObject>("FlashlightMaskHandler"));
-            DontDestroyOnLoad(flashlightMaskHandler);
+            MainAssets.LoadAsset<GameObject>("PhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
+            
+            if(ShaderAssets != null) {
+                CardShaderResgester = ShaderAssets.LoadAsset<GameObject>("ModShaderCards").GetComponent<CardResgester>();
+                CardShaderResgester.RegisterCards();
+                
+                GameObject flashlightMaskHandler = GameObject.Instantiate(ShaderAssets.LoadAsset<GameObject>("FlashlightMaskHandler"));
+                DontDestroyOnLoad(flashlightMaskHandler);
+            }
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
@@ -123,6 +147,7 @@ namespace AALUND13Cards {
                     if(player.data.GetAdditionalData().ExtraCardPicks > 0 && !isWinner) ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetAdditionalData().ExtraCardPicks);
                 }
             }
+
             yield break;
         }
 

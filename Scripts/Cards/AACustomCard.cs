@@ -2,12 +2,23 @@
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using JARL.Bases;
 using System.Collections.Generic;
-using System.Linq;
 using WillsWackyManagers.Utils;
+using ToggleCardsCategories;
 
 namespace AALUND13Cards.Cards {
-    public class AACustomCard : CustomUnityCard {
+    public enum CardListingCategory {
+        Standard,
+        ExtraCards,
+        Curses,
+        Armor,
+        ClassesSoulstreak,
+        ClassesReaper,
+        ClassesExoArmor
+    }
+
+    public class AACustomCard : CustomUnityCard, IToggleCardCategory {
         public bool IsCursed = false;
+        public CardListingCategory Category = CardListingCategory.Standard;
 
         public override void OnRegister(CardInfo cardInfo) {
             if(IsCursed) {
@@ -34,11 +45,36 @@ namespace AALUND13Cards.Cards {
         }
 
         public override string GetModName() {
-            if(IsCursed) {
-                return AALUND13_Cards.CurseInitials;
-            } else {
-                return AALUND13_Cards.ModInitials;
+            return AALUND13_Cards.ModInitials;
+        }
+
+        public ToggleCardCategoryInfo GetCardCategoryInfo() {
+            string category;
+            switch (Category) {
+                default:
+                    category = "Standard";
+                    break;
+                case CardListingCategory.ExtraCards:
+                    category = "Extra Cards";
+                    break;
+                case CardListingCategory.Armor:
+                    category = "Armors";
+                    break;
+                case CardListingCategory.Curses:
+                    category = "Curses";
+                    break;
+                case CardListingCategory.ClassesReaper:
+                    category = "Classes/Reaper";
+                    break;
+                case CardListingCategory.ClassesSoulstreak:
+                    category = "Classes/Soulstreak";
+                    break;
+                case CardListingCategory.ClassesExoArmor:
+                    category = "Classes/Exo Armor";
+                    break;
             }
+
+            return new ToggleCardCategoryInfo(category);
         }
     }
 }

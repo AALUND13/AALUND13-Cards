@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace AALUND13Cards.MonoBehaviours {
+namespace AALUND13Cards.MonoBehaviours.UI {
     public class BarHandler : MonoBehaviour {
         public float BarValue = 0f;
         public float MaxBarValue = 100f;

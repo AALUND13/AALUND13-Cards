@@ -295,6 +295,7 @@ MonoBehaviour:
   CanBeReassigned: 1
   IsHidden: 0
   IsCursed: 1
+  Category: 2
 --- !u!114 &114870477205360316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +333,7 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
+  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
 --- !u!114 &114661199985760654
