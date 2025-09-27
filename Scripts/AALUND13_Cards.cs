@@ -121,9 +121,7 @@ namespace AALUND13Cards {
 
         IEnumerator OnGameStart(IGameModeHandler gameModeHandler) {
             foreach(Player player in PlayerManager.instance.players) {
-                if(PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
-                    player.data.GetAdditionalData().SoulStreakStats.Souls = 0;
-                }
+                player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>().Souls = 0;
             }
             yield break;
         }
@@ -148,14 +146,14 @@ namespace AALUND13Cards {
                     playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
 
                     if(player.GetComponentInChildren<SoulstreakMono>() != null) {
-                        playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().SoulStreakStats.Souls * 0.5f));
+                        playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>().Souls * 0.5f));
                     }
                 }
             }
 
             player.GetComponentInChildren<SoulstreakMono>()?.ResetSouls();
             if(player.GetComponentInChildren<SoulstreakMono>() == null) {
-                player.data.GetAdditionalData().SoulStreakStats.Souls = 0;
+                player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>().Souls = 0;
             }
         }
     }

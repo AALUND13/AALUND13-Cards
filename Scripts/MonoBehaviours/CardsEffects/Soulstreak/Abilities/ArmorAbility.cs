@@ -30,7 +30,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak.Abilities {
         public void OnBlock(SoulstreakMono soulstreak) {
             if(!abilityActive && abilityCooldown == 0) {
                 ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
-                soulArmor.MaxArmorValue = soulstreak.Player.data.maxHealth * soulstreak.SoulstreakStats.SoulArmorPercentage * (soulstreak.SoulstreakStats.Souls + 1);
+                soulArmor.MaxArmorValue = soulstreak.Data.maxHealth * soulstreak.SoulstreakStats.SoulArmorPercentage * (soulstreak.SoulstreakStats.Souls + 1);
                 soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * soulstreak.SoulstreakStats.SoulArmorPercentageRegenRate;
                 soulArmor.CurrentArmorValue = soulArmor.MaxArmorValue;
                 abilityActive = true;

@@ -36,24 +36,24 @@ namespace AALUND13Cards.Cards.StatModifers {
 
         public override void Apply(Player player) {
             CharacterData data = player.data;
-            var additionalData = data.GetAdditionalData();
+            var soulstreakStats = data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>();
 
-            additionalData.SoulStreakStats.MaxHealth += MaxHealth;
-            additionalData.SoulStreakStats.PlayerSize += PlayerSize;
-            additionalData.SoulStreakStats.MovementSpeed += MovementSpeed;
+            soulstreakStats.MaxHealth += MaxHealth;
+            soulstreakStats.PlayerSize += PlayerSize;
+            soulstreakStats.MovementSpeed += MovementSpeed;
 
-            additionalData.SoulStreakStats.AttackSpeed += AttackSpeed;
-            additionalData.SoulStreakStats.Damage += Damage;
-            additionalData.SoulStreakStats.BulletSpeed += BulletSpeed;
+            soulstreakStats.AttackSpeed += AttackSpeed;
+            soulstreakStats.Damage += Damage;
+            soulstreakStats.BulletSpeed += BulletSpeed;
 
-            additionalData.SoulStreakStats.SoulArmorPercentage += SoulArmorPercentage;
-            additionalData.SoulStreakStats.SoulArmorPercentageRegenRate += SoulArmorPercentageRegenRate;
+            soulstreakStats.SoulArmorPercentage += SoulArmorPercentage;
+            soulstreakStats.SoulArmorPercentageRegenRate += SoulArmorPercentageRegenRate;
 
-            additionalData.SoulStreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
-            additionalData.SoulStreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
+            soulstreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
+            soulstreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
             
             if((AbilityType & AbilityType.Armor) == AbilityType.Armor) {
-                additionalData.SoulStreakStats.Abilities.Add(new ArmorAbility(player, 10f));
+                soulstreakStats.Abilities.Add(new ArmorAbility(player, 10f));
             }
         }
     }

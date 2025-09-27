@@ -1,9 +1,10 @@
 ﻿using AALUND13Cards.Extensions;
+using AALUND13Cards.Utils;
 using ModsPlus;
 using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects {
-    public class RailgunStats {
+    public class RailgunStats : ICustomStatsHandler {
         public struct RailgunChargeStats {
             public float ChargeDamageMultiplier;
             public float ChargeBulletSpeedMultiplier;
@@ -53,19 +54,39 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
             }
             AllowOvercharge = false;
         }
+
+        public void ResetStats() {
+            IsEnabled = false;
+            AllowOvercharge = false;
+
+            MaximumCharge = 0f;
+            CurrentCharge = 0f;
+            ChargeRate = 0f;
+
+            FullChargeThreshold = 20f;
+
+            RailgunDamageMultiplier = 1f;
+            RailgunBulletSpeedMultiplier = 1f;
+
+            RailgunMinimumChargeDamageMultiplier = 0.25f;
+            RailgunMinimumChargeBulletSpeedMultiplier = 0.5f;
+        }
     }
 
     public class RailgunMono : MonoBehaviour {
-        public RailgunStats RailgunStats => player.data.GetAdditionalData().RailgunStats;
+        [HideInInspector] public RailgunStats RailgunStats;
 
         private CustomHealthBar RailgunChargeBar;
         private Player player;
 
         private void Start() {
             player = GetComponentInParent<Player>();
+
+            RailgunStats = player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
             RailgunStats.IsEnabled = true;
 
             RailgunChargeBar = CreateChargeBar();
+
             player.data.healthHandler.reviveAction += OnRevive;
         }
 

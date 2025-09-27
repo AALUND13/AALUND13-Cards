@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.MonoBehaviours.CardsEffects;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.Utils;
 using RarityLib.Utils;
 using System;
 using System.Runtime.CompilerServices;
@@ -29,8 +30,7 @@ namespace AALUND13Cards.Extensions {
         public bool DisableDecayTime = false;
 
         // Stats Classes
-        public RailgunStats RailgunStats = new RailgunStats();
-        public SoulStreakStats SoulStreakStats = new SoulStreakStats();
+        public CustomStatsManager CustomStatsManager = new CustomStatsManager();
 
         // Uncategorized
         public float DamageReduction = 0f;
@@ -62,8 +62,7 @@ namespace AALUND13Cards.Extensions {
             IsBind = false;
 
             // Reset stats classes
-            RailgunStats = new RailgunStats();
-            SoulStreakStats = new SoulStreakStats();
+            CustomStatsManager.ResetAll();
 
             // Uncategorized
             DamageReduction = 0f;

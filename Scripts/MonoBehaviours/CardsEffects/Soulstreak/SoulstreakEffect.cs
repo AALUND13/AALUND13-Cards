@@ -13,7 +13,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
         }
 
         public void ApplyStats() {
-            SoulStreakStats soulStreakStats = data.GetAdditionalData().SoulStreakStats;
+            SoulStreakStats soulStreakStats = data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>();
             uint souls = soulStreakStats.Souls;
 
             ClearModifiers();

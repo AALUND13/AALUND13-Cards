@@ -11,7 +11,7 @@ namespace AALUND13Cards.Patches {
     public class GunPatch {
         [HarmonyPatch("ApplyProjectileStats")]
         public static void Prefix(Gun __instance, GameObject obj) {
-            RailgunStats railgunStats = __instance.player.data.GetAdditionalData().RailgunStats;
+            RailgunStats railgunStats = __instance.player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
 
             if(railgunStats.IsEnabled) {
                 ProjectileHit projectile = obj.GetComponent<ProjectileHit>();
@@ -50,7 +50,7 @@ namespace AALUND13Cards.Patches {
         }
 
         public static void InjectUseCharge(Gun gun) {
-            var stats = gun.player.data.GetAdditionalData().RailgunStats;
+            var stats = gun.player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
             if(stats.IsEnabled && stats.CurrentCharge > 0) {
                 stats.UseCharge(stats);
             }

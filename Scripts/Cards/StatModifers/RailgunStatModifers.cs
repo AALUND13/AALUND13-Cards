@@ -1,4 +1,5 @@
 ﻿using AALUND13Cards.Extensions;
+using AALUND13Cards.MonoBehaviours.CardsEffects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,17 @@ namespace AALUND13Cards.Cards.StatModifers {
 
         public override void Apply(Player player) {
             CharacterData data = player.data;
-            var additionalData = data.GetAdditionalData();
+            var railgunStats = data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
 
             // Apply Railgun Add Stats
-            additionalData.RailgunStats.MaximumCharge = Mathf.Max(additionalData.RailgunStats.MaximumCharge + MaximumCharge, 0f);
-            additionalData.RailgunStats.ChargeRate = Mathf.Max(additionalData.RailgunStats.ChargeRate + ChargeRate, 0f);
+            railgunStats.MaximumCharge = Mathf.Max(railgunStats.MaximumCharge + MaximumCharge, 0f);
+            railgunStats.ChargeRate = Mathf.Max(railgunStats.ChargeRate + ChargeRate, 0f);
 
             // Apply Railgun Multiplier Stats
-            additionalData.RailgunStats.MaximumCharge *= MaximumChargeMultiplier;
-            additionalData.RailgunStats.ChargeRate *= ChargeRateMultiplier;
-            additionalData.RailgunStats.RailgunDamageMultiplier += RailgunDamageMultiplier - 1f;
-            additionalData.RailgunStats.RailgunBulletSpeedMultiplier += RailgunBulletSpeedMultiplier - 1f;
+            railgunStats.MaximumCharge *= MaximumChargeMultiplier;
+            railgunStats.ChargeRate *= ChargeRateMultiplier;
+            railgunStats.RailgunDamageMultiplier += RailgunDamageMultiplier - 1f;
+            railgunStats.RailgunBulletSpeedMultiplier += RailgunBulletSpeedMultiplier - 1f;
         }
     }
 }

@@ -5,17 +5,18 @@ using UnityEngine;
 
 namespace AALUND13Cards.Handlers {
     public struct ConstantDamageInfo {
-        public Player damagingPlayer;
+        public Player DamagingPlayer;
         public Color Color;
         public float Damage;
 
         public ConstantDamageInfo(Player damagingPlayer, Color color, float damage) {
+            DamagingPlayer = damagingPlayer;
             Color = color;
             Damage = damage;
         }
 
         public ConstantDamageInfo AddDamage(float damage) {
-            return new ConstantDamageInfo(damagingPlayer, Color, Damage + damage);
+            return new ConstantDamageInfo(DamagingPlayer, Color, Damage + damage);
         }
     }
 
