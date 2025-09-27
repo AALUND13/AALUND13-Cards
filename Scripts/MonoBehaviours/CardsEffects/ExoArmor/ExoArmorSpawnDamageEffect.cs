@@ -1,7 +1,7 @@
 ﻿using JARL.Armor;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours.CardsEffects.PowerArmor {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects.ExoArmor {
     public class ExoArmorSpawnDamageEffect : MonoBehaviour {
         private DamageSpawnObjects damageSpawnObjects;
         private ArmorHandler armorHandler;

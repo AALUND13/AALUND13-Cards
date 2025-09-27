@@ -29,7 +29,7 @@ namespace AALUND13Cards.Extensions {
             return damage * tiggerPull * ammoPerTiggerPull * firingCycleMultiplier / 1.33333f;
         }
 
-        public static float GetShootsPerSecond(this Player player) {
+        public static float GetSPS(this Player player) {
             GunAmmo ammoComponent = player.data.weaponHandler.gun.GetComponentInChildren<GunAmmo>();
 
             int ammo = ammoComponent.maxAmmo;

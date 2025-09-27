@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   m_Layer: 0
-  m_Name: __AAC__Rollback
+  m_Name: Rollback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,9 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 0
+  CardRarity: 3
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
+  IsCursed: 0
+  Category: 0

@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Extensions;
 using AALUND13Cards.MonoBehaviours.CardsEffects;
+using AALUND13Cards.Utils;
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -26,7 +27,15 @@ namespace AALUND13Cards.Patches {
         [HarmonyPatch("ApplyProjectileStats")]
         public static void Postfix(Gun __instance, GameObject obj) {
             ProjectileHit projectile = obj.GetComponent<ProjectileHit>();
-            projectile.percentageDamage += __instance.player.data.GetAdditionalData().ScalingPercentageDamage / __instance.player.GetShootsPerSecond();
+            projectile.percentageDamage += MathUtils.GetEffectivePercentCap(
+                __instance.player.GetSPS(), 
+                __instance.player.data.GetAdditionalData().ScalingPercentageDamage,
+                __instance.player.data.GetAdditionalData().ScalingPercentageDamageCap
+            );
+            projectile.percentageDamage += MathUtils.GetEffectivePercent(
+                __instance.player.GetSPS(),
+                __instance.player.data.GetAdditionalData().ScalingPercentageDamageUnCap
+            );
         }
 
         [HarmonyPatch("DoAttack")]

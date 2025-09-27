@@ -13,6 +13,7 @@ namespace AALUND13Cards.Patches {
         [HarmonyPostfix]
         public static void RevivePrefix(HealthHandler __instance, CharacterData ___data) {
             ConstantDamageHandler.Instance.RemovePlayerFromAll(___data.player);
+            DelayDamageHandler.Instance.StopAllCoroutines();
         }
 
         [HarmonyPatch(nameof(HealthHandler.TakeDamage), typeof(Vector2), typeof(Vector2), typeof(Color), typeof(GameObject), typeof(Player), typeof(bool), typeof(bool))]

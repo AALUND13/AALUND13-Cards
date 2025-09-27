@@ -4,6 +4,8 @@ using JARL.Bases;
 using System.Collections.Generic;
 using WillsWackyManagers.Utils;
 using ToggleCardsCategories;
+using UnboundLib.Cards;
+using UnityEngine;
 
 namespace AALUND13Cards.Cards {
     public enum CardListingCategory {
@@ -15,6 +17,8 @@ namespace AALUND13Cards.Cards {
         ClassesReaper,
         ClassesExoArmor
     }
+
+
 
     public class AACustomCard : CustomUnityCard, IToggleCardCategory {
         public bool IsCursed = false;

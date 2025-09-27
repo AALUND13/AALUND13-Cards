@@ -1,54 +1,78 @@
 ﻿using JARL.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace AALUND13Cards.Handlers {
-    public class ConstantDamageHandler : MonoBehaviour {
-        public Dictionary<Player, float> playerConstantDamages = new Dictionary<Player, float>();
-        public Dictionary<Player, float> PlayerConstantPrecentageDamages = new Dictionary<Player, float>();
-        
-        public static ConstantDamageHandler Instance;
+    public struct ConstantDamageInfo {
+        public Player damagingPlayer;
+        public Color Color;
+        public float Damage;
 
-        public void AddConstantDamage(Player player, float damage) {
-            if (!playerConstantDamages.ContainsKey(player)) {
-                playerConstantDamages[player] = 0f;
-            }
-            playerConstantDamages[player] += damage;
+        public ConstantDamageInfo(Player damagingPlayer, Color color, float damage) {
+            Color = color;
+            Damage = damage;
         }
 
-        public void AddConstantPrecentageDamage(Player player, float precentage) {
-            if (!PlayerConstantPrecentageDamages.ContainsKey(player)) {
-                PlayerConstantPrecentageDamages[player] = 0f;
+        public ConstantDamageInfo AddDamage(float damage) {
+            return new ConstantDamageInfo(damagingPlayer, Color, Damage + damage);
+        }
+    }
+
+    public class ConstantDamageHandler : MonoBehaviour {
+        public Dictionary<Player, List<ConstantDamageInfo>> playerConstantDamages = new Dictionary<Player, List<ConstantDamageInfo>>();
+        public Dictionary<Player, List<ConstantDamageInfo>> PlayerConstantPrecentageDamages = new Dictionary<Player, List<ConstantDamageInfo>>();
+
+        public static ConstantDamageHandler Instance;
+
+        public void AddConstantDamage(Player player, Player damagingPlayer, Color color, float damage) {
+            if(!playerConstantDamages.ContainsKey(player)) {
+                playerConstantDamages[player] = new List<ConstantDamageInfo>();
             }
-            PlayerConstantPrecentageDamages[player] += precentage;
+
+            int index = playerConstantDamages[player].FindIndex(info => info.Color == color);
+            if(index != -1) {
+                playerConstantDamages[player][index] = playerConstantDamages[player][index].AddDamage(damage);
+            } else {
+                playerConstantDamages[player].Add(new ConstantDamageInfo(damagingPlayer, color, damage));
+            }
+        }
+
+        public void AddConstantPrecentageDamage(Player player, Player damagingPlayer, Color color, float precentage) {
+            if(!PlayerConstantPrecentageDamages.ContainsKey(player)) {
+                PlayerConstantPrecentageDamages[player] = new List<ConstantDamageInfo>();
+            }
+
+            int index = PlayerConstantPrecentageDamages[player].FindIndex(info => info.Color == color);
+            if(index != -1) {
+                PlayerConstantPrecentageDamages[player][index] = PlayerConstantPrecentageDamages[player][index].AddDamage(precentage);
+            } else {
+                PlayerConstantPrecentageDamages[player].Add(new ConstantDamageInfo(damagingPlayer, color, precentage));
+            }
         }
 
         internal void RemovePlayerFromAll(Player player) {
-            if (playerConstantDamages.ContainsKey(player)) {
+            if(playerConstantDamages.ContainsKey(player)) {
                 playerConstantDamages.Remove(player);
             }
-            if (PlayerConstantPrecentageDamages.ContainsKey(player)) {
+            if(PlayerConstantPrecentageDamages.ContainsKey(player)) {
                 PlayerConstantPrecentageDamages.Remove(player);
             }
         }
 
         private void Start() {
-            if (Instance == null) {
+            if(Instance == null) {
                 Instance = this;
             } else {
                 Destroy(this);
             }
 
             DeathHandler.OnPlayerDeath += (player, playerDamageInfo) => {
-                if (playerConstantDamages.ContainsKey(player)) {
+                if(playerConstantDamages.ContainsKey(player)) {
                     playerConstantDamages.Remove(player);
                 }
 
-                if (PlayerConstantPrecentageDamages.ContainsKey(player)) {
+                if(PlayerConstantPrecentageDamages.ContainsKey(player)) {
                     PlayerConstantPrecentageDamages.Remove(player);
                 }
             };
@@ -56,19 +80,25 @@ namespace AALUND13Cards.Handlers {
         }
 
         private void Update() {
-            foreach (var kvp in playerConstantDamages.ToList()) {
-                Player player = kvp.Key;
-                float damage = kvp.Value * Time.deltaTime;
-                if (damage > 0) {
-                    player.data.healthHandler.DoDamage(Vector2.down * damage, Vector2.zero, Color.red, null, null, false, true, true);
+            foreach(var kvp in playerConstantDamages.ToList()) {
+                foreach(var constantDamageInfo in kvp.Value) {
+                    Player player = kvp.Key;
+                    float damage = constantDamageInfo.Damage * Time.deltaTime;
+
+                    if(damage > 0) {
+                        player.data.healthHandler.DoDamage(Vector2.down * damage, Vector2.zero, constantDamageInfo.Color, null, null, false, true, true);
+                    }
                 }
             }
 
-            foreach (var kvp in PlayerConstantPrecentageDamages.ToList()) {
-                Player player = kvp.Key;
-                float precentage = kvp.Value * Time.deltaTime;
-                if (precentage > 0) {
-                    player.data.healthHandler.DoDamage(Vector2.down * (player.data.maxHealth * precentage), Vector2.zero, Color.black, null, null, false, true, true);
+            foreach(var kvp in PlayerConstantPrecentageDamages.ToList()) {
+                foreach(var constantDamageInfo in kvp.Value) {
+                    Player player = kvp.Key;
+                    float precentage = constantDamageInfo.Damage * Time.deltaTime;
+
+                    if(precentage > 0) {
+                        player.data.healthHandler.DoDamage(Vector2.down * (player.data.maxHealth * precentage), Vector2.zero, constantDamageInfo.Color, null, null, false, true, true);
+                    }
                 }
             }
         }

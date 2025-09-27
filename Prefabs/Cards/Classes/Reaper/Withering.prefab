@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Withering
-  cardDestription: When you deal damage to players they will start taking <b>0.5%</b>
-    damage per seconds
+  cardDestription: When you deal damage to players they will start taking <b>1%</b>
+    scaling percentage damage per seconds
   cardStats: []
   rarity: 1
   cardArt: {fileID: 9091299119628443372, guid: 08d1806c65bd65340b618998fb0f19c8, type: 3}

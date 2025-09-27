@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 114906609052272654}
   - component: {fileID: 114258392857231854}
   - component: {fileID: 114473868296222032}
+  - component: {fileID: 114667925413518436}
   m_Layer: 0
   m_Name: Sharpened Scythe
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   - positive: 1
     amount: +3%
     simepleAmount: 0
-    stat: Percentage Damage
+    stat: Percent Damage
   rarity: 0
   cardArt: {fileID: 6076229912639046458, guid: 3b0d52e7fe172df43aa798d4582f961d, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -316,6 +317,7 @@ MonoBehaviour:
   SecondToDealDamage: 0
   DamageMultiplier: 1
   ScalingPercentageDamage: 0.03
+  ScalingPercentageDamageCap: 0
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
@@ -356,3 +358,15 @@ MonoBehaviour:
   Name: Reaper_Gray
   targetColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   bgColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114667925413518436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882910650094676032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4189814cb89e54d4087c68fda798c127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

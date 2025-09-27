@@ -54,11 +54,16 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Death Contract
   cardDestription: Trade <b>ALL</b> your flat damage, for a lot of percentage damage
+    and raising the cap
   cardStats:
   - positive: 1
     amount: +20%
     simepleAmount: 0
-    stat: Percentage Damage
+    stat: Percent DMG Cap
+  - positive: 1
+    amount: +10%
+    simepleAmount: 0
+    stat: Percent Damage
   - positive: 1
     amount: +35%
     simepleAmount: 0
@@ -313,7 +318,7 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
+  OverrideClassName: Reaper
   CardClassType: 16
   CardLimit: 1
   RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
@@ -339,7 +344,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecondToDealDamage: 0
   DamageMultiplier: 1
-  ScalingPercentageDamage: 0.2
+  ScalingPercentageDamage: 0.1
+  ScalingPercentageDamageCap: 0.2
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0

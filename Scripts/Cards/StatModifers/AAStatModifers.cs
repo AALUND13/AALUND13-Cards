@@ -33,6 +33,7 @@ namespace AALUND13Cards.Cards.StatModifers {
 
         [Header("Percentage Damage")]
         public float ScalingPercentageDamage = 0;
+        public float ScalingPercentageDamageCap = 0;
 
         [Header("Curses Stats")]
         public bool SetMaxRarityForCurse = false;
@@ -55,6 +56,12 @@ namespace AALUND13Cards.Cards.StatModifers {
         public float ArmorRegenRate = 0f;
         public float ArmorRegenCooldown = 0f;
         public bool RemoveArmorPirceTag = false;
+
+        [Space(10)]
+        public bool OverrideArmorDamagePatchType = false;
+        public bool PatchDoDamage = false;
+        public bool PatchTakeDamage = false;
+        public bool PatchTakeDamageOverTime = false;
 
         [Space(10)]
         public ArmorReactivateType ArmorReactivateType = ArmorReactivateType.Percent;
@@ -87,6 +94,7 @@ namespace AALUND13Cards.Cards.StatModifers {
             data.weaponHandler.gun.damage *= DamageMultiplier;
 
             // Apply Percentage Damage
+            additionalData.ScalingPercentageDamageCap += ScalingPercentageDamageCap;
             additionalData.ScalingPercentageDamage += ScalingPercentageDamage;
 
             // Apply Curses Stats
@@ -105,6 +113,7 @@ namespace AALUND13Cards.Cards.StatModifers {
             // Apply Extra Cards Stats
             additionalData.ExtraCardPicks += ExtraCardPicks;
 
+            #region Armor Stats
             // Apply Armor Stats
             additionalData.ArmorDamageReduction = Mathf.Min(additionalData.ArmorDamageReduction + ArmorDamageReduction, 0.80f);
 
@@ -127,11 +136,18 @@ namespace AALUND13Cards.Cards.StatModifers {
                     if(RemoveArmorPirceTag && armorInstance.HasArmorTag("CanArmorPierce")) {
                         armorInstance.ArmorTags.Remove("CanArmorPierce");
                     }
+                    if(OverrideArmorDamagePatchType) {
+                        armorInstance.ArmorDamagePatch = 0; // Remove all flags
+                        if(PatchDoDamage) armorInstance.ArmorDamagePatch |= ArmorDamagePatchType.DoDamage;
+                        if(PatchTakeDamage) armorInstance.ArmorDamagePatch |= ArmorDamagePatchType.TakeDamage;
+                        if(PatchTakeDamageOverTime) armorInstance.ArmorDamagePatch |= ArmorDamagePatchType.TakeDamageOverTime;
+                    }
                 }
             }
 
             jarlAdditionalData.ArmorPiercePercent = Mathf.Clamp(jarlAdditionalData.ArmorPiercePercent + ArmorPiercePercent, 0f, 1f);
             additionalData.DamageAgainstArmorPercentage += DamageAgainstArmorPercentage - 1f;
+            #endregion
 
             #region Extra Picks
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);

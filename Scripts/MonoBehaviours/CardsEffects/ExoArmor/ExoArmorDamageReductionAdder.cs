@@ -1,9 +1,8 @@
 ﻿using JARL.Armor;
 using UnityEngine;
 
-namespace AALUND13Cards.MonoBehaviours.CardsEffects.PowerArmor {
+namespace AALUND13Cards.MonoBehaviours.CardsEffects.ExoArmor {
     public class ExoArmorDamageReductionAdder : MonoBehaviour {
-        public const float DamageReductionMax = 100;
         public float DamageReduction;
 
         private ArmorHandler armorHandler;

@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
+using AALUND13Cards.Utils;
 using ModsPlus;
 using UnboundLib.Extensions;
 using UnityEngine;
@@ -29,11 +30,11 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         public void OnDamage(DamageInfo damage) {
             if(data.player != damage.DamagingPlayer) return;
 
-            float bloodGained = BloodFillPerDamage / this.data.player.GetShootsPerSecond();
-            float added = PercentageDamagePerDamage / this.data.player.GetShootsPerSecond();
+            float bloodGained = BloodFillPerDamage / this.data.player.GetSPS();
+            float added = PercentageDamagePerDamage / this.data.player.GetSPS();
             decayingPrecentageDamage += added;
 
-            data.GetAdditionalData().ScalingPercentageDamage += added;
+            data.GetAdditionalData().ScalingPercentageDamageUnCap += added;
             appliedScaling += added;
 
 
@@ -47,7 +48,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         private void OnRevive() {
             blood = StartingBlood;
 
-            data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
+            data.GetAdditionalData().ScalingPercentageDamageUnCap -= appliedScaling;
             appliedScaling = 0f;
             decayingPrecentageDamage = 0f;
         }
@@ -75,7 +76,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
             );
 
             float diff = decayingPrecentageDamage - old;
-            data.GetAdditionalData().ScalingPercentageDamage += diff;
+            data.GetAdditionalData().ScalingPercentageDamageUnCap += diff;
             appliedScaling += diff;
 
             float bloodDrainPerSecond = BloodDrainPerSecond;
@@ -114,7 +115,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Reaper {
         private void OnDestroy() {
             Destroy(bloodBar.gameObject);
 
-            data.GetAdditionalData().ScalingPercentageDamage -= appliedScaling;
+            data.GetAdditionalData().ScalingPercentageDamageUnCap -= appliedScaling;
 
             data.healthHandler.reviveAction -= OnRevive;
             DamageEventHandler.Instance.UnregisterDamageEvent(this, data.player);

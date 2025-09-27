@@ -287,7 +287,7 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
+  OverrideClassName: Exo Armor
   CardClassType: 16
   CardLimit: 0
   RequiredClass: {fileID: 4908810688212451669, guid: 1b2e75ecf3c7e0742a0916c946a2bc63,
@@ -314,6 +314,7 @@ MonoBehaviour:
   SecondToDealDamage: 0
   DamageMultiplier: 1
   ScalingPercentageDamage: 0
+  ScalingPercentageDamageCap: 0
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
@@ -328,6 +329,8 @@ MonoBehaviour:
   ArmorRegenRate: 0
   ArmorRegenCooldown: 0
   RemoveArmorPirceTag: 1
+  OverrideArmorDamagePatchType: 0
+  ArmorDamagePatchType: 0
   ArmorReactivateType: 0
   ArmorReactivateValue: 0.5
   ArmorPiercePercent: 0

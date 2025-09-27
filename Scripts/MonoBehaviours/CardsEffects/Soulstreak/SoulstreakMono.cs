@@ -95,7 +95,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
 
         private void Start() {
-            Player = gameObject.transform.parent.GetComponent<Player>();
+            Player = GetComponentInParent<Player>();
 
             SoulsCounter = Instantiate(SoulsCounter);
             if(Player.data.view.IsMine && !Player.GetComponent<PlayerAPI>().enabled) {
@@ -115,7 +115,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
                 Destroy(SoulsCounterGUI);
             }
             Destroy(SoulsCounter);
-
+            
             if(Player.gameObject.GetComponent<SoulstreakEffect>() != null) {
                 Destroy(Player.gameObject.GetComponent<SoulstreakEffect>());
             }

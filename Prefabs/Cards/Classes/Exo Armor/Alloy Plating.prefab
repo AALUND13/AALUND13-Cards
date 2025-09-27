@@ -59,7 +59,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Armor Health
   - positive: 1
-    amount: +5
+    amount: +2
     simepleAmount: 0
     stat: Armor Regen
   rarity: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   Armor: 3
   ArmorHealth: 0
   ArmorHealthMultiplier: 1.2
-  ArmorRegenRate: 5
+  ArmorRegenRate: 2
   ArmorRegenCooldown: 0
   RemoveArmorPirceTag: 0
   ArmorReactivateType: 0

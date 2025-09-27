@@ -4,7 +4,6 @@ using AALUND13Cards.Cards;
 using AALUND13Cards.Extensions;
 using AALUND13Cards.Handlers;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
-using AALUND13Cards.MonoBehaviours.UI;
 using AALUND13Cards.Utils;
 using BepInEx;
 using BepInEx.Logging;
@@ -21,7 +20,6 @@ using System.Reflection;
 using ToggleCardsCategories;
 using UnboundLib;
 using UnboundLib.GameModes;
-using UnboundLib.Utils.UI;
 using UnityEngine;
 
 namespace AALUND13Cards {
@@ -44,14 +42,13 @@ namespace AALUND13Cards {
         internal const string ModId = "com.aalund13.rounds.aalund13_cards";
         internal const string ModName = "AALUND13 Cards";
         internal const string Version = "2.0.0"; // What version are we on (major.minor.patch)?
-        
+
         public static AALUND13_Cards Instance { get; private set; }
 
         internal static List<BaseUnityPlugin> Plugins;
         internal static ManualLogSource ModLogger;
-        
+
         internal static AssetBundle MainAssets;
-        internal static AssetBundle ShaderAssets;
 
         public static CardResgester CardMainResgester;
         public static CardResgester CardShaderResgester;
@@ -68,8 +65,7 @@ namespace AALUND13Cards {
             ConfigHandler.RegesterMenu(Config);
 
             MainAssets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacard_main_assets", typeof(AALUND13_Cards).Assembly);
-            ShaderAssets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aacard_shader_assets", typeof(AALUND13_Cards).Assembly);
-            
+
             if(MainAssets != null) {
                 AACardsGenerators.RegisterGenerators();
                 ToggleCardsCategoriesManager.instance.RegisterCategories(ModInitials);
@@ -85,23 +81,15 @@ namespace AALUND13Cards {
             if(MainAssets == null) {
                 Unbound.BuildModal("AALUND13 Cards Error", "The mod \"AALUND13 Cards\" main asset failled to load, All the cards will be disable");
                 throw new NullReferenceException("Failled to load \"AALUND13 Cards\" main assets");
-            } else if(ShaderAssets == null) {
-                Unbound.BuildModal("AALUND13 Cards Error", "The mod \"AALUND13 Cards\" shader asset failled to load, Some the cards will be disable\nBut not all.");
-                Logger.LogWarning("Failled to load \"AALUND13 Cards\" shader assets");
             }
-            
+
             CardMainResgester = MainAssets.LoadAsset<GameObject>("ModMainCards").GetComponent<CardResgester>();
             CardMainResgester.RegisterCards();
 
             MainAssets.LoadAsset<GameObject>("PhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
-            
-            if(ShaderAssets != null) {
-                CardShaderResgester = ShaderAssets.LoadAsset<GameObject>("ModShaderCards").GetComponent<CardResgester>();
-                CardShaderResgester.RegisterCards();
-                
-                GameObject flashlightMaskHandler = GameObject.Instantiate(ShaderAssets.LoadAsset<GameObject>("FlashlightMaskHandler"));
-                DontDestroyOnLoad(flashlightMaskHandler);
-            }
+
+            GameObject flashlightMaskHandler = GameObject.Instantiate(MainAssets.LoadAsset<GameObject>("FlashlightMaskHandler"));
+            DontDestroyOnLoad(flashlightMaskHandler);
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
@@ -158,7 +146,7 @@ namespace AALUND13Cards {
             foreach(var playerDamageInfo in playerDamageInfos) {
                 if(playerDamageInfo.Value.TimeSinceLastDamage <= 5 && playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>() != null && !playerDamageInfo.Key.data.dead) {
                     playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
-                    
+
                     if(player.GetComponentInChildren<SoulstreakMono>() != null) {
                         playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().SoulStreakStats.Souls * 0.5f));
                     }

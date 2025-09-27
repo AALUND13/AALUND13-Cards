@@ -1,6 +1,8 @@
 ﻿using AALUND13Cards.Extensions;
 using AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.Utils;
 using TabInfo.Utils;
+using UnityEngine;
 
 namespace AALUND13Cards {
     public class TabinfoInterface {
@@ -42,10 +44,16 @@ namespace AALUND13Cards {
             // Uncategorized Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Reduction", (p) => p.data.GetAdditionalData().DamageReduction != 0,
                 (p) => $"{p.data.GetAdditionalData().DamageReduction * 100:0}%");
-            TabInfoManager.RegisterStat(aaStatsCategory, "DPS", (_) => true,
+            TabInfoManager.RegisterStat(aaStatsCategory, "Damage Per Seconds", (_) => true,
                 (p) => $"{p.GetDPS()}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Bullets Per Seconds", (_) => true,
+                (p) => $"{p.GetSPS()}");
+
+            // Percentage Damage Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Scaling Percentage Damage", (p) => p.data.GetAdditionalData().ScalingPercentageDamage != 0,
-                (p) => $"{p.data.GetAdditionalData().ScalingPercentageDamage * 100:0}%");
+                (p) => $"{(Mathf.Min(p.data.GetAdditionalData().ScalingPercentageDamage, Mathf.Min(p.data.GetAdditionalData().ScalingPercentageDamageCap, MathUtils.PERCENT_CAP)) + p.data.GetAdditionalData().ScalingPercentageDamageUnCap) * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Effective Percentage Damage", (p) => p.data.GetAdditionalData().ScalingPercentageDamage != 0,
+                (p) => $"{(MathUtils.GetEffectivePercentCap(p.GetSPS(), p.data.GetAdditionalData().ScalingPercentageDamage, p.data.GetAdditionalData().ScalingPercentageDamageCap) + MathUtils.GetEffectivePercent(p.GetSPS(), p.data.GetAdditionalData().ScalingPercentageDamageUnCap)) * 100:0}%");
 
             #region Soulstreak Stats
             var category = TabInfoManager.RegisterCategory("Soulstreak Stats", 7);
