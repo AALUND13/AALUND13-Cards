@@ -82,7 +82,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects {
         private void Start() {
             player = GetComponentInParent<Player>();
 
-            RailgunStats = player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
+            RailgunStats = player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<RailgunStats>();
             RailgunStats.IsEnabled = true;
 
             RailgunChargeBar = CreateChargeBar();

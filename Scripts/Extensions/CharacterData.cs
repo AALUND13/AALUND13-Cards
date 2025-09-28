@@ -30,7 +30,7 @@ namespace AALUND13Cards.Extensions {
         public bool DisableDecayTime = false;
 
         // Stats Classes
-        public CustomStatsRegistry CustomStatsManager = new CustomStatsRegistry();
+        public CustomStatsRegistry CustomStatsRegistry = new CustomStatsRegistry();
 
         // Uncategorized
         public float DamageReduction = 0f;
@@ -62,7 +62,7 @@ namespace AALUND13Cards.Extensions {
             IsBind = false;
 
             // Reset stats classes
-            CustomStatsManager.ResetAll();
+            CustomStatsRegistry.ResetAll();
 
             // Uncategorized
             DamageReduction = 0f;

@@ -22,7 +22,7 @@ namespace AALUND13Cards.Cards.StatModifers {
 
         public override void Apply(Player player) {
             CharacterData data = player.data;
-            var railgunStats = data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
+            var railgunStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<RailgunStats>();
 
             // Apply Railgun Add Stats
             railgunStats.MaximumCharge = Mathf.Max(railgunStats.MaximumCharge + MaximumCharge, 0f);

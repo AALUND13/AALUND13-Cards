@@ -36,7 +36,7 @@ namespace AALUND13Cards.Cards.StatModifers {
 
         public override void Apply(Player player) {
             CharacterData data = player.data;
-            var soulstreakStats = data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>();
+            var soulstreakStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
 
             soulstreakStats.MaxHealth += MaxHealth;
             soulstreakStats.PlayerSize += PlayerSize;

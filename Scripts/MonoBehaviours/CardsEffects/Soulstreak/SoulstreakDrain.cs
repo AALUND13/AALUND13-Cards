@@ -15,7 +15,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
         public void Start() {
             player = GetComponentInParent<Player>();
-            soulstreakStats = player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>();
+            soulstreakStats = player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
 
             SoundDamage.variables.audioMixerGroup = SoundVolumeManager.Instance.audioMixer.FindMatchingGroups("SFX")[0];
             

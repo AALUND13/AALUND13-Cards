@@ -106,7 +106,7 @@ namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
 
         private void Start() {
             data = GetComponentInParent<Player>().data;
-            SoulstreakStats = data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>();
+            SoulstreakStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
 
             SoulsCounter = Instantiate(SoulsCounter);
             if(data.view.IsMine && !data.GetComponent<PlayerAPI>().enabled) {

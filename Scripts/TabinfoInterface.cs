@@ -110,11 +110,11 @@ namespace AALUND13Cards {
         }
 
         private static RailgunStats GetRailgunStatsFromPlayer(Player player) {
-            return player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<RailgunStats>();
+            return player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<RailgunStats>();
         }
 
         private static SoulStreakStats GetSoulstreakStatsFromPlayer(Player player) {
-            return player.data.GetAdditionalData().CustomStatsManager.GetOrCreate<SoulStreakStats>();
+            return player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
         }
     }
 }
