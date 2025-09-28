@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects.Soulstreak {
     [Serializable]
-    public class SoulStreakStats : ICustomStatsHandler {
+    public class SoulStreakStats : ICustomStats {
         // Character Stats
         public float MaxHealth = 1;
         public float PlayerSize = 1;

@@ -4,7 +4,7 @@ using ModsPlus;
 using UnityEngine;
 
 namespace AALUND13Cards.MonoBehaviours.CardsEffects {
-    public class RailgunStats : ICustomStatsHandler {
+    public class RailgunStats : ICustomStats {
         public struct RailgunChargeStats {
             public float ChargeDamageMultiplier;
             public float ChargeBulletSpeedMultiplier;
