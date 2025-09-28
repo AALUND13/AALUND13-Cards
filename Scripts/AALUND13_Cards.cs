@@ -51,7 +51,6 @@ namespace AALUND13Cards {
         internal static AssetBundle MainAssets;
 
         public static CardResgester CardMainResgester;
-        public static CardResgester CardShaderResgester;
 
         public static CardCategory SoulstreakClassCards;
 

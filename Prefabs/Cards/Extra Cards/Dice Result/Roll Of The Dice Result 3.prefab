@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7267413495595169185}
   - component: {fileID: 114841760593229872}
   m_Layer: 0
-  m_Name: __AAC__RollOfTheDice Result 3
+  m_Name: Roll Of The Dice Result 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardType: 0
+  CardClassType: 0
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
@@ -313,3 +313,5 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 1
+  IsCursed: 0
+  Category: 1

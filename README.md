@@ -1,6 +1,6 @@
 # AALUND13 Cards
 
-AALUND13 Cards introduces 64 unique cards developed by AALUND13.
+AALUND13 Cards introduces 65 unique cards developed by AALUND13.
 
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 
@@ -45,18 +45,19 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Reinforced Plating
 - Reaper
   - Sharpened Scythe
-  - Sharper Scythe
+    - Sharper Scythe
   - Death Contract
+    - Death Scythe
   - Bloodlust
   - Withering
-  - Death Scythe
 - Restoration
 - Chain Bullets
 - Exo Armor
   - Alloy Plating
-  - Nano Materials Plating
-  - Thicker Shell
+    - Nano Materials Plating
   - Impenetrable Upgrade
+    - Shielded Core
+  - Thicker Shell
   - Fragile Layer
   - Deflective Coating
 - Nanite Reallocation
