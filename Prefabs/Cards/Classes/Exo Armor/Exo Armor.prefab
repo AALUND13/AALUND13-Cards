@@ -55,7 +55,7 @@ MonoBehaviour:
   cardDestription: Suit yourself up in a armor that can be upgraded
   cardStats:
   - positive: 1
-    amount: +50
+    amount: +75
     simepleAmount: 0
     stat: Armor Health
   - positive: 1
@@ -322,6 +322,7 @@ MonoBehaviour:
   SecondToDealDamage: 0
   DamageMultiplier: 1
   ScalingPercentageDamage: 0
+  ScalingPercentageDamageCap: 0
   SetMaxRarityForCurse: 0
   MaxRarityForCurse: 0
   IsBind: 0
@@ -331,11 +332,15 @@ MonoBehaviour:
   StunBlockTime: 0
   ArmorDamageReduction: 0
   Armor: 3
-  ArmorHealth: 50
+  ArmorHealth: 75
   ArmorHealthMultiplier: 1
   ArmorRegenRate: 5
   ArmorRegenCooldown: 3
   RemoveArmorPirceTag: 0
+  OverrideArmorDamagePatchType: 0
+  PatchDoDamage: 0
+  PatchTakeDamage: 0
+  PatchTakeDamageOverTime: 0
   ArmorReactivateType: 0
   ArmorReactivateValue: 0.5
   ArmorPiercePercent: 0

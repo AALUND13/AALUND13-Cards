@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
-  PercentageDamagePerSecond: 0.01
+  PercentageDamagePerSecond: 0.0065
