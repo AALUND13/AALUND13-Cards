@@ -87,7 +87,7 @@ namespace AALUND13Cards.Handlers {
                     float damage = constantDamageInfo.Damage * Time.deltaTime;
 
                     if(damage > 0) {
-                        player.data.healthHandler.DoDamage(Vector2.down * damage, Vector2.zero, constantDamageInfo.Color, null, null, false, true, true);
+                        player.data.healthHandler.DoDamage(Vector2.down * damage, Vector2.zero, constantDamageInfo.Color, null, constantDamageInfo.DamagingPlayer, false, true, true);
                     }
                 }
             }
@@ -98,7 +98,7 @@ namespace AALUND13Cards.Handlers {
                     float precentage = constantDamageInfo.Damage * Time.deltaTime;
 
                     if(precentage > 0) {
-                        player.data.healthHandler.DoDamage(Vector2.down * (player.data.maxHealth * precentage), Vector2.zero, constantDamageInfo.Color, null, null, false, true, true);
+                        player.data.healthHandler.DoDamage(Vector2.down * (player.data.maxHealth * precentage), Vector2.zero, constantDamageInfo.Color, null, constantDamageInfo.DamagingPlayer, false, true, true);
                     }
                 }
             }
