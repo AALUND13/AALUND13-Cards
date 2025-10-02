@@ -1,0 +1,61 @@
+﻿using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
+using AALUND13Cards.Core.Cards;
+using AALUND13Cards.Core.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace AALUND13Cards.Classes.Cards.StatModifers {
+    [Flags]
+    public enum AbilityType {
+        Armor = 1 << 0,
+    }
+
+    public class SoulstreakStatModifers : CustomStatModifers {
+        [Header("Character Stats")]
+        public float MaxHealth = 0;
+        public float PlayerSize = 0;
+        public float MovementSpeed = 0;
+        public float AttackSpeed = 0;
+        public float Damage = 0;
+        public float BulletSpeed = 0;
+
+        [Header("Soul Armor")]
+        public float SoulArmorPercentage = 0;
+        public float SoulArmorPercentageRegenRate = 0;
+
+        [Header("Soul Drain")]
+        public float SoulDrainDamageMultiply = 0;
+        public float SoulDrainLifestealMultiply = 0;
+
+        [Header("Abilities")]
+        public AbilityType AbilityType;
+
+        public override void Apply(Player player) {
+            CharacterData data = player.data;
+            var soulstreakStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
+
+            soulstreakStats.MaxHealth += MaxHealth;
+            soulstreakStats.PlayerSize += PlayerSize;
+            soulstreakStats.MovementSpeed += MovementSpeed;
+
+            soulstreakStats.AttackSpeed += AttackSpeed;
+            soulstreakStats.Damage += Damage;
+            soulstreakStats.BulletSpeed += BulletSpeed;
+
+            soulstreakStats.SoulArmorPercentage += SoulArmorPercentage;
+            soulstreakStats.SoulArmorPercentageRegenRate += SoulArmorPercentageRegenRate;
+
+            soulstreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
+            soulstreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
+            
+            if((AbilityType & AbilityType.Armor) == AbilityType.Armor) {
+                soulstreakStats.Abilities.Add(new ArmorAbility(player, 10f));
+            }
+        }
+    }
+}

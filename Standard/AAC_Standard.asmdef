@@ -1,0 +1,36 @@
+{
+    "name": "AALUND13_Standard_Cards",
+    "references": [
+        "UnboundLib",
+        "ModdingUtils",
+        "CardChoiceSpawnUniqueCardPatch",
+        "Unity.TextMeshPro",
+        "TabInfo",
+        "ModsPlus",
+        "JARL",
+        "RarityLib",
+        "WillsWackyManagers",
+        "FancyCardBar",
+        "RandomCardsGenerator",
+        "CorruptedCardsManager",
+        "ToggleCardsCategories",
+        "AALUND13_Cards_Core"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "0Harmony.dll",
+        "BepInEx.dll",
+        "Assembly-CSharp.dll",
+        "PhotonRealtime.dll",
+        "PhotonUnityNetworking.dll",
+        "Photon3Unity3D.dll",
+        "InControl.dll",
+        "SonigonAudioEngine.Runtime.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

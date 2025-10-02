@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7028265965542963888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2491925878121971275}
+  - component: {fileID: 114794331478074096}
+  m_Layer: 0
+  m_Name: StandardModCards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2491925878121971275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028265965542963888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114794331478074096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028265965542963888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e30160c241a3640a91e6cf1b55abcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cards:
+  - {fileID: 5011008801069171712, guid: 5ce51939df5ec214dbcc251f7ace1d65, type: 3}
+  - {fileID: 5011008801069171712, guid: 5839117dc5bbd124395618ff61b36aad, type: 3}
+  - {fileID: 5011008801069171712, guid: 1b2163cd7b312fd4f84c888db4acf588, type: 3}
+  - {fileID: 5011008801069171712, guid: 7694138b41a3898418972c28166ac44d, type: 3}
+  - {fileID: 5011008801069171712, guid: 93bfb642bc66e154b939a73bf5168d05, type: 3}
+  - {fileID: 5011008801069171712, guid: e0cc9d9e590356241a618c6986589030, type: 3}
+  - {fileID: 1473282574127126098, guid: d6f88fa2fd36aab4b896af3b0d768787, type: 3}
+  - {fileID: 5011008801069171712, guid: 36e93626feeb01a42a5536e80274d6f2, type: 3}
+  - {fileID: 5011008801069171712, guid: 35f4ba5371b826f4bb26eecdd3dc6d1a, type: 3}
+  - {fileID: 5011008801069171712, guid: f25bf65b5d6185e4d8dcfcb94619635d, type: 3}
+  - {fileID: 5011008801069171712, guid: d03a751e58f851b46822e68985974244, type: 3}

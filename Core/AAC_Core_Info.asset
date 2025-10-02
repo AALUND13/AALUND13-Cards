@@ -10,37 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f53b16b43f44db45911ff17aee4901d, type: 3}
-  m_Name: AALUND13 Cards Beta Info
+  m_Name: AAC_Core_Info
   m_EditorClassIdentifier: 
-  ModName: AALUND13_Cards_Beta
-  Author: AALUND13
-  Version: 2.0.15
+  ModName: AALUND13_Cards_Core
+  Author: AALUND113
+  Version: 1.0.0
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
-  Description: This is the beta version of the mod "AALUND13 Cards", If you encounter
-    any issues, please report them on the GitHub page.
+  Description: The library core of  'AALUND13 Cards'
   BeforeBuildCommand: 
   AfterBuildCommand: 
   Dependencies:
-  - Root-Classes_Manager_Reborn-1.5.5
+  - willis81808-UnboundLib-3.2.14
   - Pykess-ModdingUtils-0.4.6
   - Pykess-CardChoiceSpawnUniqueCardPatch-0.1.9
-  - willis81808-UnboundLib-3.2.14
+  - Root-Classes_Manager_Reborn-1.5.5
   - willuwontu-AttackLevelPatch-0.0.0
-  - willis81808-ModsPlus-1.6.2
   - AALUND13-JARL-2.8.2
   - Root-RarityLib-1.3.0
   - CrazyCoders-RarityBundle-0.2.1
   - willuwontu-WillsWackyManagers-1.5.16
-  - AALUND13-RandomCardsGenerator-1.0.1
-  - AALUND13-CorruptedCardsManager-1.1.0
   - AALUND13-ToggleCardsCategories-1.2.0
   DllDependencies: []
-  AssemblyDefinitionDependencies:
-  - AALUND13_Cards_Core
-  - AALUND13_Standard_Cards
-  - AALUND13_Extra_Picks_Cards
-  - AALUND13_Armors_Cards
-  - AALUND13_Classes_Cards
-  - AALUND13_Curses_Cards
-  Icon: {fileID: 2800000, guid: 0d4930371b8cf3a46a26a0c17254fdff, type: 3}
+  AssemblyDefinitionDependencies: []
+  Icon: {fileID: 2800000, guid: dd29b0fb027e203499ae109cd4adac00, type: 3}
   IncludeInAllExports: 1
