@@ -297,7 +297,7 @@ MonoBehaviour:
   block: {fileID: 0}
   OverrideClassName: 
   CardClassType: 16
-  CardLimit: 4
+  CardLimit: 0
   RequiredClass: {fileID: 4908810688212451669, guid: 1b2e75ecf3c7e0742a0916c946a2bc63,
     type: 3}
   RequiredClassTree: []

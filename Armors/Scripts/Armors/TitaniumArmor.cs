@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 namespace AALUND13Cards.Armors.Armors {
     public class TitaniumArmor : ArmorBase {
-        public int ArmorSegments = 4;
+        public int SegmentsCount = 4;
+        public float RegenThresholdPercent = 1.5f;
 
-        private float minArmorHealth = 0;
-        private Image armorMinArmorBar;
+        private float segmentThresholdHealth = 0;
+        private Image segmentThresholdBar;
 
         public TitaniumArmor() {
             ArmorTags.Add("CanArmorPierce");
@@ -23,33 +24,36 @@ namespace AALUND13Cards.Armors.Armors {
 
         public override void OnUpdate() {
             TryCreateArmorMinBar();
+
+            float segmentMaxHealth = MaxArmorValue / SegmentsCount;
+            while(CurrentArmorValue >= segmentThresholdHealth + (segmentMaxHealth * RegenThresholdPercent)) {
+                segmentThresholdHealth += segmentMaxHealth;
+            }
+
+            // Update UI bar
+            if(segmentThresholdBar != null) {
+                segmentThresholdBar.fillAmount = segmentThresholdHealth / MaxArmorValue;
+            }
         }
 
         public override void OnRespawn() {
-            minArmorHealth = MaxArmorValue - (MaxArmorValue / ArmorSegments);
-            if(armorMinArmorBar != null) {
-                armorMinArmorBar.fillAmount = minArmorHealth / MaxArmorValue;
-            }
+            segmentThresholdHealth = MaxArmorValue - (MaxArmorValue / SegmentsCount);
         }
 
         public override DamageArmorInfo OnDamage(float damage, Player DamagingPlayer, ArmorDamagePatchType? armorDamagePatchType) {
             var info = base.OnDamage(damage, DamagingPlayer, armorDamagePatchType);
 
-            float segmentedArmorValue = Mathf.Max(info.Armor, minArmorHealth);
-            if(segmentedArmorValue <= minArmorHealth + 0.1f && minArmorHealth > 0) {
-                info = new DamageArmorInfo(0, minArmorHealth);
-                minArmorHealth = Mathf.Max(minArmorHealth - (MaxArmorValue / ArmorSegments), 0);
-
-                if(armorMinArmorBar != null) {
-                    armorMinArmorBar.fillAmount = minArmorHealth / MaxArmorValue;
-                }
+            float segmentedArmorValue = Mathf.Max(info.Armor, segmentThresholdHealth);
+            if(segmentedArmorValue <= segmentThresholdHealth + 0.1f && segmentThresholdHealth > 0) {
+                info = new DamageArmorInfo(0, segmentThresholdHealth);
+                segmentThresholdHealth = Mathf.Max(segmentThresholdHealth - (MaxArmorValue / SegmentsCount), 0);
             }
 
             return info;
         }
 
         private void TryCreateArmorMinBar() {
-            if(armorMinArmorBar != null) return;
+            if(segmentThresholdBar != null) return;
 
             Dictionary<ArmorBase, GameObject> armorHealthBars = (Dictionary<ArmorBase, GameObject>)ArmorHandler.GetFieldValue("armorHealthBars");
             if(armorHealthBars != null && armorHealthBars.ContainsKey(this)) {
@@ -64,8 +68,8 @@ namespace AALUND13Cards.Armors.Armors {
 
                     var barImage = armorMinArmorBarObj.GetComponent<Image>();
                     barImage.color = new Color(0.45f, 0f, 0.45f, 1f);
-                    barImage.fillAmount = minArmorHealth / MaxArmorValue;
-                    armorMinArmorBar = barImage;
+                    barImage.fillAmount = segmentThresholdHealth / MaxArmorValue;
+                    segmentThresholdBar = barImage;
 
                     // This for Titanium Armor to have a segmented look
                     GameObject armorBarGrid = armorHealthBarImage.transform.Find("Grid").gameObject;
@@ -78,15 +82,15 @@ namespace AALUND13Cards.Armors.Armors {
                     }
 
                     // The grid objects have 8 children, so we need disable a few of them
-                    int objectToDisable = 8 - ArmorSegments;
+                    int objectToDisable = 8 - SegmentsCount;
                     for(int i = 0; i < objectToDisable; i++) {
                         gridChildren[i].SetActive(false);
                     }
 
                     armorBarGrid.SetActive(true);
                 } else {
-                    armorMinArmorBar = armorHealthBarImage.transform.Find("MinArmorBar").GetComponent<Image>();
-                    armorMinArmorBar.fillAmount = minArmorHealth / MaxArmorValue;
+                    segmentThresholdBar = armorHealthBarImage.transform.Find("MinArmorBar").GetComponent<Image>();
+                    segmentThresholdBar.fillAmount = segmentThresholdHealth / MaxArmorValue;
                 }
             }
         }

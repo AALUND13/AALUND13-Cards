@@ -329,6 +329,6 @@ MonoBehaviour:
   PatchTakeDamage: 0
   PatchTakeDamageOverTime: 0
   ArmorReactivateType: 0
-  ArmorReactivateValue: 0.5
+  ArmorReactivateValue: 0
   ArmorPiercePercent: 0
   DamageAgainstArmorPercentage: 1

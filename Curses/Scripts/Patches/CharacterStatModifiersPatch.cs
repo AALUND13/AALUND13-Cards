@@ -1,5 +1,5 @@
 ﻿using AALUND13Cards.Core.Extensions;
-using AALUND13Cards.Core.MonoBehaviours;
+using AALUND13Cards.Curses.MonoBehaviours;
 using HarmonyLib;
 using UnityEngine;
 

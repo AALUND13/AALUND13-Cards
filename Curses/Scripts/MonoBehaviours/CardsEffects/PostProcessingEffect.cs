@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AALUND13Cards.Core.MonoBehaviours {
+namespace AALUND13Cards.Curses.MonoBehaviours {
     [ExecuteInEditMode]
     [RequireComponent(typeof(Camera))]
     public class PostProcessingEffect : MonoBehaviour {

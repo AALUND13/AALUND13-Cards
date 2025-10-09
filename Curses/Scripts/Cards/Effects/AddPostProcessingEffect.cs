@@ -1,4 +1,4 @@
-﻿using AALUND13Cards.Core.MonoBehaviours;
+﻿using AALUND13Cards.Curses.MonoBehaviours;
 using System.Collections.Generic;
 using UnityEngine;
 
