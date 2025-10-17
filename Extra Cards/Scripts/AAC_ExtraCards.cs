@@ -1,6 +1,7 @@
 ﻿using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
+using AALUND13Cards.Core.Utils;
 using AALUND13Cards.ExtraCards.Cards;
 using AALUND13Cards.ExtraCards.Handlers;
 using BepInEx;
@@ -26,7 +27,7 @@ namespace AALUND13Cards.ExtraCards {
         private static AssetBundle assets;
 
         private void Awake() {
-            assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aac_extra_cards_assets", typeof(AAC_ExtraCards).Assembly);
+            assets = AssetsUtils.LoadAssetBundle("aac_extra_cards_assets", typeof(AAC_ExtraCards).Assembly);
             if(assets != null) {
                 new Harmony(ModId).PatchAll();
                 CardsGenerators.RegisterGenerators();

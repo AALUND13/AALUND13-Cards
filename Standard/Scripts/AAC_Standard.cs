@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
+using AALUND13Cards.Core.Utils;
 using BepInEx;
 using HarmonyLib;
 using System;
@@ -20,7 +21,7 @@ namespace AALUND13Cards.Standard {
         private static AssetBundle assets;
 
         private void Awake() {
-            assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aac_standard_assets", typeof(AAC_Standard).Assembly);
+            assets = AssetsUtils.LoadAssetBundle("aac_standard_assets", typeof(AAC_Standard).Assembly);
 
             if(assets != null) {
                 new Harmony(ModId).PatchAll();

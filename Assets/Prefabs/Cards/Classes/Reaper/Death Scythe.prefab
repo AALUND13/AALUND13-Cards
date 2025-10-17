@@ -54,7 +54,7 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Death Scythe
   cardDestription: You have gotten the <b>Death Scythe</b>, increasing your percentage
-    damage and  maximum scaling percentage damage cap to (80%)
+    damage and maximum scaling percentage damage cap to (80%)
   cardStats:
   - positive: 1
     amount: +20%
@@ -304,6 +304,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
+  RequireMod: 
   IsCursed: 0
   Category: 5
 --- !u!114 &114633021159868724

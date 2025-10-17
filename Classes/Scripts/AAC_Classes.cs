@@ -4,6 +4,7 @@ using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak;
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
+using AALUND13Cards.Core.Utils;
 using BepInEx;
 using HarmonyLib;
 using JARL.Utils;
@@ -28,7 +29,7 @@ namespace AALUND13Cards.ExtraCards {
         private static AssetBundle assets;
 
         private void Awake() {
-            assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aac_classes_assets", typeof(AAC_Classes).Assembly);
+            assets = AssetsUtils.LoadAssetBundle("aac_classes_assets", typeof(AAC_Classes).Assembly);
 
             if(assets != null) {
                 new Harmony(ModId).PatchAll();

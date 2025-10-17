@@ -21,7 +21,7 @@ namespace AALUND13Cards.Curses {
         private static AssetBundle assets;
 
         private void Awake() {
-            assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aac_curses_assets", typeof(AAC_Curses).Assembly);
+            assets = AssetsUtils.LoadAssetBundle("aac_curses_assets", typeof(AAC_Curses).Assembly);
             if(assets != null) {
                 new Harmony(ModId).PatchAll();
             }

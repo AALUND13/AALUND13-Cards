@@ -3,6 +3,7 @@ using AALUND13Cards.Armors.Armors.Processors;
 using AALUND13Cards.Armors.Utils;
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
+using AALUND13Cards.Core.Utils;
 using BepInEx;
 using HarmonyLib;
 using JARL.Armor;
@@ -23,7 +24,7 @@ namespace AALUND13Cards.Armors {
         private static AssetBundle assets;
 
         private void Awake() {
-            assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("aac_armors_assets", typeof(AAC_Armors).Assembly);
+            assets = AssetsUtils.LoadAssetBundle("aac_armors_assets", typeof(AAC_Armors).Assembly);
 
             if(assets != null) {
                 new Harmony(ModId).PatchAll();
