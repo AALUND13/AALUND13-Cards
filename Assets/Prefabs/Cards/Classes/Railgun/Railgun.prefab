@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   - component: {fileID: 114989493100026774}
+  - component: {fileID: 114327893196994002}
   m_Layer: 0
   m_Name: Railgun
   m_TagString: Untagged
@@ -303,7 +304,9 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
+  RequireMod: 
   IsCursed: 0
+  Category: 0
 --- !u!114 &114989493100026774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,8 +321,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaximumCharge: 100
   ChargeRate: 20
-  FullChargeThreshold: 0
   MaximumChargeMultiplier: 1
   ChargeRateMultiplier: 1
   RailgunDamageMultiplier: 2.5
   RailgunBulletSpeedMultiplier: 2
+--- !u!114 &114327893196994002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: cf643d3e4ca5de74d9363a4c6d4e0d58, type: 2}
+  Priority: 0

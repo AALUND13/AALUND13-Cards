@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 114553290272354044}
   - component: {fileID: 114200066083493298}
   - component: {fileID: 114206302046362204}
+  - component: {fileID: 114591711592666854}
   m_Layer: 0
   m_Name: Retro Vision
   m_TagString: Untagged
@@ -341,3 +342,19 @@ MonoBehaviour:
   Name: CorruptedRed
   targetColor: {r: 0, g: 0, b: 0, a: 0}
   bgColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114591711592666854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473282574127126098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: 42681e3e8d406d6458f61761819065a8, type: 2}
+  Priority: 0

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
   - component: {fileID: 114729959749941734}
+  - component: {fileID: 114255319740169534}
   m_Layer: 0
   m_Name: Roll Of The Dice
   m_TagString: Untagged
@@ -295,6 +296,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 0
   IsHidden: 0
+  RequireMod: 
   IsCursed: 0
   Category: 1
 --- !u!114 &114729959749941734
@@ -317,3 +319,19 @@ MonoBehaviour:
   - {fileID: 5647749677671276803, guid: a6901a58c9b86ec4187a689da3b0161f, type: 3}
   - {fileID: 3064542637086822442, guid: 3885ebf76e05d9a4f802687836c5c3fc, type: 3}
   cardCount: 1
+--- !u!114 &114255319740169534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
+  Priority: 0

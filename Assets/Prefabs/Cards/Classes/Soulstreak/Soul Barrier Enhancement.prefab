@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6356320218957805462}
   - component: {fileID: 114835280884674560}
   - component: {fileID: 114705031577598866}
+  - component: {fileID: 114308216276160210}
   m_Layer: 0
   m_Name: Soul Barrier Enhancement
   m_TagString: Untagged
@@ -333,3 +334,19 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 1
+--- !u!114 &114308216276160210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750131547516167368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
+  Priority: 0

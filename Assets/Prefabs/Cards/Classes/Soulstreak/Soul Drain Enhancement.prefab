@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3463904881980186723}
   - component: {fileID: 114383101961269428}
   - component: {fileID: 114191682485588200}
+  - component: {fileID: 114813661934443840}
   m_Layer: 0
   m_Name: Soul Drain Enhancement
   m_TagString: Untagged
@@ -302,6 +303,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
+  RequireMod: 
   IsCursed: 0
   Category: 4
 --- !u!114 &114191682485588200
@@ -327,3 +329,19 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0.05
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
+--- !u!114 &114813661934443840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3463904881980186721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
+  Priority: 0

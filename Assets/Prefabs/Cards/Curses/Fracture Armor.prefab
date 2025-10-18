@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 114642101177217248}
   - component: {fileID: 114341955976271268}
   - component: {fileID: 114547696684112084}
+  - component: {fileID: 114020698678075528}
   m_Layer: 0
   m_Name: Fracture Armor
   m_TagString: Untagged
@@ -314,28 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondToDealDamage: 0
-  DamageMultiplier: 1
-  SetMaxRarityForCurse: 0
-  MaxRarityForCurse: 0
-  BlocksWhenRecharge: 0
   BlockPircePercent: 0
-  StunBlockTime: 0
-  ArmorDamageReduction: -0.25
-  ArmorTypeId: 
-  ArmorHealth: 0
-  ArmorHealthMultiplier: 1
-  ArmorRegenRate: 0
-  ArmorRegenCooldown: 0
-  RemoveArmorPirceTag: 0
-  OverrideArmorDamagePatchType: 0
-  PatchDoDamage: 0
-  PatchTakeDamage: 0
-  PatchTakeDamageOverTime: 0
-  ArmorReactivateType: 0
-  ArmorReactivateValue: 0
-  ArmorPiercePercent: 0
-  DamageAgainstArmorPercentage: 1
 --- !u!114 &114341955976271268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,3 +345,19 @@ MonoBehaviour:
   Name: CorruptedRed
   targetColor: {r: 0, g: 0, b: 0, a: 0}
   bgColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114020698678075528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: 42681e3e8d406d6458f61761819065a8, type: 2}
+  Priority: 0

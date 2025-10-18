@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 114446284750240874}
   - component: {fileID: 114872248861204110}
   - component: {fileID: 114383013959263578}
+  - component: {fileID: 114278604258546518}
   m_Layer: 0
   m_Name: Sabot Round
   m_TagString: Untagged
@@ -322,28 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d89f74d2cb64ca4696f212417a70c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondToDealDamage: 0
-  DamageMultiplier: 1
-  SetMaxRarityForCurse: 0
-  MaxRarityForCurse: 0
-  BlocksWhenRecharge: 0
   BlockPircePercent: 0.5
-  StunBlockTime: 0
-  ArmorDamageReduction: 0
-  ArmorTypeId: 
-  ArmorHealth: 0
-  ArmorHealthMultiplier: 1
-  ArmorRegenRate: 0
-  ArmorRegenCooldown: 0
-  RemoveArmorPirceTag: 0
-  OverrideArmorDamagePatchType: 0
-  PatchDoDamage: 0
-  PatchTakeDamage: 0
-  PatchTakeDamageOverTime: 0
-  ArmorReactivateType: 0
-  ArmorReactivateValue: 0
-  ArmorPiercePercent: 0.5
-  DamageAgainstArmorPercentage: 3
 --- !u!114 &114383013959263578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,3 +351,19 @@ MonoBehaviour:
   ArmorReactivateValue: 0
   ArmorPiercePercent: 0.5
   DamageAgainstArmorPercentage: 3
+--- !u!114 &114278604258546518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: b08f543103f9bd3409cbaf6151e22e71, type: 2}
+  Priority: 0

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
   - component: {fileID: 114203408726523956}
+  - component: {fileID: 114201867425171948}
   m_Layer: 0
   m_Name: Nanite Reallocation
   m_TagString: Untagged
@@ -301,3 +302,19 @@ MonoBehaviour:
   RequireMod: 
   IsCursed: 0
   Category: 3
+--- !u!114 &114201867425171948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceType: 1
+  categoryPath: 
+  categoryAsset: {fileID: 11400000, guid: b08f543103f9bd3409cbaf6151e22e71, type: 2}
+  Priority: 0
