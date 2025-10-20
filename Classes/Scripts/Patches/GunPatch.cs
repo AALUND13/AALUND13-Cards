@@ -12,7 +12,8 @@ namespace AALUND13Cards.Core.Patches {
     [HarmonyPatch(typeof(Gun))]
     public class GunPatch {
         [HarmonyPatch("ApplyProjectileStats")]
-        public static void Prefix(Gun __instance, GameObject obj) {
+        [HarmonyPrefix]
+        public static void ApplyRailgunStats(Gun __instance, GameObject obj) {
             RailgunStats railgunStats = __instance.player.data.GetCustomStatsRegistry().GetOrCreate<RailgunStats>();
 
             if(railgunStats.IsEnabled) {
@@ -25,9 +26,19 @@ namespace AALUND13Cards.Core.Patches {
                 projectile.damage *= chargeStats.ChargeDamageMultiplier;
             }
         }
+        
+        [HarmonyPatch("DoAttack")]
+        [HarmonyPostfix]
+        public static void UseRailgunCharge(Gun __instance) {
+            var stats = __instance.player.data.GetCustomStatsRegistry().GetOrCreate<RailgunStats>();
+            if(stats.IsEnabled && stats.CurrentCharge > 0) {
+                stats.UseCharge(stats);
+            }
+        }
 
         [HarmonyPatch("ApplyProjectileStats")]
-        public static void Postfix(Gun __instance, GameObject obj) {
+        [HarmonyPostfix]
+        public static void ApplyReaperStats(Gun __instance, GameObject obj) {
             ProjectileHit projectile = obj.GetComponent<ProjectileHit>();
             projectile.percentageDamage += MathUtils.GetEffectivePercentCap(
                 __instance.player.GetSPS(), 
@@ -38,24 +49,6 @@ namespace AALUND13Cards.Core.Patches {
                 __instance.player.GetSPS(),
                 __instance.player.data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>().ScalingPercentageDamageUnCap
             );
-        }
-
-        [HarmonyPatch("DoAttack")]
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-            foreach(var code in instructions) {
-                if(code.opcode == OpCodes.Ret) {
-                    yield return new CodeInstruction(OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(GunPatch), nameof(InjectUseCharge)));
-                }
-                yield return code;
-            }
-        }
-
-        public static void InjectUseCharge(Gun gun) {
-            var stats = gun.player.data.GetCustomStatsRegistry().GetOrCreate<RailgunStats>();
-            if(stats.IsEnabled && stats.CurrentCharge > 0) {
-                stats.UseCharge(stats);
-            }
         }
     }
 }
