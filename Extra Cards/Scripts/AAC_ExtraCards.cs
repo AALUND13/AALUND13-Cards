@@ -1,6 +1,7 @@
 ﻿using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
+using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.Core.Utils;
 using AALUND13Cards.ExtraCards.Cards;
 using AALUND13Cards.ExtraCards.Handlers;
@@ -39,9 +40,6 @@ namespace AALUND13Cards.ExtraCards {
                 Unbound.BuildModal("AALUND13 Cards Error", $"The mod \"{ModName}\" assets failled to load, All the cards will be disable in this mod");
                 throw new NullReferenceException($"Failled to load \"{ModName}\" assets");
             }
-
-            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPlayerPickEnd));
-            GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPickEnd));
 
             GameModeManager.AddHook(GameModeHooks.HookPickStart, OnPickStart);
 

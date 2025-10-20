@@ -29,7 +29,7 @@ MonoBehaviour:
   - Root-RarityLib-1.3.0
   - CrazyCoders-RarityBundle-0.2.1
   - willuwontu-WillsWackyManagers-1.5.16
-  - AALUND13-ToggleCardsCategories-1.2.0
+  - AALUND13-ToggleCardsCategories-1.4.0
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: dd29b0fb027e203499ae109cd4adac00, type: 3}

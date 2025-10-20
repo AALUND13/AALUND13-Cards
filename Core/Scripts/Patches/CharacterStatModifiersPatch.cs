@@ -1,8 +1,8 @@
 ﻿using AALUND13Cards.Core.Extensions;
-using AALUND13Cards.ExtraCards.Handlers;
+using AALUND13Cards.Core.Handlers;
 using HarmonyLib;
 
-namespace AALUND13Cards.ExtraCards.Patches {
+namespace AALUND13Cards.Core.Patches {
     [HarmonyPatch(typeof(CharacterStatModifiers))]
     public class CharacterStatModifiersPatch {
         [HarmonyPatch("ResetStats")]

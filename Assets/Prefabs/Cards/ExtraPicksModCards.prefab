@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2491925878121971275}
   - component: {fileID: 114794331478074096}
   m_Layer: 0
-  m_Name: ExtraPicksModCards 1
+  m_Name: ExtraPicksModCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

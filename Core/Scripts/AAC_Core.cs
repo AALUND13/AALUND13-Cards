@@ -9,6 +9,7 @@ using JARL.Utils;
 using System.Collections.Generic;
 using System.Reflection;
 using ToggleCardsCategories;
+using UnboundLib.GameModes;
 
 namespace AALUND13Cards.Core {
     [BepInDependency("com.willis.rounds.unbound")]
@@ -57,6 +58,9 @@ namespace AALUND13Cards.Core {
 
             if(Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
+
+            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPlayerPickEnd));
+            GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPickEnd));
 
             gameObject.AddComponent<DelayDamageHandler>();
             gameObject.AddComponent<PickCardTracker>();

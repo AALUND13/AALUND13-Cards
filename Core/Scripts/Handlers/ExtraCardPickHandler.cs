@@ -7,21 +7,25 @@ using UnboundLib.GameModes;
 using UnboundLib.Networking;
 using UnityEngine;
 
-namespace AALUND13Cards.ExtraCards.Handlers {
+namespace AALUND13Cards.Core.Handlers {
     public enum ExtraPickPhaseTrigger {
         TriggerInPlayerPickEnd,
         TriggerInPickEnd
     }
 
     public class ExtraPickHandler {
-        public virtual bool OnExtraPickStart(Player player, CardInfo card) {
+        public int Picks { get; internal set; } = 0;
+
+        public virtual bool PickConditions(Player player, CardInfo card) {
             return true;
         }
-        public virtual void OnExtraPick(Player player, CardInfo card) { } // This is a method that will be called after the player picks a card
+
+        public virtual void OnPickStart(Player player) { }
+        public virtual void OnPickEnd(Player player, CardInfo card) { } // This is a method that will be called after the player picks a card
     }
 
     public static class ExtraCardPickHandler {
-        internal static Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, List<ExtraPickHandler>>> extraPicks = new Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, List<ExtraPickHandler>>>();
+        internal static Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, ExtraPickHandler>> extraPicks = new Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, ExtraPickHandler>>();
 
         public static ExtraPickHandler activePickHandler;
         public static Player currentPlayer;
@@ -53,15 +57,12 @@ namespace AALUND13Cards.ExtraCards.Handlers {
             ExtraPickHandler handler = (ExtraPickHandler)Activator.CreateInstance(type);
 
             if(!extraPicks.ContainsKey(player)) {
-                extraPicks.Add(player, new Dictionary<ExtraPickPhaseTrigger, List<ExtraPickHandler>>());
+                extraPicks.Add(player, new Dictionary<ExtraPickPhaseTrigger, ExtraPickHandler>());
             }
             if(!extraPicks[player].ContainsKey(pickPhaseTrigger)) {
-                extraPicks[player].Add(pickPhaseTrigger, new List<ExtraPickHandler>());
+                extraPicks[player].Add(pickPhaseTrigger, new ExtraPickHandler());
             }
-
-            for(int i = 0; i < picks; i++) {
-                extraPicks[player][pickPhaseTrigger].Add(handler);
-            }
+            extraPicks[player][pickPhaseTrigger].Picks += picks;
         }
 
         [UnboundRPC]
@@ -72,35 +73,16 @@ namespace AALUND13Cards.ExtraCards.Handlers {
             Type type = Type.GetType(handlerType);
             if(type == null) return;
 
+            int pickToRemove = picks;
             if(extraPicks.TryGetValue(player, out var triggerDict)) {
-                int picksToRemove = picks;
-                var emptyTriggers = new List<ExtraPickPhaseTrigger>();
+                foreach(var handler in triggerDict.ToList()) {
+                    if(pickToRemove <= 0) break;
 
-                foreach(var trigger in triggerDict.Keys.ToList()) {
-                    var handlers = triggerDict[trigger];
+                    int removeCount = Math.Min(handler.Value.Picks, pickToRemove);
+                    handler.Value.Picks -= removeCount;
+                    pickToRemove -= removeCount;
 
-                    var toRemove = handlers.Where(h => h.GetType() == type)
-                                           .Take(picksToRemove)
-                                           .ToList();
-
-                    foreach(var handler in toRemove) {
-                        handlers.Remove(handler);
-                        picksToRemove--;
-                    }
-
-                    if(handlers.Count == 0) {
-                        emptyTriggers.Add(trigger);
-                    }
-
-                    if(picksToRemove <= 0) break;
-                }
-
-                foreach(var trigger in emptyTriggers) {
-                    triggerDict.Remove(trigger);
-                }
-
-                if(triggerDict.Count == 0) {
-                    extraPicks.Remove(player);
+                    if(handler.Value.Picks <= 0) triggerDict.Remove(handler.Key);
                 }
             }
         }
@@ -108,9 +90,11 @@ namespace AALUND13Cards.ExtraCards.Handlers {
 
         internal static IEnumerator HandleExtraPicks(ExtraPickPhaseTrigger pickPhaseTrigger) {
             foreach(Player player in PlayerManager.instance.players.ToArray()) {
-                if(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Count > 0) {
+                if(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Picks > 0) {
+                    var pickHandlers = extraPicks[player][pickPhaseTrigger];
+                    
                     if(pickPhaseTrigger == ExtraPickPhaseTrigger.TriggerInPickEnd) {
-                        while(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Count > 0) {
+                        while(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Picks > 0) {
                             yield return HandleExtraPickForPlayer(player, pickPhaseTrigger);
                         }
                     } else {
@@ -127,16 +111,18 @@ namespace AALUND13Cards.ExtraCards.Handlers {
 
         private static IEnumerator HandleExtraPickForPlayer(Player player, ExtraPickPhaseTrigger pickPhaseTrigger) {
             currentPlayer = player;
-            activePickHandler = extraPicks[player][pickPhaseTrigger][0];
+            activePickHandler = extraPicks[player][pickPhaseTrigger];
 
+            activePickHandler.OnPickStart(currentPlayer);
             yield return GameModeManager.TriggerHook(GameModeHooks.HookPlayerPickStart);
-            CardChoiceVisuals.instance.Show(Enumerable.Range(0, PlayerManager.instance.players.Count).Where(i => PlayerManager.instance.players[i].playerID == player.playerID).First(), true);
+            CardChoiceVisuals.instance.Show(player.playerID, true);
             yield return CardChoice.instance.DoPick(1, player.playerID, PickerType.Player);
             yield return new WaitForSecondsRealtime(0.1f);
 
-            // check if the player sill has extra picks to prevent 'ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.' error
-            if(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Count > 0) {
-                extraPicks[player][pickPhaseTrigger].RemoveAt(0);
+            // check if the player sill has extra picks to prevent 'ArgumentOutOfRangeException: Index was out of range.
+            // Must be non-negative and less than the size of the collection.' error
+            if(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Picks > 0) {
+                extraPicks[player][pickPhaseTrigger].Picks -= 1;
             }
 
             yield return GameModeManager.TriggerHook(GameModeHooks.HookPlayerPickEnd);

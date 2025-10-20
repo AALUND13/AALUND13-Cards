@@ -20,12 +20,6 @@ namespace AALUND13Cards.Core.Patches {
             var player = PlayerManager.instance.GetPlayerWithID(pickId);
             if(player == null) return;
 
-            // This code block is for the 'Extra Card Pick Handler'  
-            if(ExtraCardPickHandler.currentPlayer != null && ExtraCardPickHandler.extraPicks.ContainsKey(player) && ExtraCardPickHandler.extraPicks[player].Count > 0) {
-                var func = ExtraCardPickHandler.activePickHandler;
-                func.OnExtraPick(player, pickedCard.GetComponent<CardInfo>());
-            }
-
             var extraCardsStats = player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>();
 
             if(extraCardsStats.DuplicatesAsCorrupted != 0 && (pickedCard.GetComponent<RandomCard>() == null || !pickedCard.GetComponent<RandomCard>().StatGenName.StartsWith("CCM_CorruptedCardsGenerator")) && (PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode)) {

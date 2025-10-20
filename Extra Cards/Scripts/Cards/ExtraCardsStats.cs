@@ -1,8 +1,4 @@
 ﻿using AALUND13Cards.Core.Utils;
-using AALUND13Cards.ExtraCards.Cards.StatModifers;
-using AALUND13Cards.ExtraCards.Handlers;
-using System;
-using UnityEngine;
 
 namespace AALUND13Cards.ExtraCards.Cards {
     public class ExtraCardsStats : ICustomStats {

@@ -1,4 +1,5 @@
 ﻿using AALUND13Cards.Core;
+using AALUND13Cards.Core.Handlers;
 using ModdingUtils.Utils;
 using Photon.Pun;
 using System.Collections.Generic;
@@ -7,8 +8,8 @@ using UnboundLib;
 
 namespace AALUND13Cards.ExtraCards.Handlers.ExtraPickHandlers {
     public class SteelPickHandler : ExtraPickHandler {
-        public override bool OnExtraPickStart(Player player, CardInfo card) {
-            if (card.categories.Intersect(AAC_Core.NoSteelCategories).Any()) {
+        public override bool PickConditions(Player player, CardInfo card) {
+            if(card.categories.Intersect(AAC_Core.NoSteelCategories).Any()) {
                 return false;
             }
 
@@ -23,7 +24,7 @@ namespace AALUND13Cards.ExtraCards.Handlers.ExtraPickHandlers {
             return otherPlayerCards.Contains(card);
         }
 
-        public override void OnExtraPick(Player player, CardInfo card) {
+        public override void OnPickEnd(Player player, CardInfo card) {
             if(PhotonNetwork.OfflineMode || PhotonNetwork.IsMasterClient) {
                 // Find all players that have the card
                 List<Player> playersWithCard = new List<Player>();
