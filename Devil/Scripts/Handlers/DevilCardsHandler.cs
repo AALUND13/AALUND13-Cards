@@ -1,6 +1,8 @@
 ﻿using AALUND13Cards.Core;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using System.Collections;
 using System.Linq;
+using UnboundLib.GameModes;
 using UnityEngine;
 
 namespace AALUND13Cards.Devil.Handlers {
@@ -11,12 +13,17 @@ namespace AALUND13Cards.Devil.Handlers {
 
         void Start() {
             Instance = this;
+
+            GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStarted);
             ModdingUtils.Utils.Cards.instance.AddCardValidationFunction((player, card) => {
                 if(!AllowDevilCards && card.categories.Contains(CustomCardCategories.instance.CardCategory("DevilCard"))) return false;
                 return true;
             });
+        }
 
-            LoggerUtils.LogInfo("'DevilCardsHandler' have been setup");
+        private IEnumerator OnGameStarted(IGameModeHandler gameModeHandler) {
+            AllowDevilCards = false;
+            yield break;
         }
     }
 }

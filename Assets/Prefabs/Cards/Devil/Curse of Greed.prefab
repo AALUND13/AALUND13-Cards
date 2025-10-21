@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1473282574127126097}
   - component: {fileID: 1473282574127126096}
   - component: {fileID: 114694404421051310}
+  - component: {fileID: 114886075155469610}
   - component: {fileID: 114070948813073818}
   - component: {fileID: 114862159210579632}
   - component: {fileID: 114951772638915378}
@@ -65,7 +66,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Cards draws
   rarity: 1
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6396102743762758341, guid: 00d94e782870de7418d07c76903bbc7e, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -308,6 +309,21 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
+--- !u!114 &114886075155469610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473282574127126098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Devil_Dark_Red
+  targetColor: {r: 0.5377358, g: 0, b: 0, a: 1}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114070948813073818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisbaleBlockTime: 0
   FixedBlockCooldown: 0
-  GiveDevilPicks: 0
+  DevilPicks: 0
   SetGuaranteedRarity: 1
   GuaranteesRarity: 8
 --- !u!114 &114862159210579632

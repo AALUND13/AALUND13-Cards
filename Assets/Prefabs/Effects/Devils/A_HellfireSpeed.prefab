@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ca80def45721a428d0ef2fac2074f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeedPerShootMultiplier: 1.025
-  ReloadTimePerShootMultiplier: 1.025
+  AttackSpeedPerShootMultiplier: 1.05
+  ReloadTimePerShootMultiplier: 1.05

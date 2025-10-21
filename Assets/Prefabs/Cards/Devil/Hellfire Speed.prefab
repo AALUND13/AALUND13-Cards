@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1473282574127126097}
   - component: {fileID: 1473282574127126096}
   - component: {fileID: 114694404421051310}
+  - component: {fileID: 114742107786646730}
   - component: {fileID: 114951772638915378}
   m_Layer: 0
   m_Name: Hellfire Speed
@@ -64,15 +65,15 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Reload Time
   - positive: 0
-    amount: 'Each shot -2.5% '
+    amount: Each shot -5%
     simepleAmount: 0
     stat: Attack Speed
   - positive: 0
-    amount: 'Each shot +2.5% '
+    amount: Each shot +5%
     simepleAmount: 0
     stat: Reload Time
   rarity: 1
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1682794596600829292, guid: 2683243d6cc824f45b9d63fa3a2a5f1c, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -315,6 +316,21 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
+--- !u!114 &114742107786646730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473282574127126098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Devil_Dark_Red
+  targetColor: {r: 0.5377358, g: 0, b: 0, a: 1}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114951772638915378
 MonoBehaviour:
   m_ObjectHideFlags: 0

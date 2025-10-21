@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthPerCardsMultiplier: 1.1
   DamagePerCardsMultiplier: 1.1
-  ReloadTimePerCardsMultiplier: 1.1
-  BlockCooldownCardsMultiplier: 1.1
+  ReloadTimePerCardsMultiplier: 1.075
+  BlockCooldownCardsMultiplier: 1.075

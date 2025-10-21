@@ -34,7 +34,7 @@ namespace AALUND13Cards.Devil.Cards.StatModifers {
                 additionalData.GuaranteedRarity = RarityUtils.GetRarityData(rarity);
             }
 
-            if(DevilPicks > 0) {
+            if(DevilPicks > 0 && player.data.view.IsMine) {
                 ExtraCardPickHandler.AddExtraPick<DevilCardsPickHandler>(player, DevilPicks, ExtraPickPhaseTrigger.TriggerInPlayerPickEnd);
             }
         }
