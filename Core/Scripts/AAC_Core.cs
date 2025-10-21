@@ -65,6 +65,7 @@ namespace AALUND13Cards.Core {
             gameObject.AddComponent<DelayDamageHandler>();
             gameObject.AddComponent<PickCardTracker>();
             gameObject.AddComponent<DamageEventHandler>();
+            gameObject.AddComponent<DeathActionHandler>();
             gameObject.AddComponent<ConstantDamageHandler>();
 
             NoLotteryCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("CardManipulation"), CustomCardCategories.instance.CardCategory("NoRandom") };

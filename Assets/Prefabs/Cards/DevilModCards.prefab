@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2491925878121971275}
   - component: {fileID: 114794331478074096}
   m_Layer: 0
-  m_Name: ExtraPicksModCards
+  m_Name: DevilModCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,15 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cards:
-  - {fileID: 1473282574127126098, guid: f1edcaa182851f245ba0de69548d7d82, type: 3}
-  - {fileID: 5011008801069171712, guid: 0e4da0bb4d8ae414eb0252582d43ab57, type: 3}
-  - {fileID: 5011008801069171712, guid: b8e0f58dd2ba8a94faa64a8ff96585c3, type: 3}
-  - {fileID: 5011008801069171712, guid: 087c31d5e4696e748bc11c634b75137e, type: 3}
-  - {fileID: 5011008801069171712, guid: d4c597d2909505b489ba0d94e458d1e0, type: 3}
-  - {fileID: 5011008801069171712, guid: eb9e9fcd875305c499c4bdf1f9200a7c, type: 3}
-  - {fileID: 7451438178602277890, guid: 1c63b366f085e014c93f5ca5df2c3add, type: 3}
-  - {fileID: 4414326956795446328, guid: 0b40e9c12127216438620752973e2cca, type: 3}
-  - {fileID: 2486157976607851580, guid: 34a6cd4c4de6f9d4389d1889d9aad4c1, type: 3}
-  - {fileID: 3773405924563542092, guid: 68330b21558495e43abdae9a9beb89e3, type: 3}
-  - {fileID: 5647749677671276803, guid: a6901a58c9b86ec4187a689da3b0161f, type: 3}
-  - {fileID: 3064542637086822442, guid: 3885ebf76e05d9a4f802687836c5c3fc, type: 3}
+  - {fileID: 1473282574127126098, guid: 76c0aea4694048b47aee9046eeb3d0bb, type: 3}
+  - {fileID: 1473282574127126098, guid: f01f3341aea4819448073944a4af4bc7, type: 3}
+  - {fileID: 1473282574127126098, guid: 2e16e0b775929ac45a345d86f569be93, type: 3}
+  - {fileID: 1473282574127126098, guid: e9c98b69532d88b4fa0fb0cecab89d5c, type: 3}
+  - {fileID: 1473282574127126098, guid: 3dbcda199be1eb24a991f8b34d6d484b, type: 3}
+  - {fileID: 1473282574127126098, guid: 0c29863639a2e8f48abb6b995cdc47dc, type: 3}

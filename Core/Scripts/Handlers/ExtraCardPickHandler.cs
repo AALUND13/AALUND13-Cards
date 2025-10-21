@@ -25,7 +25,8 @@ namespace AALUND13Cards.Core.Handlers {
     }
 
     public static class ExtraCardPickHandler {
-        internal static Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, ExtraPickHandler>> extraPicks = new Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, ExtraPickHandler>>();
+        internal static Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, Dictionary<Type, ExtraPickHandler>>> extraPicks =
+            new Dictionary<Player, Dictionary<ExtraPickPhaseTrigger, Dictionary<Type, ExtraPickHandler>>>();
 
         public static ExtraPickHandler activePickHandler;
         public static Player currentPlayer;
@@ -54,15 +55,19 @@ namespace AALUND13Cards.Core.Handlers {
             Type type = Type.GetType(handlerType);
             if(type == null) return;
 
-            ExtraPickHandler handler = (ExtraPickHandler)Activator.CreateInstance(type);
-
             if(!extraPicks.ContainsKey(player)) {
-                extraPicks.Add(player, new Dictionary<ExtraPickPhaseTrigger, ExtraPickHandler>());
+                extraPicks[player] = new Dictionary<ExtraPickPhaseTrigger, Dictionary<Type, ExtraPickHandler>>();
             }
             if(!extraPicks[player].ContainsKey(pickPhaseTrigger)) {
-                extraPicks[player].Add(pickPhaseTrigger, new ExtraPickHandler());
+                extraPicks[player][pickPhaseTrigger] = new Dictionary<Type, ExtraPickHandler>();
             }
-            extraPicks[player][pickPhaseTrigger].Picks += picks;
+
+            if(!extraPicks[player][pickPhaseTrigger].TryGetValue(type, out var handler)) {
+                handler = (ExtraPickHandler)Activator.CreateInstance(type);
+                extraPicks[player][pickPhaseTrigger][type] = handler;
+            }
+
+            handler.Picks += picks;
         }
 
         [UnboundRPC]
@@ -73,57 +78,59 @@ namespace AALUND13Cards.Core.Handlers {
             Type type = Type.GetType(handlerType);
             if(type == null) return;
 
-            int pickToRemove = picks;
             if(extraPicks.TryGetValue(player, out var triggerDict)) {
-                foreach(var handler in triggerDict.ToList()) {
-                    if(pickToRemove <= 0) break;
+                foreach(var phase in triggerDict.ToList()) {
+                    if(phase.Value.TryGetValue(type, out var handler)) {
+                        int removeCount = Math.Min(handler.Picks, picks);
+                        handler.Picks -= removeCount;
+                        picks -= removeCount;
 
-                    int removeCount = Math.Min(handler.Value.Picks, pickToRemove);
-                    handler.Value.Picks -= removeCount;
-                    pickToRemove -= removeCount;
+                        if(handler.Picks <= 0)
+                            phase.Value.Remove(type);
+                    }
 
-                    if(handler.Value.Picks <= 0) triggerDict.Remove(handler.Key);
+                    if(phase.Value.Count == 0)
+                        triggerDict.Remove(phase.Key);
+
+                    if(picks <= 0) break;
                 }
             }
         }
 
 
         internal static IEnumerator HandleExtraPicks(ExtraPickPhaseTrigger pickPhaseTrigger) {
-            foreach(Player player in PlayerManager.instance.players.ToArray()) {
-                if(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Picks > 0) {
-                    var pickHandlers = extraPicks[player][pickPhaseTrigger];
-                    
+            foreach(var player in PlayerManager.instance.players.ToArray()) {
+                if(!extraPicks.TryGetValue(player, out var triggerDict)) continue;
+                if(!triggerDict.TryGetValue(pickPhaseTrigger, out var handlers)) continue;
+
+                foreach(var handlerPair in handlers.ToList()) {
+                    var handler = handlerPair.Value;
                     if(pickPhaseTrigger == ExtraPickPhaseTrigger.TriggerInPickEnd) {
-                        while(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Picks > 0) {
-                            yield return HandleExtraPickForPlayer(player, pickPhaseTrigger);
+                        while(handler.Picks > 0) {
+                            yield return HandleExtraPickForPlayer(player, pickPhaseTrigger, handler);
                         }
-                    } else {
-                        yield return HandleExtraPickForPlayer(player, pickPhaseTrigger);
+                    } else if (handler.Picks > 0) {
+                        yield return HandleExtraPickForPlayer(player, pickPhaseTrigger, handler);
                     }
                 }
             }
 
             currentPlayer = null;
             activePickHandler = null;
-
-            yield break;
         }
 
-        private static IEnumerator HandleExtraPickForPlayer(Player player, ExtraPickPhaseTrigger pickPhaseTrigger) {
+        private static IEnumerator HandleExtraPickForPlayer(Player player, ExtraPickPhaseTrigger pickPhaseTrigger, ExtraPickHandler handler) {
             currentPlayer = player;
-            activePickHandler = extraPicks[player][pickPhaseTrigger];
+            activePickHandler = handler;
 
-            activePickHandler.OnPickStart(currentPlayer);
+            handler.OnPickStart(player);
             yield return GameModeManager.TriggerHook(GameModeHooks.HookPlayerPickStart);
+
             CardChoiceVisuals.instance.Show(player.playerID, true);
             yield return CardChoice.instance.DoPick(1, player.playerID, PickerType.Player);
             yield return new WaitForSecondsRealtime(0.1f);
 
-            // check if the player sill has extra picks to prevent 'ArgumentOutOfRangeException: Index was out of range.
-            // Must be non-negative and less than the size of the collection.' error
-            if(extraPicks.ContainsKey(player) && extraPicks[player].ContainsKey(pickPhaseTrigger) && extraPicks[player][pickPhaseTrigger].Picks > 0) {
-                extraPicks[player][pickPhaseTrigger].Picks -= 1;
-            }
+            handler.Picks = Mathf.Max(0, handler.Picks - 1);
 
             yield return GameModeManager.TriggerHook(GameModeHooks.HookPlayerPickEnd);
         }

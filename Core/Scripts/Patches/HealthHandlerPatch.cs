@@ -1,6 +1,7 @@
 ﻿using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Handlers;
 using HarmonyLib;
+using System;
 using UnboundLib;
 using UnityEngine;
 
@@ -38,6 +39,26 @@ namespace AALUND13Cards.Core.Patches {
 
             Vector2 damageCopy = damage;
             DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnDoDamage, data.player, damagingPlayer, damageCopy, lethal);
+        }
+
+        [HarmonyPatch("RPCA_Die_Phoenix")]
+        [HarmonyPrefix]
+        public static void PhoenixRevive(Player ___player, bool ___isRespawning, Vector2 deathDirection) {
+            if(___isRespawning || ___player.data.dead) return;
+
+            if(DeathActionHandler.Instance.registeredReviveActions.TryGetValue(___player, out Action onRevive)) {
+                onRevive?.Invoke();
+            }
+        }
+
+        [HarmonyPatch("RPCA_Die")]
+        [HarmonyPrefix]
+        public static void TrueDeath(Player ___player, bool ___isRespawning, Vector2 deathDirection) {
+            if(___isRespawning || ___player.data.dead) return;
+
+            if(DeathActionHandler.Instance.registeredTrueDeathActions.TryGetValue(___player, out Action onTrueDeath)) {
+                onTrueDeath?.Invoke();
+            }
         }
     }
 }
