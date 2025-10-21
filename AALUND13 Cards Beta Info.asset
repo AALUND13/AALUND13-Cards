@@ -34,6 +34,7 @@ MonoBehaviour:
   - AALUND13-RandomCardsGenerator-1.0.1
   - AALUND13-CorruptedCardsManager-1.1.0
   - AALUND13-ToggleCardsCategories-1.4.0
+  - Pykess-Pick_N_Cards-0.2.6
   DllDependencies: []
   AssemblyDefinitionDependencies:
   - AALUND13_Cards_Core
