@@ -1,5 +1,5 @@
-﻿using Photon.Pun;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
@@ -9,40 +9,41 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
         public float DamageInterval = 0.5f;
         public float DamageMultiplier = 0.75f;
         public float MaxDistance = 20f;
-        public float SpawnTimeTrigger = 0.5f; // Time after spawn to start checking for connection
 
         public GameObject ConnectingBulletPrefab;
 
         private Dictionary<Player, float> lastDamageTime = new Dictionary<Player, float>();
         private GameObject connectingBulletInstance;
         private GameObject connectedBullet;
-        private ProjectileHit ProjectileHit;
         private ChildRPC childRPC;
-        private float spawnTime;
+
+        private ProjectileHit ProjectileHit;
+        private ProjectileHit OtherProjectileHit;
 
         private void Start() {
             ProjectileHit = GetComponentInParent<ProjectileHit>();
             childRPC = GetComponentInParent<ChildRPC>();
 
-            if(PlayerLastBullet.ContainsKey(ProjectileHit.ownPlayer) 
-                && PlayerLastBullet[ProjectileHit.ownPlayer] != null 
+            if(PlayerLastBullet.ContainsKey(ProjectileHit.ownPlayer)
+                && PlayerLastBullet[ProjectileHit.ownPlayer] != null
                 && Vector2.Distance(PlayerLastBullet[ProjectileHit.ownPlayer].transform.position, gameObject.transform.position) < MaxDistance
             ) {
                 connectingBulletInstance = Instantiate(ConnectingBulletPrefab, Vector2.zero, Quaternion.identity);
                 var lineEffect = connectingBulletInstance.GetComponent<LineEffect>();
                 connectedBullet = PlayerLastBullet[ProjectileHit.ownPlayer];
 
+                OtherProjectileHit = connectedBullet.GetComponent<ProjectileHit>();
+
                 lineEffect.fromPos = connectedBullet.transform;
                 lineEffect.toPos = gameObject.transform;
 
                 var lineRenderer = connectingBulletInstance.GetComponent<LineRenderer>();
-                lineRenderer.startColor = GetProjectileColor(connectedBullet.GetComponent<ProjectileHit>());
+                lineRenderer.startColor = GetProjectileColor(OtherProjectileHit);
                 lineRenderer.endColor = GetProjectileColor(ProjectileHit);
                 lineRenderer.SetPositions(new Vector3[] { connectedBullet.transform.position, gameObject.transform.position });
             }
 
             PlayerLastBullet[ProjectileHit.ownPlayer] = transform.parent.gameObject;
-            spawnTime = Time.time;
         }
 
         private Color GetProjectileColor(ProjectileHit projectileHit) {
@@ -71,6 +72,17 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
             }
         }
 
+        private bool CanDamagePlayer(Player player) {
+            var playersHit = (List<HealthHandler>)ProjectileHit.GetFieldValue("playersHit");
+            var otherPlayersHit = (List<HealthHandler>)OtherProjectileHit.GetFieldValue("playersHit");
+
+            if(playersHit.Contains(player.data.healthHandler) || otherPlayersHit.Contains(player.data.healthHandler)) {
+                return false;
+            } else { 
+                return true; 
+            }
+        }
+
         private void DamageBetweenPoints(Vector2 pointA, Vector2 pointB) {
             if(!ProjectileHit.ownPlayer.data.view.IsMine) return;
 
@@ -80,7 +92,8 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
             foreach(RaycastHit2D hit in hits) {
                 var player = hit.collider.GetComponent<Player>();
                 if(player != null) {
-                    if(player == ProjectileHit.ownPlayer && Time.time < spawnTime + SpawnTimeTrigger) continue; // Don't hit self right after spawn
+                    if(!CanDamagePlayer(player)) continue;
+
                     if(!lastDamageTime.ContainsKey(player)) lastDamageTime[player] = 0;
                     if(Time.time - lastDamageTime[player] >= DamageInterval) {
                         lastDamageTime[player] = Time.time;
@@ -94,7 +107,7 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
         private float GetChainDamage(Player targetPlayer) {
             float damage = ProjectileHit.damage;
             float otherProjectileDamage = connectedBullet.GetComponent<ProjectileHit>().damage;
-            
+
             float percentageDamage = ProjectileHit.percentageDamage;
             float otherPercentageDamage = connectedBullet.GetComponent<ProjectileHit>().percentageDamage;
 

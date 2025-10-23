@@ -1,6 +1,7 @@
 ﻿using JARL.Utils;
 using System.Collections.Generic;
 using System.Linq;
+using UnboundLib.GameModes;
 using UnityEngine;
 
 namespace AALUND13Cards.Core.Handlers {
@@ -61,6 +62,11 @@ namespace AALUND13Cards.Core.Handlers {
             }
         }
 
+        internal void Reset() {
+            playerConstantDamages.Clear();
+            PlayerConstantPrecentageDamages.Clear();
+        }
+
         private void Start() {
             if(Instance == null) {
                 Instance = this;
@@ -77,7 +83,6 @@ namespace AALUND13Cards.Core.Handlers {
                     PlayerConstantPrecentageDamages.Remove(player);
                 }
             };
-
         }
 
         private void Update() {

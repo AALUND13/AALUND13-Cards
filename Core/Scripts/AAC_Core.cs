@@ -6,6 +6,7 @@ using BepInEx.Logging;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
 using JARL.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using ToggleCardsCategories;
@@ -61,6 +62,7 @@ namespace AALUND13Cards.Core {
 
             GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPlayerPickEnd));
             GameModeManager.AddHook(GameModeHooks.HookPickEnd, (gm) => ExtraCardPickHandler.HandleExtraPicks(ExtraPickPhaseTrigger.TriggerInPickEnd));
+            GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);
 
             gameObject.AddComponent<DelayDamageHandler>();
             gameObject.AddComponent<PickCardTracker>();
@@ -70,6 +72,11 @@ namespace AALUND13Cards.Core {
 
             NoLotteryCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("CardManipulation"), CustomCardCategories.instance.CardCategory("NoRandom") };
             NoSteelCategories = new CardCategory[] { CustomCardCategories.instance.CardCategory("NoRemove") };
+        }
+
+        private IEnumerator OnGameStart(IGameModeHandler gm) {
+            ConstantDamageHandler.Instance.Reset();
+            yield break;
         }
 
         private void OnPlayerDeath(Player player, Dictionary<Player, JARL.Utils.DamageInfo> playerDamageInfos) {

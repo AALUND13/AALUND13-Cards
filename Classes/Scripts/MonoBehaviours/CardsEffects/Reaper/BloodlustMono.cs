@@ -70,6 +70,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
 
 
         private void Update() {
+            if(!GameManager.instance.battleOngoing) return;
             float old = decayingPrecentageDamage;
 
             decayingPrecentageDamage = Mathf.Max(
