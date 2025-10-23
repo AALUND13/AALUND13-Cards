@@ -18,7 +18,7 @@ namespace AALUND13Cards.Devil.Patches {
         [HarmonyPrefix]
         [HarmonyPatch(nameof(Block.Cooldown))]
         public static bool FixedBlockCooldown(Block __instance, ref float __result, CharacterData ___data) {
-            if(___data.GetCustomStatsRegistry().GetOrCreate<DevilCardsStats>().FixedBlockCooldown != 0) {
+            if(___data != null && ___data.GetCustomStatsRegistry().GetOrCreate<DevilCardsStats>().FixedBlockCooldown != 0) {
                 __result = ___data.GetCustomStatsRegistry().GetOrCreate<DevilCardsStats>().FixedBlockCooldown;
                 return false;
             }
