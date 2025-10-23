@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards_Beta
   Author: AALUND13
-  Version: 2.0.21
+  Version: 2.0.25
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: This is the beta version of the mod "AALUND13 Cards", If you encounter
     any issues, please report them on the GitHub page.
@@ -43,5 +43,6 @@ MonoBehaviour:
   - AALUND13_Armors_Cards
   - AALUND13_Classes_Cards
   - AALUND13_Curses_Cards
+  - AALUND13_Devil_Cards
   Icon: {fileID: 2800000, guid: 0d4930371b8cf3a46a26a0c17254fdff, type: 3}
   IncludeInAllExports: 1
