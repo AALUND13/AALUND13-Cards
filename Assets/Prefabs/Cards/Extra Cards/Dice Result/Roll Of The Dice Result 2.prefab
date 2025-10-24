@@ -320,7 +320,6 @@ MonoBehaviour:
   IsHidden: 1
   RequireMod: 
   IsCursed: 0
-  Category: 1
 --- !u!114 &114968901663890088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,5 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
-  categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
+  CategoryPath: 
+  categoryAsset: {fileID: 11400000, guid: 55571f1cb6a278241a5b89b6e65242ae, type: 2}
   Priority: 0
