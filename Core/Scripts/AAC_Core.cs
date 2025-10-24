@@ -31,6 +31,8 @@ namespace AALUND13Cards.Core {
         internal const string ModId = "AALUND13.Cards.Core";
         internal const string ModName = "AALUND13 Cards Core";
         internal const string Version = "1.0.0"; // What version are we on (major.minor.patch)?
+        internal const string FullVersion = "2.0.0"; // What version are we on (major.minor.patch)?
+        internal const bool IsBeta = true; // TODO: Set this to false once the non-beta version is release
 
         public static AAC_Core Instance { get; private set; }
         public static List<BaseUnityPlugin> Plugins;
