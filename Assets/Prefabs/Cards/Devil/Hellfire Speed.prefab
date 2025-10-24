@@ -311,7 +311,7 @@ MonoBehaviour:
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
   CardRarity: 0
-  CardRarityCustom: 
+  CardRarityCustom: Devil
   CanBeReassigned: 1
   IsHidden: 0
   RequireMod: 

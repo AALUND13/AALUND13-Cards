@@ -4,6 +4,7 @@ using AALUND13Cards.Core.Utils;
 using AALUND13Cards.Devil.Handlers;
 using BepInEx;
 using HarmonyLib;
+using RarityLib.Utils;
 using System;
 using UnboundLib;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace AALUND13Cards.Devil {
                 new Harmony(ModId).PatchAll();
             }
 
+            RarityUtils.AddRarity("Devil", 0.01f, new Color(0.5377358f, 0, 0), new Color(0.4f, 0, 0));
             gameObject.AddComponent<DevilCardsHandler>();
         }
 
