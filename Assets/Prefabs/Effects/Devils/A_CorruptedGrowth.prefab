@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b64bae0b591e8143a41aeabe768e916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPerCardsMultiplier: 1.1
-  DamagePerCardsMultiplier: 1.1
-  ReloadTimePerCardsMultiplier: 1.075
-  BlockCooldownCardsMultiplier: 1.075
+  HealthPerCardsMultiplier: 1.05
+  DamagePerCardsMultiplier: 1.05
+  ReloadTimePerCardsMultiplier: 1.025
+  BlockCooldownCardsMultiplier: 1.025

@@ -57,19 +57,19 @@ MonoBehaviour:
     through corruption"
   cardStats:
   - positive: 1
-    amount: Each cards +10%
+    amount: Each cards +5%
     simepleAmount: 0
     stat: Damage
   - positive: 1
-    amount: Each cards +10%
+    amount: Each cards +5%
     simepleAmount: 0
     stat: Health
   - positive: 0
-    amount: Each cards +7.5%
+    amount: Each cards +2.5%
     simepleAmount: 0
     stat: Reload Time
   - positive: 0
-    amount: Each cards +7.5%
+    amount: Each cards +2.5%
     simepleAmount: 0
     stat: Block Cooldown
   rarity: 1
