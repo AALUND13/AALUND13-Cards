@@ -289,7 +289,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: Exo Armor
-  CardClassType: 16
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 4908810688212451669, guid: 1b2e75ecf3c7e0742a0916c946a2bc63,
     type: 3}
@@ -300,7 +300,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: AALUND13.Cards.Armors
   IsCursed: 0
-  Category: 6
 --- !u!114 &114684639228766562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,5 +341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 5d0f66708f09dab47b8e60f936d9b0c5, type: 2}
   Priority: 0

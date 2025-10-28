@@ -292,7 +292,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: Reaper
-  CardClassType: 16
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
     type: 3}
@@ -303,7 +303,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114257601336418366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,5 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0
