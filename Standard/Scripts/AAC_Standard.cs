@@ -37,7 +37,9 @@ namespace AALUND13Cards.Standard {
             if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
 
-            assets.LoadAsset<GameObject>("StandardModCards").GetComponent<CardResgester>().RegisterCards();
+            CardResgester cardResgester = assets.LoadAsset<GameObject>("StandardModCards").GetComponent<CardResgester>();
+            cardResgester.RegisterCards();
+            AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
         }
     }
 }

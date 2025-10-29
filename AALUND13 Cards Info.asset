@@ -23,5 +23,5 @@ MonoBehaviour:
   Dependencies: []
   DllDependencies: []
   AssemblyDefinitionDependencies: []
-  Icon: {fileID: 2800000, guid: 22139ed7311c00448b60a1537b8e58f5, type: 3}
+  Icon: {fileID: 2800000, guid: c888f2fe3f0e6eb4688ebecd7f0ca99b, type: 3}
   IncludeInAllExports: 1

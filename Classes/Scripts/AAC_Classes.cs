@@ -47,7 +47,9 @@ namespace AALUND13Cards.ExtraCards {
             if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "AALUND13.Cards.Armors"))
                 ArmorInterface.RegisterArmors();
 
-            assets.LoadAsset<GameObject>("ClassesModCards").GetComponent<CardResgester>().RegisterCards();
+            CardResgester cardResgester = assets.LoadAsset<GameObject>("ClassesModCards").GetComponent<CardResgester>();
+            cardResgester.RegisterCards();
+            AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 

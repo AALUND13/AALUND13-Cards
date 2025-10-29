@@ -51,7 +51,7 @@ namespace AALUND13Cards.Core {
             new Harmony(ModId).PatchAll();
 
             ToggleCardsCategoriesManager.instance.RegisterCategories(ModInitials);
-            ConfigHandler.RegesterMenu(Config);
+            AACMenu.RegesterMenu(Config);
         }
 
         public void Start() {

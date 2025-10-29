@@ -40,7 +40,9 @@ namespace AALUND13Cards.Devil {
             if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
 
-            assets.LoadAsset<GameObject>("DevilModCards").GetComponent<CardResgester>().RegisterCards();
+            CardResgester cardResgester = assets.LoadAsset<GameObject>("DevilModCards").GetComponent<CardResgester>();
+            cardResgester.RegisterCards();
+            AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
         }
     }
 }

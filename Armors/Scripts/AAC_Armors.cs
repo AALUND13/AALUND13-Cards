@@ -29,6 +29,7 @@ namespace AALUND13Cards.Armors {
             if(assets != null) {
                 new Harmony(ModId).PatchAll();
             }
+
         }
 
         private void Start() {
@@ -43,7 +44,9 @@ namespace AALUND13Cards.Armors {
             ArmorFramework.RegisterArmorProcessor<DamageAgainstArmorPercentageProcessor>();
             ArmorFramework.RegisterArmorProcessor<ArmorDamageReductionProcessor>();
 
-            assets.LoadAsset<GameObject>("ArmorsModCards").GetComponent<CardResgester>().RegisterCards();
+            CardResgester cardResgester = assets.LoadAsset<GameObject>("ArmorsModCards").GetComponent<CardResgester>();
+            cardResgester.RegisterCards();
+            AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
 
             if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();

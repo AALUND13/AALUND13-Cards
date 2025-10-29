@@ -1,58 +1,27 @@
-﻿using AALUND13Cards.Core.Cards;
-using BepInEx.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TMPro;
+using System.Threading.Tasks;
 using ToggleCardsCategories;
-using UnboundLib;
-using UnboundLib.Utils.UI;
 using UnityEngine;
 
-namespace AALUND13Cards.Core.Handlers {
-    internal class ConfigHandler {
-        public static ConfigEntry<bool> DetailsMode;
-        public static ConfigEntry<bool> DebugMode;
-
-        public static void RegesterMenu(ConfigFile config) {
-            Unbound.RegisterMenu(AAC_Core.ModName, () => { }, NewGui, null, false);
-            DebugMode = config.Bind(AAC_Core.ModName, "DebugMode", false, "Enabled or disabled Debug Mode");
-        }
-
-        public static void addBlank(GameObject menu) {
-            MenuHandler.CreateText(" ", menu, out TextMeshProUGUI _, 30);
-        }
-
-        public static void NewGui(GameObject menu) {
-            MenuHandler.CreateToggle(DebugMode.Value, "<#c41010> Debug Mode", menu, DebugModeChanged, 30);
-            void DebugModeChanged(bool val) {
-                DebugMode.Value = val;
-            }
-
-            MenuHandler.CreateButton("Create Readme", menu, CreateModFullReadme);
-            void CreateModFullReadme() {
-                string readme = CreateReadme();
-                GUIUtility.systemCopyBuffer = readme;
-            }
-        }
-
-        // Helper methods that help in craeting the `README.md`
-
-        private static string CreateReadme() {
+namespace AALUND13Cards.Core.Utils {
+    internal static class ReadmeGenerator {
+        public static string CreateReadme(string modName, string version, List<CardInfo> cardInfos) {
             string[] allowParentCategories = new string[] { "Classes", "Extra Cards" };
 
             List<string> insertedClassCategories = new List<string>();
             var stringBuilder = new StringBuilder();
             var firstCategory = true;
 
-            stringBuilder.AppendLine($"# AALUND13 Cards [v{AAC_Core.FullVersion}{(AAC_Core.IsBeta ? " Beta" : "")}]");
-            stringBuilder.AppendLine($"AALUND13 Cards introduces <b>{CardResgester.AllModCards.Count}</b> unique cards developed by <b>AALUND13</b>.  ");
+            stringBuilder.AppendLine($"# {modName} [v{version}]");
+            stringBuilder.AppendLine($"{modName} introduces <b>{cardInfos.Count}</b> cards developed by <b>AALUND13</b>.  ");
             stringBuilder.AppendLine($"If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.");
             stringBuilder.AppendLine($"<h3>Cards:</h3>");
 
-            var cardsCategories = GetCardWithCategories();
-            int longestName = CardResgester.AllModCards.Max(c => c.cardName.Length);
+            var cardsCategories = GetCardWithCategories(cardInfos);
+            int longestName = cardInfos.Max(c => c.cardName.Length);
             foreach(var cardCategory in cardsCategories) {
                 Stack<string> categoriesPath = new Stack<string>(cardCategory.Key.Split('/'));
                 var categoryName = categoriesPath.Pop();
@@ -87,14 +56,14 @@ namespace AALUND13Cards.Core.Handlers {
             return stringBuilder.ToString();
         }
 
-        private static Dictionary<string, List<CardInfo>> GetCardWithCategories() {
+        private static Dictionary<string, List<CardInfo>> GetCardWithCategories(List<CardInfo> cardInfos) {
             Dictionary<string, string> categoryMaps = new Dictionary<string, string>() {
                 { "Devil/Outcomes", "Devil" }
             };
 
             var cardWithCategories = new Dictionary<string, List<CardInfo>>(StringComparer.OrdinalIgnoreCase);
 
-            foreach(var card in CardResgester.AllModCards) {
+            foreach(var card in cardInfos) {
                 IToggleCardCategory cardCategory = card.GetComponent<IToggleCardCategory>();
                 string cardCategoryText = cardCategory != null
                     ? cardCategory.GetCardCategoryInfo().Name
@@ -118,6 +87,5 @@ namespace AALUND13Cards.Core.Handlers {
 
             return sorted;
         }
-
     }
 }

@@ -37,7 +37,11 @@ namespace AALUND13Cards.Curses {
                 TabinfoInterface.Setup();
 
             DontDestroyOnLoad(GameObject.Instantiate(assets.LoadAsset<GameObject>("FlashlightMaskHandler")));
-            assets.LoadAsset<GameObject>("CursesModCards").GetComponent<CardResgester>().RegisterCards();
+
+            CardResgester cardResgester = assets.LoadAsset<GameObject>("CursesModCards").GetComponent<CardResgester>();
+            cardResgester.RegisterCards();
+            AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
+
             assets.LoadAsset<GameObject>("CursesPhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
         }
     }

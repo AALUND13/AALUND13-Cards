@@ -46,7 +46,9 @@ namespace AALUND13Cards.ExtraCards {
             if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
 
-            assets.LoadAsset<GameObject>("ExtraPicksModCards").GetComponent<CardResgester>().RegisterCards();
+            CardResgester cardResgester = assets.LoadAsset<GameObject>("ExtraPicksModCards").GetComponent<CardResgester>();
+            cardResgester.RegisterCards();
+            AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
         }
 
         IEnumerator OnPickStart(IGameModeHandler gameModeHandler) {

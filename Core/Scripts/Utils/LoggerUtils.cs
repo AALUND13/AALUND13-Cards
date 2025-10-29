@@ -1,8 +1,6 @@
-﻿using AALUND13Cards.Core.Handlers;
-
-namespace AALUND13Cards.Core {
+﻿namespace AALUND13Cards.Core {
     public static class LoggerUtils {
-        public static bool logging = ConfigHandler.DebugMode.Value;
+        public static bool logging = AACMenu.DebugMode.Value;
 
         public static void LogInfo(string message, bool bypassCheck = false) { if(logging || bypassCheck) AAC_Core.ModLogger.LogInfo(message); }
         public static void LogWarn(string message) { AAC_Core.ModLogger.LogWarning(message); }
