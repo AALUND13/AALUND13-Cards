@@ -31,7 +31,7 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
                 connectingBulletInstance = Instantiate(ConnectingBulletPrefab, Vector2.zero, Quaternion.identity);
                 var lineEffect = connectingBulletInstance.GetComponent<LineEffect>();
                 connectedBullet = PlayerLastBullet[ProjectileHit.ownPlayer];
-
+                
                 OtherProjectileHit = connectedBullet.GetComponent<ProjectileHit>();
 
                 lineEffect.fromPos = connectedBullet.transform;

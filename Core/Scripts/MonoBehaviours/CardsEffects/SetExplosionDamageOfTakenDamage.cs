@@ -2,7 +2,7 @@
 
 namespace AALUND13Cards.Core.MonoBehaviours.CardsEffects {
     [RequireComponent(typeof(DamageSpawnedAttack), typeof(Explosion))]
-    public class SetExplosionDamageOffTakennDamage : MonoBehaviour {
+    public class SetExplosionDamageOfTakenDamage : MonoBehaviour {
         public float ExplosionDamageMultiplier = 1f;
 
         private DamageSpawnedAttack damageSpawnedAttack;

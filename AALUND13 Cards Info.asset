@@ -14,13 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards
   Author: AALUND13
-  Version: 2.0.0
+  Version: 2.0.1
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Explore a collection of unique cards crafted by 'AALUND13'. If you
     encounter any issues, please report them on the GitHub page.
   BeforeBuildCommand: 
   AfterBuildCommand: 
-  Dependencies: []
+  Dependencies:
+  - AALUND13-AALUND13_Cards_Core-1.0.0
+  - AALUND13-AALUND13_Armors_Cards-1.0.0
+  - AALUND13-AALUND13_Classes_Cards-1.0.0
+  - AALUND13-AALUND13_Curses_Cards-1.0.0
+  - AALUND13-AALUND13_Devil_Cards-1.0.0
+  - AALUND13-AALUND13_Extra_Picks_Cards-1.0.0
+  - AALUND13-AALUND13_Standard_Cards-1.0.0
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: c888f2fe3f0e6eb4688ebecd7f0ca99b, type: 3}
