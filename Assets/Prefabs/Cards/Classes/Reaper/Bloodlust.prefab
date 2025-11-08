@@ -53,11 +53,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Bloodlust
-  cardDestription: "You hunger for <#BF1111>Blood</color>, damaging players grants
-    <b>+3%</b> percentage damage that decay over time, Your <#BF1111>Blood</color>
-    constantly drain if empty you take damage. While health not at full with <#BF1111>Blood</color>
-    remaining, you instead gain +5% regen/s until fully healed or the bar is empty\r\n"
-  cardStats: []
+  cardDestription: 'Damaging enemies fills your <#BF1111>blood</color> based on how
+    much of their health you take.
+
+    While you still have <#BF1111>blood</color>, gain <b>+5% health regen/s</b> until
+    fully healed'
+  cardStats:
+  - positive: 1
+    amount: +120% Blood
+    simepleAmount: 0
+    stat: "\xD7 Target HP%"
+  - positive: 1
+    amount: +50% Damage
+    simepleAmount: 0
+    stat: "\xD7 Target HP%"
+  - positive: 0
+    amount: Take Damage
+    simepleAmount: 0
+    stat: If Blood Run Dry
   rarity: 2
   cardArt: {fileID: 799452286766514847, guid: 7295cd4b74cf2344fa375722b010e824, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -301,7 +314,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114602836669831300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,5 +343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0

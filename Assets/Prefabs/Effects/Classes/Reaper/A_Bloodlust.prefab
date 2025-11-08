@@ -63,6 +63,6 @@ MonoBehaviour:
   BloodDrainPerSecond: 5
   BloodDrainPerSecondRegen: 2
   BloodHealthRegenRate: 0.05
-  BloodFillPerDamage: 50
-  BloodDamageMultiplier: 0.001
-  PercentageDamagePerDamage: 0.03
+  BloodFillPerDamage: 1.2
+  DamageMultiplierFromDamage: 0.5
+  DamageFromNoBlood: 0.0005

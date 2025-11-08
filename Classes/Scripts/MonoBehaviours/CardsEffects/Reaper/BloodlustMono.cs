@@ -2,24 +2,25 @@
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Handlers;
-using AALUND13Cards.Core.Utils;
 using ModsPlus;
-using UnboundLib.Extensions;
+using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
     public class BloodlustMono : MonoBehaviour, IOnDoDamageEvent {
+        [Header("Blood Values")]
         public float MaxBlood = 100;
         public float StartingBlood = 50;
 
+        [Header("Blood Healing/Draining")]
         public float BloodDrainPerSecond = 2;
         public float BloodDrainPerSecondRegen = 2;
         public float BloodHealthRegenRate = 0.05f;
 
-        public float BloodFillPerDamage = 50;
-        public float BloodDamageMultiplier = 0.25f;
-
-        public float PercentageDamagePerDamage = 0.03f;
+        [Header("Blood Damage")]
+        public float BloodFillPerDamage = 2;
+        public float DamageMultiplierFromDamage = 0.3f;
+        public float DamageFromNoBlood = 0.0005f;
 
         private CharacterData data;
         private CustomHealthBar bloodBar;
@@ -27,32 +28,33 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
         private float decayingPrecentageDamage;
         private float blood;
         private float appliedScaling;
-        private float oldRegen;
+
+        public ReaperStats ReaperStats => data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>();
 
         public void OnDamage(DamageInfo damage) {
             if(data.player != damage.DamagingPlayer) return;
 
-            float bloodGained = BloodFillPerDamage / this.data.player.GetSPS();
-            float added = PercentageDamagePerDamage / this.data.player.GetSPS();
-            decayingPrecentageDamage += added;
+            float damagePercent = Mathf.Min(damage.Damage.magnitude, damage.HurtPlayer.data.maxHealth) / damage.HurtPlayer.data.maxHealth;
+            float bloodGained = 100 * damagePercent * BloodFillPerDamage;
 
-            data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>().ScalingPercentageDamageUnCap += added;
+            float added = damagePercent * DamageMultiplierFromDamage;
+            decayingPrecentageDamage += added;
+            ReaperStats.ScalingPercentageDamageUnCap += added;
             appliedScaling += added;
 
-
-            if(blood < 0) blood = StartingBlood;
+            if(blood < 0) blood = 0;
             blood = Mathf.Min(MaxBlood, blood + bloodGained);
 
             LoggerUtils.LogInfo($"Gained {bloodGained} blood from damage, now at {blood}/{MaxBlood}");
         }
 
-
         private void OnRevive() {
             blood = StartingBlood;
 
-            data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>().ScalingPercentageDamageUnCap -= appliedScaling;
+            ReaperStats.ScalingPercentageDamageUnCap -= appliedScaling;
             appliedScaling = 0f;
             decayingPrecentageDamage = 0f;
+            LoggerUtils.LogInfo($"Reset \"blood\" value to {blood}, and \"decayingPrecentageDamage\" to {decayingPrecentageDamage}");
         }
 
         private CustomHealthBar CreateStoredDamageBar() {
@@ -64,49 +66,50 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             data.player.AddStatusIndicator(bloodBarObj);
 
             Destroy(bloodBarObj.transform.Find("Healthbar(Clone)/Canvas/Image/White").gameObject);
+            LoggerUtils.LogInfo($"Created a blood bar");
 
             return bloodBar;
         }
 
+        private float DecayValue(float value) {
+            return Mathf.Max(
+                0,
+                value - (value * value * 2) * Time.deltaTime
+            );
+        }
+
+        private void UpdateBloodState() {
+            if(blood <= 0) {
+                float damage = (data.maxHealth * ((-blood) * DamageFromNoBlood));
+                data.healthHandler.DoDamage(Vector2.down * damage * Time.deltaTime, Vector2.zero, Color.red * 0.6f, null, null, false, true, true);
+            } else if(blood > 0 && data.health < data.maxHealth) {
+                float regen = data.maxHealth * BloodHealthRegenRate;
+                data.healthHandler.Heal(regen * Time.deltaTime);
+            }
+        }
+
+        #region Unity Methods
 
         private void Update() {
-            if(!GameManager.instance.battleOngoing) return;
+            if(!(bool)data.playerVel.GetFieldValue("simulated")) return;
+
             float old = decayingPrecentageDamage;
-
-            decayingPrecentageDamage = Mathf.Max(
-                0,
-                decayingPrecentageDamage - (decayingPrecentageDamage * decayingPrecentageDamage * 5) * Time.deltaTime
-            );
-
+            decayingPrecentageDamage = DecayValue(decayingPrecentageDamage);
             float diff = decayingPrecentageDamage - old;
-            data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>().ScalingPercentageDamageUnCap += diff;
+
+            ReaperStats.ScalingPercentageDamageUnCap += diff;
             appliedScaling += diff;
 
             float bloodDrainPerSecond = BloodDrainPerSecond;
-            if(data.health < data.maxHealth)
+            if(data.health < data.maxHealth) {
                 bloodDrainPerSecond += BloodDrainPerSecondRegen;
-
+            }
             blood -= bloodDrainPerSecond * Time.deltaTime;
 
-            if(blood <= 0) {
-                data.healthHandler.regeneration -= oldRegen;
-                oldRegen = 0;
-
-                float damage = (data.maxHealth * ((-blood) * BloodDamageMultiplier)) * Time.deltaTime;
-                data.healthHandler.TakeDamage(Vector2.down * damage, Vector2.zero, null, null, true, true);
-            } else if(blood > 0 && data.health < data.maxHealth) {
-                float regen = data.maxHealth * BloodHealthRegenRate;
-                data.healthHandler.regeneration -= oldRegen;
-                data.healthHandler.regeneration += regen;
-                oldRegen = regen;
-            } else if (oldRegen != 0) {
-                data.healthHandler.regeneration -= oldRegen;
-                oldRegen = 0;
-            }
+            UpdateBloodState();
 
             bloodBar.SetValues(blood, MaxBlood);
         }
-
 
         private void Start() {
             data = GetComponentInParent<CharacterData>();
@@ -122,10 +125,8 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
 
             data.healthHandler.reviveAction -= OnRevive;
             DamageEventHandler.Instance.UnregisterDamageEvent(this, data.player);
-
-            if(oldRegen != 0) {
-                data.healthHandler.regeneration -= oldRegen;
-            }
         }
+
+        #endregion
     }
 }
