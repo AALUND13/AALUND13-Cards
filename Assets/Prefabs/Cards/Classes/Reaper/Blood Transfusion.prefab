@@ -54,8 +54,8 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Blood Transfusion
   cardDestription: "When anybody excluding you takes damage you heal 25% their damage
-    that been dealt to them\n<#7A7A7A>Note: Healing effectiveness decreases with distance
-    from the damaged player</color>\r"
+    that been dealt to them\n<#7A7A7A><i>Note: Healing effectiveness decreases with
+    distance from the damaged player</i></color>\r"
   cardStats:
   - positive: 1
     amount: +25% Heal
@@ -67,7 +67,7 @@ MonoBehaviour:
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 0
+  allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 6
@@ -294,7 +294,7 @@ MonoBehaviour:
   block: {fileID: 0}
   OverrideClassName: 
   CardClassType: 16
-  CardLimit: 1
+  CardLimit: 3
   RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
     type: 3}
   RequiredClassTree: []
