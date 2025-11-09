@@ -108,7 +108,7 @@ MonoBehaviour:
   secondsToTakeDamageOver: 0
   numberOfJumps: 0
   regen: 0
-  lifeSteal: 0.35
+  lifeSteal: 0
   refreshOnDamage: 0
   automaticReload: 1
   respawns: 0

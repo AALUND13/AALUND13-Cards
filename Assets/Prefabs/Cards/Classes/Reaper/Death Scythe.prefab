@@ -101,7 +101,7 @@ MonoBehaviour:
   secondsToTakeDamageOver: 0
   numberOfJumps: 0
   regen: 0
-  lifeSteal: 0.35
+  lifeSteal: 0
   refreshOnDamage: 0
   automaticReload: 1
   respawns: 0
@@ -307,7 +307,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114633021159868724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,5 +350,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0
