@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 114602836669831300}
   - component: {fileID: 114188954914632486}
   m_Layer: 0
-  m_Name: Bloodlust
+  m_Name: Blood Transfusion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,27 +52,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Bloodlust
-  cardDestription: 'Damaging enemies fills your <#BF1111>blood</color> based on how
-    much of their health you take.
-
-    While you still have <#BF1111>blood</color>, gain <b>+5% health regen/s</b> until
-    fully healed'
+  cardName: Blood Transfusion
+  cardDestription: "When anybody excluding you takes damage you heal 25% their damage
+    that been dealt to them\n<#7A7A7A>Note: Healing effectiveness decreases with distance
+    from the damaged player</color>\r"
   cardStats:
   - positive: 1
-    amount: +120% Blood
+    amount: +25% Heal
     simepleAmount: 0
-    stat: "\xD7 Target HP%"
-  - positive: 1
-    amount: +50% Damage
-    simepleAmount: 0
-    stat: "\xD7 Target HP%"
-  - positive: 0
-    amount: Take Damage
-    simepleAmount: 0
-    stat: If Blood Run Dry
-  rarity: 2
-  cardArt: {fileID: 799452286766514847, guid: 7295cd4b74cf2344fa375722b010e824, type: 3}
+    stat: From Damage
+  rarity: 1
+  cardArt: {fileID: 0}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -94,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 4422123994737961438, guid: 5467f970e6b609e4b8067327cd03032e,
+  AddObjectToPlayer: {fileID: 2100634819981088575, guid: d63987d3fc4929942bb60e33bf264429,
     type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
@@ -108,7 +98,7 @@ MonoBehaviour:
   secondsToTakeDamageOver: 0
   numberOfJumps: 0
   regen: 0
-  lifeSteal: 0
+  lifeSteal: 0.35
   refreshOnDamage: 0
   automaticReload: 1
   respawns: 0
@@ -303,7 +293,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardClassType: 2
+  CardClassType: 16
   CardLimit: 1
   RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
     type: 3}
