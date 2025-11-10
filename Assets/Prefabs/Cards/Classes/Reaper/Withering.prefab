@@ -205,7 +205,7 @@ MonoBehaviour:
     scaleStackM: 0
     scaleFromDamage: 0
     stacks: 0
-  projectileColor: {r: 0, g: 0, b: 0, a: 1}
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0
@@ -314,7 +314,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114748044331712132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,5 +343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0

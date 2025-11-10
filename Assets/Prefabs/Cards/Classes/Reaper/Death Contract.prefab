@@ -222,7 +222,7 @@ MonoBehaviour:
     scaleStackM: 0
     scaleFromDamage: 0
     stacks: 0
-  projectileColor: {r: 0.87545586, g: 0, b: 1, a: 1}
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0

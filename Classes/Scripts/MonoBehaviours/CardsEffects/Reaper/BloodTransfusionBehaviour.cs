@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
     [RequireComponent(typeof(AttackLevel))]
-    public class BloodTransfusionMono : MonoBehaviour, IOnDoDamageEvent {
+    public class BloodTransfusionBehaviour : MonoBehaviour, IOnDoDamageEvent {
         [Header("Particles")]
         public ParticleSystem ParticleSystem;
         public int ParticlesEmitCount;

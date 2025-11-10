@@ -16,11 +16,10 @@ GameObject:
   - component: {fileID: 1691787583690612696}
   - component: {fileID: 1774751977049206925}
   - component: {fileID: 114906609052272654}
-  - component: {fileID: 114633021159868724}
-  - component: {fileID: 114881654511528766}
-  - component: {fileID: 114232234462623208}
+  - component: {fileID: 114602836669831300}
+  - component: {fileID: 114188954914632486}
   m_Layer: 0
-  m_Name: Death Scythe
+  m_Name: Blood Dislocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,20 +52,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Death Scythe
-  cardDestription: You have gotten the <b>Death Scythe</b>, increasing your percentage
-    damage and maximum scaling percentage damage cap to (80%)
+  cardName: Blood Dislocation
+  cardDestription: "When you block, unleash an area of effect that deals **30% of
+    enemies max health** as damage in range\n<#7A7A7A><i>Note: Precentage damage effectiveness
+    decreases with distance from players</i></color>\r"
   cardStats:
   - positive: 1
-    amount: +20%
+    amount: +30% Aera DMG
     simepleAmount: 0
-    stat: Percent DMG Cap
-  - positive: 1
-    amount: +20%
+    stat: on Block
+  - positive: 0
+    amount: 5 Seconds
     simepleAmount: 0
-    stat: Percent Damage
+    stat: Ability Cooldown
   rarity: 2
-  cardArt: {fileID: 1761759374703976920, guid: d1162719a6f2d2b47b1ce5fa43175e37, type: 3}
+  cardArt: {fileID: 0}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -88,7 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 538193580314667170, guid: d9a6fb236a124614a83e71517e52c2ef,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
@@ -198,7 +199,7 @@ MonoBehaviour:
   useCharge: 0
   dontAllowAutoFire: 0
   objectsToSpawn: []
-  projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  projectileColor: {r: 0.5, g: 0, b: 0, a: 1}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0
@@ -298,7 +299,7 @@ MonoBehaviour:
   OverrideClassName: 
   CardClassType: 16
   CardLimit: 1
-  RequiredClass: {fileID: 5413385911517455255, guid: 0237ac239e34a2a4398c0540fd6aeec9,
+  RequiredClass: {fileID: 5413385911517455255, guid: e55095cd324de8f41ad55095552ca552,
     type: 3}
   RequiredClassTree: []
   CardRarity: 0
@@ -307,21 +308,7 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
---- !u!114 &114633021159868724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7882910650094676032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebcc83f2ce541dd438ea5ba529c9cd89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScalingPercentageDamage: 0.2
-  ScalingPercentageDamageCap: 0.2
---- !u!114 &114881654511528766
+--- !u!114 &114602836669831300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,7 +323,7 @@ MonoBehaviour:
   Name: Reaper_Gray
   targetColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   bgColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114232234462623208
+--- !u!114 &114188954914632486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

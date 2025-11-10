@@ -7,7 +7,7 @@ using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
-    public class BloodlustMono : MonoBehaviour, IOnDoDamageEvent {
+    public class BloodlustBehaviour : MonoBehaviour, IOnDoDamageEvent {
         [Header("Blood Values")]
         public float MaxBlood = 100;
         public float StartingBlood = 50;
