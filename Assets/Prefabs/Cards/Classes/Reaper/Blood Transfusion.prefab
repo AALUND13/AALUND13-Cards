@@ -295,7 +295,7 @@ MonoBehaviour:
   OverrideClassName: 
   CardClassType: 16
   CardLimit: 3
-  RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
+  RequiredClass: {fileID: 5413385911517455255, guid: e55095cd324de8f41ad55095552ca552,
     type: 3}
   RequiredClassTree: []
   CardRarity: 0
