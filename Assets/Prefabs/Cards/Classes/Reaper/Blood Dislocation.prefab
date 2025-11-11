@@ -53,9 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Blood Dislocation
-  cardDestription: "When you block, unleash an area of effect that deals **30% of
-    enemies max health** as damage in range\n<#7A7A7A><i>Note: Precentage damage effectiveness
-    decreases with distance from players</i></color>\r"
+  cardDestription: "When you block, unleash an area of effect that deals <b>30% of
+    enemies max health</b> as damage in range\n<#7A7A7A><i>Note: Precentage damage
+    effectiveness decreases with distance from players</i></color>\r"
   cardStats:
   - positive: 1
     amount: +30% Aera DMG

@@ -29,7 +29,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
                 float scaleRanage = Ranage * transform.localScale.x;
                 float scalePercentDamage = PercentDamage;
                 if(ScaleWithLevel && attackLevel != null) {
-                    scalePercentDamage *= attackLevel.attackLevel * attackLevel.LevelScale();
+                    scalePercentDamage *= attackLevel.attackLevel;
                 }
 
                 foreach(Player player in ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(spawnedAttack.spawner)) {

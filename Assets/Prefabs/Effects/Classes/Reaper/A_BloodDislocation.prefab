@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1611426566892696883}
   - component: {fileID: 151591911647146195}
   - component: {fileID: 3269146179993534996}
+  - component: {fileID: 114104913100746646}
   - component: {fileID: 114589825937714358}
   - component: {fileID: 2277504145594921148}
   m_Layer: 0
@@ -92,7 +93,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackLevel: 1
-  levelScaleM: 1
+  levelScaleM: 0.5
+--- !u!114 &114104913100746646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538193580314667170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820e4e3905cb94c4aa9e1e1e3c95718c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onLevelUp: 1
+  onStart: 0
 --- !u!114 &114589825937714358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +150,7 @@ MonoBehaviour:
   objectToSpawn:
   - {fileID: 5446257494997104414, guid: 20f99f7b243027247a9f0e0f9fb2fa68, type: 3}
   spawnRot: 0
-  inheritScale: 0
+  inheritScale: 1
   destroyObject: 0
   destroyRoot: 0
   mostRecentlySpawnedObject: {fileID: 0}
