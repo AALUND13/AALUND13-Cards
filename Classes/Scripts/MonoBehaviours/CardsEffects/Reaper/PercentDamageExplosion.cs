@@ -2,7 +2,6 @@
 using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
-    [RequireComponent(typeof(SpawnedAttack))]
     public class PercentDamageExplosion : MonoBehaviour {
         [Header("Settings")]
         public float PercentDamage = 0.45f;
@@ -24,28 +23,32 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             return Mathf.Clamp(((normalizedValue * -normalizedValue) * normalizedValue + 1) * maxValue, 0f, maxValue);
         }
 
+        public void Trigger(Player player) {
+            float scaleRanage = Ranage * transform.localScale.x;
+            float scalePercentDamage = PercentDamage;
+            if(ScaleWithLevel && attackLevel != null) {
+                scalePercentDamage *= attackLevel.attackLevel;
+            }
+
+            foreach(Player playerToDamage in ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player)) {
+                if(!PlayerManager.instance.CanSeePlayer(transform.position, playerToDamage).canSee) return;
+
+                float damageFromPercent = playerToDamage.data.maxHealth * scalePercentDamage;
+                float distance = Vector2.Distance(transform.position, playerToDamage.transform.position);
+                float value = CalculateScaledValue(distance, damageFromPercent, scaleRanage);
+
+                if(value > 0f) {
+                    Vector3 dir = (playerToDamage.transform.position - transform.position).normalized;
+                    playerToDamage.data.healthHandler.CallTakeDamage(value * dir, transform.position, null, playerToDamage);
+
+                    SpawnPlayerDamageEffect(playerToDamage);
+                }
+            }
+        }
+
         public void Trigger() {
-            if(spawnedAttack.IsMine()) {
-                float scaleRanage = Ranage * transform.localScale.x;
-                float scalePercentDamage = PercentDamage;
-                if(ScaleWithLevel && attackLevel != null) {
-                    scalePercentDamage *= attackLevel.attackLevel;
-                }
-
-                foreach(Player player in ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(spawnedAttack.spawner)) {
-                    if(!PlayerManager.instance.CanSeePlayer(transform.position, player).canSee) return;
-
-                    float damageFromPercent = player.data.maxHealth * scalePercentDamage;
-                    float distance = Vector2.Distance(transform.position, player.transform.position);
-                    float value = CalculateScaledValue(distance, damageFromPercent, scaleRanage);
-
-                    if(value > 0f) {
-                        Vector3 dir = (player.transform.position - transform.position).normalized;
-                        player.data.healthHandler.CallTakeDamage(value * dir, transform.position, null, spawnedAttack.spawner);
-
-                        SpawnPlayerDamageEffect(player);
-                    }
-                }
+            if(spawnedAttack != null && spawnedAttack.IsMine()) {
+                Trigger(spawnedAttack.spawner);
             }
         }
 
@@ -71,6 +74,11 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             if(TriggerOnAwake) {
                 this.ExecuteAfterFrames(1, () => Trigger());
             }
+        }
+
+        private void OnDrawGizmosSelected() {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, Ranage * transform.localScale.x);
         }
     }
 }
