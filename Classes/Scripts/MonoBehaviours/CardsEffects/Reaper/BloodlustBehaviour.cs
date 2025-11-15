@@ -60,11 +60,9 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
         }
 
         private float DecayValue(float value) {
-            return Mathf.Max(
-                0,
-                value - (value * value * 2) * Time.deltaTime
-            );
+            return Mathf.Max(0f, value / (1f + 2f * value * Time.deltaTime));
         }
+
 
         private void UpdateBloodState() {
             if(BloodlustStats.Blood <= 0) {
