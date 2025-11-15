@@ -7,7 +7,9 @@ namespace AALUND13Cards.Classes.MonoBehaviours.DeathEffects {
         public GameObject ActivateObjectWhenRespawn;
 
         public void OnRespawn(DeathEffect effect, Player player) {
-            PercentDamageExplosion.Trigger(player);
+            if(player.data.view.IsMine) {
+                PercentDamageExplosion.Trigger(player);
+            }
             ActivateObjectWhenRespawn.SetActive(true);
         }
     }

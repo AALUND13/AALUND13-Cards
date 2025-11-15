@@ -1,10 +1,11 @@
 ﻿using AALUND13Cards.Core;
 using AALUND13Cards.Core.Handlers;
+using ModdingUtils.GameModes;
 using UnboundLib;
 using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
-    public class GrimFateBehaviour : MonoBehaviour {
+    public class GrimFateBehaviour : MonoBehaviour, IBattleStartHookHandler {
         public GameObject GrimFateDeathEffect;
 
         private CharacterData data;
@@ -20,7 +21,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             alreadyTrigger = true;
         }
 
-        private void OnTrueDeath() {
+        public void OnBattleStart() {
             alreadyTrigger = false;
         }
 
@@ -29,12 +30,12 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             data = GetComponentInParent<CharacterData>();
 
             DeathActionHandler.Instance.RegisterReviveAction(data.player, OnDeath);
-            DeathActionHandler.Instance.RegisterTrueDeathAction(data.player, OnTrueDeath);
+            InterfaceGameModeHooksManager.instance.RegisterHooks(this);
         }
 
         private void OnDestroy() {
             DeathActionHandler.Instance.DeregisterReviveAction(data.player, OnDeath);
-            DeathActionHandler.Instance.DeregisterTrueDeathAction(data.player, OnTrueDeath);
+            InterfaceGameModeHooksManager.instance.RemoveHooks(this);
         }
     }
 }

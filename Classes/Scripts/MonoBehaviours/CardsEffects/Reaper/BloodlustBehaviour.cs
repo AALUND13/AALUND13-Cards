@@ -79,20 +79,20 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
         #region Unity Methods
 
         private void Update() {
-            if(!(bool)data.playerVel.GetFieldValue("simulated")) return;
+            if((bool)data.playerVel.GetFieldValue("simulated")) {
+                float old = decayingPrecentageDamage;
+                decayingPrecentageDamage = DecayValue(decayingPrecentageDamage);
+                float diff = decayingPrecentageDamage - old;
 
-            float old = decayingPrecentageDamage;
-            decayingPrecentageDamage = DecayValue(decayingPrecentageDamage);
-            float diff = decayingPrecentageDamage - old;
+                ReaperStats.ScalingPercentageDamageUnCap += diff;
+                appliedScaling += diff;
 
-            ReaperStats.ScalingPercentageDamageUnCap += diff;
-            appliedScaling += diff;
+                if(data.health < data.maxHealth) BloodlustStats.ToggleBloodDrain("Regen", true);
+                else BloodlustStats.ToggleBloodDrain("Regen", false);
+                BloodlustStats.Blood -= BloodlustStats.GetBloodDrain() * Time.deltaTime;
 
-            if(data.health < data.maxHealth) BloodlustStats.ToggleBloodDrain("Regen", true);
-            else BloodlustStats.ToggleBloodDrain("Regen", false);
-            BloodlustStats.Blood -= BloodlustStats.GetBloodDrain() * Time.deltaTime;
-
-            UpdateBloodState();
+                UpdateBloodState();
+            }
 
             bloodBar.SetValues(BloodlustStats.Blood, BloodlustStats.MaxBlood);
         }

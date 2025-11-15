@@ -63,6 +63,12 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             LoggerUtils.LogInfo("\"BloodTranscendence\" has been deactivated");
         }
 
+        private void OnRevive() {
+            if(hasTrigger) {
+                RPCA_Deactivate();
+            }
+        }
+
         private void Update() {
             float minimumBloodRequirement = BloodlustBehaviour.DEFAULT_MAX_BLOOD * PrecentageBloodInvincibilityStop;
             if(data.view.IsMine && BloodlustStats.Blood < minimumBloodRequirement && hasTrigger) {
@@ -73,13 +79,18 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
         private void Start() {
             data = GetComponentInParent<CharacterData>();
             rpc = GetComponentInParent<ChildRPC>();
+
             rpc.childRPCs.Add(BLOOD_TRANSCENDENCE_ACTIVATE_KEY, RPCA_Activate);
             rpc.childRPCs.Add(BLOOD_TRANSCENDENCE_DEACTIVATE_KEY, RPCA_Deactivate);
+
+            data.healthHandler.reviveAction += OnRevive;
         }
 
         private void OnDestroy() {
             rpc.childRPCs.Remove(BLOOD_TRANSCENDENCE_ACTIVATE_KEY);
             rpc.childRPCs.Remove(BLOOD_TRANSCENDENCE_DEACTIVATE_KEY);
+
+            data.healthHandler.reviveAction -= OnRevive;
         }
     }
 }
