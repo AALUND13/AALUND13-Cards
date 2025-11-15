@@ -291,8 +291,8 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
-  CardClassType: 16
+  OverrideClassName: Reaper
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 5413385911517455255, guid: c7a9c066fe21d654c997c20bbab75179,
     type: 3}

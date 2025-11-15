@@ -306,7 +306,7 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
+  OverrideClassName: Death Contract
   CardClassType: 16
   CardLimit: 0
   RequiredClass: {fileID: 0}
