@@ -24,7 +24,7 @@ namespace AALUND13Cards.ExtraCards {
     internal class AAC_Classes : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Classes";
         internal const string ModName = "AALUND13 Classes Cards";
-        internal const string Version = "1.0.0";
+        internal const string Version = "1.1.0";
 
         private static AssetBundle assets;
 

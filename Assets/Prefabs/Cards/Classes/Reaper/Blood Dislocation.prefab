@@ -66,7 +66,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Ability Cooldown
   rarity: 2
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6837460897410398372, guid: bdbb91b2c86e88043b1cbf726ed32d74, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
