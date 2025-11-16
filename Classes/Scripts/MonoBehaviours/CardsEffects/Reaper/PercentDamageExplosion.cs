@@ -29,21 +29,30 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Reaper {
             if(ScaleWithLevel && attackLevel != null) {
                 scalePercentDamage *= attackLevel.attackLevel;
             }
+            
 
             foreach(Player playerToDamage in ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player)) {
-                if(!PlayerManager.instance.CanSeePlayer(transform.position, playerToDamage).canSee) return;
+                if(!PlayerManager.instance.CanSeePlayer(transform.position, playerToDamage).canSee) continue;
 
-                float damageFromPercent = playerToDamage.data.maxHealth * scalePercentDamage;
                 float distance = Vector2.Distance(transform.position, playerToDamage.transform.position);
-                float value = CalculateScaledValue(distance, damageFromPercent, scaleRanage);
+                float maxDamage = playerToDamage.data.maxHealth * scalePercentDamage;
+                float value = CalculateScaledValue(distance, maxDamage, scaleRanage);
 
                 if(value > 0f) {
-                    Vector3 dir = (playerToDamage.transform.position - transform.position).normalized;
-                    playerToDamage.data.healthHandler.CallTakeDamage(value * dir, transform.position, null, playerToDamage);
+                    Vector2 dir = (playerToDamage.transform.position - transform.position).normalized;
+                    Vector2 damageVec = dir * value;
+
+                    playerToDamage.data.healthHandler.CallTakeDamage(
+                        damageVec,
+                        transform.position,
+                        null,
+                        player
+                    );
 
                     SpawnPlayerDamageEffect(playerToDamage);
                 }
             }
+
         }
 
         public void Trigger() {

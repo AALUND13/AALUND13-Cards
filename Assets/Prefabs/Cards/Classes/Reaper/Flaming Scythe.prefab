@@ -311,8 +311,8 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree:
-  - {fileID: 5413385911517455255, guid: 86fe3a7a24eb894499151ba76632bf72, type: 3}
   - {fileID: 5413385911517455255, guid: 0237ac239e34a2a4398c0540fd6aeec9, type: 3}
+  - {fileID: 5413385911517455255, guid: 86fe3a7a24eb894499151ba76632bf72, type: 3}
   CardRarity: 0
   CardRarityCustom: 
   CanBeReassigned: 1
