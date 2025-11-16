@@ -58,11 +58,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a564aa9f81123a9439dbb84b47a8a629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxBlood: 100
-  StartingBlood: 75
-  BloodDrainPerSecond: 5
-  BloodDrainPerSecondRegen: 2
-  BloodHealthRegenRate: 0.05
-  BloodFillPerDamage: 50
-  BloodDamageMultiplier: 0.001
-  PercentageDamagePerDamage: 0.03

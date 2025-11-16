@@ -222,7 +222,7 @@ MonoBehaviour:
     scaleStackM: 0
     scaleFromDamage: 0
     stacks: 0
-  projectileColor: {r: 0.87545586, g: 0, b: 1, a: 1}
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0
@@ -319,8 +319,8 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: Reaper
-  CardClassType: 8
+  OverrideClassName: Contract
+  CardClassType: 2
   CardLimit: 1
   RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
     type: 3}

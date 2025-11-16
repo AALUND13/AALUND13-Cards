@@ -101,7 +101,7 @@ MonoBehaviour:
   secondsToTakeDamageOver: 0
   numberOfJumps: 0
   regen: 0
-  lifeSteal: 0.35
+  lifeSteal: 0
   refreshOnDamage: 0
   automaticReload: 1
   respawns: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   useCharge: 0
   dontAllowAutoFire: 0
   objectsToSpawn: []
-  projectileColor: {r: 0.87545586, g: 0, b: 1, a: 1}
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0
@@ -295,19 +295,19 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
+  OverrideClassName: Death Contract
   CardClassType: 16
   CardLimit: 1
-  RequiredClass: {fileID: 5413385911517455255, guid: 0237ac239e34a2a4398c0540fd6aeec9,
-    type: 3}
-  RequiredClassTree: []
+  RequiredClass: {fileID: 0}
+  RequiredClassTree:
+  - {fileID: 5413385911517455255, guid: 0237ac239e34a2a4398c0540fd6aeec9, type: 3}
+  - {fileID: 5413385911517455255, guid: 86fe3a7a24eb894499151ba76632bf72, type: 3}
   CardRarity: 0
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114633021159868724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,5 +351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0

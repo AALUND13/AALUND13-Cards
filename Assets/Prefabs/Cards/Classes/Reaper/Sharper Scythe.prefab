@@ -194,7 +194,7 @@ MonoBehaviour:
   useCharge: 0
   dontAllowAutoFire: 0
   objectsToSpawn: []
-  projectileColor: {r: 0.87545586, g: 0, b: 1, a: 1}
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardClassType: 16
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 5413385911517455255, guid: c7a9c066fe21d654c997c20bbab75179,
     type: 3}
@@ -303,7 +303,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114080218182160978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,5 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1691787583690612696}
   - component: {fileID: 1774751977049206925}
   - component: {fileID: 114906609052272654}
+  - component: {fileID: 114973819641987482}
   - component: {fileID: 114602836669831300}
   - component: {fileID: 114188954914632486}
   m_Layer: 0
@@ -53,11 +54,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Bloodlust
-  cardDestription: "You hunger for <#BF1111>Blood</color>, damaging players grants
-    <b>+3%</b> percentage damage that decay over time, Your <#BF1111>Blood</color>
-    constantly drain if empty you take damage. While health not at full with <#BF1111>Blood</color>
-    remaining, you instead gain +5% regen/s until fully healed or the bar is empty\r\n"
-  cardStats: []
+  cardDestription: 'Damaging enemies fills your <#BF1111>blood</color> based on how
+    much of their health you take.
+
+    While you still have <#BF1111>blood</color>, gain <b>+5% health regen/s</b> until
+    fully healed'
+  cardStats:
+  - positive: 1
+    amount: +120% Blood
+    simepleAmount: 0
+    stat: "\xD7 Target HP%"
+  - positive: 1
+    amount: +50% Damage
+    simepleAmount: 0
+    stat: "\xD7 Target HP%"
+  - positive: 0
+    amount: Take Damage
+    simepleAmount: 0
+    stat: If Blood Run Dry
   rarity: 2
   cardArt: {fileID: 799452286766514847, guid: 7295cd4b74cf2344fa375722b010e824, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -95,7 +109,7 @@ MonoBehaviour:
   secondsToTakeDamageOver: 0
   numberOfJumps: 0
   regen: 0
-  lifeSteal: 0.35
+  lifeSteal: 0
   refreshOnDamage: 0
   automaticReload: 1
   respawns: 0
@@ -192,7 +206,7 @@ MonoBehaviour:
   useCharge: 0
   dontAllowAutoFire: 0
   objectsToSpawn: []
-  projectileColor: {r: 0.87545586, g: 0, b: 1, a: 1}
+  projectileColor: {r: 0.5, g: 0, b: 0, a: 1}
   waveMovement: 0
   teleport: 0
   spawnSkelletonSquare: 0
@@ -290,7 +304,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardClassType: 16
+  CardClassType: 2
   CardLimit: 1
   RequiredClass: {fileID: 5413385911517455255, guid: a9753eed3dc77a24e83967cec57fc2e5,
     type: 3}
@@ -301,7 +315,26 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
+--- !u!114 &114973819641987482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882910650094676032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faffef75856b24f48ad6a148698c3484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxBlood: 100
+  StartingBlood: 75
+  BloodDrainRate: 2.5
+  BloodDrainRateWhenRegen: 2
+  BloodHealthRegenRate: 0.05
+  DamageFromNoBlood: 0.0005
+  BloodFillPerDamage: 1.2
+  DamageMultiplierFromDamage: 0.5
 --- !u!114 &114602836669831300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,5 +364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0

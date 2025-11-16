@@ -1,8 +1,6 @@
-# AALUND13 Classes Cards [v1.0.0]
-
-AALUND13 Classes Cards introduces <b>27</b> cards developed by <b>AALUND13</b>.  
+# AALUND13 Classes Cards [v1.1.0]
+AALUND13 Classes Cards introduces <b>32</b> cards developed by <b>AALUND13</b>.  
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
-
 <h3>Cards:</h3>
 <b>Classes - Exo Armor:</b>
 <pre>
@@ -13,7 +11,8 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 <b>Classes - Reaper:</b>
 <pre>
 - Reaper                    - Sharpened Scythe          - Sharper Scythe            - Death Contract            
-- Death Scythe              - Bloodlust                 - Withering                 
+- Death Scythe              - Bloodlust                 - Withering                 - Blood Transfusion         
+- Blood Dislocation         - Blood Transcendence       - Flaming Scythe            - Grim Fate                 
 </pre>
 <br>
 <b>Classes - Soulstreak:</b>
