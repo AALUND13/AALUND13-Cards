@@ -62,11 +62,11 @@ MonoBehaviour:
   - positive: 0
     amount: -35%
     simepleAmount: 0
-    stat: Damage per death
+    stat: Damage Per Death
   - positive: 0
     amount: -35%
     simepleAmount: 0
-    stat: Health per death
+    stat: Health Per Death
   rarity: 1
   cardArt: {fileID: 4922074148251014748, guid: 709765381c60e9e43b8cb3912be3a481, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}

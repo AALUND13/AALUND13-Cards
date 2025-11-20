@@ -64,7 +64,7 @@ MonoBehaviour:
   - positive: 0
     amount: Disable
     simepleAmount: 0
-    stat: Block invulnerability
+    stat: Block Invulnerability
   rarity: 1
   cardArt: {fileID: 6673160647667686811, guid: a083b1ae1033b104f8393e3c1d66fea4, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
