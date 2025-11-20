@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 114694404421051310}
   - component: {fileID: 114886075155469610}
   - component: {fileID: 114070948813073818}
-  - component: {fileID: 114862159210579632}
+  - component: {fileID: 114397148154526390}
   - component: {fileID: 114951772638915378}
   m_Layer: 0
   m_Name: Curse of Greed
@@ -60,11 +60,11 @@ MonoBehaviour:
   - positive: 1
     amount: Guarantees 1
     simepleAmount: 0
-    stat: Legendary per draw
+    stat: Legendary Per Draw
   - positive: 0
-    amount: Only 3
+    amount: 1/3
     simepleAmount: 0
-    stat: Cards draws
+    stat: Cards Draws
   rarity: 1
   cardArt: {fileID: 6396102743762758341, guid: 00d94e782870de7418d07c76903bbc7e, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -341,7 +341,7 @@ MonoBehaviour:
   DevilPicks: 0
   SetGuaranteedRarity: 1
   GuaranteesRarity: 8
---- !u!114 &114862159210579632
+--- !u!114 &114397148154526390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,10 +350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473282574127126098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c09de6a819ca3849be387179caa49b4, type: 3}
+  m_Script: {fileID: 11500000, guid: a6a11d6e8f5ed4740b19504593b2326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfDrawToSet: 3
+  CardsDrawsMultiplier: 0.33333334
 --- !u!114 &114951772638915378
 MonoBehaviour:
   m_ObjectHideFlags: 0

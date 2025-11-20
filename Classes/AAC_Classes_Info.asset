@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Classes_Cards
   Author: AALUND13
-  Version: 1.0.0
+  Version: 1.1.1
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Adds 3 classes, 1 "mini-classes"
   BeforeBuildCommand: 
