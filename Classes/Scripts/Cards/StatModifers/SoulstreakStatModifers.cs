@@ -32,6 +32,9 @@ namespace AALUND13Cards.Classes.Cards.StatModifers {
         public float SoulDrainDamageMultiply = 0;
         public float SoulDrainLifestealMultiply = 0;
 
+        [Header("Damage Resistance Per Kill")]
+        public float DamageResistancePerKill = 0;
+
         [Header("Abilities")]
         public AbilityType AbilityType;
 
@@ -52,9 +55,14 @@ namespace AALUND13Cards.Classes.Cards.StatModifers {
 
             soulstreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
             soulstreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
-            
+
             if((AbilityType & AbilityType.Armor) == AbilityType.Armor) {
                 soulstreakStats.AddAbility(new ArmorAbility(player, 10f));
+            }
+
+            if(DamageResistancePerKill != 0) {
+                soulstreakStats.AddAbility(new SoulstealerResistanceAbiilty(player));
+                soulstreakStats.DamageResistancePerKill += DamageResistancePerKill;
             }
         }
     }

@@ -23,6 +23,9 @@ namespace AALUND13Cards.Classes.Cards {
         public float SoulDrainDPSFactor = 0;
         public float SoulDrainLifestealMultiply = 0;
 
+        // Other Stats
+        public float DamageResistancePerKill = 0;
+
         // Abilities
         public Dictionary<Type, ISoulstreakAbility> AbilitiesMap = new Dictionary<Type, ISoulstreakAbility>();
         public ReadOnlyCollection<ISoulstreakAbility> Abilities => AbilitiesMap.Values.ToList().AsReadOnly();
@@ -68,6 +71,9 @@ namespace AALUND13Cards.Classes.Cards {
             // Soul Armor Stats
             SoulArmorPercentage = 0;
             SoulArmorPercentageRegenRate = 0;
+
+            // Other Resistance Stats
+            DamageResistancePerKill = 0;
 
             // Abilities
             AbilitiesMap.Clear();

@@ -39,7 +39,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
             ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
             soulArmor.MaxArmorValue = 0;
             soulArmor.CurrentArmorValue = 0;
-
         }
 
         public override void OnUpdate() {
