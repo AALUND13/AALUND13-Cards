@@ -54,7 +54,7 @@ namespace AALUND13Cards.Classes.Cards.StatModifers {
             soulstreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
             
             if((AbilityType & AbilityType.Armor) == AbilityType.Armor) {
-                soulstreakStats.Abilities.Add(new ArmorAbility(player, 10f));
+                soulstreakStats.AddAbility(new ArmorAbility(player, 10f));
             }
         }
     }

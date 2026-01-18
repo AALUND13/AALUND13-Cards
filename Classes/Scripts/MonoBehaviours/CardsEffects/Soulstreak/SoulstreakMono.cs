@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnboundLib;
+using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
@@ -23,7 +24,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
         public void BlockAbility() {
             foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                ability.OnBlock(this);
+                ability.OnBlock();
             }
         }
 
@@ -33,7 +34,12 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
                 if(data.gameObject.GetComponent<SoulstreakEffect>() != null) {
                     Destroy(data.gameObject.GetComponent<SoulstreakEffect>());
                 }
+
+                foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
+                    ability.OnSoulsReset(SoulstreakStats.Souls);
+                }
                 SoulstreakStats.Souls = 0;
+                
                 if(data.view.IsMine) {
                     SoulsCounterGUI.GetComponentInChildren<TextMeshProUGUI>().text = SoulsString;
                 }
@@ -46,6 +52,10 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
                 SoulstreakStats.Souls += kills;
                 data.gameObject.GetOrAddComponent<SoulstreakEffect>().ApplyStats();
+
+                foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
+                    ability.OnSoulsAdded(kills);
+                }
             }
         }
 
@@ -53,11 +63,9 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             data.gameObject.GetOrAddComponent<SoulstreakEffect>().ApplyStats();
         }
 
-
-
         private void OnRevive() {
             foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                ability.OnReset(this);
+                ability.OnReset();
             }
         }
 
@@ -97,7 +105,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         private void Update() {
             if(data.isPlaying) {
                 foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                    ability.OnUpdate(this);
+                    ability.OnUpdate();
                 }
             }
 

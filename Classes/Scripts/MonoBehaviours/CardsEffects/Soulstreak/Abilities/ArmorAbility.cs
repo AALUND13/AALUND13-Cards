@@ -4,13 +4,14 @@ using JARL.Armor.Bases;
 using UnityEngine;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities {
-    public class ArmorAbility : ISoulstreakAbility {
+    public class ArmorAbility : SoulstreakAbility<ArmorAbility> {
         public float AbilityCooldownTime;
 
         private float abilityCooldown;
         private bool abilityActive;
 
         private ArmorHandler armorHandler;
+        private Player player;
 
         public ArmorAbility(Player player, float abilityCooldownTime) {
             AbilityCooldownTime = abilityCooldownTime;
@@ -18,19 +19,20 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
             abilityActive = false;
 
             armorHandler = ArmorFramework.ArmorHandlers[player];
+            this.player = player;
         }
 
-        public void OnBlock(SoulstreakMono soulstreak) {
+        public override void OnBlock() {
             if(!abilityActive && abilityCooldown == 0) {
                 ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
-                soulArmor.MaxArmorValue = soulstreak.Data.maxHealth * soulstreak.SoulstreakStats.SoulArmorPercentage * (soulstreak.SoulstreakStats.Souls + 1);
-                soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * soulstreak.SoulstreakStats.SoulArmorPercentageRegenRate;
+                soulArmor.MaxArmorValue = player.data.maxHealth * SoulstreakStats.SoulArmorPercentage * (SoulstreakStats.Souls + 1);
+                soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * SoulstreakStats.SoulArmorPercentageRegenRate;
                 soulArmor.CurrentArmorValue = soulArmor.MaxArmorValue;
                 abilityActive = true;
             }
         }
 
-        public void OnReset(SoulstreakMono soulstreak) {
+        public override void OnReset() {
             abilityActive = false;
             abilityCooldown = 0;
 
@@ -40,7 +42,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
 
         }
 
-        public void OnUpdate(SoulstreakMono soulstreak) {
+        public override void OnUpdate() {
             abilityCooldown = Mathf.Max(abilityCooldown - TimeHandler.deltaTime, 0);
 
             if(armorHandler.GetArmorByType<SoulArmor>().CurrentArmorValue <= 0 && armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue > 0) {

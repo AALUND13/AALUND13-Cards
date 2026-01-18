@@ -1,6 +1,9 @@
 ﻿using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
 using AALUND13Cards.Core.Utils;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace AALUND13Cards.Classes.Cards {
     public class SoulStreakStats : ICustomStats {
@@ -21,10 +24,37 @@ namespace AALUND13Cards.Classes.Cards {
         public float SoulDrainLifestealMultiply = 0;
 
         // Abilities
-        public List<ISoulstreakAbility> Abilities = new List<ISoulstreakAbility>();
-
+        public Dictionary<Type, ISoulstreakAbility> AbilitiesMap = new Dictionary<Type, ISoulstreakAbility>();
+        public ReadOnlyCollection<ISoulstreakAbility> Abilities => AbilitiesMap.Values.ToList().AsReadOnly();
 
         public uint Souls = 0;
+
+        public TAbility AddAbility<TAbility>(TAbility soulstreakAbility)
+            where TAbility : SoulstreakAbility<TAbility> 
+        {
+            if(AbilitiesMap.TryGetValue(soulstreakAbility.GetType(), out ISoulstreakAbility existing)) {
+                if(existing is TAbility typedExisting) {
+                    typedExisting.CombineAbility(soulstreakAbility);
+                    return typedExisting;
+                }
+            }
+
+            AbilitiesMap.Add(soulstreakAbility.GetType(), soulstreakAbility);
+            soulstreakAbility.SoulstreakStats = this;
+            
+            return soulstreakAbility;
+        }
+
+        public TAbility GetAbility<TAbility>()
+            where TAbility : SoulstreakAbility<TAbility> 
+        {
+            if(AbilitiesMap.TryGetValue(typeof(TAbility), out ISoulstreakAbility ability)) {
+                return (TAbility)ability;
+            }
+
+            return null;
+        }
+
 
         public void ResetStats() {
             // Character Stats
@@ -40,7 +70,7 @@ namespace AALUND13Cards.Classes.Cards {
             SoulArmorPercentageRegenRate = 0;
 
             // Abilities
-            Abilities.Clear();
+            AbilitiesMap.Clear();
         }
     }
 }
