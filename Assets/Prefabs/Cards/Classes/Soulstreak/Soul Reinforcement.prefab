@@ -52,12 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Soul Barrier Enhancement
-  cardDestription: This card grants your soul barrier a 10% regeneration. Regeneration
+  cardName: Soul Reinforcement
+  cardDestription: This card grants your soul barrier a 7.5% regeneration. Regeneration
     has a 5-second cooldown upon taking damage.
   cardStats:
   - positive: 1
-    amount: +8%
+    amount: +7.5%
     simepleAmount: 0
     stat: Soul Armor Regen
   - positive: 1
@@ -310,7 +310,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: AALUND13.Cards.Armors
   IsCursed: 0
-  Category: 4
 --- !u!114 &114705031577598866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +329,7 @@ MonoBehaviour:
   Damage: 0
   BulletSpeed: 0
   SoulArmorPercentage: 0.05
-  SoulArmorPercentageRegenRate: 0.08
+  SoulArmorPercentageRegenRate: 0.075
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
   AbilityType: 1
@@ -348,5 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
   Priority: 0

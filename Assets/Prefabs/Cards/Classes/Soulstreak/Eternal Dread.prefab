@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 114191682485588200}
   - component: {fileID: 114813661934443840}
   m_Layer: 0
-  m_Name: Soul Drain Enhancement
+  m_Name: Eternal Dread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,15 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Soul Drain Enhancement
-  cardDestription: This card enhances your soul drain by adding +5% soul drain dps.
+  cardName: Eternal Dread
+  cardDestription: Increase your damage of your damaging aura
   cardStats:
   - positive: 1
-    amount: +5% Your DPS
+    amount: +7.5% Your DPS
     simepleAmount: 0
     stat: For Soul Drain DPS
   - positive: 1
-    amount: +10%
+    amount: +15%
     simepleAmount: 0
     stat: Damage
   rarity: 1
@@ -146,7 +146,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 1.1
+  damage: 1.15
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
@@ -325,7 +325,7 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0.05
+  SoulDrainDamageMultiply: 0.075
   SoulDrainLifestealMultiply: 0
   AbilityType: 0
 --- !u!114 &114813661934443840

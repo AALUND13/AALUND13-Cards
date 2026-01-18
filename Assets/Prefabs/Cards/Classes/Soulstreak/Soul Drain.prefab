@@ -54,10 +54,10 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Soul Drain
   cardDestription: This card allows you to drain the health of nearby enemies based
-    on 8% of your DPS.
+    on 15% of your DPS.
   cardStats:
   - positive: 1
-    amount: +8% Your DPS
+    amount: +15% Your DPS
     simepleAmount: 0
     stat: For Soul Drain DPS
   - positive: 1
@@ -311,7 +311,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 4
 --- !u!114 &114195668659408222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +331,7 @@ MonoBehaviour:
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
-  SoulDrainDamageMultiply: 0.08
+  SoulDrainDamageMultiply: 0.15
   SoulDrainLifestealMultiply: 0.5
   AbilityType: 0
 --- !u!114 &114684103336457062
@@ -349,5 +348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
   Priority: 0
