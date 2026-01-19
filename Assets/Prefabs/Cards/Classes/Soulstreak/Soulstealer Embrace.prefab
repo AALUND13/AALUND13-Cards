@@ -305,9 +305,10 @@ MonoBehaviour:
   OverrideClassName: 
   CardClassType: 16
   CardLimit: 0
-  RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
-    type: 3}
-  RequiredClassTree: []
+  RequiredClass: {fileID: 0}
+  RequiredClassTree:
+  - {fileID: 8163522322292975028, guid: ee5b4e40f247b7d40926daf20a008de0, type: 3}
+  - {fileID: 8163522322292975028, guid: 8c0595b2dc45d1942a78a6023bc34ce6, type: 3}
   CardRarity: 0
   CardRarityCustom: 
   CanBeReassigned: 1
@@ -335,7 +336,9 @@ MonoBehaviour:
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  DamageResistancePerKill: 0
   AbilityType: 0
 --- !u!114 &114540035733948314
 MonoBehaviour:
