@@ -55,7 +55,7 @@ MonoBehaviour:
   cardName: Soulstealer Resistance
   cardDestription: 'You gain more damage resistant more souls you have
 
-    <#7A7A7A>Note: Damage resistant can go to maximum of <b>45%</b></color>'
+    <#7A7A7A>Note: Damage resistant can go to maximum of <b>75%</b></color>'
   cardStats:
   - positive: 1
     amount: +5% DMG Resistant

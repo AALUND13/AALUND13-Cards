@@ -23,7 +23,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
 
             float resistanceToAdd = SoulstreakStats.DamageResistancePerKill * addedSouls;
 
-            float newResistance = Mathf.Min(currentResistance + resistanceToAdd, 0.45f);
+            float newResistance = Mathf.Min(currentResistance + resistanceToAdd, 0.75f);
             float actualAdded = newResistance - currentResistance;
 
             addedDamageResistance += actualAdded;
