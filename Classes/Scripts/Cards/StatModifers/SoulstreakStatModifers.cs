@@ -30,6 +30,7 @@ namespace AALUND13Cards.Classes.Cards.StatModifers {
 
         [Header("Soul Drain")]
         public float SoulDrainDamageMultiply = 0;
+        public float SoulDrainPercentageDPSFactor = 0;
         public float SoulDrainLifestealMultiply = 0;
 
         [Header("Damage Resistance Per Kill")]
@@ -54,6 +55,7 @@ namespace AALUND13Cards.Classes.Cards.StatModifers {
             soulstreakStats.SoulArmorPercentageRegenRate += SoulArmorPercentageRegenRate;
 
             soulstreakStats.SoulDrainDPSFactor += SoulDrainDamageMultiply;
+            soulstreakStats.SoulDrainPercentageDPSFactor += SoulDrainPercentageDPSFactor;
             soulstreakStats.SoulDrainLifestealMultiply += SoulDrainLifestealMultiply;
 
             if((AbilityType & AbilityType.Armor) == AbilityType.Armor) {

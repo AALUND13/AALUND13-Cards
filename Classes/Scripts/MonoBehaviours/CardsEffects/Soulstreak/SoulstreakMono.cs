@@ -68,8 +68,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             }
         }
 
-
-
         private void Start() {
             data = GetComponentInParent<Player>().data;
             SoulstreakStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();

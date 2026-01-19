@@ -21,6 +21,7 @@ namespace AALUND13Cards.Classes.Cards {
 
         // Soul Drain Stats
         public float SoulDrainDPSFactor = 0;
+        public float SoulDrainPercentageDPSFactor = 0;
         public float SoulDrainLifestealMultiply = 0;
 
         // Other Stats
@@ -37,7 +38,6 @@ namespace AALUND13Cards.Classes.Cards {
         {
             if(AbilitiesMap.TryGetValue(soulstreakAbility.GetType(), out ISoulstreakAbility existing)) {
                 if(existing is TAbility typedExisting) {
-                    typedExisting.CombineAbility(soulstreakAbility);
                     return typedExisting;
                 }
             }
@@ -71,6 +71,11 @@ namespace AALUND13Cards.Classes.Cards {
             // Soul Armor Stats
             SoulArmorPercentage = 0;
             SoulArmorPercentageRegenRate = 0;
+
+            // Soul Drain Stats
+            SoulDrainDPSFactor = 0;
+            SoulDrainPercentageDPSFactor = 0;
+            SoulDrainLifestealMultiply = 0;
 
             // Other Resistance Stats
             DamageResistancePerKill = 0;

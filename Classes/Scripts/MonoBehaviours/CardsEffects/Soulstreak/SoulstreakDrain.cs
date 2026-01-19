@@ -30,17 +30,31 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             Player closestEnemy = GetClosestEnemy();
             if(closestEnemy == null) return;
 
-            float dps = player.GetDPS();
-            float damage = dps * soulstreakStats.SoulDrainDPSFactor * playerInRangeTrigger.cooldown;
+            float damage = GetDamage(closestEnemy) + GetPercentageDamage(closestEnemy);
             float actualDamage = Mathf.Min(damage, closestEnemy.data.health);
+            Vector2 dir = (closestEnemy.transform.position - transform.position).normalized;
 
             float lifesteal = Mathf.Max(0f, actualDamage * soulstreakStats.SoulDrainLifestealMultiply);
 
-            closestEnemy.data.healthHandler.TakeDamage(damage * Vector2.up, transform.position, null, player, true, true);
+            closestEnemy.data.healthHandler.TakeDamage(dir * damage, transform.position, null, player, true, true);
             player.data.healthHandler.Heal(lifesteal);
 
             SoundManager.Instance.Play(SoundDamage, closestEnemy.transform);
-            LoggerUtils.LogInfo($"DPS: {dps}, Damage: {damage}, Lifesteal: {lifesteal}");
+            LoggerUtils.LogInfo($"Damage: {damage}, Lifesteal: {lifesteal}");
+        }
+
+        private float GetDamage(Player player) {
+            float dps = player.GetDPS();
+            float damage = dps * soulstreakStats.SoulDrainDPSFactor * playerInRangeTrigger.cooldown;
+
+            return damage;
+        }
+
+        private float GetPercentageDamage(Player player) {
+            float percentageDamage = soulstreakStats.SoulDrainPercentageDPSFactor * playerInRangeTrigger.cooldown;
+            float actualDamage = player.data.maxHealth * percentageDamage;
+
+            return actualDamage;
         }
 
         private Player GetClosestEnemy() {
