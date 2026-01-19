@@ -13,6 +13,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
         public virtual void OnSoulsAdded(uint addedSouls) { }
         public virtual void OnSoulsReset(uint removedSouls) { }
 
-        public virtual void CombineAbility(TAbility ability) { }
+        public virtual void OnRemove() { }
     }
 }
