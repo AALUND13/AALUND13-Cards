@@ -64,7 +64,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
         private void OnRevive() {
             foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                ability.OnReset();
+                ability.OnRevive();
             }
         }
 

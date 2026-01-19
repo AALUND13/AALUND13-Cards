@@ -32,7 +32,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
             }
         }
 
-        public override void OnReset() {
+        public override void OnRevive() {
             abilityActive = false;
             abilityCooldown = 0;
 

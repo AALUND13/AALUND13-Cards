@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities {
     public interface ISoulstreakAbility {
         void OnBlock();
-        void OnReset();
+        void OnRevive();
         void OnUpdate();
 
         void OnSoulsAdded(uint addedSouls);
