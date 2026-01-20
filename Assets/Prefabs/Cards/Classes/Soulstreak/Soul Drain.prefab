@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 5028120881987239697, guid: f9ea0b92b2674c444b80d980143c1cbe,
+  AddObjectToPlayer: {fileID: 7258099209008353287, guid: f9ea0b92b2674c444b80d980143c1cbe,
     type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
@@ -332,7 +332,9 @@ MonoBehaviour:
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0.15
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0.5
+  DamageResistancePerKill: 0
   AbilityType: 0
 --- !u!114 &114684103336457062
 MonoBehaviour:
