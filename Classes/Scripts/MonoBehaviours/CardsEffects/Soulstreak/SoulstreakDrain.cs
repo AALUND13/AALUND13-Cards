@@ -84,7 +84,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
         private void ShowEffectForPlayer(Player target) {
             GameObject effect = GetEffectForPlayer(target);
-            effect.transform.position = target.transform.position;
+            effect.transform.position = target.transform.position + new Vector3(0, 0, 6);
 
             Vector3 dir = (target.transform.position - player.transform.position).normalized;
             if(dir != Vector3.zero) {
