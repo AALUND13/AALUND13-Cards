@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Classes.Cards;
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
+using AALUND13Cards.Classes.UI;
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Utils;
@@ -19,8 +20,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         public CharacterData Data => data;
         private CharacterData data;
 
-        private string SoulsString => $"{(SoulstreakStats.Souls > 1 ? "Souls" : "Soul")}: {SoulstreakStats.Souls}";
-
         public void BlockAbility() {
             foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
                 ability.OnBlock();
@@ -38,10 +37,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
                     ability.OnSoulsReset(SoulstreakStats.Souls);
                 }
                 SoulstreakStats.Souls = 0;
-                
-                if(data.view.IsMine) {
-                    SoulsCounterGUI.GetComponentInChildren<TextMeshProUGUI>().text = SoulsString;
-                }
             }
         }
 
@@ -73,9 +68,11 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             SoulstreakStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
 
             SoulsCounter = Instantiate(SoulsCounter);
+            SoulsCounter.GetComponent<SoulstreakSoulsCounter>().soulstreakMono = this;
             if(data.view.IsMine && !data.GetComponent<PlayerAPI>().enabled) {
                 SoulsCounterGUI = Instantiate(SoulsCounterGUI);
                 SoulsCounterGUI.transform.SetParent(data.transform.parent);
+                SoulsCounterGUI.GetComponent<SoulstreakSoulsCounter>().soulstreakMono = this;
             }
 
             data.SetWobbleObjectChild(SoulsCounter.transform);
@@ -104,11 +101,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
                 foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
                     ability.OnUpdate();
                 }
-            }
-
-            SoulsCounter.GetComponent<TextMeshPro>().text = SoulsString;
-            if(data.view.IsMine && !data.GetComponent<PlayerAPI>().enabled) {
-                SoulsCounterGUI.GetComponentInChildren<TextMeshProUGUI>().text = SoulsString;
             }
         }
     }

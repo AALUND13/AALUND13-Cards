@@ -7,7 +7,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
     public class ArmorAbility : SoulstreakAbility<ArmorAbility> {
         public float AbilityCooldownTime;
 
-        private float abilityCooldown;
+        public float AbilityCooldown { get; private set; }
         private bool abilityActive;
 
         private ArmorHandler armorHandler;
@@ -15,7 +15,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
 
         public ArmorAbility(Player player, float abilityCooldownTime) {
             AbilityCooldownTime = abilityCooldownTime;
-            abilityCooldown = 0f;
+            AbilityCooldown = 0f;
             abilityActive = false;
 
             armorHandler = ArmorFramework.ArmorHandlers[player];
@@ -23,7 +23,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
         }
 
         public override void OnBlock() {
-            if(!abilityActive && abilityCooldown == 0) {
+            if(!abilityActive && AbilityCooldown == 0) {
                 ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
                 soulArmor.MaxArmorValue = player.data.maxHealth * SoulstreakStats.SoulArmorPercentage * (SoulstreakStats.Souls + 1);
                 soulArmor.ArmorRegenerationRate = soulArmor.MaxArmorValue * SoulstreakStats.SoulArmorPercentageRegenRate;
@@ -34,7 +34,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
 
         public override void OnRevive() {
             abilityActive = false;
-            abilityCooldown = 0;
+            AbilityCooldown = 0;
 
             ArmorBase soulArmor = armorHandler.GetArmorByType<SoulArmor>();
             soulArmor.MaxArmorValue = 0;
@@ -42,11 +42,11 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
         }
 
         public override void OnUpdate() {
-            abilityCooldown = Mathf.Max(abilityCooldown - TimeHandler.deltaTime, 0);
+            AbilityCooldown = Mathf.Max(AbilityCooldown - TimeHandler.deltaTime, 0);
 
             if(armorHandler.GetArmorByType<SoulArmor>().CurrentArmorValue <= 0 && armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue > 0) {
                 armorHandler.GetArmorByType<SoulArmor>().MaxArmorValue = 0;
-                abilityCooldown = 10;
+                AbilityCooldown = 10;
                 abilityActive = false;
             }
         }
