@@ -66,7 +66,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Health
   rarity: 1
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 4563956203018262590, guid: d631064592587694f9ddad2dad7e326c, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -295,7 +295,7 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
+  OverrideClassName: Soulstreak
   CardClassType: 16
   CardLimit: 0
   RequiredClass: {fileID: 1068786388197914799, guid: 1314d33710108bf4780d98821d52e6c7,
@@ -328,6 +328,7 @@ MonoBehaviour:
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
   DamageResistancePerKill: 0.05
   AbilityType: 0
