@@ -128,7 +128,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         }
 
         private float GetDamage(Player target) {
-            float dps = target.GetDPS();
+            float dps = player.GetDPS();
             return dps * soulstreakStats.SoulDrainDPSFactor * Cooldown;
         }
 
