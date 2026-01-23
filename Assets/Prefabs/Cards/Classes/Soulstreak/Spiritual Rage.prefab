@@ -294,7 +294,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: Soulstreak
-  CardClassType: 16
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
     type: 3}

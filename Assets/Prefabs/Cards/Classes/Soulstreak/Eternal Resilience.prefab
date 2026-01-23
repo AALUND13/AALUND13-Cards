@@ -294,7 +294,7 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardClassType: 16
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
     type: 3}
@@ -326,7 +326,9 @@ MonoBehaviour:
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  DamageResistancePerKill: 0
   AbilityType: 0
 --- !u!114 &114131838678379620
 MonoBehaviour:
