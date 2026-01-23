@@ -26,17 +26,18 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             }
         }
 
-        public void ResetSouls() {
+        public void ResetSouls(float precentage = 0.5f) {
             if(GameManager.instance.battleOngoing) {
                 LoggerUtils.LogInfo($"Resetting kill streak of player with ID {data.player.playerID}");
                 if(data.gameObject.GetComponent<SoulstreakEffect>() != null) {
                     Destroy(data.gameObject.GetComponent<SoulstreakEffect>());
                 }
 
+                uint remainingSouls = (uint)Mathf.RoundToInt(SoulstreakStats.Souls / 2f);
                 foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
                     ability.OnSoulsReset(SoulstreakStats.Souls);
                 }
-                SoulstreakStats.Souls = 0;
+                SoulstreakStats.Souls = remainingSouls;
             }
         }
 

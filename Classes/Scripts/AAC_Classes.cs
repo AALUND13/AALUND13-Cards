@@ -70,15 +70,12 @@ namespace AALUND13Cards.ExtraCards {
                     playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
 
                     if(player.GetComponentInChildren<SoulstreakMono>() != null) {
-                        playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>().Souls * 0.5f));
+                        playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>().Souls * 0.25f));
                     }
                 }
             }
 
             player.GetComponentInChildren<SoulstreakMono>()?.ResetSouls();
-            if(player.GetComponentInChildren<SoulstreakMono>() == null) {
-                player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>().Souls = 0;
-            }
         }
     }
 }

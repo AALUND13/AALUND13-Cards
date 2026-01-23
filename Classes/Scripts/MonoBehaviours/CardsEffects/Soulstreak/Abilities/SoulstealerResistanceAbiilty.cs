@@ -30,9 +30,10 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
             player.data.GetCustomStatsRegistry().GetOrCreate<ClassesStats>().DamageResistance = newResistance;
         }
 
-        public override void OnSoulsReset(uint removedSouls) {
+        public override void OnSoulsReset(uint remainingSouls) {
             player.data.GetCustomStatsRegistry().GetOrCreate<ClassesStats>().DamageResistance -= addedDamageResistance;
             addedDamageResistance = 0;
+            OnSoulsAdded(remainingSouls);
         }
     }
 }

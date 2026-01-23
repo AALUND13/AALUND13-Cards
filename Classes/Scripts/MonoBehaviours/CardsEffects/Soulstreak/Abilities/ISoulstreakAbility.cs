@@ -11,7 +11,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
         void OnUpdate();
 
         void OnSoulsAdded(uint addedSouls);
-        void OnSoulsReset(uint removedSouls);
+        void OnSoulsReset(uint remainingSouls);
 
         void OnRemove();
     }

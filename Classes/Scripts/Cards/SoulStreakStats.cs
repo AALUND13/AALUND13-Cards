@@ -24,6 +24,10 @@ namespace AALUND13Cards.Classes.Cards {
         public float SoulDrainPercentageDPSFactor = 0;
         public float SoulDrainLifestealMultiply = 0;
 
+        // Dreadful Burst
+        public float BurstDamageMultiplier = 0;
+        public float DamageStorage = 0;
+
         // Other Stats
         public float DamageResistancePerKill = 0;
 
@@ -36,6 +40,14 @@ namespace AALUND13Cards.Classes.Cards {
         public TAbility AddAbility<TAbility>(TAbility soulstreakAbility)
             where TAbility : SoulstreakAbility<TAbility> 
         {
+            AddAbilityRaw(soulstreakAbility);
+            soulstreakAbility.SoulstreakStats = this;
+            
+            return soulstreakAbility;
+        }
+
+        public TAbility AddAbilityRaw<TAbility>(TAbility soulstreakAbility)
+            where TAbility : ISoulstreakAbility {
             if(AbilitiesMap.TryGetValue(soulstreakAbility.GetType(), out ISoulstreakAbility existing)) {
                 if(existing is TAbility typedExisting) {
                     return typedExisting;
@@ -43,10 +55,10 @@ namespace AALUND13Cards.Classes.Cards {
             }
 
             AbilitiesMap.Add(soulstreakAbility.GetType(), soulstreakAbility);
-            soulstreakAbility.SoulstreakStats = this;
-            
+
             return soulstreakAbility;
         }
+
 
         public TAbility GetAbility<TAbility>()
             where TAbility : SoulstreakAbility<TAbility> 
