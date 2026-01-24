@@ -1,24 +1,37 @@
 ﻿using AALUND13Cards.Classes.Cards;
+using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
 using AALUND13Cards.Core.Extensions;
 using Sonigon;
 using SoundImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
+    public class SoulDrainAbility : SoulstreakAbility<SoulDrainAbility> {
+        public SoulstreakDrain soulstreakDrain;
+
+        public SoulDrainAbility(SoulstreakDrain soulstreakDrain) {
+            this.soulstreakDrain = soulstreakDrain;
+        }
+    }
+
     public class SoulstreakDrain : MonoBehaviour {
         [Header("Sounds")]
         public SoundEvent SoundDamage;
 
         [Header("Effects")]
         public GameObject soulDrainEffect;
-        public UnityEvent damagePlayerTrigger;
+        public UnityEvent DamagePlayerTrigger;
 
         [Header("Settings")]
         public float Range = 5f;
         public float Cooldown = 0.5f;
+
+        // Events
+        public Action<Player, float> OnPlayerDamage;
 
         private SoulStreakStats soulstreakStats;
         private Player player;
@@ -27,10 +40,14 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         private readonly Dictionary<Player, GameObject> playerEffects = new Dictionary<Player, GameObject>();
         private readonly Queue<GameObject> unusedEffects = new Queue<GameObject>();
 
-        private void Start() {
+        private void Awake() {
             player = GetComponentInParent<Player>();
             soulstreakStats = player.data.GetCustomStatsRegistry().GetOrCreate<SoulStreakStats>();
 
+            soulstreakStats.AddAbility(new SoulDrainAbility(this));
+        }
+
+        private void Start() {
             var groups = SoundVolumeManager.Instance.audioMixer.FindMatchingGroups("SFX");
             if(groups.Length > 0) {
                 SoundDamage.variables.audioMixerGroup = groups[0];
@@ -61,7 +78,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             }
 
             if(triggered) {
-                damagePlayerTrigger.Invoke();
+                DamagePlayerTrigger.Invoke();
             }
         }
 
@@ -125,6 +142,8 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             SoundManager.Instance.Play(SoundDamage, target.transform);
 
             timeSinceHits[target] = Time.time;
+
+            OnPlayerDamage?.Invoke(target, damage);
         }
 
         private float GetDamage(Player target) {
