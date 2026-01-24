@@ -50,5 +50,23 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
                 abilityActive = false;
             }
         }
+
+        public override AbilityBarInfo GetBarInfo() {
+            SoulArmor soulArmor = (SoulArmor)armorHandler.GetArmorByType<SoulArmor>();
+            float percentage = 0;
+
+            if(!soulArmor.IsActive && AbilityCooldownTime > 0f) {
+                percentage = Mathf.Clamp01(
+                    (AbilityCooldownTime - AbilityCooldown) /
+                    AbilityCooldownTime
+                );
+            } else if(soulArmor.IsActive && soulArmor.MaxArmorValue > 0f) {
+                percentage = Mathf.Clamp01(
+                    soulArmor.CurrentArmorValue / soulArmor.MaxArmorValue
+                );
+            }
+
+            return new AbilityBarInfo(true, soulArmor.IsActive, percentage, 1);
+        }
     }
 }

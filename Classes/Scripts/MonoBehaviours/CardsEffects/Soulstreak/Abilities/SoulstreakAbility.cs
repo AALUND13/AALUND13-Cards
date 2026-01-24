@@ -14,5 +14,9 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
         public virtual void OnSoulsReset(uint removedSouls) { }
 
         public virtual void OnRemove() { }
+
+        public virtual AbilityBarInfo GetBarInfo() {
+            return new AbilityBarInfo(false, false, 0, 0);
+        }
     }
 }

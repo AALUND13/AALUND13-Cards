@@ -2,6 +2,9 @@
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak;
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
 using JARL.Armor;
+using System.Collections.Generic;
+using System.Linq;
+using TabInfo;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,20 +15,29 @@ namespace AALUND13Cards.Classes.UI {
         public TMP_Text SoulstreakSoulsText;
         public bool UseFullText = true;
 
-        [Header("Armor Percentage")]
-        public Image SoulArmorPercentage;
-        public Color SoulArmorNonActiveColor;
-        public Color SoulArmorActiveColor;
+        [Header("Single Bar")]
+        public GameObject SingleBarObject;
+        public Image SinglePercentage;
+
+        [Header("Double Bar")]
+        public GameObject DoubleBarObject;
+        public Image DoubleBarPercentageFirst;
+        public Image DoubleBarPercentageSecond;
+
+        [Header("Color")]
+        public Color BarNonActiveColor;
+        public Color BarActiveColor;
 
         [Header("Animation")]
         [SerializeField] private float fillSmoothTime = 0.15f;
 
-        private float currentFillVelocity;
-        private float targetFillAmount;
+        private float firstCurrentFillVelocity;
+        private float firstTargetFillAmount;
+
+        private float secondCurrentFillVelocity;
+        private float secondTargetFillAmount;
 
         [HideInInspector] public SoulstreakMono soulstreakMono;
-
-        private const float UI_HALF_FILL = 0.5f;
 
         private void Update() {
             if(soulstreakMono == null)
@@ -36,13 +48,29 @@ namespace AALUND13Cards.Classes.UI {
         }
 
         private void LateUpdate() {
-            if(SoulArmorPercentage == null)
+            if(SingleBarObject == null || DoubleBarObject == null)
                 return;
 
-            SoulArmorPercentage.fillAmount = Mathf.SmoothDamp(
-                SoulArmorPercentage.fillAmount,
-                targetFillAmount,
-                ref currentFillVelocity,
+            // Single Bar
+            SinglePercentage.fillAmount = Mathf.SmoothDamp(
+                SinglePercentage.fillAmount,
+                firstTargetFillAmount,
+                ref firstCurrentFillVelocity,
+                fillSmoothTime
+            );
+
+            // Double Bars
+            DoubleBarPercentageFirst.fillAmount = Mathf.SmoothDamp(
+                DoubleBarPercentageFirst.fillAmount,
+                firstTargetFillAmount,
+                ref firstCurrentFillVelocity,
+                fillSmoothTime
+            );
+
+            DoubleBarPercentageSecond.fillAmount = Mathf.SmoothDamp(
+                DoubleBarPercentageSecond.fillAmount,
+                secondTargetFillAmount,
+                ref secondCurrentFillVelocity,
                 fillSmoothTime
             );
         }
@@ -63,63 +91,55 @@ namespace AALUND13Cards.Classes.UI {
         }
 
         private void UpdateArmorUI() {
-            if(SoulArmorPercentage == null)
+            if(SingleBarObject == null || DoubleBarObject == null)
                 return;
 
-            ArmorAbility armorAbility =
-                soulstreakMono.SoulstreakStats.GetAbility<ArmorAbility>();
-
-            if(armorAbility == null) {
-                ResetArmorUI();
-                return;
-            }
-
-            SoulArmor soulArmor = ArmorFramework.ArmorHandlers[
-                soulstreakMono.Data.player
-            ].GetArmorByType(typeof(SoulArmor)) as SoulArmor;
-
-            if(soulArmor == null) {
-                ResetArmorUI();
-                return;
-            }
-
-            float percentage = CalculateArmorPercentage(soulArmor, armorAbility);
-            ApplyArmorUI(percentage, !soulArmor.IsActive);
+            RenderBars(soulstreakMono.SoulstreakStats.Abilities.ToArray());
         }
 
-        private float CalculateArmorPercentage(
-            SoulArmor soulArmor,
-            ArmorAbility armorAbility
-        ) {
-            if(!soulArmor.IsActive && armorAbility.AbilityCooldownTime > 0f) {
-                return Mathf.Clamp01(
-                    (armorAbility.AbilityCooldownTime - armorAbility.AbilityCooldown) /
-                    armorAbility.AbilityCooldownTime
-                );
+        private void RenderBars(ISoulstreakAbility[] soulstreakAbilities) {
+            int neededBars = 0;
+
+            List<AbilityBarInfo> abilitiesWithBars = new List<AbilityBarInfo>();
+            foreach(var ability in soulstreakAbilities) {
+                AbilityBarInfo barInfo = ability.GetBarInfo();
+                if(barInfo.ShowBar) {
+                    abilitiesWithBars.Add(barInfo);
+                    neededBars++;
+                }
             }
 
-            if(soulArmor.IsActive && soulArmor.MaxArmorValue > 0f) {
-                return Mathf.Clamp01(
-                    soulArmor.CurrentArmorValue / soulArmor.MaxArmorValue
-                );
+            if(neededBars > 2) {
+                throw new System.Exception("More then 2 abilities requested bars, but counter only support TWO bars");
             }
 
-            return 0f;
-        }
+            switch(neededBars) {
+                case 1:
+                    SingleBarObject.SetActive(true);
+                    DoubleBarObject.SetActive(false);
 
-        private void ApplyArmorUI(float percentage, bool isDisabled) {
-            SoulArmorPercentage.color =
-                isDisabled ? SoulArmorNonActiveColor : SoulArmorActiveColor;
+                    SinglePercentage.color = abilitiesWithBars[0].IsActive ? BarActiveColor : BarNonActiveColor;
+                    firstTargetFillAmount = 0.5f + (Mathf.Clamp01(abilitiesWithBars[0].CurrentValue / abilitiesWithBars[0].MaxValue * 0.5f));
+                    return;
+                case 2:
+                    SingleBarObject.SetActive(false);
+                    DoubleBarObject.SetActive(true);
 
-            targetFillAmount =
-                percentage > 0f
-                    ? UI_HALF_FILL + (percentage * UI_HALF_FILL)
-                    : UI_HALF_FILL;
-        }
+                    DoubleBarPercentageFirst.color = abilitiesWithBars[0].IsActive ? BarActiveColor : BarNonActiveColor;
+                    firstTargetFillAmount = 0.5f + (Mathf.Clamp01(abilitiesWithBars[0].CurrentValue / abilitiesWithBars[0].MaxValue * 0.25f));
 
-        private void ResetArmorUI() {
-            SoulArmorPercentage.fillAmount = UI_HALF_FILL;
-            SoulArmorPercentage.color = SoulArmorNonActiveColor;
+                    DoubleBarPercentageSecond.color = abilitiesWithBars[1].IsActive ? BarActiveColor : BarNonActiveColor;
+                    secondTargetFillAmount = 0.5f + (Mathf.Clamp01(abilitiesWithBars[1].CurrentValue / abilitiesWithBars[1].MaxValue * 0.25f));
+                    return;
+                default:
+                    SingleBarObject.SetActive(true);
+                    DoubleBarObject.SetActive(false);
+
+
+                    SinglePercentage.color = BarNonActiveColor;
+                    SinglePercentage.fillAmount = 0.5f;
+                    return;
+            }
         }
     }
 }
