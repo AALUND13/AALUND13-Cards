@@ -305,7 +305,7 @@ MonoBehaviour:
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
-  RequireMod: 
+  RequireMod: AALUND13.Cards.Armors
   IsCursed: 0
 --- !u!114 &114451275234614244
 MonoBehaviour:
@@ -330,6 +330,8 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  BurstDamageMultiplier: 0
+  DamageStorage: 0
   DamageResistancePerKill: 0.05
   AbilityType: 0
 --- !u!114 &114131838678379620
