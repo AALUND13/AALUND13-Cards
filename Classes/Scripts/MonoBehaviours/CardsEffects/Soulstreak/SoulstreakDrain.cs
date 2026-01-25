@@ -158,7 +158,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         }
 
         private float GetPercentageDamage(Player target) {
-            float percentageDamage = player.GetDPS() * soulstreakStats.SoulDrainPercentageDPSFactor * Cooldown;
+            float percentageDamage = soulstreakStats.SoulDrainPercentageDPSFactor * Cooldown;
             return target.data.maxHealth * percentageDamage;
         }
 
