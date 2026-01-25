@@ -53,10 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Dreadful Burst
-  cardDestription: 'Store up to 20 ticks of damage dealt by <b>Soul Drian</b>
-
-    Once fully charged, activate the ability by blocking to release the stored damage
-    to nearby enemies
+  cardDestription: 'Store up to 20 ticks of damage dealt by <b>Soul Drian</b>, once
+    fully charged, block to release the stored damage to nearby enemies
 
     <#7A7A7A>Note: You can see when your ability is ready to use in your souls GUI</color>'
   cardStats:
@@ -65,7 +63,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: DMG Tick Storage
   - positive: 1
-    amount: +150%
+    amount: +250%
     simepleAmount: 0
     stat: Damage Release
   rarity: 2
@@ -334,7 +332,7 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
-  BurstDamageMultiplier: 1.5
+  BurstDamageMultiplier: 2.5
   DamageStorage: 20
   DamageResistancePerKill: 0
   AbilityType: 0
