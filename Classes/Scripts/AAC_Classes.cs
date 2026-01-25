@@ -15,7 +15,7 @@ using UnboundLib;
 using UnboundLib.GameModes;
 using UnityEngine;
 
-namespace AALUND13Cards.ExtraCards {
+namespace AALUND13Cards.Classes {
     [BepInDependency("AALUND13.Cards.Core")]
     [BepInDependency("AALUND13.Cards.Armors", BepInDependency.DependencyFlags.SoftDependency)]
 
