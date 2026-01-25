@@ -1,6 +1,7 @@
 ﻿using AALUND13Cards.Classes.Cards;
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
 using AALUND13Cards.Core.Extensions;
+using ModsPlus;
 using Sonigon;
 using SoundImplementation;
 using System;
@@ -19,6 +20,8 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
     }
 
     public class SoulstreakDrain : MonoBehaviour {
+        public const string SOUL_DRAIN_DAMAGE_TRIGGER_KEY = "Soul_Drain_Damage_Trigger";
+
         [Header("Sounds")]
         public SoundEvent SoundDamage;
 
@@ -34,6 +37,7 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         public Action<Player, float> OnPlayerDamage;
 
         private SoulStreakStats soulstreakStats;
+        private ChildRPC childRPC;
         private Player player;
 
         private readonly Dictionary<Player, float> timeSinceHits = new Dictionary<Player, float>();
@@ -42,9 +46,15 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
         private void Awake() {
             player = GetComponentInParent<Player>();
+            childRPC = GetComponentInParent<ChildRPC>();
             soulstreakStats = player.data.GetCustomStatsRegistry().GetOrCreate<SoulStreakStats>();
+            childRPC.childRPCsInt.Add(SOUL_DRAIN_DAMAGE_TRIGGER_KEY, TriggerDamageForPlayer);
 
             soulstreakStats.AddAbility(new SoulDrainAbility(this));
+        }
+
+        private void OnDestroy() {
+            childRPC.childRPCsInt.Remove(SOUL_DRAIN_DAMAGE_TRIGGER_KEY);
         }
 
         private void Start() {
@@ -56,17 +66,17 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             soulDrainEffect.SetActive(true);
             unusedEffects.Enqueue(soulDrainEffect);
         }
-
         private void Update() {
             List<Player> enemiesInRange = GetEnemiesInRange();
             List<Player> enemiesOutOfRange = playerEffects.Keys.ToList();
 
-            bool triggered = false;
 
             foreach(Player enemy in enemiesInRange) {
-                if(!timeSinceHits.TryGetValue(enemy, out float lastHit) || Time.time > lastHit + Cooldown) {
-                    TriggerDamageForPlayer(enemy);
-                    triggered = true;
+                if((!timeSinceHits.TryGetValue(enemy, out float lastHit) || Time.time > lastHit + Cooldown) 
+                    && player.data.view.IsMine
+                ) {
+                    childRPC.CallFunction(SOUL_DRAIN_DAMAGE_TRIGGER_KEY, enemy.playerID);
+                    timeSinceHits[enemy] = Time.time;
                 }
 
                 enemiesOutOfRange.Remove(enemy);
@@ -77,9 +87,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
                 HideEffectForPlayer(enemy);
             }
 
-            if(triggered) {
-                DamagePlayerTrigger.Invoke();
-            }
         }
 
         private GameObject GetEffectForPlayer(Player target) {
@@ -119,8 +126,9 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             playerEffects.Remove(target);
         }
 
-        public void TriggerDamageForPlayer(Player target) {
+        public void TriggerDamageForPlayer(int playerID) {
             if(soulstreakStats == null) return;
+            Player target = PlayerManager.instance.GetPlayerWithID(playerID);
 
             float damage = GetDamage(target) + GetPercentageDamage(target);
             float actualDamage = Mathf.Min(damage, target.data.health);
@@ -141,8 +149,6 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
             SoundManager.Instance.Play(SoundDamage, target.transform);
 
-            timeSinceHits[target] = Time.time;
-
             OnPlayerDamage?.Invoke(target, damage);
         }
 
@@ -158,6 +164,8 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
         private List<Player> GetEnemiesInRange() {
             List<Player> enemies = new List<Player>();
+            if(!GameManager.instance.battleOngoing) 
+                return enemies;
 
             foreach(Player enemy in PlayerManager.instance.players) {
                 if(enemy.teamID == player.teamID || !enemy.data.isPlaying || enemy.data.dead)
