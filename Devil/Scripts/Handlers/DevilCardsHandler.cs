@@ -4,6 +4,7 @@ using RarityLib.Utils;
 using System.Collections;
 using System.Linq;
 using UnboundLib.GameModes;
+using UnboundLib.Utils;
 using UnityEngine;
 
 namespace AALUND13Cards.Devil.Handlers {
@@ -17,7 +18,10 @@ namespace AALUND13Cards.Devil.Handlers {
 
             GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStarted);
             ModdingUtils.Utils.Cards.instance.AddCardValidationFunction((player, card) => {
-                if(AllowDevilCards && card.rarity != RarityUtils.GetRarity("Devil")) return false;
+                if(AllowDevilCards && card.rarity != RarityUtils.GetRarity("Devil")) 
+                    return false;
+                else if(!AllowDevilCards && card.rarity == RarityUtils.GetRarity("Devil")) 
+                    return false;
                 return true;
             });
         }
