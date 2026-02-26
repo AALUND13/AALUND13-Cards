@@ -308,7 +308,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: AALUND13.Cards.Armors
   IsCursed: 0
-  Category: 6
 --- !u!114 &114178679546932706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,5 +349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 5d0f66708f09dab47b8e60f936d9b0c5, type: 2}
   Priority: 0

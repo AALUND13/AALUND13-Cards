@@ -3,7 +3,7 @@ using SoundImplementation;
 using System;
 using UnityEngine;
 
-namespace AALUND13Cards.Core.MonoBehaviours.CardsEffects {
+namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects {
     public class RailgunOvercharge : MonoBehaviour {
         [SerializeField] private SoundEvent soundEmpowerSpawn;
 

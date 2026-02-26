@@ -60,7 +60,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Health Per Kill
   - positive: 0
-    amount: -20%
+    amount: -15%
     simepleAmount: 0
     stat: Health
   rarity: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 0.8
+  health: 0.85
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -293,8 +293,8 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
-  CardClassType: 16
+  OverrideClassName: Soulstreak
+  CardClassType: 8
   CardLimit: 0
   RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
     type: 3}
@@ -305,7 +305,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 4
 --- !u!114 &114451275234614244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,16 +317,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244c01c9a87249e49ac22a04893366bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
+  MaxHealth: 0.15
   PlayerSize: 0
   MovementSpeed: 0
   AttackSpeed: 0
-  Damage: 0.15
+  Damage: 0
   BulletSpeed: 0
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  BurstDamageMultiplier: 0
+  DamageStorage: 0
+  DamageResistancePerKill: 0
   AbilityType: 0
 --- !u!114 &114131838678379620
 MonoBehaviour:
@@ -343,5 +346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
   Priority: 0

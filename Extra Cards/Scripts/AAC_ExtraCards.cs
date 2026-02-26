@@ -17,13 +17,14 @@ using UnityEngine;
 
 namespace AALUND13Cards.ExtraCards {
     [BepInDependency("AALUND13.Cards.Core")]
+    [BepInDependency("com.aalund13.rounds.corrupted_cards_manager")]
 
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     internal class AAC_ExtraCards : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Extra_Cards";
         internal const string ModName = "AALUND13 Extra Picks Cards";
-        internal const string Version = "1.0.0";
+        internal const string Version = "1.0.1";
 
         private static AssetBundle assets;
 

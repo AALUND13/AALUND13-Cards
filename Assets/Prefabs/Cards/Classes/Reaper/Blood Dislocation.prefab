@@ -58,7 +58,7 @@ MonoBehaviour:
     effectiveness decreases with distance from players</i></color>\r"
   cardStats:
   - positive: 1
-    amount: +30% Aera DMG
+    amount: +30% Area DMG
     simepleAmount: 0
     stat: on Block
   - positive: 0

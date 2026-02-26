@@ -57,7 +57,7 @@ MonoBehaviour:
     health with more souls.
   cardStats:
   - positive: 1
-    amount: +30% * (souls + 1)
+    amount: +25% * (souls + 1)
     simepleAmount: 0
     stat: Soul Armor
   - positive: 0
@@ -310,7 +310,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: AALUND13.Cards.Armors
   IsCursed: 0
-  Category: 4
 --- !u!114 &114315101381511924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +328,7 @@ MonoBehaviour:
   AttackSpeed: 0
   Damage: 0
   BulletSpeed: 0
-  SoulArmorPercentage: 0.3
+  SoulArmorPercentage: 0.25
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
   SoulDrainLifestealMultiply: 0
@@ -348,5 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
   Priority: 0

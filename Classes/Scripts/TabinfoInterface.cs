@@ -5,7 +5,7 @@ using AALUND13Cards.Core.Extensions;
 using TabInfo.Utils;
 using UnityEngine;
 
-namespace AALUND13Cards.ExtraCards {
+namespace AALUND13Cards.Classes {
     internal class TabinfoInterface {
         public static void Setup() {
             var aaStatsCategory = AALUND13Cards.Core.TabinfoInterface.GetOrCreateCategory("AA Stats", 6);

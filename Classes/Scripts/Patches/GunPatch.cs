@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
 
-namespace AALUND13Cards.Core.Patches {
+namespace AALUND13Cards.Classes.Patches {
     [HarmonyPatch(typeof(Gun))]
     public class GunPatch {
         [HarmonyPatch("ApplyProjectileStats")]

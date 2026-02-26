@@ -22,6 +22,10 @@ namespace AALUND13Cards.Classes.Patches {
         public static void DoDamage(HealthHandler __instance, ref Vector2 damage) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
 
+            if(data.GetCustomStatsRegistry().GetOrCreate<ClassesStats>().DamageResistance > 0) {
+                damage *= Mathf.Clamp01(1f - data.GetCustomStatsRegistry().GetOrCreate<ClassesStats>().DamageResistance);
+            }
+
             if(data.GetCustomStatsRegistry().GetOrCreate<ClassesStats>().Invulnerable) {
                 damage = Vector2.zero;
             }

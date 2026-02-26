@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7750131547516167368
+--- !u!1 &8163522322292975021
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5381839102612664846}
-  - component: {fileID: 4934355067031148439}
-  - component: {fileID: 65127221588611570}
-  - component: {fileID: 8131950549155348781}
-  - component: {fileID: 3688303379169435785}
-  - component: {fileID: 7878269446529554562}
-  - component: {fileID: 6356320218957805462}
-  - component: {fileID: 114835280884674560}
-  - component: {fileID: 114705031577598866}
-  - component: {fileID: 114308216276160210}
+  - component: {fileID: 8163522322292975020}
+  - component: {fileID: 8163522322292975028}
+  - component: {fileID: 8163522322292975029}
+  - component: {fileID: 8163522322292975030}
+  - component: {fileID: 8163522322292975031}
+  - component: {fileID: 8163522322292975016}
+  - component: {fileID: 8163522322292975017}
+  - component: {fileID: 114375967796397380}
+  - component: {fileID: 114451275234614244}
+  - component: {fileID: 114131838678379620}
   m_Layer: 0
-  m_Name: Soul Barrier Enhancement
+  m_Name: Spiritual Rage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5381839102612664846
+--- !u!4 &8163522322292975020
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -33.575146, y: 5.097765, z: -0.87890625}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -39,37 +39,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &4934355067031148439
+--- !u!114 &8163522322292975028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4b032fe9cba4be49be5bb256561788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Soul Barrier Enhancement
-  cardDestription: This card grants your soul barrier a 10% regeneration. Regeneration
-    has a 5-second cooldown upon taking damage.
+  cardName: Spiritual Rage
+  cardDestription: This card allows you to become more stronger per soul gathered.
   cardStats:
-  - positive: 1
-    amount: +8%
-    simepleAmount: 0
-    stat: Soul Armor Regen
-  - positive: 1
-    amount: +5% * (souls + 1)
-    simepleAmount: 0
-    stat: Soul Armor
   - positive: 1
     amount: +20%
     simepleAmount: 0
-    stat: Health
-  rarity: 1
-  cardArt: {fileID: 1458632468741120738, guid: 04d3bc395af66eb47b6db1fcd18b72d6, type: 3}
+    stat: Damage Per Kill
+  - positive: 0
+    amount: -25%
+    simepleAmount: 0
+    stat: Damage
+  rarity: 0
+  cardArt: {fileID: 2580742197838173412, guid: c35edad2fb2466845921eb08e64a7cea, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -78,13 +73,13 @@ MonoBehaviour:
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 4
---- !u!114 &65127221588611570
+--- !u!114 &8163522322292975029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a7455d82e3521142be110549e6130ef, type: 3}
@@ -94,7 +89,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 1.2
+  health: 0.85
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -113,13 +108,13 @@ MonoBehaviour:
   rageSpeed: 1
   attackSpeedMultiplier: 1
   slowPart: {fileID: 0}
---- !u!114 &8131950549155348781
+--- !u!114 &8163522322292975030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f92295fe49b73614591f58e9ea25e35f, type: 3}
@@ -151,7 +146,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 1
+  damage: 0.75
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
@@ -212,13 +207,13 @@ MonoBehaviour:
   defaultCooldown: 1
   attackID: -1
   attackSpeedMultiplier: 1
---- !u!114 &3688303379169435785
+--- !u!114 &8163522322292975031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 786953031, guid: fbb25f4d567ecbd439bfbdcfed7eb232, type: 3}
@@ -235,7 +230,7 @@ MonoBehaviour:
   blockedPart: {fileID: 0}
   cooldown: 0
   counter: 1000
-  cdMultiplier: 1.1
+  cdMultiplier: 1
   cdAdd: 0
   forceToAdd: 0
   forceToAddUp: 0
@@ -246,26 +241,26 @@ MonoBehaviour:
   blockedAtPos: {x: 0, y: 0, z: 0}
   delayOtherActions: 0
   statusBlockPart: {fileID: 0}
---- !u!114 &7878269446529554562
+--- !u!114 &8163522322292975016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d09e61d8798559c41879e0963ec23e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootToPick: 0
---- !u!114 &6356320218957805462
+--- !u!114 &8163522322292975017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1283557461, guid: cc8a520cdc1a71048ac77742d0ea6366, type: 3}
@@ -281,13 +276,13 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114835280884674560
+--- !u!114 &114375967796397380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6481af31ba17c824c934af75d6b93fac, type: 3}
@@ -298,26 +293,25 @@ MonoBehaviour:
   cardStats: {fileID: 0}
   statModifiers: {fileID: 0}
   block: {fileID: 0}
-  OverrideClassName: 
-  CardClassType: 16
+  OverrideClassName: Soulstreak
+  CardClassType: 8
   CardLimit: 0
-  RequiredClass: {fileID: 1068786388197914799, guid: 1314d33710108bf4780d98821d52e6c7,
+  RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
     type: 3}
   RequiredClassTree: []
   CardRarity: 0
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
-  RequireMod: AALUND13.Cards.Armors
+  RequireMod: 
   IsCursed: 0
-  Category: 4
---- !u!114 &114705031577598866
+--- !u!114 &114451275234614244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 244c01c9a87249e49ac22a04893366bb, type: 3}
@@ -327,20 +321,22 @@ MonoBehaviour:
   PlayerSize: 0
   MovementSpeed: 0
   AttackSpeed: 0
-  Damage: 0
+  Damage: 0.2
   BulletSpeed: 0
-  SoulArmorPercentage: 0.05
-  SoulArmorPercentageRegenRate: 0.08
+  SoulArmorPercentage: 0
+  SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
-  AbilityType: 1
---- !u!114 &114308216276160210
+  DamageResistancePerKill: 0
+  AbilityType: 0
+--- !u!114 &114131838678379620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750131547516167368}
+  m_GameObject: {fileID: 8163522322292975021}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70c9400a573c16842b021a8e8d89ee1b, type: 3}
@@ -348,5 +344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
   Priority: 0
