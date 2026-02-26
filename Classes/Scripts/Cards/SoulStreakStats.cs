@@ -1,6 +1,9 @@
 ﻿using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
 using AALUND13Cards.Core.Utils;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace AALUND13Cards.Classes.Cards {
     public class SoulStreakStats : ICustomStats {
@@ -18,13 +21,55 @@ namespace AALUND13Cards.Classes.Cards {
 
         // Soul Drain Stats
         public float SoulDrainDPSFactor = 0;
+        public float SoulDrainPercentageDPSFactor = 0;
         public float SoulDrainLifestealMultiply = 0;
 
-        // Abilities
-        public List<ISoulstreakAbility> Abilities = new List<ISoulstreakAbility>();
+        // Dreadful Burst
+        public float BurstDamageMultiplier = 0;
+        public float DamageStorage = 0;
 
+        // Other Stats
+        public float DamageResistancePerKill = 0;
+
+        // Abilities
+        public Dictionary<Type, ISoulstreakAbility> AbilitiesMap = new Dictionary<Type, ISoulstreakAbility>();
+        public ReadOnlyCollection<ISoulstreakAbility> Abilities => AbilitiesMap.Values.ToList().AsReadOnly();
 
         public uint Souls = 0;
+
+        public TAbility AddAbility<TAbility>(TAbility soulstreakAbility)
+            where TAbility : SoulstreakAbility<TAbility> 
+        {
+            AddAbilityRaw(soulstreakAbility);
+            soulstreakAbility.SoulstreakStats = this;
+            
+            return soulstreakAbility;
+        }
+
+        public TAbility AddAbilityRaw<TAbility>(TAbility soulstreakAbility)
+            where TAbility : ISoulstreakAbility {
+            if(AbilitiesMap.TryGetValue(soulstreakAbility.GetType(), out ISoulstreakAbility existing)) {
+                if(existing is TAbility typedExisting) {
+                    return typedExisting;
+                }
+            }
+
+            AbilitiesMap.Add(soulstreakAbility.GetType(), soulstreakAbility);
+
+            return soulstreakAbility;
+        }
+
+
+        public TAbility GetAbility<TAbility>()
+            where TAbility : SoulstreakAbility<TAbility> 
+        {
+            if(AbilitiesMap.TryGetValue(typeof(TAbility), out ISoulstreakAbility ability)) {
+                return (TAbility)ability;
+            }
+
+            return null;
+        }
+
 
         public void ResetStats() {
             // Character Stats
@@ -39,8 +84,16 @@ namespace AALUND13Cards.Classes.Cards {
             SoulArmorPercentage = 0;
             SoulArmorPercentageRegenRate = 0;
 
+            // Soul Drain Stats
+            SoulDrainDPSFactor = 0;
+            SoulDrainPercentageDPSFactor = 0;
+            SoulDrainLifestealMultiply = 0;
+
+            // Other Resistance Stats
+            DamageResistancePerKill = 0;
+
             // Abilities
-            Abilities.Clear();
+            AbilitiesMap.Clear();
         }
     }
 }

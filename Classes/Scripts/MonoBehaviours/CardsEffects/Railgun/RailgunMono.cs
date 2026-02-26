@@ -4,7 +4,7 @@ using AALUND13Cards.Core.Utils;
 using ModsPlus;
 using UnityEngine;
 
-namespace AALUND13Cards.Core.MonoBehaviours.CardsEffects {
+namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects {
     public class RailgunMono : MonoBehaviour {
         [HideInInspector] public RailgunStats RailgunStats;
 

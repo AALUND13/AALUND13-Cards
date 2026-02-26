@@ -15,7 +15,7 @@ using UnboundLib;
 using UnboundLib.GameModes;
 using UnityEngine;
 
-namespace AALUND13Cards.ExtraCards {
+namespace AALUND13Cards.Classes {
     [BepInDependency("AALUND13.Cards.Core")]
     [BepInDependency("AALUND13.Cards.Armors", BepInDependency.DependencyFlags.SoftDependency)]
 
@@ -24,7 +24,7 @@ namespace AALUND13Cards.ExtraCards {
     internal class AAC_Classes : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Classes";
         internal const string ModName = "AALUND13 Classes Cards";
-        internal const string Version = "1.1.1";
+        internal const string Version = "1.2.0";
 
         private static AssetBundle assets;
 
@@ -70,15 +70,12 @@ namespace AALUND13Cards.ExtraCards {
                     playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls();
 
                     if(player.GetComponentInChildren<SoulstreakMono>() != null) {
-                        playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>().Souls * 0.5f));
+                        playerDamageInfo.Key.GetComponentInChildren<SoulstreakMono>().AddSouls((uint)(player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>().Souls * 0.25f));
                     }
                 }
             }
 
             player.GetComponentInChildren<SoulstreakMono>()?.ResetSouls();
-            if(player.GetComponentInChildren<SoulstreakMono>() == null) {
-                player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>().Souls = 0;
-            }
         }
     }
 }

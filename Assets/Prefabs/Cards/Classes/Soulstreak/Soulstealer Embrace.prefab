@@ -65,11 +65,11 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Health Per Kill
   - positive: 1
-    amount: +35%
+    amount: +25%
     simepleAmount: 0
     stat: Health
   - positive: 0
-    amount: -25%
+    amount: -20%
     simepleAmount: 0
     stat: Damage
   rarity: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   AddObjectToPlayer: {fileID: 0}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
-  health: 1.35
+  health: 1.25
   movementSpeed: 1
   jump: 1
   gravity: 1
@@ -155,7 +155,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 0.75
+  damage: 0.8
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
@@ -305,16 +305,16 @@ MonoBehaviour:
   OverrideClassName: 
   CardClassType: 16
   CardLimit: 0
-  RequiredClass: {fileID: 5413385911517455255, guid: bca1ca8a0ed582b46b883c53c43e4177,
-    type: 3}
-  RequiredClassTree: []
+  RequiredClass: {fileID: 0}
+  RequiredClassTree:
+  - {fileID: 8163522322292975028, guid: ee5b4e40f247b7d40926daf20a008de0, type: 3}
+  - {fileID: 8163522322292975028, guid: 8c0595b2dc45d1942a78a6023bc34ce6, type: 3}
   CardRarity: 0
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 4
 --- !u!114 &114268722308104120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +336,9 @@ MonoBehaviour:
   SoulArmorPercentage: 0
   SoulArmorPercentageRegenRate: 0
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  DamageResistancePerKill: 0
   AbilityType: 0
 --- !u!114 &114540035733948314
 MonoBehaviour:
@@ -352,5 +354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b683f61f97991644f8ac0e2451970aca, type: 2}
   Priority: 0

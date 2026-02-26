@@ -7,6 +7,10 @@ namespace AALUND13Cards.Classes.Cards {
     public class ClassesStats : ICustomStats {
         private static readonly Color DarkenColor = new Color(0.75f, 0.75f, 0.75f, 1f);
 
+        // Damage Resistance Stat
+        public float DamageResistance = 0;
+
+        // invulnerable Stat
         private bool invulnerable;
         public bool Invulnerable => invulnerable;
 
@@ -33,6 +37,8 @@ namespace AALUND13Cards.Classes.Cards {
         }
 
         public void ResetStats() {
+            DamageResistance = 0;
+
             if(!invulnerable) return;
 
             // The ICustomStats interface doesn't provide direct access to CharacterData,

@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Classes.Cards;
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities;
+using AALUND13Cards.Classes.UI;
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Utils;
@@ -19,24 +20,24 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         public CharacterData Data => data;
         private CharacterData data;
 
-        private string SoulsString => $"{(SoulstreakStats.Souls > 1 ? "Souls" : "Soul")}: {SoulstreakStats.Souls}";
-
         public void BlockAbility() {
             foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                ability.OnBlock(this);
+                ability.OnBlock();
             }
         }
 
-        public void ResetSouls() {
+        public void ResetSouls(float precentage = 0.5f) {
             if(GameManager.instance.battleOngoing) {
                 LoggerUtils.LogInfo($"Resetting kill streak of player with ID {data.player.playerID}");
                 if(data.gameObject.GetComponent<SoulstreakEffect>() != null) {
                     Destroy(data.gameObject.GetComponent<SoulstreakEffect>());
                 }
-                SoulstreakStats.Souls = 0;
-                if(data.view.IsMine) {
-                    SoulsCounterGUI.GetComponentInChildren<TextMeshProUGUI>().text = SoulsString;
+
+                uint remainingSouls = (uint)Mathf.RoundToInt(SoulstreakStats.Souls / 2f);
+                foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
+                    ability.OnSoulsReset(SoulstreakStats.Souls);
                 }
+                SoulstreakStats.Souls = remainingSouls;
             }
         }
 
@@ -46,6 +47,10 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
 
                 SoulstreakStats.Souls += kills;
                 data.gameObject.GetOrAddComponent<SoulstreakEffect>().ApplyStats();
+
+                foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
+                    ability.OnSoulsAdded(kills);
+                }
             }
         }
 
@@ -53,24 +58,22 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
             data.gameObject.GetOrAddComponent<SoulstreakEffect>().ApplyStats();
         }
 
-
-
         private void OnRevive() {
             foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                ability.OnReset(this);
+                ability.OnRevive();
             }
         }
-
-
 
         private void Start() {
             data = GetComponentInParent<Player>().data;
             SoulstreakStats = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<SoulStreakStats>();
 
             SoulsCounter = Instantiate(SoulsCounter);
+            SoulsCounter.GetComponent<SoulstreakSoulsCounter>().soulstreakMono = this;
             if(data.view.IsMine && !data.GetComponent<PlayerAPI>().enabled) {
                 SoulsCounterGUI = Instantiate(SoulsCounterGUI);
                 SoulsCounterGUI.transform.SetParent(data.transform.parent);
+                SoulsCounterGUI.GetComponent<SoulstreakSoulsCounter>().soulstreakMono = this;
             }
 
             data.SetWobbleObjectChild(SoulsCounter.transform);
@@ -97,13 +100,8 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak {
         private void Update() {
             if(data.isPlaying) {
                 foreach(ISoulstreakAbility ability in SoulstreakStats.Abilities) {
-                    ability.OnUpdate(this);
+                    ability.OnUpdate();
                 }
-            }
-
-            SoulsCounter.GetComponent<TextMeshPro>().text = SoulsString;
-            if(data.view.IsMine && !data.GetComponent<PlayerAPI>().enabled) {
-                SoulsCounterGUI.GetComponentInChildren<TextMeshProUGUI>().text = SoulsString;
             }
         }
     }
