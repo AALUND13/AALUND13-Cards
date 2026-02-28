@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1191120887938213741}
   - component: {fileID: 2476573317823342553}
   - component: {fileID: 1874777568373805463}
+  - component: {fileID: 114384882248765424}
   m_Layer: 0
   m_Name: E_ToxicTrailBullet
   m_TagString: Untagged
@@ -107,6 +108,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   DamageDelay: 0.15
   BaseDamage: 4
+  DamageFromTrail: 0.065
   BaseThickness: 2.4
   Positions: []
   Silence: 0
@@ -114,7 +116,7 @@ MonoBehaviour:
   FastSlow: 1
   ScaleSilence: 0
   ScaleSlow: 1
-  ScaleDamage: 1
+  ScaleDamage: 0
   ScaleThickness: 1
 --- !u!114 &1874777568373805463
 MonoBehaviour:
@@ -130,6 +132,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectObject: {fileID: 7805719968659271655}
   Lifetime: 3
+--- !u!114 &114384882248765424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232121305349256245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a4cda8164b0ae4eb65dbf0640fc63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxScale: 3
 --- !u!1 &7805719968659271655
 GameObject:
   m_ObjectHideFlags: 0

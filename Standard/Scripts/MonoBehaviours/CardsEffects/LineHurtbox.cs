@@ -19,6 +19,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
         [Header("Settings")]
         public float DamageDelay = 0.1f;
         public float BaseDamage = 100;
+        public float DamageFromTrail = 0.075f;
 
         public float BaseThickness = 1;
         public List<Vector3> Positions = new List<Vector3>();
@@ -116,6 +117,9 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
 
         public void OnPhotonInstantiate(PhotonMessageInfo info) {
             Player = PlayerManager.instance.players.First(p => p.playerID == (int)info.photonView.InstantiationData[1]);
+            if(DamageFromTrail != 0) {
+                BaseDamage = (float)info.photonView.InstantiationData[2] * DamageFromTrail;
+            }
         }
     }
 }

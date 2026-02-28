@@ -9,10 +9,9 @@ namespace AALUND13Cards.Standard.MonoBehaviours.ProjectilesEffects {
 
 
         private PhotonView view;
-        private Player player;
+        private ProjectileHit bullet;
 
         private PhotonView trailView;
-
         private GameObject trailObject;
 
         private float lastSyncTime = 0;
@@ -20,9 +19,9 @@ namespace AALUND13Cards.Standard.MonoBehaviours.ProjectilesEffects {
 
         private void Start() {
             view = GetComponentInParent<PhotonView>();
-            player = GetComponentInParent<ProjectileHit>().ownPlayer;
+            bullet = GetComponentInParent<ProjectileHit>();
             if(view.IsMine) {
-                trailObject = PhotonNetwork.Instantiate(TrailPrefab.name, Vector3.zero, Quaternion.identity, 0, new object[] { transform.localScale, player.playerID });
+                trailObject = PhotonNetwork.Instantiate(TrailPrefab.name, Vector3.zero, Quaternion.identity, 0, new object[] { transform.localScale, bullet.ownPlayer.playerID, bullet.damage });
                 trailView = trailObject.GetComponent<PhotonView>();
             }
         }
@@ -31,9 +30,9 @@ namespace AALUND13Cards.Standard.MonoBehaviours.ProjectilesEffects {
             if(!view.IsMine) return;
             
             Vector3 position = transform.position;
-            if(!active && Vector3.Distance(transform.position, player.transform.position) >= ActvateRange) {
-                Vector3 dir = (transform.position - player.transform.position).normalized;
-                position = player.transform.position + dir * ActvateRange;
+            if(!active && Vector3.Distance(transform.position, bullet.ownPlayer.transform.position) >= ActvateRange) {
+                Vector3 dir = (transform.position - bullet.ownPlayer.transform.position).normalized;
+                position = bullet.ownPlayer.transform.position + dir * ActvateRange;
 
                 active = true;
             } 
