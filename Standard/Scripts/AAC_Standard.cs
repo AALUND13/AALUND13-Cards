@@ -40,6 +40,8 @@ namespace AALUND13Cards.Standard {
             CardResgester cardResgester = assets.LoadAsset<GameObject>("StandardModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
+
+            assets.LoadAsset<GameObject>("StandardPhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
         }
     }
 }
