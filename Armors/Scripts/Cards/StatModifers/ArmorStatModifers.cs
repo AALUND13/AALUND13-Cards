@@ -12,6 +12,7 @@ namespace AALUND13Cards.Armors.Cards.StatModifers {
     public class ArmorStatModifers : CustomStatModifers {
         [Header("Armors Stats")]
         public float ArmorDamageReduction = 0f;
+        public float HealToArmorHealPercentage = 0f;
 
         [Space(10)]
         public string ArmorTypeId = "";
@@ -41,6 +42,7 @@ namespace AALUND13Cards.Armors.Cards.StatModifers {
 
             // Apply Armor Stats
             additionalData.ArmorDamageReduction = Mathf.Min(additionalData.ArmorDamageReduction + ArmorDamageReduction, 0.80f);
+            additionalData.HealToArmorHealPercentage += HealToArmorHealPercentage;
 
             if(!ArmorTypeId.IsNullOrWhiteSpace()) {
                 ArmorBase armorInstance = ArmorFramework.ArmorHandlers[player].Armors.First(x => x.GetType() == ArmorTypeGetterUtils.GetArmorType(ArmorTypeId));
