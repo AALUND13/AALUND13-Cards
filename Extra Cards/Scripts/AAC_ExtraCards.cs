@@ -26,6 +26,8 @@ namespace AALUND13Cards.ExtraCards {
         internal const string ModName = "AALUND13 Extra Picks Cards";
         internal const string Version = "1.0.1";
 
+        public static GameObject CurseDrawObject;
+
         private static AssetBundle assets;
 
         private void Awake() {
@@ -49,6 +51,8 @@ namespace AALUND13Cards.ExtraCards {
 
             CardResgester cardResgester = assets.LoadAsset<GameObject>("ExtraPicksModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
+
+            CurseDrawObject = assets.LoadAsset<GameObject>("CurseCardDraw");
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
         }
 

@@ -28,6 +28,9 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
         public int ExtraCardPicks = 0;
         public int DuplicatesAsCorrupted = 0;
 
+        [Header("Curse Card Draws")]
+        public int CurseCardDraws = 0;
+
         public override void Apply(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>();
@@ -54,6 +57,11 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
                 AAC_Core.Instance.ExecuteAfterFrames(1, () => {
                     additionalData.DuplicatesAsCorrupted += DuplicatesAsCorrupted;
                 });
+            }
+
+            if(CurseCardDraws > 0) {
+                additionalData.CurseCardDraws += CurseCardDraws;
+                DrawNCards.DrawNCards.SetPickerDraws(player.playerID, DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws);
             }
         }
 

@@ -14,7 +14,8 @@
         "RandomCardsGenerator",
         "CorruptedCardsManager",
         "ToggleCardsCategories",
-        "AALUND13_Cards_Core"
+        "AALUND13_Cards_Core",
+        "PickNCards"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

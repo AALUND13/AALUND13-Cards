@@ -7,12 +7,14 @@ namespace AALUND13Cards.Classes.Cards.StatModifers {
         [Header("Percentage Damage")]
         public float ScalingPercentageDamage = 0;
         public float ScalingPercentageDamageCap = 0;
+        public float PercentageDamageBleedingPercentage = 0;
 
         public override void Apply(Player player) {
             var additionalData = player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ReaperStats>();
 
             additionalData.ScalingPercentageDamageCap += ScalingPercentageDamageCap;
             additionalData.ScalingPercentageDamage += ScalingPercentageDamage;
+            additionalData.PercentageDamageBleedingPercentage += PercentageDamageBleedingPercentage;
         }
     }
 }

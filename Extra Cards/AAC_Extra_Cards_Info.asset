@@ -23,6 +23,7 @@ MonoBehaviour:
   - AALUND13-AALUND13_Cards_Core-1.0.0
   - AALUND13-RandomCardsGenerator-1.0.1
   - AALUND13-CorruptedCardsManager-1.1.0
+  - Pykess-Pick_N_Cards-0.2.6
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: b567160f0aaa6054086208b1d62bde8c, type: 3}

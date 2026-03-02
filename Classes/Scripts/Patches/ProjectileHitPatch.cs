@@ -1,7 +1,10 @@
 ﻿using AALUND13Cards.Classes.Armors;
+using AALUND13Cards.Classes.Cards;
+using AALUND13Cards.Core.Extensions;
 using HarmonyLib;
 using JARL.Armor;
 using UnboundLib;
+using UnityEngine;
 
 namespace AALUND13Cards.Classes.Patches {
     [HarmonyPatch(typeof(ProjectileHit), "Hit")]
@@ -14,18 +17,13 @@ namespace AALUND13Cards.Classes.Patches {
             if(healthHandler) {
                 Player hitPlayer = healthHandler.GetComponent<Player>();
 
-                ExoArmor armor = (ExoArmor)ArmorFramework.ArmorHandlers[hitPlayer].GetArmorByType<ExoArmor>();
-                if(hitPlayer != null && armor.IsActive && armor.Reflect(GetBulletDamage(__instance.GetComponent<ProjectileHit>(), hitPlayer))) {
-                    __instance.GetComponent<ProjectileHit>().RemoveOwnPlayerFromPlayersHit();
-                    __instance.GetComponent<ProjectileHit>().AddPlayerToHeld(healthHandler);
-                    __instance.GetComponent<MoveTransform>().velocity *= -1f;
-                    __instance.transform.position += __instance.GetComponent<MoveTransform>().velocity * TimeHandler.deltaTime;
-                    __instance.GetComponent<RayCastTrail>().WasBlocked();
-                    if(__instance.destroyOnBlock) {
-                        __instance.InvokeMethod("DestroyMe");
-                    }
-                    __instance.sinceReflect = 0f;
-                    return false;
+                if(hitPlayer == null) return true;
+                if(__instance.ownPlayer.data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>().PercentageDamageBleedingPercentage > 0) {
+                    float percentageDamage = GetBulletDamage(__instance, hitPlayer);
+                    hitPlayer.data.healthHandler.TakeDamageOverTime(
+                        __instance.transform.forward * percentageDamage * __instance.ownPlayer.data.GetCustomStatsRegistry().GetOrCreate<ReaperStats>().PercentageDamageBleedingPercentage,
+                        hit.point, 5, 1f, Color.red * 0.8f, __instance.ownWeapon, __instance.ownPlayer, true
+                    );
                 }
             }
             return true;
