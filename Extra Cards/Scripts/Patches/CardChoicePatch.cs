@@ -44,6 +44,7 @@ namespace AALUND13Cards.Core.Patches {
         private static void SpawnPostfix(CardChoice __instance, GameObject __result) {
             var spawnedCards = (List<GameObject>)CardChoice.instance.GetFieldValue("spawnedCards");
             var player = PlayerManager.instance.GetPlayerWithID(__instance.pickrID);
+            if(player == null) return;
 
             if(spawnedCards.Count >= Math.Max(DrawNCards.DrawNCards.GetPickerDraws(__instance.pickrID) - player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().CurseCardDraws, 0)) {
                 AAC_Core.Instance.ExecuteAfterFrames(5, () => {
