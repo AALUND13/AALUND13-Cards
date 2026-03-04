@@ -20,7 +20,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
 
         [Header("Other Settings")]
         public float DoubleKeyPressMaxTiming = 0.3f;
-        public float DashForce = 500000;
+        public float DashForce = 5000;
         public float DashCooldown = 0.25f;
 
         private PlayerVelocity playerVelocity;
@@ -88,7 +88,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
 
         private void RPCA_Dash(Vector2 dir) {
             playerVelocity.SetFieldValue("velocity", new Vector2(((Vector2)playerVelocity.GetFieldValue("velocity")).x, 0));
-            playerVelocity.InvokeMethod("AddForce", new Type[] { typeof(Vector2) }, new Vector2(dir.x * DashForce, 0));
+            playerVelocity.InvokeMethod("AddForce", new Type[] { typeof(Vector2) }, new Vector2(dir.x * DashForce * (float)playerVelocity.GetFieldValue("mass"), 0));
             characterData.sinceGrounded = 0f;
             characterData.sinceWallGrab = 0f;
 
