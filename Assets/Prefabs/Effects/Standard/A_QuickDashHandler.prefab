@@ -62,7 +62,8 @@ MonoBehaviour:
   DashSound: {fileID: 11400000, guid: 856bd4001d18f26449a900ee728e9889, type: 2}
   DashParticleSystem: {fileID: 4480828034213075381}
   DoubleKeyPressMaxTiming: 0.3
-  DashForce: 500000
+  DashForce: 5000
+  DashCooldown: 0.3
 --- !u!1 &4389798580483689640
 GameObject:
   m_ObjectHideFlags: 0

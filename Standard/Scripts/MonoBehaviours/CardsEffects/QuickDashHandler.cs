@@ -21,7 +21,8 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
         [Header("Other Settings")]
         public float DoubleKeyPressMaxTiming = 0.3f;
         public float DashForce = 500000;
-        
+        public float DashCooldown = 0.25f;
+
         private PlayerVelocity playerVelocity;
         private CharacterData characterData;
         private GeneralInput input;
@@ -30,9 +31,10 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
         private Vector3 LastDirectionInput = Vector3.zero;
         
         private bool isKeyDown = false;
-        
+
         private float keyPressResetTime = 0;
-        
+        private float dashCooldownTime = 0;
+
         private int inputKeyPressAmount = 0;
         private int quickDashesLeft = 0;
 
@@ -76,9 +78,11 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
             isKeyDown = true;
 
             if(inputKeyPressAmount >= 2) {
-                quickDashesLeft--;
-                inputKeyPressAmount = 0;
-                childRPC.CallFunction(QUICK_DASH_KEY, (Vector2)input.direction);
+                if(Time.time > dashCooldownTime) {
+                    childRPC.CallFunction(QUICK_DASH_KEY, (Vector2)input.direction);
+                    dashCooldownTime = Time.time + DashCooldown;
+                    quickDashesLeft--;
+                }
             }
         }
 
