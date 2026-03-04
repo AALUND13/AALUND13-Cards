@@ -16,6 +16,7 @@ namespace AALUND13Cards.Standard.Cards {
 
         // Uncategorized
         public float DamageReduction = 0f;
+        public int QuickDashes = 0;
 
         public void ResetStats() {
             // Delayed Damage
@@ -31,6 +32,7 @@ namespace AALUND13Cards.Standard.Cards {
 
             // Uncategorized
             DamageReduction = 0f;
+            QuickDashes = 0;
         }
     }
 }
