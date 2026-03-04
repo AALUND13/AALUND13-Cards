@@ -16,6 +16,7 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
 
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
+        public float BleedingDamage = 0;
         public int QuickDashes = 0;
 
         public override void Apply(Player player) {
@@ -25,6 +26,7 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) additionalData.dealDamage = false;
             additionalData.secondToDealDamage += SecondToDealDamage;
+            additionalData.BleedingDamage += BleedingDamage;
             additionalData.QuickDashes += QuickDashes;
 
             // Apply Curses Stats
