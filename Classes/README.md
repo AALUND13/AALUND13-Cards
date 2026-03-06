@@ -1,4 +1,4 @@
-# AALUND13 Classes Cards [v1.2.0]
+# AALUND13 Classes Cards [v1.3.0]
 AALUND13 Classes Cards introduces <b>36</b> cards developed by <b>AALUND13</b>.  
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 <h3>Cards:</h3>

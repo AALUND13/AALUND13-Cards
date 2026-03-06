@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPCSyncName: TrailBulletApply
-  ProjectileEffectChance: 0.35
+  ProjectileEffectChance: 0.5
+  DependentOnSPS: 1
   ProjectileColor: {r: 0.15178537, g: 1, b: 0, a: 1}
   ObjectsToSpawn:
     effect: {fileID: 0}

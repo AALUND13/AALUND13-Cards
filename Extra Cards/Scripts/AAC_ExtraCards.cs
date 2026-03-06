@@ -24,7 +24,7 @@ namespace AALUND13Cards.ExtraCards {
     internal class AAC_ExtraCards : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Extra_Cards";
         internal const string ModName = "AALUND13 Extra Picks Cards";
-        internal const string Version = "1.0.1";
+        internal const string Version = "1.1.0";
 
         public static GameObject CurseDrawObject;
 

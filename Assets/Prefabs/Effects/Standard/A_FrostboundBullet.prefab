@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RPCSyncName: FrostboundApply
   ProjectileEffectChance: 0.5
+  DependentOnSPS: 1
   ProjectileColor: {r: 0, g: 1, b: 1, a: 1}
   ObjectsToSpawn:
     effect: {fileID: 0}

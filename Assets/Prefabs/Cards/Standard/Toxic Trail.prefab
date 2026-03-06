@@ -52,11 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Toxic Trail
-  cardDestription: '35% chance for your bullets to have a toxic trail
+  cardDestription: 'Chance based on shots per second for bullets to gain a toxic trail
 
-    Trail bullets will activate when they 5 meters away from the player
-
-    Trail bullets can deal damage and slow'
+    Trail activates 5m from the you and can damage and slow.'
   cardStats: []
   rarity: 2
   cardArt: {fileID: 7877705231591777946, guid: 6509db834fac2074abb20143aeaea918, type: 3}

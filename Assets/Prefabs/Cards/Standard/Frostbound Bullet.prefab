@@ -52,10 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Frostbound Bullet
-  cardDestription: '50% chance for a bullet to become frostbound
+  cardDestription: 'Chance based on shots per second for a bullet to become frostbound
 
-    Frostbound bullets freeze players for 5 seconds, and frozen players take more
-    damage.'
+    Frostbound bullets freeze players for 5s, causing them to take extra damage.'
   cardStats:
   - positive: 0
     amount: -30%

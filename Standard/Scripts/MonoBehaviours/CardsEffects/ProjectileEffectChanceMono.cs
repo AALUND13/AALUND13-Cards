@@ -1,4 +1,5 @@
-﻿using AALUND13Cards.Standard.Handler;
+﻿using AALUND13Cards.Core.Extensions;
+using AALUND13Cards.Standard.Handler;
 using System.Linq;
 using UnityEngine;
 
@@ -7,8 +8,11 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
         [Header("Sync Time")]
         public string RPCSyncName = "TrailBulletApply";
 
-        [Header("Projectile")]
+        [Header("Projectile Chance")]
         public float ProjectileEffectChance = 0.2f;
+        public bool DependentOnSPS = false;
+
+        [Header("Projectile")]
         public Color ProjectileColor = Color.black;
         public ObjectsToSpawn ObjectsToSpawn;
 
@@ -46,7 +50,9 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
                 }
             }
 
-            if(player.data.view.IsMine && UnityEngine.Random.value < ProjectileEffectChance) {
+            float chanceDivisor = Mathf.Max(DependentOnSPS ? player.GetSPS() : 1f, 0.01f);
+
+            if(player.data.view.IsMine && UnityEngine.Random.value < (ProjectileEffectChance / chanceDivisor)) {
                 childRPC.CallFunction(RPCSyncName);
             }
         }

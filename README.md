@@ -1,5 +1,5 @@
-# AALUND13 Cards [v2.1.0 (Beta)]
-AALUND13 Cards introduces <b>80</b> cards developed by <b>AALUND13</b>.  
+# AALUND13 Cards [v2.2.0 (Beta)]
+AALUND13 Cards introduces <b>85</b> cards developed by <b>AALUND13</b>.  
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 <h3>Cards:</h3>
 <b>Armor:</b>
@@ -44,7 +44,7 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 <b>Extra Cards:</b>
 <pre>
 - Card Factory            - Card Theft              - Corrupting Picks        - Corruption Reflection   
-- Picks Party             - Roll Of The Dice        
+- Picks Party             - Roll Of The Dice        - Cursed Knowledge        
 </pre>
 <br>
 <b>Extra Cards - Dices Result:</b>
@@ -63,5 +63,6 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 <pre>
 - Aftershock              - Bigger Cartridge Case   - Chain Bullets           - Damage Storage          
 - Executioner             - Leaf Skin               - Numb                    - Resurgence              
-- Rollback                - Spiritual Shield        - Stunblock Bullets       
+- Rollback                - Spiritual Shield        - Stunblock Bullets       - Toxic Trail             
+- Quick Dash              - Sharpen Bullet          - Frostbound Bullet       
 </pre>
