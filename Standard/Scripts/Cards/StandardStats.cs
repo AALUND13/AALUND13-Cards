@@ -19,6 +19,11 @@ namespace AALUND13Cards.Standard.Cards {
         public float BleedingDamage = 0f;
         public int QuickDashes = 0;
 
+        // Freeze Damage
+        public float FrozenTime = 0f;
+        public float OldFrozenTime = 0f;
+        
+
         public void ResetStats() {
             // Delayed Damage
             secondToDealDamage = 0;
@@ -35,6 +40,10 @@ namespace AALUND13Cards.Standard.Cards {
             DamageReduction = 0f;
             BleedingDamage = 0f;
             QuickDashes = 0;
+
+            // Freeze Damage
+            FrozenTime = 0f;
+            OldFrozenTime = 0f;
         }
     }
 }

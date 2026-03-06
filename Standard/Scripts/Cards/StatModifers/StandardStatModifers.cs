@@ -17,6 +17,7 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
         public float BleedingDamage = 0;
+        public float FreezeDamage = 0f;
         public int QuickDashes = 0;
 
         public override void Apply(Player player) {
