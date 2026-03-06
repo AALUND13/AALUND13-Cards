@@ -40,10 +40,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 976484407263251767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 358f37144aa85734287bce397e31c455, type: 3}
+  m_Script: {fileID: 11500000, guid: e38c36f407c182d42a0b0dd44c46b010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrailProjectileColor: {r: 0.6313726, g: 1, b: 0.23137255, a: 1}
+  RPCSyncName: TrailBulletApply
+  ProjectileEffectChance: 0.35
+  ProjectileColor: {r: 0.15178537, g: 1, b: 0, a: 1}
   ObjectsToSpawn:
     effect: {fileID: 0}
     direction: 0
@@ -61,4 +63,3 @@ MonoBehaviour:
     scaleStackM: 0.7
     scaleFromDamage: 0.5
     stacks: 0
-  TrailBulletChance: 0.35
