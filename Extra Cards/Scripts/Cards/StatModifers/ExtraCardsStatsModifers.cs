@@ -71,6 +71,10 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
             var additionalData = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ExtraCardsStats>();
 
             additionalData.ExtraCardPicksPerPickPhase += ExtraCardPicks;
+            if(CurseCardDraws > 0) {
+                additionalData.CurseCardDraws += CurseCardDraws;
+                DrawNCards.DrawNCards.SetPickerDraws(player.playerID, DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws);
+            }
         }
 
         public ExtraPickHandler GetExtraPickHandler(ExtraPicksType type) {
