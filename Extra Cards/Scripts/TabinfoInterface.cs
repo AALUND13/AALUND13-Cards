@@ -15,6 +15,8 @@ namespace AALUND13Cards.ExtraCards {
                 (p) => $"{GetExtraCaedStatsFromPlayer(p).ExtraCardPicksPerPickPhase}");
             TabInfoManager.RegisterStat(aaStatsCategory, "Duplicates As Corrupted", (p) => GetExtraCaedStatsFromPlayer(p).DuplicatesAsCorrupted != 0,
                 (p) => $"{GetExtraCaedStatsFromPlayer(p).DuplicatesAsCorrupted}");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Cursed Draws", (p) => GetExtraCaedStatsFromPlayer(p).CurseCardDraws != 0,
+                (p) => $"{GetExtraCaedStatsFromPlayer(p).CurseCardDraws}");
         }
 
         private static ExtraCardsStats GetExtraCaedStatsFromPlayer(Player player) {

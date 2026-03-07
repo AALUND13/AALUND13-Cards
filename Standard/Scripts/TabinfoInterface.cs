@@ -24,6 +24,10 @@ namespace AALUND13Cards.Standard {
             // Uncategorized Stats
             TabInfoManager.RegisterStat(aaStatsCategory, "Damage Reduction", (p) => GetStandardStatsFromPlayer(p).DamageReduction != 0,
                 (p) => $"{GetStandardStatsFromPlayer(p).DamageReduction * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Bleed Damage", (p) => GetStandardStatsFromPlayer(p).BleedingDamage != 0,
+                (p) => $"{GetStandardStatsFromPlayer(p).BleedingDamage * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Quick Dashes", (p) => GetStandardStatsFromPlayer(p).QuickDashes != 0,
+                (p) => $"{GetStandardStatsFromPlayer(p).QuickDashes * 100:0}%");
         }
 
         private static StandardStats GetStandardStatsFromPlayer(Player player) {

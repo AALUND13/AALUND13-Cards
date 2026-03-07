@@ -16,6 +16,8 @@ namespace AALUND13Cards.Classes {
                 (p) => $"{(Mathf.Min(GetReaperStatsFromPlayer(p).ScalingPercentageDamage, Mathf.Min(GetReaperStatsFromPlayer(p).ScalingPercentageDamageCap, MathUtils.PERCENT_CAP)) + GetReaperStatsFromPlayer(p).ScalingPercentageDamageUnCap) * 100:0}%");
             TabInfoManager.RegisterStat(aaStatsCategory, "Effective Percentage Damage", (p) => GetReaperStatsFromPlayer(p).ScalingPercentageDamage != 0,
                 (p) => $"{(MathUtils.GetEffectivePercentCap(p.GetSPS(), GetReaperStatsFromPlayer(p).ScalingPercentageDamage, GetReaperStatsFromPlayer(p).ScalingPercentageDamageCap) + MathUtils.GetEffectivePercent(p.GetSPS(), GetReaperStatsFromPlayer(p).ScalingPercentageDamageUnCap)) * 100:0}%");
+            TabInfoManager.RegisterStat(aaStatsCategory, "Percentage Bleed Damage", (p) => GetReaperStatsFromPlayer(p).PercentageDamageBleedingPercentage != 0,
+                (p) => $"{GetReaperStatsFromPlayer(p).PercentageDamageBleedingPercentage * 100:0}%");
             #endregion
 
             #region Soulstreak Stats
