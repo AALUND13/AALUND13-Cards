@@ -109,7 +109,7 @@ MonoBehaviour:
   DamageDelay: 0.15
   BaseDamage: 4
   DamageFromTrail: 0.065
-  BaseThickness: 2.4
+  BaseThickness: 2
   Positions: []
   Silence: 0
   Slow: 0.7

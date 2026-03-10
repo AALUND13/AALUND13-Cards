@@ -51,8 +51,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
         }
 
         private Damagable[] GetDamagableBetweenPoints(List<Vector3> points) {
-            List<Collider2D> hitColliders = new List<Collider2D>();
-            List<Damagable> damagables = new List<Damagable>();
+            HashSet<Damagable> damagables = new HashSet<Damagable>();
 
             for(int i = 0; i < points.Count - 1; i++) {
                 Vector2 start = points[i];
@@ -70,7 +69,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
                 Vector2 center = (start + end) * 0.5f;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                Vector2 size = new Vector2(distance + radius * 2f, radius * 2f);
+                Vector2 size = new Vector2(distance, radius * 2f);
 
                 Collider2D[] overlaps = Physics2D.OverlapCapsuleAll(
                     center,
@@ -80,13 +79,8 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
                 );
 
                 foreach(Collider2D col in overlaps) {
-                    if(hitColliders.Contains(col)) continue;
-
                     Damagable dmg = col.GetComponentInParent<Damagable>();
-                    if(dmg != null) {
-                        hitColliders.Add(col);
-                        damagables.Add(dmg);
-                    }
+                    if(dmg != null) damagables.Add(dmg);
                 }
             }
 

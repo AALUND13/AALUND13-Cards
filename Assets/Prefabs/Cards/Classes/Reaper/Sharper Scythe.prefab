@@ -65,7 +65,7 @@ MonoBehaviour:
   - positive: 1
     amount: +25%
     simepleAmount: 0
-    stat: Bleading Damage
+    stat: Bleeding Damage
   rarity: 1
   cardArt: {fileID: 1671425614709295636, guid: d93e9a0eafdb1d241a56bb57740c0f96, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
