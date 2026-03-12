@@ -22,7 +22,10 @@ namespace AALUND13Cards.Standard.Cards {
         // Freeze Damage
         public float FrozenTime = 0f;
         public float OldFrozenTime = 0f;
-        
+
+        // Bullets Damage Multiplier
+        public float GravityDamageMultiplier = 0f;
+
 
         public void ResetStats() {
             // Delayed Damage
@@ -44,6 +47,9 @@ namespace AALUND13Cards.Standard.Cards {
             // Freeze Damage
             FrozenTime = 0f;
             OldFrozenTime = 0f;
+
+            // Bullets Damage Multiplier
+            GravityDamageMultiplier = 0f;
         }
     }
 }

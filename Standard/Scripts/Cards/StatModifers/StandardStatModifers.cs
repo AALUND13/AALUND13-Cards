@@ -20,6 +20,9 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
         public float FreezeDamage = 0f;
         public int QuickDashes = 0;
 
+        [Header("Bullets Damage Multiplier")]
+        public float BulletsDamageMultiplier = 0;
+
         public override void Apply(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>();
@@ -39,6 +42,9 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
             // Apply Blocks Stats
             additionalData.BlocksWhenRecharge += BlocksWhenRecharge;
             additionalData.StunBlockTime += StunBlockTime;
+
+            // Bullets Damage Multiplier
+            additionalData.GravityDamageMultiplier += BulletsDamageMultiplier;
         }
     }
 }
