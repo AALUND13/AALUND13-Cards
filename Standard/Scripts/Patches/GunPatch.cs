@@ -27,7 +27,7 @@ namespace AALUND13Cards.Standard.Patches {
                 ProjectileHit bullet  = obj.GetComponent<ProjectileHit>();
                 StandardStats stats = __instance.player.data.GetCustomStatsRegistry().GetOrCreate<StandardStats>();
 
-                float damageMult = Mathf.Max(Mathf.Pow((bulletMoveTransform.gravity / 100) * (stats.GravityDamageMultiplier), 0.5f), 1);
+                float damageMult = Mathf.Max(Mathf.Pow((bulletMoveTransform.gravity / 100) * (stats.GravityDamageMultiplier), 0.2f), 1);
                 bullet.damage *= damageMult;
             }
         }

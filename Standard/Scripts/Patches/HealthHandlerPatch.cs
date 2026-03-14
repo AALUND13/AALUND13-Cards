@@ -2,6 +2,7 @@
 using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.Standard.Cards;
 using HarmonyLib;
+using Photon.Realtime;
 using UnboundLib;
 using UnityEngine;
 
@@ -10,30 +11,38 @@ namespace AALUND13Cards.Standard.Patches {
     internal class HealthHandlerPatch {
         [HarmonyPatch(nameof(HealthHandler.DoDamage))]
         [HarmonyPrefix]
-        public static void DoDamagePrefix(HealthHandler __instance, ref Vector2 damage, Vector2 position, Color blinkColor, GameObject damagingWeapon, Player damagingPlayer, bool healthRemoval, bool lethal, bool ignoreBlock) {
+        public static void DoDamagePrefix(HealthHandler __instance, ref Vector2 damage, Vector2 position, Color blinkColor, GameObject damagingWeapon, Player damagingPlayer, bool healthRemoval, ref bool lethal, bool ignoreBlock) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
-            var characterAdditionalData = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>();
+            var stats = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>();
 
-            if(characterAdditionalData.DamageReduction != 0) {
-                damage = new Vector2(damage.x * (1 - characterAdditionalData.DamageReduction), damage.y * (1 - characterAdditionalData.DamageReduction));
+            if(stats.DamageReduction != 0) {
+                damage = new Vector2(damage.x * (1 - stats.DamageReduction), damage.y * (1 - stats.DamageReduction));
             }
 
-            if(characterAdditionalData.secondToDealDamage > 0 && !characterAdditionalData.dealDamage) {
+            if(stats.secondToDealDamage > 0 && !stats.dealDamage) {
                 Vector2 delayedDamage = new Vector2(damage.x, damage.y);
                 __instance.gameObject.GetOrAddComponent<DelayDamageHandler>().DelayDamage(new DelayDamageInfo(delayedDamage, position, blinkColor, damagingWeapon, damagingPlayer, healthRemoval, lethal, ignoreBlock), 
-                    characterAdditionalData.secondToDealDamage,
-                    () => { characterAdditionalData.dealDamage = true; });
+                    stats.secondToDealDamage,
+                    () => { stats.dealDamage = true; });
 
                 damage = Vector2.zero;
-            } else if(characterAdditionalData.dealDamage) {
-                characterAdditionalData.dealDamage = false;
+            } else if(stats.dealDamage) {
+                stats.dealDamage = false;
+            }
+
+            float healthAfterDamage = data.health - damage.magnitude;
+            if(lethal && healthAfterDamage <= data.maxHealth * 0.5f && stats.RemainingBerserkModeAmount > 0) {
+                stats.RemainingBerserkModeAmount--;
+                stats.OnBerserkMode?.Invoke();
+
+                lethal = false;
             }
         }
 
 
         [HarmonyPatch(nameof(HealthHandler.Revive))]
         [HarmonyPrefix]
-        public static void RevivePrefix(HealthHandler __instance) {
+        public static void RevivePrefix(HealthHandler __instance, bool isFullRevive) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             var characterAdditionalData = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>();
 
@@ -45,8 +54,14 @@ namespace AALUND13Cards.Standard.Patches {
                 characterAdditionalData.FrozenTime = 0;
                 characterAdditionalData.OldFrozenTime = 0;
             }
+
+            if(isFullRevive) {
+                data.GetCustomStatsRegistry().GetOrCreate<StandardStats>().RemainingBerserkModeAmount 
+                    = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>().BerserkModeAmount;
+            }
+
         }
-        
+
         [HarmonyPatch("Update")]
         [HarmonyPrefix]
         public static void UpdatePrefix(HealthHandler __instance) {

@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Core.Utils;
 using RarityLib.Utils;
+using System;
 
 namespace AALUND13Cards.Standard.Cards {
     public class StandardStats : ICustomStats {
@@ -26,6 +27,10 @@ namespace AALUND13Cards.Standard.Cards {
         // Bullets Damage Multiplier
         public float GravityDamageMultiplier = 0f;
 
+        // Berserk Mode
+        public int BerserkModeAmount = 0;
+        public int RemainingBerserkModeAmount = 0;
+        public Action OnBerserkMode;
 
         public void ResetStats() {
             // Delayed Damage
@@ -50,6 +55,11 @@ namespace AALUND13Cards.Standard.Cards {
 
             // Bullets Damage Multiplier
             GravityDamageMultiplier = 0f;
+
+            // Berserk Mode
+            BerserkModeAmount = 0;
+            RemainingBerserkModeAmount = 0;
+            OnBerserkMode = null;
         }
     }
 }
