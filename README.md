@@ -1,5 +1,5 @@
 # AALUND13 Cards [v2.2.0 (Beta)]
-AALUND13 Cards introduces <b>85</b> cards developed by <b>AALUND13</b>.  
+AALUND13 Cards introduces <b>87</b> cards developed by <b>AALUND13</b>.  
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 <h3>Cards:</h3>
 <b>Armor:</b>
@@ -64,5 +64,6 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 - Aftershock              - Bigger Cartridge Case   - Chain Bullets           - Damage Storage          
 - Executioner             - Leaf Skin               - Numb                    - Resurgence              
 - Rollback                - Spiritual Shield        - Stunblock Bullets       - Toxic Trail             
-- Quick Dash              - Sharpen Bullet          - Frostbound Bullet       
+- Quick Dash              - Sharpen Bullet          - Frostbound Bullet       - Tungsten Bullets        
+- Berserk                 
 </pre>
