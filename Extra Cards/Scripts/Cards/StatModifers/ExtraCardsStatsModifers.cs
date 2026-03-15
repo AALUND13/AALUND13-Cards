@@ -62,7 +62,7 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
             AAC_Core.Instance.ExecuteAfterFrames(10, () => {
                 if(CurseCardDraws > 0) {
                     additionalData.CurseCardDraws += CurseCardDraws;
-                    DrawNCards.DrawNCards.SetPickerDraws(player.playerID, DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws);
+                    DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, Mathf.Clamp(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws, 1, 30));
                 }
             });
         }
@@ -76,7 +76,7 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
             AAC_Core.Instance.ExecuteAfterFrames(10, () => {
                 if(CurseCardDraws > 0) {
                     additionalData.CurseCardDraws += CurseCardDraws;
-                    DrawNCards.DrawNCards.SetPickerDraws(player.playerID, DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws);
+                    DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, Mathf.Clamp(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws, 1, 30));
                 }
             });
         }

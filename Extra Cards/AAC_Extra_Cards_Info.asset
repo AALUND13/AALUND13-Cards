@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Extra_Picks_Cards
   Author: AALUND13
-  Version: 1.1.2
+  Version: 1.1.3
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Add in some cards that give you extra picks or cards
   BeforeBuildCommand: 
