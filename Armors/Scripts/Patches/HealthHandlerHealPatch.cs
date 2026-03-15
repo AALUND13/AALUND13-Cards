@@ -1,4 +1,6 @@
-﻿using HarmonyLib;
+﻿using AALUND13Cards.Armors.Cards;
+using AALUND13Cards.Core.Extensions;
+using HarmonyLib;
 using JARL.Armor;
 using System.Collections.Generic;
 using UnboundLib;
@@ -27,7 +29,7 @@ namespace AALUND13Cards.Armors.Patches {
             float overflowHeal = Mathf.Max(healAmount - healthAdded, 0f);
             if(overflowHeal <= 0f) return;
 
-            float remaining = overflowHeal;
+            float remaining = overflowHeal * player.data.GetCustomStatsRegistry().GetOrCreate<ArmorStats>().HealToArmorHealPercentage;
 
             if(remaining > 0f) {
                 foreach(var armor in ArmorFramework.ArmorHandlers[player].ActiveArmors) {
