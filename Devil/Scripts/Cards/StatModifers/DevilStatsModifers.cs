@@ -35,7 +35,7 @@ namespace AALUND13Cards.Devil.Cards.StatModifers {
             }
 
             if(DevilPicks > 0 && player.data.view.IsMine) {
-                ExtraCardPickHandler.AddExtraPick<DevilCardsPickHandler>(player, DevilPicks, ExtraPickPhaseTrigger.TriggerInPlayerPickEnd);
+                ExtraCardPickHandler.AddExtraPick<DevilCardsPickHandler>(player, DevilPicks);
             }
         }
     }

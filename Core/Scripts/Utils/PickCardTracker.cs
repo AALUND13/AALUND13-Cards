@@ -9,6 +9,8 @@ namespace AALUND13Cards.Core.Utils {
         private readonly List<CardInfo> cardPickedInPickPhase = new List<CardInfo>();
         public IReadOnlyList<CardInfo> CardPickedInPickPhase => cardPickedInPickPhase.AsReadOnly();
 
+        public CardInfo LastPickedCard => cardPickedInPickPhase.Count > 0 ? cardPickedInPickPhase[cardPickedInPickPhase.Count - 1] : null;
+
         public bool AlreadyPickedInPickPhase(CardInfo card) {
             if(card == null) return false;
             return cardPickedInPickPhase.Contains(card);

@@ -4,17 +4,14 @@ using System.Linq;
 
 namespace AALUND13Cards.Devil.Handlers.ExtraPickHandlers {
     public class DevilCardsPickHandler : ExtraPickHandler {
-        private int oldNumberOfDraws;
-
         public override void OnPickStart(Player player) {
-            oldNumberOfDraws = DrawNCards.DrawNCards.GetPickerDraws(player.playerID);
-            DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, 3);
             DevilCardsHandler.Instance.AllowDevilCards = true;
         }
 
         public override void OnPickEnd(Player player, CardInfo card) {
-            DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, oldNumberOfDraws);
             DevilCardsHandler.Instance.AllowDevilCards = false;
         }
+
+        public override int HandSize => 3;
     }
 }
