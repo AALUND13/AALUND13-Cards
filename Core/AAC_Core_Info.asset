@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Cards_Core
   Author: AALUND13
-  Version: 1.1.0
+  Version: 1.1.1
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: The library core of  'AALUND13 Cards'
   BeforeBuildCommand: 

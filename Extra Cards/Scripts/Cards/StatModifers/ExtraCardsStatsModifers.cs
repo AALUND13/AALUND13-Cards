@@ -37,12 +37,12 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
             additionalData.ExtraCardPicksPerPickPhase += ExtraCardPicks;
 
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
-            if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
+            if(extraPickHandler != null && ExtraPicks > 0) {
                 ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
             }
 
             ExtraPickHandler enemyExtraPickHandler = GetExtraPickHandler(ExtraPicksTypeForEnemies);
-            if(extraPickHandler != null && ExtraPicksForEnemies > 0 && player.data.view.IsMine) {
+            if(extraPickHandler != null && ExtraPicksForEnemies > 0) {
                 List<Player> enemies = ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player);
 
                 foreach(Player enemy in enemies) {

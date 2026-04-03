@@ -65,7 +65,7 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Health
   rarity: 1
-  cardArt: {fileID: 7960154113246297106, guid: 972b685579da0f74bbab4f8d1a95f8cf, type: 3}
+  cardArt: {fileID: 2727382810497335302, guid: 972b685579da0f74bbab4f8d1a95f8cf, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -305,7 +305,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
 --- !u!114 &114203678359837342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +335,11 @@ MonoBehaviour:
   BlocksWhenRecharge: 0
   StunBlockTime: 0
   SecondToDealDamage: 4
+  BleedingDamage: 0
+  FreezeDamage: 0
+  QuickDashes: 0
+  BulletsDamageMultiplier: 0
+  BerserkModeAmount: 0
 --- !u!114 &114742683095748562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,5 +354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 497ae41df70bac7489765a7cec71f7dd, type: 2}
   Priority: 0

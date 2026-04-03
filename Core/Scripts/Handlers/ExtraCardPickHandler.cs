@@ -1,15 +1,6 @@
-﻿using AALUND13Cards.Core.Utils;
-using HarmonyLib;
-using PickPhaseImprovements;
+﻿using PickPhaseImprovements;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnboundLib;
-using UnboundLib.GameModes;
-using UnboundLib.Networking;
-using UnityEditor.PackageManager.Requests;
-using UnityEngine;
 
 namespace AALUND13Cards.Core.Handlers {
     public enum ExtraPickPhaseTrigger {
@@ -17,7 +8,7 @@ namespace AALUND13Cards.Core.Handlers {
         TriggerInPickEnd
     }
 
-    
+
     public class ExtraPickHandler {
         public virtual bool PickConditions(Player player, CardInfo card) {
             return true;
