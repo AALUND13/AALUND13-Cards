@@ -54,10 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Picks Party
-  cardDestription: 'Give yourself +2 picks, at the cost of giving all your enemies
+  cardDestription: Give yourself +2 picks, at the cost of giving all your enemies
     +1 picks
-
-    Trigger at the end of the pick phase'
   cardStats:
   - positive: 1
     amount: +2
@@ -313,7 +311,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 1
 --- !u!114 &114331294878685958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +330,7 @@ MonoBehaviour:
   ExtraPickPhaseTrigger: 1
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
+  CurseCardDraws: 0
 --- !u!114 &7530571558485534056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,5 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
   Priority: 0

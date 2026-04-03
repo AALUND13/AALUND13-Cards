@@ -2,7 +2,6 @@
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Handlers;
-using AALUND13Cards.ExtraCards.Handlers;
 using AALUND13Cards.ExtraCards.Handlers.ExtraPickHandlers;
 using System.Collections.Generic;
 using UnboundLib;
@@ -21,7 +20,6 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
         public ExtraPicksType ExtraPicksType;
         public int ExtraPicksForEnemies = 0;
         public ExtraPicksType ExtraPicksTypeForEnemies;
-        public ExtraPickPhaseTrigger ExtraPickPhaseTrigger = ExtraPickPhaseTrigger.TriggerInPlayerPickEnd;
 
 
         [Header("Extra Cards")]
@@ -40,7 +38,7 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
 
             ExtraPickHandler extraPickHandler = GetExtraPickHandler(ExtraPicksType);
             if(extraPickHandler != null && ExtraPicks > 0 && player.data.view.IsMine) {
-                ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks, ExtraPickPhaseTrigger);
+                ExtraCardPickHandler.AddExtraPick(extraPickHandler, player, ExtraPicks);
             }
 
             ExtraPickHandler enemyExtraPickHandler = GetExtraPickHandler(ExtraPicksTypeForEnemies);
@@ -48,7 +46,7 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
                 List<Player> enemies = ModdingUtils.Utils.PlayerStatus.GetEnemyPlayers(player);
 
                 foreach(Player enemy in enemies) {
-                    ExtraCardPickHandler.AddExtraPick(enemyExtraPickHandler, enemy, ExtraPicksForEnemies, ExtraPickPhaseTrigger);
+                    ExtraCardPickHandler.AddExtraPick(enemyExtraPickHandler, enemy, ExtraPicksForEnemies);
                 }
             }
 
@@ -59,12 +57,10 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
                 });
             }
 
-            AAC_Core.Instance.ExecuteAfterFrames(10, () => {
-                if(CurseCardDraws > 0) {
-                    additionalData.CurseCardDraws += CurseCardDraws;
-                    DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, Mathf.Clamp(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws, 1, 30));
-                }
-            });
+            if(CurseCardDraws > 0) {
+                additionalData.CurseCardDraws += CurseCardDraws;
+                DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, Mathf.Clamp(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws, 1, 30));
+            }
         }
 
 
@@ -73,12 +69,10 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
             var additionalData = data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ExtraCardsStats>();
 
             additionalData.ExtraCardPicksPerPickPhase += ExtraCardPicks;
-            AAC_Core.Instance.ExecuteAfterFrames(10, () => {
-                if(CurseCardDraws > 0) {
-                    additionalData.CurseCardDraws += CurseCardDraws;
-                    DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, Mathf.Clamp(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws, 1, 30));
-                }
-            });
+            if(CurseCardDraws > 0) {
+                additionalData.CurseCardDraws += CurseCardDraws;
+                DrawNCards.DrawNCards.RPCA_SetPickerDraws(player.playerID, Mathf.Clamp(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) + CurseCardDraws, 1, 30));
+            }
         }
 
         public ExtraPickHandler GetExtraPickHandler(ExtraPicksType type) {
