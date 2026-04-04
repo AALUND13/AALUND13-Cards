@@ -1,6 +1,7 @@
 ﻿using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Utils;
+using AALUND13Cards.Curses.Cards;
 using BepInEx;
 using HarmonyLib;
 using System;
@@ -10,13 +11,14 @@ using UnityEngine;
 namespace AALUND13Cards.Curses {
     [BepInDependency("AALUND13.Cards.Core")]
     [BepInDependency("AALUND13.Cards.Armors", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("root.cardtheme.lib", BepInDependency.DependencyFlags.SoftDependency)]
 
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     internal class AAC_Curses : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Curses";
         internal const string ModName = "AALUND13 Curses Cards";
-        internal const string Version = "1.0.2";
+        internal const string Version = "1.1.0";
 
         private static AssetBundle assets;
 
@@ -40,6 +42,11 @@ namespace AALUND13Cards.Curses {
 
             CardResgester cardResgester = assets.LoadAsset<GameObject>("CursesModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
+
+            GameObject cardArt = assets.LoadAsset<GameObject>("C_Random Debuff");
+
+            CurseCardsGenerator.CreateRandomDebuffCard(cardArt);
+
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
 
             assets.LoadAsset<GameObject>("CursesPhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();

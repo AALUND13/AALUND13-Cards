@@ -40,22 +40,22 @@ namespace AALUND13Cards.Core.Patches {
 
             Object.DontDestroyOnLoad(component);
 
-            PlayerSkin izzySkin = skinPrefab;
-            component.color = izzySkin.color;
-            component.backgroundColor = izzySkin.backgroundColor;
-            component.winText = izzySkin.winText;
-            component.particleEffect = izzySkin.particleEffect;
+            PlayerSkin skin = skinPrefab;
+            component.color = skin.color;
+            component.backgroundColor = skin.backgroundColor;
+            component.winText = skin.winText;
+            component.particleEffect = skin.particleEffect;
 
             PlayerSkinParticle componentInChildren = component.GetComponentInChildren<PlayerSkinParticle>();
             ParticleSystem component2 = componentInChildren.GetComponent<ParticleSystem>();
             ParticleSystem.MainModule main = component2.main;
             ParticleSystem.MinMaxGradient startColor = main.startColor;
 
-            startColor.colorMin = izzySkin.backgroundColor;
-            startColor.colorMax = izzySkin.color;
+            startColor.colorMin = skin.backgroundColor;
+            startColor.colorMax = skin.color;
             main.startColor = startColor;
-            componentInChildren.SetFieldValue("startColor1", izzySkin.backgroundColor);
-            componentInChildren.SetFieldValue("startColor2", izzySkin.color);
+            componentInChildren.SetFieldValue("startColor1", skin.backgroundColor);
+            componentInChildren.SetFieldValue("startColor2", skin.color);
 
             return component;
         }
