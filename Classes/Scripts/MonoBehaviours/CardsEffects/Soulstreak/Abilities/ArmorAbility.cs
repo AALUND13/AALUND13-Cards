@@ -55,18 +55,20 @@ namespace AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak.Abilities
             SoulArmor soulArmor = (SoulArmor)armorHandler.GetArmorByType<SoulArmor>();
             float percentage = 0;
 
-            if(!soulArmor.IsActive && soulArmor.MaxArmorValue <= 0 && AbilityCooldownTime > 0f) {
-                percentage = Mathf.Clamp01(
-                    (AbilityCooldownTime - AbilityCooldown) /
-                    AbilityCooldownTime
-                );
-            } else if(soulArmor.IsActive && soulArmor.MaxArmorValue > 0 && soulArmor.MaxArmorValue > 0f) {
+            bool hasSoulArmor = soulArmor.MaxArmorValue > 0 && soulArmor.CurrentArmorValue > 0 && soulArmor.IsActive;
+
+            if(hasSoulArmor) {
                 percentage = Mathf.Clamp01(
                     soulArmor.CurrentArmorValue / soulArmor.MaxArmorValue
                 );
+            } else {
+                percentage = AbilityCooldownTime > 0f
+                    ? Mathf.Clamp01((AbilityCooldownTime - AbilityCooldown) / AbilityCooldownTime)
+                    : 0f;
             }
 
-            return new AbilityBarInfo(true, soulArmor.IsActive, percentage, 1);
+
+            return new AbilityBarInfo(true, hasSoulArmor, percentage, 1);
         }
     }
 }
