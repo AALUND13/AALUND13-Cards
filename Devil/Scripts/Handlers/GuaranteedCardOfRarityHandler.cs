@@ -1,8 +1,5 @@
-﻿using AALUND13Cards.Core;
-using AALUND13Cards.Core.Extensions;
+﻿using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Devil.Cards;
-using AALUND13Cards.Devil.Patches;
-using NUnit.Framework.Interfaces;
 using PickPhaseImprovements;
 using RarityLib.Utils;
 using System.Collections.Generic;
@@ -13,7 +10,7 @@ using UnityEngine;
 namespace AALUND13Cards.Devil.Handlers {
     public static class GuaranteedCardOfRarityHandler {
         private static Dictionary<int, Rarity> GuaranteedCardSlots = new Dictionary<int, Rarity>();
-         
+
         internal static void GetGuaranteedCardOfRaritesSlots(Player player) {
             GuaranteedCardSlots.Clear();
 
