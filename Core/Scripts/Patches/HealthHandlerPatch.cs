@@ -19,11 +19,15 @@ namespace AALUND13Cards.Core.Patches {
 
         [HarmonyPatch(nameof(HealthHandler.TakeDamage), typeof(Vector2), typeof(Vector2), typeof(Color), typeof(GameObject), typeof(Player), typeof(bool), typeof(bool))]
         [HarmonyPrefix]
-        public static void TakeDamagePrefix(HealthHandler __instance, Player damagingPlayer, Vector2 damage, bool lethal) {
+        public static void TakeDamagePrefix(HealthHandler __instance, ref Player damagingPlayer, ref Vector2 damage, ref bool lethal) {
             TakeDamageRunning = true;
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
 
-            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamage, data.player, damagingPlayer, damage, lethal);
+            DamageInfo damageInfo = DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamage, data.player, damagingPlayer, damage, lethal);
+
+            damage = damageInfo.Damage;
+            lethal = damageInfo.IsLethal;
+            damagingPlayer = damageInfo.DamagingPlayer;
         }
         [HarmonyPatch(nameof(HealthHandler.TakeDamage), typeof(Vector2), typeof(Vector2), typeof(Color), typeof(GameObject), typeof(Player), typeof(bool), typeof(bool))]
         [HarmonyPostfix]
@@ -33,12 +37,15 @@ namespace AALUND13Cards.Core.Patches {
 
         [HarmonyPatch(nameof(HealthHandler.DoDamage))]
         [HarmonyPrefix]
-        public static void DoDamage(HealthHandler __instance, ref Vector2 damage, Vector2 position, Color blinkColor, GameObject damagingWeapon, Player damagingPlayer, bool healthRemoval, bool lethal, bool ignoreBlock) {
+        public static void DoDamage(HealthHandler __instance, ref Vector2 damage, Vector2 position, Color blinkColor, GameObject damagingWeapon, ref Player damagingPlayer, bool healthRemoval, ref bool lethal, bool ignoreBlock) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
             var characterAdditionalData = data.GetAdditionalData();
 
-            Vector2 damageCopy = damage;
-            DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnDoDamage, data.player, damagingPlayer, damageCopy, lethal);
+            DamageInfo damageInfo = DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnDoDamage, data.player, damagingPlayer, damage, lethal);
+
+            damage = damageInfo.Damage;
+            lethal = damageInfo.IsLethal;
+            damagingPlayer = damageInfo.DamagingPlayer;
         }
 
         [HarmonyPatch("RPCA_Die_Phoenix")]

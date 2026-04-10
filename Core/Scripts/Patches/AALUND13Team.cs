@@ -69,6 +69,6 @@ namespace AALUND13Cards.Core.Patches {
             particleEffect = new Color(0.8f, 0.8f, 0.8f, 1.0f)
         };
 
-        private const int TeamID = 131;
+        public const int TeamID = 131;
     }
 }
