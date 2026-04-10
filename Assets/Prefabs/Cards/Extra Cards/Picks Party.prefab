@@ -54,8 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Picks Party
-  cardDestription: Give yourself +2 picks, at the cost of giving all your enemies
-    +1 picks
+  cardDestription: 'Give yourself +2 queue picks at the cost of giving all enemies
+    +1 queue pick
+
+    <#7A7A7A><size=50>Queue picks will trigger once it is your turn</size></color>'
   cardStats:
   - positive: 1
     amount: +2
@@ -64,7 +66,7 @@ MonoBehaviour:
   - positive: 0
     amount: +1
     simepleAmount: 0
-    stat: Enemies Picks
+    stat: Enemies Pick
   rarity: 2
   cardArt: {fileID: 7894216729900778956, guid: 5eb40c9acdff0564cb6fbe6d86d82246, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -305,7 +307,7 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 9
+  CardRarity: 5
   CardRarityCustom: 
   CanBeReassigned: 0
   IsHidden: 0
@@ -327,7 +329,6 @@ MonoBehaviour:
   ExtraPicksType: 1
   ExtraPicksForEnemies: 1
   ExtraPicksTypeForEnemies: 1
-  ExtraPickPhaseTrigger: 1
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
   CurseCardDraws: 0

@@ -66,7 +66,8 @@ MonoBehaviour:
   categories: []
   allowMultiple: 1
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 4402755119123181576, guid: 71b718d0d58307c40849865f7a115364,
+    type: 3}
   colorTheme: 2
 --- !u!114 &4907890640190903806
 MonoBehaviour:
@@ -301,7 +302,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: AALUND13.Cards.Armors
   IsCursed: 0
-  Category: 6
 --- !u!114 &114110782259615786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,5 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 5d0f66708f09dab47b8e60f936d9b0c5, type: 2}
   Priority: 0

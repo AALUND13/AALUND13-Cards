@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnboundLib;
 
-namespace Assets.Mods._AALUND13_Card.Classes.Scripts.Patches {
+namespace AALUND13Cards.Classes.Patches {
     internal class ExoArmorProjectileHitPatch {
         public static void Patch(Harmony harmony) {
             var original = AccessTools.Method(typeof(ProjectileHit), nameof(ProjectileHit.Hit));

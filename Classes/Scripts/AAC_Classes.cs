@@ -1,11 +1,11 @@
 ﻿using AALUND13Cards.Classes;
 using AALUND13Cards.Classes.Cards;
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.Classes.Patches;
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Utils;
-using Assets.Mods._AALUND13_Card.Classes.Scripts.Patches;
 using BepInEx;
 using HarmonyLib;
 using JARL.Utils;

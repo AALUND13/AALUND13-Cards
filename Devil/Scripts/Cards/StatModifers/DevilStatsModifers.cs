@@ -31,7 +31,7 @@ namespace AALUND13Cards.Devil.Cards.StatModifers {
 
             if(SetGuaranteedRarity) {
                 var rarity = RarityUtils.GetRarity(GuaranteesRarity.ToString());
-                additionalData.GuaranteedRarity = RarityUtils.GetRarityData(rarity);
+                additionalData.GuaranteedRarities.Add(RarityUtils.GetRarityData(rarity));
             }
 
             if(DevilPicks > 0 && player.data.view.IsMine) {

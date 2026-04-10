@@ -4,6 +4,7 @@ using AALUND13Cards.Core.Utils;
 using AALUND13Cards.Devil.Handlers;
 using BepInEx;
 using HarmonyLib;
+using PickPhaseImprovements;
 using RarityLib.Utils;
 using System;
 using UnboundLib;
@@ -42,6 +43,9 @@ namespace AALUND13Cards.Devil {
 
             CardResgester cardResgester = assets.LoadAsset<GameObject>("DevilModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
+
+            PickManager.RegisterDrawValidationFunction(GuaranteedCardOfRarityHandler.GuaranteedCardOfRarites);
+
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
         }
     }

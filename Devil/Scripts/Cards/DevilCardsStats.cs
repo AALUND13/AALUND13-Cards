@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Core.Utils;
 using RarityLib.Utils;
+using System.Collections.Generic;
 
 namespace AALUND13Cards.Devil.Cards {
     public class DevilCardsStats : ICustomStats {
@@ -8,7 +9,8 @@ namespace AALUND13Cards.Devil.Cards {
         public bool DisbaleBlockTime = false;
 
         // Cards
-        public Rarity GuaranteedRarity = null;
+        public List<Rarity> GuaranteedRarities 
+            = new List<Rarity>();
 
         public void ResetStats() {
             // Apply Blocks Stats
@@ -16,7 +18,7 @@ namespace AALUND13Cards.Devil.Cards {
             DisbaleBlockTime = false;
             
             // Apply Cards Stats
-            GuaranteedRarity = null;
+            GuaranteedRarities.Clear();
         }
     }
 }

@@ -15,7 +15,8 @@
         "CorruptedCardsManager",
         "ToggleCardsCategories",
         "AALUND13_Cards_Core",
-        "PickNCards"
+        "PickNCards",
+        "PickPhaseImprovements"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

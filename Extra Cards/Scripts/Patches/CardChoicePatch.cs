@@ -39,7 +39,7 @@ namespace AALUND13Cards.Core.Patches {
             }
         }
 
-        [HarmonyPatch("Spawn")]
+        [HarmonyPatch("SpawnUniqueCard")]
         [HarmonyPostfix]
         private static void SpawnPostfix(CardChoice __instance, GameObject __result) {
             var spawnedCards = (List<GameObject>)CardChoice.instance.GetFieldValue("spawnedCards");
@@ -59,7 +59,7 @@ namespace AALUND13Cards.Core.Patches {
             var spawnedCards = (List<GameObject>)CardChoice.instance.GetFieldValue("spawnedCards");
             var player = PlayerManager.instance.GetPlayerWithID(pickId);
 
-            if(theInt >= Math.Max(DrawNCards.DrawNCards.GetPickerDraws(pickId) - player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().CurseCardDraws, 0)) {
+            if(PhotonNetwork.GetPhotonView(targetCardID).gameObject.GetComponent<CursedCard>() != null) {
                 CurseManager.instance.CursePlayer(player);
             }
         }
@@ -71,6 +71,7 @@ namespace AALUND13Cards.Core.Patches {
                 PhotonView obj = PhotonNetwork.GetPhotonView(viewId);
                 GameObject CurseCardDraw = GameObject.Instantiate(AAC_ExtraCards.CurseDrawObject, obj.transform.GetComponentInChildren<CardVisuals>().transform.GetChild(0));
                 CurseCardDraw.transform.SetAsFirstSibling();
+                obj.gameObject.AddComponent<CursedCard>();
             } catch(Exception e) {
                 LoggerUtils.LogError(e.Message);
             }

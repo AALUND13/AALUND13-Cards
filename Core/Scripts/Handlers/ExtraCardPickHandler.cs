@@ -1,6 +1,13 @@
-﻿using PickPhaseImprovements;
+﻿using DrawNCards;
+using HarmonyLib;
+using PickPhaseImprovements;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Metadata;
+using UnboundLib.GameModes;
+using UnityEngine;
+using static PickPhaseImprovements.PickManager;
 
 namespace AALUND13Cards.Core.Handlers {
     public enum ExtraPickPhaseTrigger {
@@ -45,6 +52,42 @@ namespace AALUND13Cards.Core.Handlers {
             AddExtraPick((ExtraPickHandler)Activator.CreateInstance(typeof(T)), player, picks);
         }
 
+        public static PickManager.ShuffleData RemoveExtraPick<T>(Player player) where T : ExtraPickHandler {
+            if(!extraPicks.TryGetValue(player, out var typeDict)) throw new Exception($"Player '{player.playerID}' does not have any extra picks.");
+            if(!typeDict.TryGetValue(typeof(T), out var shuffleList)) throw new Exception($"Player '{player.playerID}' does not have any extra picks of type '{typeof(T)}'.");
+            if(shuffleList.Count <= 0) throw new Exception($"Player '{player.playerID}' does not have any extra picks of type '{typeof(T)}'.");
+
+            PickManager.ShuffleData shuffleData = shuffleList[0];
+            shuffleList.RemoveAt(0);
+            return shuffleData;
+        }
+
+        public static PickManager.ShuffleData RemoveExtraPick(ExtraPickHandler handler, Player player) {
+            return RemoveExtraPick(handler.GetType(), player);
+        }
+
+        public static PickManager.ShuffleData RemoveExtraPick(Type handlerType, Player player) {
+            if(!extraPicks.TryGetValue(player, out var typeDict)) throw new Exception($"Player '{player.playerID}' does not have any extra picks.");
+            if(!typeDict.TryGetValue(handlerType, out var shuffleList)) throw new Exception($"Player '{player.playerID}' does not have any extra picks of type '{handlerType}'.");
+            if(shuffleList.Count <= 0) throw new Exception($"Player '{player.playerID}' does not have any extra picks of type '{handlerType}'.");
+
+            PickManager.ShuffleData shuffleData = shuffleList[0];
+            shuffleList.RemoveAt(0);
+            return shuffleData;
+        }
+
+        public static bool HasExtraPick<T>(Player player) where T : ExtraPickHandler {
+            return extraPicks.TryGetValue(player, out var typeDict) && typeDict.TryGetValue(typeof(T), out var shuffleList) && shuffleList.Count > 0;
+        }
+
+        public static bool HasExtraPick(ExtraPickHandler handler, Player player) {
+            return extraPicks.TryGetValue(player, out var typeDict) && typeDict.TryGetValue(handler.GetType(), out var shuffleList) && shuffleList.Count > 0;
+        }
+
+        public static bool HasExtraPick(Player player, Type handlerType) {
+            return extraPicks.TryGetValue(player, out var typeDict) && typeDict.TryGetValue(handlerType, out var shuffleList) && shuffleList.Count > 0;
+        }
+
         public static void AddExtraPick(ExtraPickHandler handler, Player player, int picks) {
             for(int i = 0; i < picks; i++) {
                 PickManager.ShuffleData shuffleData = new PickManager.ShuffleData() {
@@ -55,6 +98,10 @@ namespace AALUND13Cards.Core.Handlers {
                     },
                     pickStartCallback = () => {
                         handler.OnPickStart(player);
+
+                        if(HasExtraPick(handler, player)) {
+                            RemoveExtraPick(handler, player);
+                        }
                     },
                     pickEndCallback = () => {
                         handler.OnPickEnd(player, PickManager.lastPickedCard);

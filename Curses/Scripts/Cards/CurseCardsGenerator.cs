@@ -13,6 +13,8 @@ using WillsWackyManagers.Utils;
 
 namespace AALUND13Cards.Curses.Cards {
     public class CurseCardsGenerator {
+        private static NormalDrawableRandomCard drawableRandomDebuffCard;
+
         public static void CreateRandomDebuffCard(GameObject cardArt) {
             var randomCardOption = new RandomCardOption(
                 "Random Debuff",
@@ -35,24 +37,25 @@ namespace AALUND13Cards.Curses.Cards {
             });
             randomCardsGenerator.GeneratorActions.OnCardGenerated += (GeneratedCardInfo cardInfo) => {
                 cardInfo.CardInfo.cardArt = cardArt;
+                ApplyCurseCategory(cardInfo.CardInfo);
             };
 
             CreateRandomDebuffToggleCard(randomCardsGenerator, cardArt);
         }
 
         private static DrawableRandomCard CreateRandomDebuffToggleCard(RandomCardsGenerator generator, GameObject cardArt) {
-            NormalDrawableRandomCard drawableRandomCard = new NormalDrawableRandomCard(
+            drawableRandomDebuffCard = new NormalDrawableRandomCard(
                 generator
             );
 
-            drawableRandomCard.ToggleCard.toggleCardInfo.gameObject.AddComponent<AddToToggleCardCategory>().SetCategoryFromPath("Curses");
+            drawableRandomDebuffCard.ToggleCard.toggleCardInfo.gameObject.AddComponent<AddToToggleCardCategory>().SetCategoryFromPath("Curses");
 
-            ApplyCurseCategory(drawableRandomCard.ToggleCard.toggleCardInfo);
-            ApplyCurseCategory(drawableRandomCard.CardInfo);
+            ApplyCurseCategory(drawableRandomDebuffCard.ToggleCard.toggleCardInfo);
+            ApplyCurseCategory(drawableRandomDebuffCard.CardInfo);
 
-            drawableRandomCard.ToggleCard.toggleCardInfo.cardArt = cardArt;
+            drawableRandomDebuffCard.ToggleCard.toggleCardInfo.cardArt = cardArt;
 
-            return drawableRandomCard;
+            return drawableRandomDebuffCard;
         }
 
         private static void ApplyCurseCategory(CardInfo cardInfo) {

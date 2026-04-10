@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 114705031577598866}
   - component: {fileID: 114308216276160210}
   m_Layer: 0
-  m_Name: Soul Barrier Enhancement
+  m_Name: Soul Reinforcement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   categories: []
   allowMultiple: 1
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 114114167655939892, guid: 6d50cd42cee694a47b81e5c71101d588, type: 3}
   colorTheme: 4
 --- !u!114 &65127221588611570
 MonoBehaviour:
@@ -331,7 +331,11 @@ MonoBehaviour:
   SoulArmorPercentage: 0.05
   SoulArmorPercentageRegenRate: 0.075
   SoulDrainDamageMultiply: 0
+  SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  BurstDamageMultiplier: 0
+  DamageStorage: 0
+  DamageResistancePerKill: 0
   AbilityType: 1
 --- !u!114 &114308216276160210
 MonoBehaviour:
