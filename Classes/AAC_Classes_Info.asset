@@ -20,7 +20,7 @@ MonoBehaviour:
   BeforeBuildCommand: 
   AfterBuildCommand: 
   Dependencies:
-  - AALUND13-AALUND13_Cards_Core-1.0.0
+  - AALUND13-AALUND13_Cards_Core-1.2.0
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: aebcc7d5e1a853b46a7f09066c34f10f, type: 3}
