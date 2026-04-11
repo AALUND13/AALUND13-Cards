@@ -27,11 +27,6 @@ namespace AALUND13Cards.Standard.Cards {
         // Bullets Damage Multiplier
         public float GravityDamageMultiplier = 0f;
 
-        // Berserk Mode
-        public int BerserkModeAmount = 0;
-        public int RemainingBerserkModeAmount = 0;
-        public Action OnBerserkMode;
-
         public void ResetStats() {
             // Delayed Damage
             secondToDealDamage = 0;
@@ -55,11 +50,6 @@ namespace AALUND13Cards.Standard.Cards {
 
             // Bullets Damage Multiplier
             GravityDamageMultiplier = 0f;
-
-            // Berserk Mode
-            BerserkModeAmount = 0;
-            RemainingBerserkModeAmount = 0;
-            OnBerserkMode = null;
         }
     }
 }

@@ -1,19 +1,17 @@
-﻿using AALUND13Cards.Core.Extensions;
-using AALUND13Cards.Standard.Cards;
+﻿using AALUND13Cards.Core.Handlers;
 using ModsPlus;
-using Photon.Pun;
-using UnboundLib;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
-    public class BerserkEffect : MonoBehaviour {
+    public class BerserkEffect : MonoBehaviour, IOnDoDamageEventOverridable {
         public const string BERSEAK_START_KEY = "berseak_start";
         public const string BERSEAK_END_KEY = "berseak_end";
         public const float BERSERK_TIME = 10;
-        
+
         public UnityEvent OnBerserkEvent;
 
+        private AttackLevel attackLevel;
         private CharacterData characterData;
         private ChildRPC childRPC;
 
@@ -23,21 +21,24 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
         private float regenAdded = 0f;
         private StatChangeTracker tracker;
 
+        private int remainingBerserkModeAmount = 0;
+
 
         private void Start() {
             characterData = GetComponentInParent<CharacterData>();
             childRPC = GetComponentInParent<ChildRPC>();
+            attackLevel = GetComponent<AttackLevel>();
 
-            characterData.GetCustomStatsRegistry().GetOrCreate<StandardStats>().OnBerserkMode += OnFatalBlowSurvive;
             characterData.healthHandler.reviveAction += Reset;
+            DamageEventHandler.Instance.RegisterDamageEvent(this, characterData.player);
 
             childRPC.childRPCs.Add(BERSEAK_START_KEY, RPCA_BerserStart);
             childRPC.childRPCs.Add(BERSEAK_END_KEY, RPCA_BerserEnd);
         }
 
         private void OnDestroy() {
-            characterData.GetCustomStatsRegistry().GetOrCreate<StandardStats>().OnBerserkMode -= OnFatalBlowSurvive;
             characterData.healthHandler.reviveAction -= Reset;
+            DamageEventHandler.Instance.UnregisterDamageEvent(this, characterData.player);
 
             childRPC.childRPCs.Remove(BERSEAK_START_KEY);
             childRPC.childRPCs.Remove(BERSEAK_END_KEY);
@@ -54,19 +55,32 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
             }
         }
 
-        private void Reset() {
+
+        public DamageInfo OnDamage(DamageInfo info) {
+            float healthAfterDamage = characterData.health - info.Damage.magnitude;
+            if(info.IsLethal && healthAfterDamage <= characterData.maxHealth * 0.5f && remainingBerserkModeAmount > 0) {
+                remainingBerserkModeAmount--;
+                OnBerserkMode();
+
+                info.IsLethal = false;
+            }
+            return info;
+        }
+
+        public void Reset() {
             if(tracker != null) {
                 StatManager.Remove(tracker);
                 tracker = null;
             }
 
             characterData.healthHandler.regeneration -= regenAdded;
+            remainingBerserkModeAmount = attackLevel.attackLevel;
             regenAdded = 0f;
 
             StopAllCoroutines();
         }
 
-        private void OnFatalBlowSurvive() {
+        public void OnBerserkMode() {
             if(!characterData.player.data.view.IsMine) return;
 
             timeToReset = Time.time + BERSERK_TIME;
@@ -74,6 +88,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
 
             childRPC.CallFunction(BERSEAK_START_KEY);
         }
+
 
         private void RPCA_BerserStart() {
             characterData.block.RPCA_DoBlock(true);

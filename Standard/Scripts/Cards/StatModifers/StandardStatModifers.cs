@@ -23,9 +23,6 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
         [Header("Bullets Damage Multiplier")]
         public float BulletsDamageMultiplier = 0;
 
-        [Header("Berserk Mode")]
-        public int BerserkModeAmount = 0;
-
         public override void Apply(Player player) {
             CharacterData data = player.data;
             var additionalData = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>();
@@ -48,9 +45,6 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
 
             // Bullets Damage Multiplier
             additionalData.GravityDamageMultiplier += BulletsDamageMultiplier;
-
-            // Survive Fatal Blow
-            additionalData.BerserkModeAmount += BerserkModeAmount;
         }
     }
 }

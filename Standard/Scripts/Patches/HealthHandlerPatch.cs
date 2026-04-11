@@ -29,14 +29,6 @@ namespace AALUND13Cards.Standard.Patches {
             } else if(stats.dealDamage) {
                 stats.dealDamage = false;
             }
-
-            float healthAfterDamage = data.health - damage.magnitude;
-            if(lethal && healthAfterDamage <= data.maxHealth * 0.5f && stats.RemainingBerserkModeAmount > 0) {
-                stats.RemainingBerserkModeAmount--;
-                stats.OnBerserkMode?.Invoke();
-
-                lethal = false;
-            }
         }
 
 
@@ -54,12 +46,6 @@ namespace AALUND13Cards.Standard.Patches {
                 characterAdditionalData.FrozenTime = 0;
                 characterAdditionalData.OldFrozenTime = 0;
             }
-
-            if(isFullRevive) {
-                data.GetCustomStatsRegistry().GetOrCreate<StandardStats>().RemainingBerserkModeAmount 
-                    = data.GetCustomStatsRegistry().GetOrCreate<StandardStats>().BerserkModeAmount;
-            }
-
         }
 
         [HarmonyPatch("Update")]
