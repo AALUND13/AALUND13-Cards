@@ -69,7 +69,8 @@ MonoBehaviour:
   categories: []
   allowMultiple: 1
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 7594199036178559454, guid: 95ad2f077ef526e478d340fdbdbf2229,
+    type: 3}
   colorTheme: 6
 --- !u!114 &4930809540550576339
 MonoBehaviour:
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScalingPercentageDamage: 0.05
   ScalingPercentageDamageCap: 0
+  PercentageDamageBleedingPercentage: 0
 --- !u!114 &114667925413518436
 MonoBehaviour:
   m_ObjectHideFlags: 0

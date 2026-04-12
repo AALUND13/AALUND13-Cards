@@ -71,7 +71,7 @@ MonoBehaviour:
   categories: []
   allowMultiple: 0
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 114114167655939892, guid: 6d50cd42cee694a47b81e5c71101d588, type: 3}
   colorTheme: 4
 --- !u!114 &4930809540550576339
 MonoBehaviour:
@@ -328,6 +328,8 @@ MonoBehaviour:
   SoulDrainDamageMultiply: 0
   SoulDrainPercentageDPSFactor: 0
   SoulDrainLifestealMultiply: 0
+  BurstDamageMultiplier: 0
+  DamageStorage: 0
   DamageResistancePerKill: 0
   AbilityType: 0
 --- !u!114 &114802265715049296

@@ -9,12 +9,16 @@ namespace AALUND13Cards.Core.Patches {
     internal class DamageOverTimePatch {
         [HarmonyPatch("TakeDamageOverTime")]
         [HarmonyPrefix]
-        public static void TakeDamageOverTimePrefix(DamageOverTime __instance, Vector2 damage, Vector2 position, float time, float interval, Color color, SoundEvent soundDamageOverTime, GameObject damagingWeapon, Player damagingPlayer, bool lethal) {
+        public static void TakeDamageOverTimePrefix(DamageOverTime __instance, ref Vector2 damage, Vector2 position, float time, float interval, Color color, SoundEvent soundDamageOverTime, GameObject damagingWeapon, ref Player damagingPlayer, ref bool lethal) {
             CharacterData data = (CharacterData)Traverse.Create(__instance).Field("data").GetValue();
 
             // If TakeDamageRunning is true, it means we are already in the process of taking damage
             if(!HealthHandlerPatch.TakeDamageRunning) {
-                DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamageOvertime, data.player, damagingPlayer, damage, lethal);
+                DamageInfo damageInfo = DamageEventHandler.TriggerDamageEvent(DamageEventHandler.DamageEventType.OnTakeDamageOvertime, data.player, damagingPlayer, damage, lethal);
+
+                damage = damageInfo.Damage;
+                lethal = damageInfo.IsLethal;
+                damagingPlayer = damageInfo.DamagingPlayer;
             }
         }
     }

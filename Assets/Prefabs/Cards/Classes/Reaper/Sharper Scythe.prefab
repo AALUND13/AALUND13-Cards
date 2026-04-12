@@ -55,12 +55,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Sharper Scythe
-  cardDestription: Give a medium amount of percentage damage
+  cardDestription: Give a medium amount of percentage damage, also applies bleed that
+    deals <b>25%</b> of the percentage damage over 5 seconds
   cardStats:
   - positive: 1
     amount: +8%
     simepleAmount: 0
     stat: Percent Damage
+  - positive: 1
+    amount: +25%
+    simepleAmount: 0
+    stat: Bleeding Damage
   rarity: 1
   cardArt: {fileID: 1671425614709295636, guid: d93e9a0eafdb1d241a56bb57740c0f96, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -69,7 +74,8 @@ MonoBehaviour:
   categories: []
   allowMultiple: 1
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 7594199036178559454, guid: 95ad2f077ef526e478d340fdbdbf2229,
+    type: 3}
   colorTheme: 6
 --- !u!114 &4930809540550576339
 MonoBehaviour:
@@ -293,7 +299,7 @@ MonoBehaviour:
   block: {fileID: 0}
   OverrideClassName: 
   CardClassType: 8
-  CardLimit: 0
+  CardLimit: 3
   RequiredClass: {fileID: 5413385911517455255, guid: c7a9c066fe21d654c997c20bbab75179,
     type: 3}
   RequiredClassTree: []
@@ -317,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScalingPercentageDamage: 0.08
   ScalingPercentageDamageCap: 0
+  PercentageDamageBleedingPercentage: 0.25
 --- !u!114 &114936273182261244
 MonoBehaviour:
   m_ObjectHideFlags: 0

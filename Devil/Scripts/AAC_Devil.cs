@@ -4,6 +4,8 @@ using AALUND13Cards.Core.Utils;
 using AALUND13Cards.Devil.Handlers;
 using BepInEx;
 using HarmonyLib;
+using Photon.Realtime;
+using PickPhaseImprovements;
 using RarityLib.Utils;
 using System;
 using UnboundLib;
@@ -17,7 +19,7 @@ namespace AALUND13Cards.Devil {
     internal class AAC_Devil : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Devil";
         internal const string ModName = "AALUND13 Devil Cards";
-        internal const string Version = "1.2.2";
+        internal const string Version = "1.3.1";
 
         private static AssetBundle assets;
 
@@ -42,6 +44,9 @@ namespace AALUND13Cards.Devil {
 
             CardResgester cardResgester = assets.LoadAsset<GameObject>("DevilModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
+
+            PickManager.RegisterDrawValidationFunction(GuaranteedCardOfRarityHandler.GuaranteedCardOfRarites);
+
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
         }
     }

@@ -14,7 +14,9 @@
         "FancyCardBar",
         "RandomCardsGenerator",
         "CorruptedCardsManager",
-        "ToggleCardsCategories"
+        "ToggleCardsCategories",
+        "PickPhaseImprovements",
+        "PickNCards"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

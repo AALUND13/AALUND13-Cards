@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Curses_Cards
   Author: AALUND13
-  Version: 1.0.2
+  Version: 1.1.0
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Add some curse cards
   BeforeBuildCommand: 
   AfterBuildCommand: 
   Dependencies:
-  - AALUND13-AALUND13_Cards_Core-1.0.0
+  - AALUND13-AALUND13_Cards_Core-1.2.0
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: b38164927f892aa47b1ce7974f9510ee, type: 3}

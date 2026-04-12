@@ -71,7 +71,8 @@ MonoBehaviour:
   categories: []
   allowMultiple: 1
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 4402755119123181576, guid: 71b718d0d58307c40849865f7a115364,
+    type: 3}
   colorTheme: 2
 --- !u!114 &4907890640190903806
 MonoBehaviour:
@@ -318,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorDamageReduction: 0
+  HealToArmorHealPercentage: 0
   ArmorTypeId: Exo-Armor
   ArmorHealth: 0
   ArmorHealthMultiplier: 1.2

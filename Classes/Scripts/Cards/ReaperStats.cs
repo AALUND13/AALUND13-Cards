@@ -6,11 +6,13 @@ namespace AALUND13Cards.Classes.Cards {
         public float ScalingPercentageDamage = 0f;
         public float ScalingPercentageDamageUnCap = 0f;
         public float ScalingPercentageDamageCap = 0f;
+        public float PercentageDamageBleedingPercentage = 0f;
 
         public void ResetStats() {
             ScalingPercentageDamage = 0f;
             ScalingPercentageDamageUnCap = 0f;
             ScalingPercentageDamageCap = 0f;
-        }
+            PercentageDamageBleedingPercentage = 0f;
+    }
     }
 }

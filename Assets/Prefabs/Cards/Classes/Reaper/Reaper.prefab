@@ -78,7 +78,8 @@ MonoBehaviour:
   categories: []
   allowMultiple: 0
   blacklistedCategories: []
-  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  cardBase: {fileID: 7594199036178559454, guid: 95ad2f077ef526e478d340fdbdbf2229,
+    type: 3}
   colorTheme: 6
 --- !u!114 &4930809540550576339
 MonoBehaviour:
@@ -311,7 +312,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 5
 --- !u!114 &114080164890131456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScalingPercentageDamage: 0.1
   ScalingPercentageDamageCap: 0.4
+  PercentageDamageBleedingPercentage: 0
 --- !u!114 &114910419471124294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,5 +356,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 72c475d73df99054fa97b797eecda8e9, type: 2}
   Priority: 0

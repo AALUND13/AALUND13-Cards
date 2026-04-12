@@ -16,6 +16,12 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
 
         [Header("Uncategorized Stats")]
         public float SecondToDealDamage = 0;
+        public float BleedingDamage = 0;
+        public float FreezeDamage = 0f;
+        public int QuickDashes = 0;
+
+        [Header("Bullets Damage Multiplier")]
+        public float BulletsDamageMultiplier = 0;
 
         public override void Apply(Player player) {
             CharacterData data = player.data;
@@ -24,6 +30,8 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
             // Apply Uncategorized Stats
             if(SecondToDealDamage > 0) additionalData.dealDamage = false;
             additionalData.secondToDealDamage += SecondToDealDamage;
+            additionalData.BleedingDamage += BleedingDamage;
+            additionalData.QuickDashes += QuickDashes;
 
             // Apply Curses Stats
             if(SetMaxRarityForCurse) {
@@ -34,6 +42,9 @@ namespace AALUND13Cards.Standard.Cards.StatModifers {
             // Apply Blocks Stats
             additionalData.BlocksWhenRecharge += BlocksWhenRecharge;
             additionalData.StunBlockTime += StunBlockTime;
+
+            // Bullets Damage Multiplier
+            additionalData.GravityDamageMultiplier += BulletsDamageMultiplier;
         }
     }
 }

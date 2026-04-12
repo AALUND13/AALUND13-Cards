@@ -3,10 +3,12 @@
 namespace AALUND13Cards.Armors.Cards {
     public class ArmorStats : ICustomStats {
         public float DamageAgainstArmorPercentage = 1f;
+        public float HealToArmorHealPercentage = 0f;
         public float ArmorDamageReduction = 0f;
 
         public void ResetStats() {
             DamageAgainstArmorPercentage = 1f;
+            HealToArmorHealPercentage = 0f;
             ArmorDamageReduction = 0f;
         }
     }

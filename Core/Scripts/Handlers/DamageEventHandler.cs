@@ -20,14 +20,28 @@ namespace AALUND13Cards.Core.Handlers {
     public interface IOnDoDamageEvent {
         void OnDamage(DamageInfo damage);
     }
+
+    public interface IOnDoDamageEventOverridable {
+        DamageInfo OnDamage(DamageInfo info);
+    }
+
+
     public interface IOnTakeDamageEvent {
         void OnTakeDamage(DamageInfo damage);
     }
+
+    public interface IOnTakeDamageEventOverridable {
+        DamageInfo OnTakeDamage(DamageInfo info);
+    }
+
+
     public interface IOnTakeDamageOvertimeEvent {
         void OnTakeDamageOvertime(DamageInfo damage);
     }
 
-
+    public interface IOnTakeDamageOvertimeEventOverridable {
+        DamageInfo OnTakeDamageOvertime(DamageInfo info);
+    }
 
     public class DamageEventHandler : MonoBehaviour {
         public enum DamageEventType {
@@ -44,9 +58,19 @@ namespace AALUND13Cards.Core.Handlers {
         internal Dictionary<Player, List<IOnTakeDamageEvent>> OnTakeDamageEventsOtherPlayer = new Dictionary<Player, List<IOnTakeDamageEvent>>();
         internal Dictionary<Player, List<IOnTakeDamageOvertimeEvent>> OnTakeDamageOvertimeEventsOtherPlayer = new Dictionary<Player, List<IOnTakeDamageOvertimeEvent>>();
 
+
+        internal Dictionary<Player, List<IOnDoDamageEventOverridable>> OnDoDamageOverridableEvents = new Dictionary<Player, List<IOnDoDamageEventOverridable>>();
+        internal Dictionary<Player, List<IOnTakeDamageEventOverridable>> OnTakeDamageOverridableEvents = new Dictionary<Player, List<IOnTakeDamageEventOverridable>>();
+        internal Dictionary<Player, List<IOnTakeDamageOvertimeEventOverridable>> OnTakeDamageOvertimeOverridableEvents = new Dictionary<Player, List<IOnTakeDamageOvertimeEventOverridable>>();
+        
+        internal Dictionary<Player, List<IOnDoDamageEventOverridable>> OnDoDamageEventsOverridableOtherPlayer = new Dictionary<Player, List<IOnDoDamageEventOverridable>>();
+        internal Dictionary<Player, List<IOnTakeDamageEventOverridable>> OnTakeDamageEventsOverridableOtherPlayer = new Dictionary<Player, List<IOnTakeDamageEventOverridable>>();
+        internal Dictionary<Player, List<IOnTakeDamageOvertimeEventOverridable>> OnTakeDamageOvertimeEventsOverridableOtherPlayer = new Dictionary<Player, List<IOnTakeDamageOvertimeEventOverridable>>();
+
         public static DamageEventHandler Instance;
 
         public void RegisterDamageEvent(object obj, Player player) {
+            // Normal Damage Events
             if(obj is IOnDoDamageEvent onDoDamageEvent) {
                 if(!OnDoDamageEvents.ContainsKey(player)) {
                     OnDoDamageEvents[player] = new List<IOnDoDamageEvent>();
@@ -65,9 +89,30 @@ namespace AALUND13Cards.Core.Handlers {
                 }
                 OnTakeDamageOvertimeEvents[player].Add(onTakeDamageOvertimeEvent);
             }
+
+            // Overridable Damage Events
+            if(obj is IOnDoDamageEventOverridable onDoDamageOverridableEvent) {
+                if(!OnDoDamageOverridableEvents.ContainsKey(player)) {
+                    OnDoDamageOverridableEvents[player] = new List<IOnDoDamageEventOverridable>();
+                }
+                OnDoDamageOverridableEvents[player].Add(onDoDamageOverridableEvent);
+            }
+            if(obj is IOnTakeDamageEventOverridable onTakeDamageOverridableEvent) {
+                if(!OnTakeDamageOverridableEvents.ContainsKey(player)) {
+                    OnTakeDamageOverridableEvents[player] = new List<IOnTakeDamageEventOverridable>();
+                }
+                OnTakeDamageOverridableEvents[player].Add(onTakeDamageOverridableEvent);
+            }
+            if(obj is IOnTakeDamageOvertimeEventOverridable onTakeDamageOvertimeOverridableEvent) {
+                if(!OnTakeDamageOvertimeOverridableEvents.ContainsKey(player)) {
+                    OnTakeDamageOvertimeOverridableEvents[player] = new List<IOnTakeDamageOvertimeEventOverridable>();
+                }
+                OnTakeDamageOvertimeOverridableEvents[player].Add(onTakeDamageOvertimeOverridableEvent);
+            }
         }
 
         public void RegisterDamageEventForOtherPlayers(object obj, Player player) {
+            // Normal Damage Events
             if(obj is IOnDoDamageEvent onDoDamageEvent) {
                 if(!OnDoDamageEventsOtherPlayer.ContainsKey(player)) {
                     OnDoDamageEventsOtherPlayer[player] = new List<IOnDoDamageEvent>();
@@ -86,9 +131,30 @@ namespace AALUND13Cards.Core.Handlers {
                 }
                 OnTakeDamageOvertimeEventsOtherPlayer[player].Add(onTakeDamageOvertimeEvent);
             }
+
+            // Overridable Damage Events
+            if(obj is IOnDoDamageEventOverridable onDoDamageOverridableEvent) {
+                if(!OnDoDamageEventsOverridableOtherPlayer.ContainsKey(player)) {
+                    OnDoDamageEventsOverridableOtherPlayer[player] = new List<IOnDoDamageEventOverridable>();
+                }
+                OnDoDamageEventsOverridableOtherPlayer[player].Add(onDoDamageOverridableEvent);
+            }
+            if(obj is IOnTakeDamageEventOverridable onTakeDamageOverridableEvent) {
+                if(!OnTakeDamageEventsOverridableOtherPlayer.ContainsKey(player)) {
+                    OnTakeDamageEventsOverridableOtherPlayer[player] = new List<IOnTakeDamageEventOverridable>();
+                }
+                OnTakeDamageEventsOverridableOtherPlayer[player].Add(onTakeDamageOverridableEvent);
+            }
+            if(obj is IOnTakeDamageOvertimeEventOverridable onTakeDamageOvertimeOverridableEvent) {
+                if(!OnTakeDamageOvertimeEventsOverridableOtherPlayer.ContainsKey(player)) {
+                    OnTakeDamageOvertimeEventsOverridableOtherPlayer[player] = new List<IOnTakeDamageOvertimeEventOverridable>();
+                }
+                OnTakeDamageOvertimeEventsOverridableOtherPlayer[player].Add(onTakeDamageOvertimeOverridableEvent);
+            }
         }
 
         public void UnregisterDamageEvent(object obj, Player player) {
+            // Normal Damage Events
             if(obj is IOnDoDamageEvent onDoDamageEvent && OnDoDamageEvents.ContainsKey(player)) {
                 OnDoDamageEvents[player].Remove(onDoDamageEvent);
             }
@@ -108,35 +174,85 @@ namespace AALUND13Cards.Core.Handlers {
             if(obj is IOnTakeDamageOvertimeEvent onTakeDamageOvertimeEventOther && OnTakeDamageOvertimeEventsOtherPlayer.ContainsKey(player)) {
                 OnTakeDamageOvertimeEventsOtherPlayer[player].Remove(onTakeDamageOvertimeEventOther);
             }
+
+
+            // Overridable Damage Events
+            if(obj is IOnDoDamageEventOverridable onDoDamageOverridableEvent && OnDoDamageOverridableEvents.ContainsKey(player)) {
+                OnDoDamageOverridableEvents[player].Remove(onDoDamageOverridableEvent);
+            }
+            if(obj is IOnTakeDamageEventOverridable onTakeDamageOverridableEvent && OnTakeDamageOverridableEvents.ContainsKey(player)) {
+                OnTakeDamageOverridableEvents[player].Remove(onTakeDamageOverridableEvent);
+            }
+            if(obj is IOnTakeDamageOvertimeEventOverridable onTakeDamageOvertimeOverridableEvent && OnTakeDamageOvertimeOverridableEvents.ContainsKey(player)) {
+                OnTakeDamageOvertimeOverridableEvents[player].Remove(onTakeDamageOvertimeOverridableEvent);
+            }
+
+            if(obj is IOnDoDamageEventOverridable onDoDamageEventOverridableOther && OnDoDamageEventsOverridableOtherPlayer.ContainsKey(player)) {
+                OnDoDamageEventsOverridableOtherPlayer[player].Remove(onDoDamageEventOverridableOther);
+            }
+            if(obj is IOnTakeDamageEventOverridable onTakeDamageEventOverridableOther && OnTakeDamageEventsOverridableOtherPlayer.ContainsKey(player)) {
+                OnTakeDamageEventsOverridableOtherPlayer[player].Remove(onTakeDamageEventOverridableOther);
+            }
+            if(obj is IOnTakeDamageOvertimeEventOverridable onTakeDamageOvertimeEventOverridableOther && OnTakeDamageOvertimeEventsOverridableOtherPlayer.ContainsKey(player)) {
+                OnTakeDamageOvertimeEventsOverridableOtherPlayer[player].Remove(onTakeDamageOvertimeEventOverridableOther);
+            }
         }
 
-        internal static void TriggerDamageEvent(DamageEventType eventType, Player hurtPlayer, Player damagingPlayer, Vector2 damage, bool isLethal) {
+        internal static DamageInfo TriggerDamageEvent(DamageEventType eventType, Player hurtPlayer, Player damagingPlayer, Vector2 damage, bool isLethal) {
             DamageInfo damageInfo = new DamageInfo(damage, isLethal, damagingPlayer, hurtPlayer);
 
             switch(eventType) {
                 case DamageEventType.OnDoDamage:
+                    // Normal Damage Events
                     if(Instance.OnDoDamageEvents.ContainsKey(hurtPlayer)) {
                         foreach(var onDoDamageEvent in Instance.OnDoDamageEvents[hurtPlayer]) {
                             onDoDamageEvent.OnDamage(damageInfo);
                         }
                     }
+
+                    // Overridable Damage Events
+                    if(Instance.OnDoDamageOverridableEvents.ContainsKey(hurtPlayer)) {
+                        foreach(var onDoDamageEvent in Instance.OnDoDamageOverridableEvents[hurtPlayer]) {
+                            damageInfo = onDoDamageEvent.OnDamage(damageInfo);
+                        }
+                    }
+
                     break;
                 case DamageEventType.OnTakeDamage:
+                    // Normal Damage Events
                     if(Instance.OnTakeDamageEvents.ContainsKey(hurtPlayer)) {
                         foreach(var onTakeDamageEvent in Instance.OnTakeDamageEvents[hurtPlayer]) {
                             onTakeDamageEvent.OnTakeDamage(damageInfo);
                         }
                     }
+
+                    // Overridable Damage Events
+                    if(Instance.OnTakeDamageOverridableEvents.ContainsKey(hurtPlayer)) {
+                        foreach(var onTakeDamageEvent in Instance.OnTakeDamageOverridableEvents[hurtPlayer]) {
+                            damageInfo = onTakeDamageEvent.OnTakeDamage(damageInfo);
+                        }
+                    }
+
                     break;
                 case DamageEventType.OnTakeDamageOvertime:
+                    // Normal Damage Events
                     if(Instance.OnTakeDamageOvertimeEvents.ContainsKey(hurtPlayer)) {
                         foreach(var onTakeDamageOvertimeEvent in Instance.OnTakeDamageOvertimeEvents[hurtPlayer]) {
                             onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damageInfo);
                         }
                     }
+
+                    // Overridable Damage Events
+                    if(Instance.OnTakeDamageOvertimeOverridableEvents.ContainsKey(hurtPlayer)) {
+                        foreach(var onTakeDamageOvertimeEvent in Instance.OnTakeDamageOvertimeOverridableEvents[hurtPlayer]) {
+                            damageInfo = onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damageInfo);
+                        }
+                    }
+
                     break;
             }
 
+            // Normal Damage Events
             foreach(var kvp in Instance.OnDoDamageEventsOtherPlayer) {
                 if(kvp.Key != hurtPlayer) {
                     foreach(var onDoDamageEvent in kvp.Value) {
@@ -146,6 +262,7 @@ namespace AALUND13Cards.Core.Handlers {
                     }
                 }
             }
+
             foreach(var kvp in Instance.OnTakeDamageEventsOtherPlayer) {
                 if(kvp.Key != hurtPlayer) {
                     foreach(var onTakeDamageEvent in kvp.Value) {
@@ -155,6 +272,7 @@ namespace AALUND13Cards.Core.Handlers {
                     }
                 }
             }
+
             foreach(var kvp in Instance.OnTakeDamageOvertimeEventsOtherPlayer) {
                 if(kvp.Key != hurtPlayer) {
                     foreach(var onTakeDamageOvertimeEvent in kvp.Value) {
@@ -164,6 +282,39 @@ namespace AALUND13Cards.Core.Handlers {
                     }
                 }
             }
+
+            // Overridable Damage Events
+            foreach(var kvp in Instance.OnDoDamageEventsOverridableOtherPlayer) {
+                if(kvp.Key != hurtPlayer) {
+                    foreach(var onDoDamageEvent in kvp.Value) {
+                        if(eventType == DamageEventType.OnDoDamage) {
+                            damageInfo = onDoDamageEvent.OnDamage(damageInfo);
+                        }
+                    }
+                }
+            }
+
+            foreach(var kvp in Instance.OnTakeDamageEventsOverridableOtherPlayer) {
+                if(kvp.Key != hurtPlayer) {
+                    foreach(var onTakeDamageEvent in kvp.Value) {
+                        if(eventType == DamageEventType.OnTakeDamage) {
+                            damageInfo = onTakeDamageEvent.OnTakeDamage(damageInfo);
+                        }
+                    }
+                }
+            }
+
+            foreach(var kvp in Instance.OnTakeDamageOvertimeEventsOverridableOtherPlayer) {
+                if(kvp.Key != hurtPlayer) {
+                    foreach(var onTakeDamageOvertimeEvent in kvp.Value) {
+                        if(eventType == DamageEventType.OnTakeDamageOvertime) {
+                            damageInfo = onTakeDamageOvertimeEvent.OnTakeDamageOvertime(damageInfo);
+                        }
+                    }
+                }
+            }
+
+            return damageInfo;
         }
 
         private void Awake() {

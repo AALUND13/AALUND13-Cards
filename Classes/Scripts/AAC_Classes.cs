@@ -1,6 +1,7 @@
 ﻿using AALUND13Cards.Classes;
 using AALUND13Cards.Classes.Cards;
 using AALUND13Cards.Classes.MonoBehaviours.CardsEffects.Soulstreak;
+using AALUND13Cards.Classes.Patches;
 using AALUND13Cards.Core;
 using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
@@ -24,15 +25,17 @@ namespace AALUND13Cards.Classes {
     internal class AAC_Classes : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Classes";
         internal const string ModName = "AALUND13 Classes Cards";
-        internal const string Version = "1.2.0";
+        internal const string Version = "1.3.0";
 
         private static AssetBundle assets;
+        private static Harmony harmony;
 
         private void Awake() {
             assets = AssetsUtils.LoadAssetBundle("aac_classes_assets", typeof(AAC_Classes).Assembly);
 
             if(assets != null) {
-                new Harmony(ModId).PatchAll();
+                harmony = new Harmony(ModId);
+                harmony.PatchAll();
             }
         }
 
@@ -44,8 +47,10 @@ namespace AALUND13Cards.Classes {
 
             if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
-            if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "AALUND13.Cards.Armors"))
+            if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "AALUND13.Cards.Armors")) {
                 ArmorInterface.RegisterArmors();
+                ExoArmorProjectileHitPatch.Patch(harmony);
+            }
 
             CardResgester cardResgester = assets.LoadAsset<GameObject>("ClassesModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();

@@ -15,7 +15,7 @@ namespace AALUND13Cards.Standard {
     internal class AAC_Standard : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Standard";
         internal const string ModName = "AALUND13 Standard Cards";
-        internal const string Version = "1.0.0";
+        internal const string Version = "1.1.0";
 
 
         private static AssetBundle assets;
@@ -40,6 +40,8 @@ namespace AALUND13Cards.Standard {
             CardResgester cardResgester = assets.LoadAsset<GameObject>("StandardModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
+
+            assets.LoadAsset<GameObject>("StandardPhotonPrefabPool").GetComponent<PhotonPrefabPool>().RegisterPrefabs();
         }
     }
 }
