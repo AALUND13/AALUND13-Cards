@@ -1,5 +1,6 @@
 ﻿using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Handlers;
+using AALUND13Cards.Core.Patches;
 using AALUND13Cards.Core.Utils;
 using BepInEx;
 using BepInEx.Logging;
@@ -23,6 +24,7 @@ namespace AALUND13Cards.Core {
     [BepInDependency("Systems.R00t.PickPhaseImprovements")]
 
     [BepInDependency("com.willuwontu.rounds.tabinfo", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("io.olavim.rounds.rwf", BepInDependency.DependencyFlags.SoftDependency)]
 
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
@@ -31,14 +33,15 @@ namespace AALUND13Cards.Core {
 
         internal const string ModId = "AALUND13.Cards.Core";
         internal const string ModName = "AALUND13 Cards Core";
-        internal const string Version = "1.2.0"; // What version are we on (major.minor.patch)?
+        internal const string Version = "1.2.1"; // What version are we on (major.minor.patch)?
         internal const string FullVersion = "2.2.0"; // What version are we on (major.minor.patch)?
-        internal const bool IsBeta = true;
+        internal const bool IsBeta = false;
 
         public static AAC_Core Instance { get; private set; }
         public static List<BaseUnityPlugin> Plugins;
 
         internal static ManualLogSource ModLogger;
+        internal static Harmony Harmony;
 
         public static CardResgester CardMainResgester;
 
@@ -49,7 +52,8 @@ namespace AALUND13Cards.Core {
             Instance = this;
             ModLogger = Logger;
 
-            new Harmony(ModId).PatchAll();
+            Harmony = new Harmony(ModId);
+            Harmony.PatchAll();
 
             ToggleCardsCategoriesManager.instance.RegisterCategories(ModInitials);
             AACMenu.RegesterMenu(Config);
@@ -62,6 +66,8 @@ namespace AALUND13Cards.Core {
 
             if(Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
+
+            CardBarHandlerExtensionsPatch.Patch(Harmony);
 
             GameModeManager.AddHook(GameModeHooks.HookGameStart, OnGameStart);
 

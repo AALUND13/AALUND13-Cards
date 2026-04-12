@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AALUND13Cards.Core.Patches {
     [HarmonyPatch(typeof(ExtraPlayerSkins))]
-    public class AALUND13Team {
+    internal class AALUND13Team {
         [HarmonyPatch("GetTeamColorName")]
         [HarmonyPostfix]
         public static void PatchName(int teamID, ref string __result) {
@@ -62,7 +62,7 @@ namespace AALUND13Cards.Core.Patches {
 
         private static PlayerSkin SkinWhite;
 
-        private static readonly PlayerSkin White = new PlayerSkin {
+        internal static readonly PlayerSkin White = new PlayerSkin {
             color = new Color(0.8f, 0.8f, 0.8f, 1.0f),
             backgroundColor = new Color(0.8f, 0.8f, 0.8f, 1f),
             winText = new Color(0.8f, 0.8f, 0.8f, 1.0f),
