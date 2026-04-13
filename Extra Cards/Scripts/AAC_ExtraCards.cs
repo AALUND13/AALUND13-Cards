@@ -56,10 +56,10 @@ namespace AALUND13Cards.ExtraCards {
 
         IEnumerator OnPickStart(IGameModeHandler gameModeHandler) {
             foreach(Player player in PlayerManager.instance.players) {
-                if(PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
-                    bool isWinner = gameModeHandler.GetRoundWinners().Contains(player.teamID);
-                    if(player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase > 0 && !isWinner)
-                        ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase);
+                bool isWinner = gameModeHandler.GetRoundWinners().Contains(player.teamID);
+                if(player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase > 0 && !isWinner) {
+                    ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase);
+                    LoggerUtils.LogInfo($"Give player '{player.playerID}' {player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase} picks");
                 }
             }
 
