@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Healing Radiance
-  cardDestription: Standing still causes your enemies to regen 10 hp per seconds
+  cardDestription: Standing still causes your enemies to regen 10 hp per second
   cardStats: []
   rarity: 1
   cardArt: {fileID: 2126613531734722699, guid: cfd8743971938f0408fcdbf771cb9108, type: 3}
@@ -299,7 +299,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 1
-  Category: 2
 --- !u!114 &114642101177217248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,5 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 42681e3e8d406d6458f61761819065a8, type: 2}
   Priority: 0

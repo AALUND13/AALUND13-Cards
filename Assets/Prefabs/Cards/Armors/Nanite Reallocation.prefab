@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Nanite Reallocation
-  cardDestription: Convert 50% of your health into armor health. Without armor, it
-    becomes <b>Default Armor</b> health
+  cardDestription: Convert 50% of your health into armor health. Gain this as default
+    armor if you don't have a different type already
   cardStats:
   - positive: 0
     amount: -50%
@@ -301,7 +301,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 3
 --- !u!114 &114201867425171948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,5 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b08f543103f9bd3409cbaf6151e22e71, type: 2}
   Priority: 0

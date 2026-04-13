@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Card Factory
-  cardDestription: <color=#00ff00>Create <b>Any Card</b> at the start of a rounds</color>,
-    But there <color=#ff0000>30% chance the factory will create a <b>Defective Card</b></color>
+  cardDestription: Create Any Card at the start of each round. 30% chance the factory
+    creates a Defective Card
   cardStats: []
   rarity: 2
   cardArt: {fileID: 3661416855051352373, guid: 8f51647410bafa94f943008daf9910a4, type: 3}
@@ -301,7 +301,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 1
 --- !u!114 &114951772638915378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,5 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
   Priority: 0

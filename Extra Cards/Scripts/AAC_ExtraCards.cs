@@ -4,10 +4,8 @@ using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.Core.Utils;
 using AALUND13Cards.ExtraCards.Cards;
-using AALUND13Cards.ExtraCards.Handlers;
 using BepInEx;
 using HarmonyLib;
-using Photon.Pun;
 using System;
 using System.Collections;
 using System.Linq;
@@ -24,7 +22,7 @@ namespace AALUND13Cards.ExtraCards {
     internal class AAC_ExtraCards : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Extra_Cards";
         internal const string ModName = "AALUND13 Extra Picks Cards";
-        internal const string Version = "1.2.5";
+        internal const string Version = "1.3.0";
 
         public static GameObject CurseDrawObject;
 

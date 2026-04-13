@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Aftershock
-  cardDestription: Deal 50% damage of your taken damage back to enemies around you
+  cardDestription: 50% of the damage you take is dealt back to nearby enemies
   cardStats: []
   rarity: 2
   cardArt: {fileID: 4616533514278723636, guid: 0f07f171f3c49844681939ffaa8ba02a, type: 3}
@@ -296,7 +296,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
 --- !u!114 &114007730676705462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,5 +310,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 497ae41df70bac7489765a7cec71f7dd, type: 2}
   Priority: 0

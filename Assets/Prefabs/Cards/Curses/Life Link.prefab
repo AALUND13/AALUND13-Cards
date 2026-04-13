@@ -55,8 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Life Link
-  cardDestription: You are life linked to a player. If the player you are linked to
-    dies, you will also die within 0.5 seconds
+  cardDestription: You are linked to a player. If the player you are linked to dies,
+    you will die 0.5 seconds later.
   cardStats: []
   rarity: 2
   cardArt: {fileID: 1339031009550015481, guid: 2f172be2d3eeee74e97dc0b07e35dbfd, type: 3}
@@ -294,13 +294,12 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 0
+  CardRarity: 7
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0
   RequireMod: 
   IsCursed: 1
-  Category: 2
 --- !u!114 &114642101177217248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,5 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 42681e3e8d406d6458f61761819065a8, type: 2}
   Priority: 0

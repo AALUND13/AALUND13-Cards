@@ -3,6 +3,7 @@ using AALUND13Cards.Core.Cards;
 using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.ExtraCards.Handlers.ExtraPickHandlers;
+using HarmonyLib;
 using System.Collections.Generic;
 using UnboundLib;
 using UnityEngine;
@@ -11,9 +12,9 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
     public enum ExtraPicksType {
         None,
         Normal,
-        Steel
+        CursedSteel
     }
-
+    
     public class ExtraCardsStatsModifers : CustomStatModifers {
         [Header("Extra Picks")]
         public int ExtraPicks = 0;
@@ -50,7 +51,6 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
                 }
             }
 
-
             if(DuplicatesAsCorrupted > 0) {
                 AAC_Core.Instance.ExecuteAfterFrames(1, () => {
                     additionalData.DuplicatesAsCorrupted += DuplicatesAsCorrupted;
@@ -79,8 +79,8 @@ namespace AALUND13Cards.ExtraCards.Cards.StatModifers {
             switch(type) {
                 case ExtraPicksType.Normal:
                     return new ExtraPickHandler();
-                case ExtraPicksType.Steel:
-                    return new SteelPickHandler();
+                case ExtraPicksType.CursedSteel:
+                    return new CursedSteelPickHandler();
                 default:
                     return null;
             }

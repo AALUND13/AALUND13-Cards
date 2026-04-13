@@ -1,16 +1,12 @@
 ﻿using AALUND13Cards.Core.Extensions;
-using AALUND13Cards.Core.Handlers;
-using AALUND13Cards.Core.Utils;
 using AALUND13Cards.ExtraCards;
 using AALUND13Cards.ExtraCards.Cards;
-using AALUND13Cards.ExtraCards.Handlers;
 using CorruptedCardsManager;
 using HarmonyLib;
 using ModsPlus;
 using Photon.Pun;
 using RandomCardsGenerators.Cards;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnboundLib;
 using UnboundLib.Networking;
@@ -46,7 +42,10 @@ namespace AALUND13Cards.Core.Patches {
             var player = PlayerManager.instance.GetPlayerWithID(__instance.pickrID);
             if(player == null) return;
 
-            if(spawnedCards.Count >= Math.Max(DrawNCards.DrawNCards.GetPickerDraws(__instance.pickrID) - player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().CurseCardDraws, 0)) {
+            if(
+               spawnedCards.Count >= Math.Max(DrawNCards.DrawNCards.GetPickerDraws(__instance.pickrID) - player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().CurseCardDraws, 0)
+               || player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().FullCurseDraws
+            ) {
                 AAC_Core.Instance.ExecuteAfterFrames(5, () => {
                     NetworkingManager.RPC(typeof(CardChoicePatch), nameof(SpawnCurseDraw), __result.GetComponent<PhotonView>().ViewID);
                 });

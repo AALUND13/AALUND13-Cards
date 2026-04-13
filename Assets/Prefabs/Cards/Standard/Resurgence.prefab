@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Resurgence
-  cardDestription: Triggers a delayed block when your block recharged
+  cardDestription: Triggers a delayed block when your block recharges
   cardStats:
   - positive: 1
     amount: +30%
@@ -325,7 +325,6 @@ MonoBehaviour:
   FreezeDamage: 0
   QuickDashes: 0
   BulletsDamageMultiplier: 0
-  BerserkModeAmount: 0
 --- !u!114 &114376783539013722
 MonoBehaviour:
   m_ObjectHideFlags: 0

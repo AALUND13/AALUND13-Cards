@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Roll Of The Dice
-  cardDestription: Roll a dice between 1 to 6. Higher number is better stats
+  cardDestription: Roll a number from 1 to 6. Higher numbers result in better stats.
   cardStats: []
   rarity: 1
   cardArt: {fileID: 3634351038450785302, guid: c83a8431358e0064ba4f180738b7e255, type: 3}
@@ -298,7 +298,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 1
 --- !u!114 &114729959749941734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,5 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
   Priority: 0

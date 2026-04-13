@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Numb
-  cardDestription: Your damage is delayed for 4 seconds.
+  cardDestription: Damage you take is delayed by 4 seconds
   cardStats:
   - positive: 1
     amount: +4 seconds
@@ -339,7 +339,6 @@ MonoBehaviour:
   FreezeDamage: 0
   QuickDashes: 0
   BulletsDamageMultiplier: 0
-  BerserkModeAmount: 0
 --- !u!114 &114742683095748562
 MonoBehaviour:
   m_ObjectHideFlags: 0

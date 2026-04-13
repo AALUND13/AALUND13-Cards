@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Soulstealer Suction
-  cardDestription: Your damaging aura now deal percentage damage to nearby enemies
+  cardDestription: Soul Drain now deals increased damage based on the target's max
+    health
   cardStats:
   - positive: 1
     amount: +7.5% Soul Drain

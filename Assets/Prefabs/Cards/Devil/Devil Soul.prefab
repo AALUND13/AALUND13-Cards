@@ -60,11 +60,11 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Revive
   - positive: 0
-    amount: -35%
+    amount: -50%
     simepleAmount: 0
     stat: Damage per death
   - positive: 0
-    amount: -35%
+    amount: -50%
     simepleAmount: 0
     stat: Health per death
   rarity: 1

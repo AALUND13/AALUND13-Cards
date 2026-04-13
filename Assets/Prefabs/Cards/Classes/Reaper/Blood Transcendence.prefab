@@ -53,11 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Blood Transcendence
-  cardDestription: 'When you block you become <b>invulnerable</b> for time of the
-    amount of <#BF1111>blood</color> you have. When trigger on full blood 5 seconds
-    of being <b>invulnerable</b>
-
-    <#7A7A7A><i>Note: this not include <b>passive</b> and <b>regen</b> blood drain</i></color>'
+  cardDestription: When you block, you become invulnerable. Duration depends on the
+    amount of blood you have, up to a maximum of 5 seconds.
   cardStats:
   - positive: 1
     amount: 5 Seconds

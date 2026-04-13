@@ -15,7 +15,7 @@ namespace AALUND13Cards.Standard {
     internal class AAC_Standard : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Standard";
         internal const string ModName = "AALUND13 Standard Cards";
-        internal const string Version = "1.1.0";
+        internal const string Version = "1.2.0";
 
 
         private static AssetBundle assets;

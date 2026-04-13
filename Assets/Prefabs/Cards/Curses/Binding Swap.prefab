@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Binding Swap
-  cardDestription: Swap your <b>Fire</b> and <b>Block</b> control
+  cardDestription: Swap your Fire and Block controls
   cardStats: []
   rarity: 2
   cardArt: {fileID: 7362598811096031126, guid: 38a0a86ebee3cd243929cd00c5883c96, type: 3}
@@ -292,7 +292,7 @@ MonoBehaviour:
   CardLimit: 0
   RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 0
+  CardRarity: 7
   CardRarityCustom: 
   CanBeReassigned: 1
   IsHidden: 0

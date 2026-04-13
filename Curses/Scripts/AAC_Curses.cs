@@ -18,7 +18,7 @@ namespace AALUND13Cards.Curses {
     internal class AAC_Curses : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Curses";
         internal const string ModName = "AALUND13 Curses Cards";
-        internal const string Version = "1.1.0";
+        internal const string Version = "1.2.0";
 
         private static AssetBundle assets;
 

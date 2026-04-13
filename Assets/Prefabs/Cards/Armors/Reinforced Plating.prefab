@@ -54,8 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Reinforced Plating
-  cardDestription: Apply reinforced plating to all your armors giving 10% damage reduction
-    for your armors
+  cardDestription: Apply reinforced plating to all your armors, giving them 10% damage
+    reduction
   cardStats:
   - positive: 1
     amount: +10% Armor
@@ -306,7 +306,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 3
 --- !u!114 &114341955976271268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorDamageReduction: 0.1
+  HealToArmorHealPercentage: 0
   ArmorTypeId: 
   ArmorHealth: 0
   ArmorHealthMultiplier: 1
@@ -362,5 +362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b08f543103f9bd3409cbaf6151e22e71, type: 2}
   Priority: 0
