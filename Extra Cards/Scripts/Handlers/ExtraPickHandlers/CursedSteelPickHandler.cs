@@ -4,12 +4,16 @@ using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.ExtraCards.Cards;
 using ModdingUtils.Utils;
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using UnboundLib;
+using UnboundLib.Networking;
 
 namespace AALUND13Cards.ExtraCards.Handlers.ExtraPickHandlers {
     public class CursedSteelPickHandler : ExtraPickHandler {
+        public override int HandSize => 3;
+
         public override bool PickConditions(Player player, CardInfo card) {
             if(card.categories.Intersect(AAC_Core.NoSteelCategories).Any()) {
                 return false;
@@ -31,27 +35,32 @@ namespace AALUND13Cards.ExtraCards.Handlers.ExtraPickHandlers {
         }
 
         public override void OnPickEnd(Player player, CardInfo card) {
-            LoggerUtils.LogInfo("[CursedSteelPickHandler] Trying to steel a card");
-            if(PhotonNetwork.OfflineMode || PhotonNetwork.IsMasterClient) {
-                // Find all players that have the card
-                List<Player> playersWithCard = new List<Player>();
-                foreach(Player otherPlayer in PlayerStatus.GetEnemyPlayers(player)) {
-                    if(otherPlayer.data.currentCards.Contains(CardChoice.instance.GetSourceCard(card))) {
-                        playersWithCard.Add(otherPlayer);
-                    }
-                }
-
-                if(playersWithCard.Count == 0) return;
-
-                Player randomPlayer = playersWithCard.GetRandom<Player>();
-                LoggerUtils.LogInfo($"[CursedSteelPickHandler] Steeling a card '{card.cardName}' from player with id of {randomPlayer.playerID}");
-
-                ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(randomPlayer, CardChoice.instance.GetSourceCard(card), ModdingUtils.Utils.Cards.SelectionType.Newest);
-            }
+            LoggerUtils.LogInfo("Trying to steel a card");
+            NetworkingManager.RPC(typeof(CursedSteelPickHandler), nameof(RPCA_SteelCard), CardChoice.instance.GetSourceCard(card).name, player.playerID);
 
             player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().FullCurseDraws = false;
         }
 
-        public override int HandSize => 3;
+        [UnboundRPC]
+        private static void RPCA_SteelCard(string cardObjectName, int playerId) {
+            if(!PhotonNetwork.OfflineMode && !PhotonNetwork.IsMasterClient) return;
+
+            Player player = PlayerManager.instance.players.Find(p => p.playerID == playerId);
+            CardInfo card = ModdingUtils.Utils.Cards.instance.GetCardWithObjectName(cardObjectName);
+
+            List<Player> playersWithCard = new List<Player>();
+            foreach(Player otherPlayer in PlayerStatus.GetEnemyPlayers(player)) {
+                if(otherPlayer.data.currentCards.Contains(card)) {
+                    playersWithCard.Add(otherPlayer);
+                }
+            }
+
+            if(playersWithCard.Count == 0) return;
+
+            Player randomPlayer = playersWithCard.GetRandom<Player>();
+            LoggerUtils.LogInfo($"Steeling a card '{card.cardName}' from player with id of {randomPlayer.playerID}");
+
+            ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(randomPlayer, card, ModdingUtils.Utils.Cards.SelectionType.Newest);
+        }
     }
 }
