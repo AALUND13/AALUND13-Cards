@@ -1,4 +1,5 @@
 ﻿using AALUND13Cards.Core;
+using AALUND13Cards.Core.Cards;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using CardThemeLib;
 using RandomCardsGenerators;
@@ -13,9 +14,12 @@ using WillsWackyManagers.Utils;
 
 namespace AALUND13Cards.Curses.Cards {
     public class CurseCardsGenerator {
+        public static readonly List<CardInfo> GeneratedCurseCards = new List<CardInfo>();
+
         private static NormalDrawableRandomCard drawableRandomDebuffCard;
 
-        public static void CreateRandomDebuffCard(GameObject cardArt) {
+
+        public static void CreateRandomDebuffCard(GameObject cardArt, CardResgester cardResgester) {
             var randomCardOption = new RandomCardOption(
                 "Random Debuff",
                 AAC_Core.ModInitials,
@@ -38,12 +42,13 @@ namespace AALUND13Cards.Curses.Cards {
             randomCardsGenerator.GeneratorActions.OnCardGenerated += (GeneratedCardInfo cardInfo) => {
                 cardInfo.CardInfo.cardArt = cardArt;
                 ApplyCurseCategory(cardInfo.CardInfo);
+                GeneratedCurseCards.Add(cardInfo.CardInfo);
             };
-
-            CreateRandomDebuffToggleCard(randomCardsGenerator, cardArt);
+            
+            CreateRandomDebuffToggleCard(randomCardsGenerator, cardArt, cardResgester);
         }
 
-        private static DrawableRandomCard CreateRandomDebuffToggleCard(RandomCardsGenerator generator, GameObject cardArt) {
+        private static DrawableRandomCard CreateRandomDebuffToggleCard(RandomCardsGenerator generator, GameObject cardArt, CardResgester cardResgester) {
             drawableRandomDebuffCard = new NormalDrawableRandomCard(
                 generator
             );
@@ -54,6 +59,8 @@ namespace AALUND13Cards.Curses.Cards {
             ApplyCurseCategory(drawableRandomDebuffCard.CardInfo);
 
             drawableRandomDebuffCard.ToggleCard.toggleCardInfo.cardArt = cardArt;
+            cardResgester.Cards.Add(drawableRandomDebuffCard.ToggleCard.toggleCardInfo.gameObject);
+            CardResgester.AllModCards.Add(drawableRandomDebuffCard.ToggleCard.toggleCardInfo);
 
             return drawableRandomDebuffCard;
         }

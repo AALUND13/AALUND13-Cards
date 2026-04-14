@@ -45,7 +45,12 @@ namespace AALUND13Cards.Curses {
 
             GameObject cardArt = assets.LoadAsset<GameObject>("C_Random Debuff");
 
-            CurseCardsGenerator.CreateRandomDebuffCard(cardArt);
+            CurseCardsGenerator.CreateRandomDebuffCard(cardArt, cardResgester);
+
+            ModdingUtils.Utils.Cards.instance.AddCardValidationFunction((Player Plane, CardInfo cardToCheck) => {
+                return !CurseCardsGenerator.GeneratedCurseCards.Contains(cardToCheck);
+            });
+
 
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
 
