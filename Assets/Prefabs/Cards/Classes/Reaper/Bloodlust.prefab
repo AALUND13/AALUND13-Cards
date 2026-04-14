@@ -63,11 +63,11 @@ MonoBehaviour:
   - positive: 1
     amount: +120% Blood
     simepleAmount: 0
-    stat: "\xD7 Target HP%"
+    stat: x Target HP%
   - positive: 1
     amount: +50% Damage
     simepleAmount: 0
-    stat: "\xD7 Target HP%"
+    stat: x Target HP%
   - positive: 0
     amount: Take Damage
     simepleAmount: 0

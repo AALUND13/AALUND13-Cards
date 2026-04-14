@@ -35,7 +35,7 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 | Sharper Scythe | Uncommon | Give a medium amount of percentage damage, also applies bleed that deals <b>25%</b> of the percentage damage over 5 seconds | +8% Percent Damage<br>+25% Bleeding Damage
 | Death Contract | Rare | Trade ALL your flat damage for a lot of percentage damage and a raised cap | +20% Percent DMG Cap<br>+10% Percent Damage<br>+35% Life Steel<br>-<b>ALL</b> Flat Damage
 | Death Scythe | Rare | You have gotten the <b>Death Scythe</b>, increasing your percentage damage and maximum scaling percentage damage cap to (80%) | +20% Percent DMG Cap<br>+20% Percent Damage
-| Bloodlust | Rare | Damaging enemies fills your blood based on how much of their health you take.<br>While you still have blood, gain <b>+5% health regen/s</b> until fully healed | +120% Blood × Target HP%<br>+50% Damage × Target HP%<br>Take Damage If Blood Run Dry
+| Bloodlust | Rare | Damaging enemies fills your blood based on how much of their health you take.<br>While you still have blood, gain <b>+5% health regen/s</b> until fully healed | +120% Blood x Target HP%<br>+50% Damage x Target HP%<br>Take Damage If Blood Run Dry
 | Withering | Uncommon | When you deal damage to players, they start taking 0.65% scaling percentage damage per second | 
 | Blood Transfusion | Uncommon | When you block, you become invulnerable. Duration depends on the amount of blood you have, up to a maximum of 5 seconds.<br>Note: Healing effectiveness decreases with distance from the damaged player<br> | +25% Heal From Damage
 | Blood Dislocation | Rare | When you block, unleash an area of effect that deals <b>30% of enemies max health</b> as damage in range<br>Note: Precentage damage effectiveness decreases with distance from players<br> | +30% Area DMG on Block<br>5 Seconds Ability Cooldown
@@ -78,11 +78,11 @@ If you encounter any bugs, please report them in the [issues](https://github.com
 
 | Name | Rarity | Description | Stats |
 |---|---|---|---|
-| Devil Soul | Devil | You have made a deal with the devil… and you sold your soul | +1 Revive<br>-50% Damage per death<br>-50% Health per death
-| Hell Guard | Devil | You have made a deal with the devil… and you chose power over protectionn | 0.75s  Fixed Block CD<br>Disable Block invulnerability
-| Hellfire Speed | Devil | You have made a deal with the devil… and you chose speed through fire | +400% Attack Speed<br>-60% Reload Time<br>Each shot -5% Attack Speed<br>Each shot +5% Reload Time
-| Corrupted Growth | Devil | You have made a deal with the devil… and you chose growth through corruption | Each card +5% Damage<br>Each card +5% Health<br>Each card +2.5% Reload Time<br>Each card +2.5% Block Cooldown
-| Curse of Greed | Devil | You have made a deal with the devil… and you chose greed | Guarantees 1 Rare Per Draw<br>1/3 Cards Draws
+| Devil Soul | Devil | You have made a deal with the devil... and you sold your soul | +1 Revive<br>-50% Damage per death<br>-50% Health per death
+| Hell Guard | Devil | You have made a deal with the devil... and you chose power over protectionn | 0.75s  Fixed Block CD<br>Disable Block invulnerability
+| Hellfire Speed | Devil | You have made a deal with the devil... and you chose speed through fire | +400% Attack Speed<br>-60% Reload Time<br>Each shot -5% Attack Speed<br>Each shot +5% Reload Time
+| Corrupted Growth | Devil | You have made a deal with the devil... and you chose growth through corruption | Each card +5% Damage<br>Each card +5% Health<br>Each card +2.5% Reload Time<br>Each card +2.5% Block Cooldown
+| Curse of Greed | Devil | You have made a deal with the devil... and you chose greed | Guarantees 1 Rare Per Draw<br>1/3 Cards Draws
 | The Deal Of The Devil | Exotic | <br>When you pick this card, choose one of three Devil cards<br>Each offers great power and an even greater cost.<br> | 
 
 <b>Extra Cards:</b>
