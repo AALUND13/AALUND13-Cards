@@ -35,7 +35,7 @@ namespace AALUND13Cards.Core.Patches {
                 .Where(p => UnboundLib.Extensions.PlayerExtensions.GetAdditionalData(p)
                     .colorID == AALUND13Team.TeamID
                 )
-                .Select(p => p.teamID)
+                .Select(p => p.playerID)
                 .ToArray();
 
             CardBar[] cardBars = (CardBar[])instance.GetFieldValue("cardBars");
