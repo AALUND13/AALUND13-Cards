@@ -1,4 +1,6 @@
-﻿using AALUND13Cards.Core.Cards;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.Core.Patches;
 using AALUND13Cards.Core.Utils;
@@ -7,9 +9,6 @@ using BepInEx.Logging;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
 using JARL.Utils;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using ToggleCardsCategories;
 using UnboundLib.GameModes;
 
@@ -42,8 +41,6 @@ namespace AALUND13Cards.Core {
 
         internal static ManualLogSource ModLogger;
         internal static Harmony Harmony;
-
-        public static CardResgester CardMainResgester;
 
         public static CardCategory[] NoLotteryCategories;
         public static CardCategory[] NoSteelCategories;
