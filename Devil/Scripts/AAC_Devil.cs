@@ -4,7 +4,6 @@ using AALUND13Cards.Core.Utils;
 using AALUND13Cards.Devil.Handlers;
 using BepInEx;
 using HarmonyLib;
-using Photon.Realtime;
 using PickPhaseImprovements;
 using RarityLib.Utils;
 using System;
@@ -25,7 +24,7 @@ namespace AALUND13Cards.Devil {
 
         private void Awake() {
             assets = AssetsUtils.LoadAssetBundle("aac_devil_assets", typeof(AAC_Devil).Assembly);
-            if(assets != null) {
+            if (assets != null) {
                 new Harmony(ModId).PatchAll();
             }
 
@@ -34,17 +33,19 @@ namespace AALUND13Cards.Devil {
         }
 
         private void Start() {
-            if(assets == null) {
+            if (assets == null) {
                 Unbound.BuildModal("AALUND13 Cards Error", $"The mod \"{ModName}\" assets failled to load, All the cards will be disable in this mod");
                 throw new NullReferenceException($"Failled to load \"{ModName}\" assets");
             }
 
-            if(AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
+            if (AAC_Core.Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo")) {
                 TabinfoInterface.Setup();
+            }
 
             CardResgester cardResgester = assets.LoadAsset<GameObject>("DevilModCards").GetComponent<CardResgester>();
             cardResgester.RegisterCards();
 
+            PickManager.RegisterHandFinalizationAction((cards) => GuaranteedCardOfRarityHandler.GeneratedGuaranteedCardOfRaritesSlots = false);
             PickManager.RegisterDrawValidationFunction(GuaranteedCardOfRarityHandler.GuaranteedCardOfRarites);
 
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);

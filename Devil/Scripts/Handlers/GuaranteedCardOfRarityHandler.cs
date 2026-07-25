@@ -1,4 +1,5 @@
-﻿using AALUND13Cards.Core.Extensions;
+﻿using AALUND13Cards.Core;
+using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Devil.Cards;
 using PickPhaseImprovements;
 using RarityLib.Utils;
@@ -9,47 +10,45 @@ using UnityEngine;
 
 namespace AALUND13Cards.Devil.Handlers {
     public static class GuaranteedCardOfRarityHandler {
-        private static Dictionary<int, Rarity> GuaranteedCardSlots = new Dictionary<int, Rarity>();
+        private readonly static Dictionary<int, Rarity> GuaranteedCardSlots = new Dictionary<int, Rarity>();
+        internal static bool GeneratedGuaranteedCardOfRaritesSlots = false;
 
         internal static void GetGuaranteedCardOfRaritesSlots(Player player) {
             GuaranteedCardSlots.Clear();
 
-            // Sort the rarities base off the chnaces
-            var sortedRarityList = player.data
-                .GetCustomStatsRegistry()
-                .GetOrCreate<DevilCardsStats>()
-                .GuaranteedRarities
-                .OrderByDescending(r => r.calculatedRarity)
-                .ToList();
-
-            // Create a list with all the slots that can be taken
+            var RarityList = new Queue<Rarity>(player.data.GetCustomStatsRegistry().GetOrCreate<DevilCardsStats>().GuaranteedRarities);
             int numOfDraw = DrawNCards.DrawNCards.GetPickerDraws(player.playerID);
-            var slotsToTake = new List<int>(numOfDraw);
-            for(int i = 1; i <= numOfDraw; i++) {
-                slotsToTake.Add(i);
-            }
-
-            // Create the list with all the "Guaranteed" rarities slots
-            while(sortedRarityList.Count > 0 && slotsToTake.Count > 0) {
-                Rarity rarity = sortedRarityList[0];
-                sortedRarityList.RemoveAt(0);
-
-                int index = Random.Range(0, slotsToTake.Count);
-                int randomSlot = slotsToTake[index];
-                slotsToTake.RemoveAt(index);
-
-                GuaranteedCardSlots[randomSlot] = rarity;
+            
+            List<int> alreadyTakenSlots = new List<int>(RarityList.Count);
+            for (int i = 0; i < RarityList.Count; i++) {
+                Rarity rarity = RarityList.Dequeue();
+                
+                int takenSlot = Random.Range(0, numOfDraw);
+                while(alreadyTakenSlots.Any(s => s == takenSlot)) takenSlot = Random.Range(0, numOfDraw);
+                
+                alreadyTakenSlots.Add(takenSlot);
+                GuaranteedCardSlots.Add(takenSlot, rarity);
+                    
+                LoggerUtils.Log(BepInEx.Logging.LogLevel.Info, $"Guaranteed card of rarity {rarity.name} in slot {takenSlot}");
             }
         }
 
         public static PickManager.ValidationResult GuaranteedCardOfRarites(CardInfo[] currentCards, CardInfo thisCard) {
-            Player player = (((PickerType)CardChoice.instance.GetFieldValue("pickerType") != 0)
-                ? PlayerManager.instance.players[CardChoice.instance.pickrID]
-                : PlayerManager.instance.GetPlayersInTeam(CardChoice.instance.pickrID)[0]);
+            if(!GeneratedGuaranteedCardOfRaritesSlots) {
+                Player player = (((PickerType)CardChoice.instance.GetFieldValue("pickerType") != 0)
+                    ? PlayerManager.instance.players[CardChoice.instance.pickrID]
+                    : PlayerManager.instance.GetPlayersInTeam(CardChoice.instance.pickrID)[0]);
 
-            int slot = currentCards.Length + 1;
+                GetGuaranteedCardOfRaritesSlots(player);
+                GeneratedGuaranteedCardOfRaritesSlots = true;
+            }
 
-            if(GuaranteedCardSlots.TryGetValue(slot, out var rarity)) {
+            int slot = currentCards.Length;
+
+            LoggerUtils.Log(BepInEx.Logging.LogLevel.Info, $"Validating card {thisCard.cardName} in slot {slot}");
+            LoggerUtils.Log(BepInEx.Logging.LogLevel.Debug, $"Current Cards Amount: {currentCards.Length}");
+
+            if (GuaranteedCardSlots.TryGetValue(slot, out var rarity)) {
                 if(IsBelowRarity(rarity.value, thisCard.rarity)) {
                     return PickManager.ValidationResult.Invalid;
                 }
