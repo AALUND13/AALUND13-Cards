@@ -9,7 +9,7 @@ namespace AALUND13Cards.Devil.Cards.Effects {
         public float CardsDrawsMultiplier = 1;
 
         public override void OnAdded(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats) {
-            AAC_Core.Instance.ExecuteAfterSeconds(0.5f, () => {
+            AAC_Core.Instance.ExecuteAfterFrames(1, () => {
                 int drawToSet = Mathf.RoundToInt(DrawNCards.DrawNCards.GetPickerDraws(player.playerID) * CardsDrawsMultiplier);
                 DrawNCards.DrawNCards.SetPickerDraws(player.playerID, drawToSet);
             });
