@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Devil_Cards
   Author: AALUND13
-  Version: 1.4.0
+  Version: 1.4.1
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Add in some devil cards
   BeforeBuildCommand: 
   AfterBuildCommand: 
   Dependencies:
-  - AALUND13-AALUND13_Cards_Core-1.2.0
+  - AALUND13-AALUND13_Cards_Core-1.2.2
   DllDependencies: []
   AssemblyDefinitionDependencies: []
   Icon: {fileID: 2800000, guid: f9ef4f7027a37ac4f99c3157be056a43, type: 3}

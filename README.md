@@ -1,4 +1,4 @@
-# AALUND13 Cards [v2.3.0]
+# AALUND13 Cards [v2.3.1]
 AALUND13 Cards introduces <b>88</b> cards developed by <b>AALUND13</b>.  
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 <h3>Cards:</h3>

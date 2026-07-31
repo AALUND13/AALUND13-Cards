@@ -1,4 +1,4 @@
-# AALUND13 Standard Cards [v1.2.0]
+# AALUND13 Standard Cards [v1.2.2]
 AALUND13 Standard Cards introduces <b>17</b> cards developed by <b>AALUND13</b>.  
 If you encounter any bugs, please report them in the [issues](https://github.com/AALUND13/AALUND13-Cards/issues) tab.
 <h3>Cards:</h3>
