@@ -1,3 +1,16 @@
+# Changes Logs v2.3.1:
+
+Note: This update just a "Hot Fixes" that focus on fixing bugs, it did not added any new cards
+
+## Fixes
+
+- Fixed `Curse Of Greed` not actually guaranteeing a rare.
+- Fixed `Berserk` "mulligan" effect now actually work in multiplayer.
+
+## Changes
+
+- Logs from the **AAC** now include more info, like what class the log trigger from.
+
 # Changes Logs v2.3.0:
 
 Note: I have **Try** to rebalance some the cards between the mod modules, I also have reword some the cards description, and fix some bugs
