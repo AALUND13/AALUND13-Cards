@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using AALUND13Cards.Core.Handlers;
+﻿using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.Core.Patches;
 using AALUND13Cards.Core.Utils;
 using BepInEx;
@@ -9,6 +6,9 @@ using BepInEx.Logging;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using HarmonyLib;
 using JARL.Utils;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 using ToggleCardsCategories;
 using UnboundLib.GameModes;
 
@@ -33,7 +33,8 @@ namespace AALUND13Cards.Core {
         internal const string ModId = "AALUND13.Cards.Core";
         internal const string ModName = "AALUND13 Cards Core";
         internal const string Version = "1.2.2"; // What version are we on (major.minor.patch)?
-        internal const string FullVersion = "2.3.0"; // What version are we on (major.minor.patch)?
+        internal const string FullVersion = "2.3.1"; // What version are we on (major.minor.patch)?
+       
         internal const bool IsBeta = false;
 
         public static AAC_Core Instance { get; private set; }
@@ -45,7 +46,7 @@ namespace AALUND13Cards.Core {
         public static CardCategory[] NoLotteryCategories;
         public static CardCategory[] NoSteelCategories;
 
-        public void Awake() {
+        private void Awake() {
             Instance = this;
             ModLogger = Logger;
 
@@ -56,12 +57,12 @@ namespace AALUND13Cards.Core {
             AACMenu.RegesterMenu(Config);
         }
 
-        public void Start() {
+        private void Start() {
             Plugins = (List<BaseUnityPlugin>)typeof(BepInEx.Bootstrap.Chainloader).GetField("_plugins", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 
             DeathHandler.OnPlayerDeath += OnPlayerDeath;
 
-            if(Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
+            if (Plugins.Exists(plugin => plugin.Info.Metadata.GUID == "com.willuwontu.rounds.tabinfo"))
                 TabinfoInterface.Setup();
 
             CardBarHandlerExtensionsPatch.Patch(Harmony);
@@ -84,7 +85,7 @@ namespace AALUND13Cards.Core {
         }
 
         private void OnPlayerDeath(Player player, Dictionary<Player, JARL.Utils.DamageInfo> playerDamageInfos) {
-            if(player.GetComponent<DelayDamageHandler>() != null) {
+            if (player.GetComponent<DelayDamageHandler>() != null) {
                 player.GetComponent<DelayDamageHandler>().StopAllCoroutines();
             }
         }
