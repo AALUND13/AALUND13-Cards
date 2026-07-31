@@ -30,7 +30,7 @@ namespace AALUND13Cards.Core.Patches {
             }
         }
 
-        public static void CardBarColor(CardBarHandler instance) {
+        public static void CardBarColor() {
             int[] colorTeamId = PlayerManager.instance.players
                 .Where(p => UnboundLib.Extensions.PlayerExtensions.GetAdditionalData(p)
                     .colorID == AALUND13Team.TeamID
@@ -38,7 +38,7 @@ namespace AALUND13Cards.Core.Patches {
                 .Select(p => p.playerID)
                 .ToArray();
 
-            CardBar[] cardBars = (CardBar[])instance.GetFieldValue("cardBars");
+            CardBar[] cardBars = (CardBar[])CardBarHandler.instance.GetFieldValue("cardBars");
             foreach(int teamId in colorTeamId) {
                 CardBar cardBar = cardBars[teamId];
 
