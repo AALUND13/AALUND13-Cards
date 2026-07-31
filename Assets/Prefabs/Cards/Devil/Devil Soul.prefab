@@ -53,18 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Devil Soul
-  cardDestription: "You have made a deal with the devil\u2026 and you sold your soul"
+  cardDestription: You have made a deal with the devil... and you sold your soul
   cardStats:
   - positive: 1
     amount: +1
     simepleAmount: 0
     stat: Revive
   - positive: 0
-    amount: -35%
+    amount: -50%
     simepleAmount: 0
     stat: Damage per death
   - positive: 0
-    amount: -35%
+    amount: -50%
     simepleAmount: 0
     stat: Health per death
   rarity: 1

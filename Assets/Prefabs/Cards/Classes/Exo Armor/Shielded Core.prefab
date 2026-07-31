@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Shielded Core
-  cardDestription: Integrates self sustaining a internal shield emitter inside your
-    armor, creating a force field, making your armor <b>truly</b> impenetrable
+  cardDestription: Integrates a self-sustaining internal shield emitter inside your
+    armor, making your armor truly impenetrable
   cardStats:
   - positive: 0
     amount: -20%

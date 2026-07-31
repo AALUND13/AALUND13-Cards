@@ -6,7 +6,7 @@ using JARL.Armor.Processors;
 namespace AALUND13Cards.Armors.Armors.Processors {
     internal class DamageAgainstArmorPercentageProcessor : ArmorProcessor {
         public override float AfterArmorProcess(float remaindingDamage, float originalDamage, float takenArmorDamage) {
-            if(Armor.HasArmorTag("CanArmorPierce")) {
+            if(Armor.HasArmorTag("NoDamageModifier")) {
                 if(DamagingPlayer == null || DamagingPlayer.data.GetCustomStatsRegistry().GetOrCreate<ArmorStats>().DamageAgainstArmorPercentage == 1f || takenArmorDamage <= 0)
                     return remaindingDamage;
 

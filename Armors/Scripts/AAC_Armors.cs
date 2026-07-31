@@ -19,7 +19,7 @@ namespace AALUND13Cards.Armors {
     internal class AAC_Armors : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Armors";
         internal const string ModName = "AALUND13 Armors Cards";
-        internal const string Version = "1.1.0";
+        internal const string Version = "1.2.0";
 
         private static AssetBundle assets;
 

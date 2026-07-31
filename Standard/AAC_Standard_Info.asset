@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModName: AALUND13_Standard_Cards
   Author: AALUND13
-  Version: 1.1.0
+  Version: 1.2.0
   WebsiteURL: https://github.com/AALUND13/AALUND13-Cards
   Description: Add some standard cards
   BeforeBuildCommand: 

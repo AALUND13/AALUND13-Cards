@@ -53,7 +53,7 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Bigger Cartridge Case
   cardDestription: Make your cartridge casing bigger for more propellant, increasing
-    bullets velocity
+    bullet velocity
   cardStats:
   - positive: 1
     amount: +100%
@@ -304,7 +304,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
 --- !u!114 &114853726600291058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,5 +318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 497ae41df70bac7489765a7cec71f7dd, type: 2}
   Priority: 0

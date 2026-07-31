@@ -4,10 +4,8 @@ using AALUND13Cards.Core.Extensions;
 using AALUND13Cards.Core.Handlers;
 using AALUND13Cards.Core.Utils;
 using AALUND13Cards.ExtraCards.Cards;
-using AALUND13Cards.ExtraCards.Handlers;
 using BepInEx;
 using HarmonyLib;
-using Photon.Pun;
 using System;
 using System.Collections;
 using System.Linq;
@@ -24,7 +22,7 @@ namespace AALUND13Cards.ExtraCards {
     internal class AAC_ExtraCards : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Extra_Cards";
         internal const string ModName = "AALUND13 Extra Picks Cards";
-        internal const string Version = "1.2.5";
+        internal const string Version = "1.3.1";
 
         public static GameObject CurseDrawObject;
 
@@ -58,10 +56,10 @@ namespace AALUND13Cards.ExtraCards {
 
         IEnumerator OnPickStart(IGameModeHandler gameModeHandler) {
             foreach(Player player in PlayerManager.instance.players) {
-                if(PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode) {
-                    bool isWinner = gameModeHandler.GetRoundWinners().Contains(player.teamID);
-                    if(player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase > 0 && !isWinner)
-                        ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetAdditionalData().CustomStatsRegistry.GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase);
+                bool isWinner = gameModeHandler.GetRoundWinners().Contains(player.teamID);
+                if(player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase > 0 && !isWinner) {
+                    ExtraCardPickHandler.AddExtraPick<ExtraPickHandler>(player, player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase);
+                    LoggerUtils.LogInfo($"Give player '{player.playerID}' {player.data.GetCustomStatsRegistry().GetOrCreate<ExtraCardsStats>().ExtraCardPicksPerPickPhase} picks");
                 }
             }
 

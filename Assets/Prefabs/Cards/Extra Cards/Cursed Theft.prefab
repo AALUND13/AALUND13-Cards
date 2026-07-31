@@ -15,11 +15,12 @@ GameObject:
   - component: {fileID: 4904866182938917399}
   - component: {fileID: 4904821094073587542}
   - component: {fileID: 4907985382973923515}
-  - component: {fileID: 114203408726523956}
-  - component: {fileID: 114868439685266180}
-  - component: {fileID: 114890131209678754}
+  - component: {fileID: 114446284750240874}
+  - component: {fileID: 114663180186367980}
+  - component: {fileID: 114957550718355234}
+  - component: {fileID: 114897567621727136}
   m_Layer: 0
-  m_Name: Improve Capacitors
+  m_Name: Cursed Theft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,27 +53,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
-  cardName: Improve Capacitors
-  cardDestription: Increased the capacitors energy capacity of your railgun
-  cardStats:
-  - positive: 1
-    amount: +25
-    simepleAmount: 0
-    stat: Charge Capacity
-  - positive: 0
-    amount: +20%
-    simepleAmount: 0
-    stat: Reload Time
-  rarity: 1
-  cardArt: {fileID: 8910642861784695826, guid: 6a2e3436cb1d70a49aefdc9e54e1fd7f, type: 3}
+  cardName: Cursed Theft
+  cardDestription: Gain an extra pick only with 3 draws of other players cards. You
+    steal the chosen card, but gain a Curse
+  cardStats: []
+  rarity: 0
+  cardArt: {fileID: 6505582225081125286, guid: 4a911feb888d7d94e906402afc129a35, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
   allowMultiple: 1
-  blacklistedCategories: []
+  blacklistedCategories:
+  - {fileID: 11400000, guid: 47c9590585f269149b29d1c79146bc2f, type: 2}
+  - {fileID: 11400000, guid: 2695ae009eb8d4f4a820d89883a4b6a5, type: 2}
+  - {fileID: 11400000, guid: 0bb0827fbcf748447999210bf1aeb9d7, type: 2}
+  - {fileID: 11400000, guid: cfa13e8585a24b54fa3831e070b9eeae, type: 2}
+  - {fileID: 11400000, guid: 7035bb2974e64f349a324b617fb39bbd, type: 2}
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 3
+  colorTheme: 4
 --- !u!114 &4907890640190903806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +146,7 @@ MonoBehaviour:
   player: {fileID: 0}
   isReloading: 0
   damage: 1
-  reloadTime: 1.2
+  reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
   knockback: 1
@@ -276,7 +275,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114203408726523956
+--- !u!114 &114446284750240874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,19 +293,17 @@ MonoBehaviour:
   statModifiers: {fileID: 0}
   block: {fileID: 0}
   OverrideClassName: 
-  CardClassType: 32
+  CardClassType: 0
   CardLimit: 0
-  RequiredClass: {fileID: 4908810688212451669, guid: 30c56019c89650f468eb5b793890964a,
-    type: 3}
+  RequiredClass: {fileID: 0}
   RequiredClassTree: []
-  CardRarity: 4
+  CardRarity: 8
   CardRarityCustom: 
-  CanBeReassigned: 1
+  CanBeReassigned: 0
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
---- !u!114 &114868439685266180
+--- !u!114 &114663180186367980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,16 +312,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 5011008801069171712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ecd1dace8fa4984494754712e97cf52, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c9d2c52ca6d76641adc73319b1a9cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaximumCharge: 25
-  ChargeRate: 0
-  MaximumChargeMultiplier: 1
-  ChargeRateMultiplier: 1
-  RailgunDamageMultiplier: 1
-  RailgunBulletSpeedMultiplier: 1
---- !u!114 &114890131209678754
+  ExtraPicks: 1
+  ExtraPicksType: 2
+  ExtraPicksForEnemies: 0
+  ExtraPicksTypeForEnemies: 0
+  ExtraCardPicks: 0
+  DuplicatesAsCorrupted: 0
+  CurseCardDraws: 0
+--- !u!114 &114957550718355234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011008801069171712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: CorruptedRed
+  targetColor: {r: 0, g: 0, b: 0, a: 0}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114897567621727136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,5 +351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
-  categoryAsset: {fileID: 11400000, guid: cf643d3e4ca5de74d9363a4c6d4e0d58, type: 2}
+  CategoryPath: 
+  categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
   Priority: 0

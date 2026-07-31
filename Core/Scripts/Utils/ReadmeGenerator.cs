@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ToggleCardsCategories;
 using UnityEngine;
@@ -13,7 +14,6 @@ namespace AALUND13Cards.Core.Utils {
 
             List<string> insertedClassCategories = new List<string>();
             var stringBuilder = new StringBuilder();
-            var firstCategory = true;
 
             stringBuilder.AppendLine($"# {modName} [v{version}]");
             stringBuilder.AppendLine($"{modName} introduces <b>{cardInfos.Count}</b> cards developed by <b>AALUND13</b>.  ");
@@ -30,30 +30,42 @@ namespace AALUND13Cards.Core.Utils {
                     if(allowParentCategories.Contains(categoryParent)) categoryName = $"{categoryParent} - {categoryName}";
                 }
 
-                if(!firstCategory) {
-                    stringBuilder.AppendLine($"<br>");
-                }
-
-                stringBuilder.AppendLine($"<b>{categoryName}:</b>");
-                stringBuilder.AppendLine($"<pre>");
-
-                int cardsPerRow = 4;
-                int columnWidth = longestName + 2;
-
-                for(int i = 0; i < cardCategory.Value.Count; i++) {
-                    string cardName = cardCategory.Value[i].cardName;
-                    stringBuilder.Append("- " + cardName.PadRight(columnWidth));
-
-                    if((i + 1) % cardsPerRow == 0 || i == cardCategory.Value.Count - 1) {
-                        stringBuilder.AppendLine();
-                    }
-                }
-
-                stringBuilder.AppendLine($"</pre>");
-                firstCategory = false;
+                stringBuilder.AppendLine($"<b>{categoryName}:</b>\n");
+                stringBuilder.AppendLine(CreateCardsTable(cardCategory.Value));
             }
 
             return stringBuilder.ToString();
+        }
+
+        private static string CreateCardsTable(List<CardInfo> cards) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("| Name | Rarity | Description | Stats |");
+            stringBuilder.AppendLine("|---|---|---|---|");
+            foreach(CardInfo card in cards) {
+                stringBuilder.AppendLine(StripTags(
+                    $"| {NormalizeLineBreaks(card.cardName)} | " +
+                    $"{NormalizeLineBreaks(card.rarity.ToString())} | " +
+                    $"{NormalizeLineBreaks(card.cardDestription)} | " +
+                    $"{string.Join("<br>", card.cardStats.Select(s => NormalizeLineBreaks($"{s.amount} {s.stat}")))}"
+                ));
+            }
+            return stringBuilder.ToString();
+        }
+
+        private static string NormalizeLineBreaks(string input) {
+            return input
+                .Replace("\r\n", "<br>")
+                .Replace("\n", "<br>")
+                .Replace("\r", "<br>");
+        }
+
+        private static string StripTags(string input) {
+            return Regex.Replace(
+                input,
+                "<(?!/?(br|b)\\b)[^>]+>",
+                string.Empty,
+                RegexOptions.IgnoreCase
+            );
         }
 
         private static Dictionary<string, List<CardInfo>> GetCardWithCategories(List<CardInfo> cardInfos) {

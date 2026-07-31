@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Corruption Reflection
-  cardDestription: Gain a corrupted copy of this card in addition to the original,
+  cardDestription: Gain a corrupted copy of each card in additional to the original,
     if available
   cardStats: []
   rarity: 2
@@ -314,9 +314,9 @@ MonoBehaviour:
   ExtraPicksType: 0
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
-  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 1
+  CurseCardDraws: 0
 --- !u!114 &114321907632477298
 MonoBehaviour:
   m_ObjectHideFlags: 0

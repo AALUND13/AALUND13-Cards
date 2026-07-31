@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace AALUND13Cards.Armors.Armors {
     public class TitaniumArmor : ArmorBase {
-        public int SegmentsCount = 4;
+        public int SegmentsCount = 3;
         public float RegenThresholdPercent = 1.5f;
 
         private float segmentThresholdHealth = 0;

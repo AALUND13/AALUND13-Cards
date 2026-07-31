@@ -53,9 +53,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Battleforged Armor
-  cardDestription: This armor gains <color=#00ff00>10%</color> of the damage taken
-    as armor health, But <color=#ff0000>-50%</color> health.
-  cardStats: []
+  cardDestription: "This armor gains 10% of the damage taken as armor health. \nEfficiency
+    decreases as your max armor approaches your max health."
+  cardStats:
+  - positive: 1
+    amount: +100
+    simepleAmount: 0
+    stat: Battleforged Armor
+  - positive: 0
+    amount: -50%
+    simepleAmount: 0
+    stat: Health
   rarity: 1
   cardArt: {fileID: 3652933540651433932, guid: df3de9df3d77de9488d440898a95b537, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -297,7 +305,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 3
 --- !u!114 &114235825652461626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorDamageReduction: 0
+  HealToArmorHealPercentage: 0
   ArmorTypeId: Battleforged
   ArmorHealth: 100
   ArmorHealthMultiplier: 1
@@ -339,5 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: b08f543103f9bd3409cbaf6151e22e71, type: 2}
   Priority: 0

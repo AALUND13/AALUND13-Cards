@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Eternal Resilience
-  cardDestription: This card allows you to become more resistant per soul gathered.
+  cardDestription: Become more resistant as you gather souls
   cardStats:
   - positive: 1
     amount: +15%

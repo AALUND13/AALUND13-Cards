@@ -57,7 +57,7 @@ MonoBehaviour:
     of nearby enemies max health</b> as damage, trigger once per battle
   cardStats:
   - positive: 1
-    amount: +60% Aera DMG
+    amount: +60% Area DMG
     simepleAmount: 0
     stat: on Death
   - positive: 1

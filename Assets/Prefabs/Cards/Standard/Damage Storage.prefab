@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Damage Storage
-  cardDestription: "Store 50% of the damage you taken \nWhen you block deal the store
-    damage back to nearby enemies"
+  cardDestription: Store 50% of the damage you take. When you block, deal the stored
+    damage back to nearby enemies
   cardStats:
   - positive: 1
     amount: +50% Your Max HP
@@ -305,7 +305,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
 --- !u!114 &114750262585018960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,5 +319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 497ae41df70bac7489765a7cec71f7dd, type: 2}
   Priority: 0

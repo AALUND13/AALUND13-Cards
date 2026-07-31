@@ -54,8 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Death Contract
-  cardDestription: Trade <b>ALL</b> your flat damage, for a lot of percentage damage
-    and raising the cap
+  cardDestription: Trade ALL your flat damage for a lot of percentage damage and a
+    raised cap
   cardStats:
   - positive: 1
     amount: +20%

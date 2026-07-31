@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Spiritual Rage
-  cardDestription: This card allows you to become more stronger per soul gathered.
+  cardDestription: Become stronger with each soul gathered
   cardStats:
   - positive: 1
     amount: +20%

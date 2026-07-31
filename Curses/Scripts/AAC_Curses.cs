@@ -18,7 +18,7 @@ namespace AALUND13Cards.Curses {
     internal class AAC_Curses : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Curses";
         internal const string ModName = "AALUND13 Curses Cards";
-        internal const string Version = "1.1.0";
+        internal const string Version = "1.2.0";
 
         private static AssetBundle assets;
 
@@ -45,7 +45,12 @@ namespace AALUND13Cards.Curses {
 
             GameObject cardArt = assets.LoadAsset<GameObject>("C_Random Debuff");
 
-            CurseCardsGenerator.CreateRandomDebuffCard(cardArt);
+            CurseCardsGenerator.CreateRandomDebuffCard(cardArt, cardResgester);
+
+            ModdingUtils.Utils.Cards.instance.AddCardValidationFunction((Player Plane, CardInfo cardToCheck) => {
+                return !CurseCardsGenerator.GeneratedCurseCards.Contains(cardToCheck);
+            });
+
 
             AACMenu.OnMenuRegister += () => AACMenu.CreateModuleMenuWithReadmeGenerator(ModName, Version, cardResgester);
 

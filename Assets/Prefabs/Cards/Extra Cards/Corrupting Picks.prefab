@@ -56,13 +56,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Corrupting Picks
-  cardDestription: You get a extra picks every pick phase, But your hand slowing get
+  cardDestription: You get an extra pick each pick phase, but your hand slowly gets
     corrupted by the <glitch>Void</glitch>.
   cardStats:
   - positive: 1
     amount: +1
     simepleAmount: 0
-    stat: Of Cards To Pick
+    stat: Pick per round
   - positive: 0
     amount: +2.5%
     simepleAmount: 0
@@ -310,7 +310,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 1
 --- !u!114 &114183907993328010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,9 +341,9 @@ MonoBehaviour:
   ExtraPicksType: 1
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
-  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 1
   DuplicatesAsCorrupted: 0
+  CurseCardDraws: 0
 --- !u!114 &114632712158575802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,5 +387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 6b43f439fac4d4947bff2ddb028c25ad, type: 2}
   Priority: 0

@@ -54,14 +54,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Cursed Knowledge
-  cardDestription: Gain <b>3 <color=#870000>Cursed</color> draws</b>, when you pick
-    a card from a <b><color=#870000>Cursed</color> draw</b> you get a curse card along
-    side the regular card
+  cardDestription: Gain 3 <b><color=#870000>Cursed</color> draws</b>. When you pick
+    a card from a <b><color=#870000>Cursed</color> draws</b>, you get a curse card
+    alongside the regular card
   cardStats:
   - positive: 1
     amount: +3
     simepleAmount: 0
-    stat: <b><color=#870000>Cursed</color></b> Draws
+    stat: <b><color=#870000>Cursed</color> Draws</b>
   rarity: 2
   cardArt: {fileID: 3854688684182035141, guid: 91670bda8e11b6d4b9d46e0ef7ed178f, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -324,7 +324,6 @@ MonoBehaviour:
   ExtraPicksType: 1
   ExtraPicksForEnemies: 0
   ExtraPicksTypeForEnemies: 0
-  ExtraPickPhaseTrigger: 0
   ExtraCardPicks: 0
   DuplicatesAsCorrupted: 0
   CurseCardDraws: 3

@@ -53,23 +53,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Corrupted Growth
-  cardDestription: "You have made a deal with the devil\u2026 and you chose growth
-    through corruption"
+  cardDestription: You have made a deal with the devil... and you chose growth through
+    corruption
   cardStats:
   - positive: 1
-    amount: Each cards +5%
+    amount: Each card +5%
     simepleAmount: 0
     stat: Damage
   - positive: 1
-    amount: Each cards +5%
+    amount: Each card +5%
     simepleAmount: 0
     stat: Health
   - positive: 0
-    amount: Each cards +2.5%
+    amount: Each card +2.5%
     simepleAmount: 0
     stat: Reload Time
   - positive: 0
-    amount: Each cards +2.5%
+    amount: Each card +2.5%
     simepleAmount: 0
     stat: Block Cooldown
   rarity: 1

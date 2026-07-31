@@ -18,7 +18,7 @@ namespace AALUND13Cards.Devil {
     internal class AAC_Devil : BaseUnityPlugin {
         internal const string ModId = "AALUND13.Cards.Devil";
         internal const string ModName = "AALUND13 Devil Cards";
-        internal const string Version = "1.3.1";
+        internal const string Version = "1.4.0";
 
         private static AssetBundle assets;
 

@@ -11,8 +11,6 @@ namespace AALUND13Cards.Core.Cards {
 
         public List<GameObject> Cards;
 
-        private Dictionary<string, CardInfo> ModCards = new Dictionary<string, CardInfo>();
-
         private void SetupCard(CustomCard customCard) {
             if(customCard == null) return;
 
@@ -55,7 +53,6 @@ namespace AALUND13Cards.Core.Cards {
                 });
 
                 UnityEngine.Debug.Log($"[{AAC_Core.ModName}][Card] Registered Card: {cardInfo.cardName}");
-                ModCards.Add(cardInfo.cardName, cardInfo);
                 AllModCards.Add(cardInfo);
             }
         }

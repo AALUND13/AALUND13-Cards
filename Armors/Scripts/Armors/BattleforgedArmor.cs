@@ -13,7 +13,8 @@ namespace AALUND13Cards.Armors.Armors {
             DamageArmorInfo damageArmorInfo = ArmorUtils.ApplyDamage(CurrentArmorValue, damage);
             float armorLost = CurrentArmorValue - damageArmorInfo.Armor;
 
-            MaxArmorValue += armorLost * 0.1f;
+            float factor = MaxArmorValue != 0 ? Mathf.Min(1 / (1 + (MaxArmorValue/ArmorHandler.Player.data.maxHealth)) * 2, 1) : 0;
+            MaxArmorValue += armorLost * 0.1f * factor;
             return damageArmorInfo;
         }
 

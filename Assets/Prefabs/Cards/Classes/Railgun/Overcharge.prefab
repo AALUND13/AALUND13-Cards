@@ -53,9 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: Overcharge
-  cardDestription: This upgrade allows you to overcharge your railgun when you block,
-    using all stored charge for a powerful shot, but shots fired while overcharged
-    are only half as effective
+  cardDestription: Overcharge your railgun when you block. Your next shot has halved
+    base effectiveness, but uses all your stored charge to greatly increase its power
   cardStats: []
   rarity: 2
   cardArt: {fileID: 8790531433364537075, guid: 0842155be6c49d34ebd03995cd956d8f, type: 3}
@@ -300,7 +299,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
 --- !u!114 &114499926954392482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,5 +331,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: cf643d3e4ca5de74d9363a4c6d4e0d58, type: 2}
   Priority: 0

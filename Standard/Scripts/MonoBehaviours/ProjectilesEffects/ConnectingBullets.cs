@@ -26,7 +26,7 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
 
             if(PlayerLastBullet.ContainsKey(ProjectileHit.ownPlayer)
                 && PlayerLastBullet[ProjectileHit.ownPlayer] != null
-                && Vector2.Distance(PlayerLastBullet[ProjectileHit.ownPlayer].transform.position, gameObject.transform.position) < MaxDistance
+                && Vector2.Distance(PlayerLastBullet[ProjectileHit.ownPlayer].transform.position, gameObject.transform.position) < MaxDistance * transform.localScale.x
             ) {
                 connectingBulletInstance = Instantiate(ConnectingBulletPrefab, Vector2.zero, Quaternion.identity);
                 var lineEffect = connectingBulletInstance.GetComponent<LineEffect>();
@@ -55,7 +55,7 @@ namespace AALUND13Cards.Core.MonoBehaviours.ProjectilesEffects {
         private void Update() {
             if(connectedBullet == null && connectingBulletInstance != null) {
                 Destroy(gameObject);
-            } else if(connectingBulletInstance != null && Vector2.Distance(connectedBullet.transform.position, gameObject.transform.position) > MaxDistance) {
+            } else if(connectingBulletInstance != null && Vector2.Distance(connectedBullet.transform.position, gameObject.transform.position) > MaxDistance * transform.localScale.x) {
                 Destroy(gameObject);
             }
         }

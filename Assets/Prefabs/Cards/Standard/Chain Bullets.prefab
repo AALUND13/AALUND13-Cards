@@ -53,20 +53,24 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: Chain Bullets
   cardDestription: Your bullets are linked by damaging chains that deal 50% bullet
-    damage to players on contact. Chains break if bullets are more than 30 meters
+    damage to players on contact. Chains break if bullets are more than 25 meters
     apart
   cardStats:
   - positive: 1
-    amount: +30 Meters
+    amount: +25 Meters
     simepleAmount: 0
     stat: Chain Length
+  - positive: 1
+    amount: +20%
+    simepleAmount: 0
+    stat: Damage
   rarity: 1
   cardArt: {fileID: 6540472884659583726, guid: 727ce840c40ca3d4195d981bdeeb8711, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
-  allowMultiple: 0
+  allowMultiple: 1
   blacklistedCategories: []
   cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
   colorTheme: 1
@@ -143,7 +147,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 1
+  damage: 1.2
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
@@ -317,7 +321,6 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
-  Category: 0
 --- !u!114 &114746150543656532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,5 +335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceType: 1
   categoryPath: 
+  CategoryPath: 
   categoryAsset: {fileID: 11400000, guid: 497ae41df70bac7489765a7cec71f7dd, type: 2}
   Priority: 0
