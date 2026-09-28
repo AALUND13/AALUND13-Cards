@@ -59,6 +59,10 @@ MonoBehaviour:
     amount: +1
     simepleAmount: 0
     stat: Quick Dash
+  - positive: 1
+    amount: +20%
+    simepleAmount: 0
+    stat: Movement Speed
   rarity: 1
   cardArt: {fileID: 6558227867875740576, guid: eb5d80d63d43051469c4c9e9ce511fea, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -87,7 +91,7 @@ MonoBehaviour:
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
-  movementSpeed: 1
+  movementSpeed: 1.2
   jump: 1
   gravity: 1
   slow: 0
@@ -301,6 +305,9 @@ MonoBehaviour:
   IsHidden: 0
   RequireMod: 
   IsCursed: 0
+  ctrlForMoreInfo: 0
+  moreInfoCardDescription: 
+  moreInfoCardStats: []
 --- !u!114 &114296254460787648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +328,7 @@ MonoBehaviour:
   BleedingDamage: 0
   FreezeDamage: 0
   QuickDashes: 1
+  BulletsDamageMultiplier: 0
 --- !u!114 &114183604300857772
 MonoBehaviour:
   m_ObjectHideFlags: 0
