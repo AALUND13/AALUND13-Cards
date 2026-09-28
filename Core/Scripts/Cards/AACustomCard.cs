@@ -12,6 +12,7 @@ namespace AALUND13Cards.Core.Cards {
         public string RequireMod = "";
         public bool IsCursed = false;
 
+        [Header("More Info")]
         public bool ctrlForMoreInfo = false;
         public string moreInfoCardDescription = string.Empty;
         public CardInfoStat[] moreInfoCardStats = new CardInfoStat[0];
