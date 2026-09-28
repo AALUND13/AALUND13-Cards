@@ -91,7 +91,7 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
             characterData.healthHandler.regeneration += regenAdded;
 
 
-            if(tracker != null) {
+            if(tracker == null) {
                 tracker = StatManager.Apply(characterData.player, new StatChanges() {
                     Damage = 2f,
                     MovementSpeed = 1.5f,
@@ -103,8 +103,10 @@ namespace AALUND13Cards.Standard.MonoBehaviours.CardsEffects {
             characterData.healthHandler.regeneration -= regenAdded;
             regenAdded = 0f;
 
-            StatManager.Remove(tracker);
-            tracker = null;
+            if (tracker != null) {
+                StatManager.Remove(tracker);
+                tracker = null;
+            }
         }
     }
 }
